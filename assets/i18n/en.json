@@ -1,0 +1,79 @@
+{
+  "authentication": {
+    "confirmPhoneNumberPage": {
+      "didntRecieveAnyCode": "Didn’t you receive any code",
+      "enterYourCodeHere": "Enter your code here",
+      "resendNewCode": "Resend new code",
+      "verifyYourPhonenumber": "Verify your phone\nnumber"
+    },
+    "createAccountPage": {
+      "back": "Back",
+      "basicDetails": "/3 Basic details",
+      "birthDate": "Birth date",
+      "city": "City",
+      "country": "Country",
+      "countryRegion": "Country / region",
+      "createAccount": "Create Account",
+      "enterNameDateOfBirthAndPhoneNumber": "Enter name, date of birth\nand phone number",
+      "firstName": "First name",
+      "languages": "Languages",
+      "lastName": "Last name",
+      "next": "Next",
+      "phoneNumber": "Phone number",
+      "specifyCountryAndCity": "Specify country and\ncity of residence ",
+      "submit": "Submit",
+      "whatLanguages": "What languages\ndo you speak?",
+      "yourPhoneNumber": "Your phone number"
+    },
+    "forgotPasswordPage": {
+      "backToLogin": "Back to login",
+      "forgotPassword": "Forgot Password",
+      "submit": "Submit"
+    },
+    "loginPage": {
+      "dontHaveAnAccount": "Don’t have an account?",
+      "forgot": "Forgot?",
+      "guestMode": "Guest mode",
+      "login": "Login",
+      "orLoginWith": "Or, login with",
+      "password": "Password",
+      "signUp": "Sign up",
+      "yourEmail": "Your Email"
+    },
+    "signUpPage": {
+      "alreadyHaveAccount": "Already have an account?",
+      "beforePolicy": " and ",
+      "beforeTerms": "I agree to the ",
+      "createAccount": "Create account",
+      "login": "Login",
+      "orRegisterWithEmail": "Or, register with email",
+      "password": "Password",
+      "policy": "Privacy Policy",
+      "reenterPassword": "Re-enter password",
+      "signUp": "Sign up",
+      "terms": "Terms & Conditions",
+      "yourEmail": "Your Email"
+    }
+  },
+  "onboarding": {
+    "next": "Next",
+    "start": "Start",
+    "text1": {
+      "1": "Buy",
+      "2": " Borrow The Products You\nSuddenly Need\n\n",
+      "3": "Sell",
+      "4": " Rent Out Products You Don't\nNeed Temporarily"
+    },
+    "text2": "With Rogo, You No Longer Aave To Buy\nThings You Only Need For A Couple Of\nDays. Just Borrow Them For As Long As\nYou Need Them.",
+    "text3": "Do You Have Cool Things That You Rarely\nUse? Why Not Rent Them Out And Make\nPassive Income? Just Post Them On Rogo\nAnd Customers Will Find You",
+    "title1": "Meet Rogo!",
+    "title2": "Borrower",
+    "title3": "Lender"
+  },
+  "validators": {
+    "invalidEmail": "Please enter a valid email address",
+    "invalidPassword": "Password must have at least 6 characters",
+    "invalidPasswordConfirm": "Passwords must match",
+    "thisFieldIsRequired": "This field is required"
+  }
+}
