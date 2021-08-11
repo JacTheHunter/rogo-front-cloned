@@ -25,6 +25,22 @@ class DefaultAppIcons extends AppIcons {
   }
 
   @override
+  Widget searchIcon() {
+    return AppImage.asset(
+      AppImages.vector.search,
+    );
+  }
+
+  @override
+  Widget searchFilterIcon() {
+    return AppImage.asset(
+      AppImages.vector.filter,
+      height: 20,
+      width: 24,
+    );
+  }
+
+  @override
   Widget inputEyeOffIcon() {
     return AppImage.asset(
       AppImages.vector.eyeOff,

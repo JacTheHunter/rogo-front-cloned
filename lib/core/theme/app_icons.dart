@@ -8,4 +8,7 @@ abstract class AppIcons {
   Widget inputEyeOffIcon();
   Widget dropDownIcon();
   Widget numberPadErraseIcon();
+
+  Widget searchIcon();
+  Widget searchFilterIcon();
 }

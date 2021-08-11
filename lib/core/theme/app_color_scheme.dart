@@ -6,6 +6,7 @@ class AppColorScheme {
 
   //main text color
   static const haiti = Color(0xFF100B26);
+  static const haiti06 = Color(0x60100B26);
 
   static const transparent = Color(0x00000000);
   static const white = Color(0xFFFFFFFF);
@@ -27,4 +28,9 @@ class AppColorScheme {
   static const blueZodiac12 = Color(0x120D243C);
 
   static const pomegranate = Color(0xFFF44336);
+
+  static const lilac = Color(0xFFCCA3BD);
+
+  static const wispPink = Color(0xFFFDE9FD);
+  static const whitePointer = Color(0xFFFDF7FF);
 }

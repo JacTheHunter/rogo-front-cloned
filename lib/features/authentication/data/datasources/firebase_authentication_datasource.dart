@@ -103,8 +103,8 @@ class FirebaseAuthenticationDatasourceImpl implements FirebaseAuthenticationData
       final ActionCodeSettings actionCodeSettings = ActionCodeSettings(
         url: 'https://rogo-6f46a.web.app',
         androidInstallApp: true,
-        androidPackageName: 'com.rogo.rent',
-        iOSBundleId: 'com.rogo.rent',
+        androidPackageName: 'com.rogo.android',
+        iOSBundleId: 'com.rogo.android',
       );
 
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email, actionCodeSettings: actionCodeSettings);

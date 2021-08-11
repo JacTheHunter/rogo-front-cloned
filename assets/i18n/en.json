@@ -55,6 +55,17 @@
       "yourEmail": "Your Email"
     }
   },
+  "browse": {
+    "browsePage": {
+      "categories": "Categories",
+      "feed": "Feed",
+      "liveSearch": "Live-search",
+      "recommended": "Recommended for you",
+      "reviews": "reviews",
+      "topSellers": "Top Sellers",
+      "whatAreYouLookingFor": "What are you looking for"
+    }
+  },
   "onboarding": {
     "next": "Next",
     "start": "Start",

@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.rogo.rent</string>
+	<string>com.rogo.ios</string>
 	<key>PROJECT_ID</key>
 	<string>rogo-6f46a</string>
 	<key>STORAGE_BUCKET</key>

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:rogo/core/injection/injection_container.dart';
 import 'package:rogo/core/services/navigation_service.dart';

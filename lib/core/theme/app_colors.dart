@@ -13,6 +13,12 @@ abstract class AppColors {
   Color inputFillColor();
   Color appbarShadowColor();
   Color errorColor();
+  Color hintColor();
+  Color sliverAppBarBackgroundColor();
+  Color sliverAppBarSearchFillolor();
+  Color categoryItemBackgroundColor();
+  Color productsBackgroundColor();
+  Color productItemBackgroundColor();
 
   Gradient createAccountHeaderGradient();
 }

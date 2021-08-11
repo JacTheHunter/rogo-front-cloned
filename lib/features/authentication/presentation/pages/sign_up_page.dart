@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:formz/formz.dart';
 import 'package:rogo/core/configs/constants/app_images.dart';
-import 'package:rogo/core/configs/constants/app_routes.dart';
-import 'package:rogo/core/form_models/accept_policy.dart';
 import 'package:rogo/core/form_models/email.dart';
 import 'package:rogo/core/form_models/password.dart';
 import 'package:rogo/core/form_models/password_confirm.dart';

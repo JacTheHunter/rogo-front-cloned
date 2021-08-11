@@ -26,7 +26,26 @@ abstract class AppTextTheme {
   TextStyle inputTextStyle();
   TextStyle inputHintTextStyle();
 
+  TextStyle searchInputHintTextStyle();
+
   TextStyle confirmPhoneSubtitleTextStyle();
   TextStyle confirmPhoneSelectedNumberTextStyle();
   TextStyle confirmPhoneNumberPadTextStyle();
+
+  TextStyle sliverHeaderTitleTextStyle();
+
+  TextStyle tabBarSelectedLabelTextStyle();
+  TextStyle tabBarUnSelectedLabelTextStyle();
+
+  TextStyle browseTitleTextStyle();
+  TextStyle browseCategoryTextStyle();
+
+  TextStyle topSellerNameTextStyle();
+  TextStyle topSellerRatingTextStyle();
+  TextStyle topSellerReviewsTextStyle();
+
+  TextStyle productItemPriceNumberTextStyle();
+  TextStyle productItemPriceTextStyle();
+  TextStyle productItemNameTextStyle();
+  TextStyle productItemLocationTextStyle();
 }

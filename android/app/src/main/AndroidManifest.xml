@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rogo.rent">
+    package="com.rogo.android">
    <application
         android:label="rogo"
         android:icon="@mipmap/ic_launcher">

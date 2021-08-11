@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:21540573905:android:2170f8986befdcc350abf0",
+        "mobilesdk_app_id": "1:21540573905:android:6a3e22dc3fbe820950abf0",
         "android_client_info": {
-          "package_name": "com.rogo.rent"
+          "package_name": "com.rogo.android"
         }
       },
       "oauth_client": [
@@ -29,6 +29,13 @@
             {
               "client_id": "21540573905-ps4gn1t538acesf7qad71j2minaci4k6.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "21540573905-e3ho42lg2jqepavjjtq656hmh2qqh9t9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rogo.android"
+              }
             }
           ]
         }

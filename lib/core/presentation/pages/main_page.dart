@@ -1,23 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:rogo/core/configs/constants/app_routes.dart';
-import 'package:rogo/core/injection/injection_container.dart';
 import 'package:rogo/core/presentation/blocs/app_nav_bar_cubit/app_nav_bar_cubit.dart';
 import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import 'package:rogo/core/presentation/pages/widgets/app_bottom_nav_bar.dart';
 import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/services/navigation_service.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
 import 'package:rogo/features/authentication/presentation/blocs/authentication_bloc/authentication_bloc.dart';
-import 'package:rogo/features/authentication/presentation/pages/confirm_phone_number_page.dart';
-import 'package:rogo/features/authentication/presentation/pages/create_account_page.dart';
-import 'package:rogo/features/authentication/presentation/pages/forgot_password_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/login_page.dart';
-import 'package:rogo/features/authentication/presentation/pages/sign_up_page.dart';
-import 'package:rogo/features/onboarding/presentation/blocs/onboarding_page_cubit/onboarding_page_cubit.dart';
-import 'package:rogo/features/onboarding/presentation/pages/onboarding_page.dart';
+import 'package:rogo/features/browse/data/repositories/pages/browse_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -37,7 +28,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   void initState() {
     pageController = PageController();
     box = Hive.box('appSettings');
-    final bool selectLangPassed = box.get('selectLangPassed') ?? false;
+    //final bool selectLangPassed = box.get('selectLangPassed') ?? false;
 
     WidgetsBinding.instance!.addObserver(this);
 
@@ -91,6 +82,8 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
           return BlocBuilder<AppNavBarCubit, int>(
             builder: (context, state) {
               return Scaffold(
+                extendBody: true,
+                //backgroundColor: AppColorScheme.transparent,
                 bottomNavigationBar: AppBottomNavBar(
                   currentIndex: state,
                   onNavItemTap: onNavItemTap,
@@ -121,9 +114,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   Widget _buildPageViewBody(int currentIndex) {
     switch (currentIndex) {
       case 0:
-        return Center(
-          child: AppText(currentIndex.toString()),
-        );
+        return BrowsePage();
       case 1:
         return Center(
           child: AppText(currentIndex.toString()),

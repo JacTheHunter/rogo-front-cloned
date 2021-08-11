@@ -148,6 +148,14 @@ class DefaultAppTextTheme extends AppTextTheme {
   }
 
   @override
+  TextStyle searchInputHintTextStyle() {
+    return TextStyle(
+      fontSize: 14,
+      color: AppColorScheme.lilac,
+    );
+  }
+
+  @override
   TextStyle inputGroupTitleTextStyle() {
     return TextStyle(
       fontSize: 16,
@@ -179,6 +187,102 @@ class DefaultAppTextTheme extends AppTextTheme {
     return TextStyle(
       fontSize: 36,
       color: AppColorScheme.black,
+    );
+  }
+
+  @override
+  TextStyle sliverHeaderTitleTextStyle() {
+    return TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  @override
+  TextStyle tabBarSelectedLabelTextStyle() {
+    return TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  @override
+  TextStyle tabBarUnSelectedLabelTextStyle() {
+    return TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w700,
+      color: AppColorScheme.lilac,
+    );
+  }
+
+  @override
+  TextStyle browseTitleTextStyle() {
+    return TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  @override
+  TextStyle browseCategoryTextStyle() {
+    return TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  @override
+  TextStyle topSellerNameTextStyle() {
+    return TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  @override
+  TextStyle topSellerRatingTextStyle() {
+    return TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  @override
+  TextStyle topSellerReviewsTextStyle() {
+    return TextStyle(
+      fontSize: 12,
+      color: AppColorScheme.haiti06,
+    );
+  }
+
+  @override
+  TextStyle productItemPriceNumberTextStyle() {
+    return TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  @override
+  TextStyle productItemPriceTextStyle() {
+    return TextStyle(
+      fontSize: 12,
+      color: AppColorScheme.lilac,
+    );
+  }
+
+  @override
+  TextStyle productItemNameTextStyle() {
+    return TextStyle(
+      fontSize: 12,
+    );
+  }
+
+  @override
+  TextStyle productItemLocationTextStyle() {
+    return TextStyle(
+      fontSize: 10,
+      color: AppColorScheme.haiti06,
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rogo/core/configs/constants/app_colors.dart';
 
 class RegistartionRadio extends StatelessWidget {
   final bool isSelected;

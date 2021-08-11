@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class AppImages {
   static Vector vector = Vector();
   static Raster raster = Raster();
@@ -21,9 +23,17 @@ class Vector {
   String get appbarProfileSelected => 'assets/images/vector/appbar_profile_selected.svg';
   String get appbarWishlist => 'assets/images/vector/appbar_wishlist.svg';
   String get appbarWishlistSelected => 'assets/images/vector/appbar_wishlist_selected.svg';
+
+  String get filter => 'assets/images/vector/filter.svg';
+  String get heartEmpty => 'assets/images/vector/heart_empty.svg';
+  String get heart => 'assets/images/vector/heart.svg';
+  String get search => 'assets/images/vector/search.svg';
+  String get star => 'assets/images/vector/star.svg';
+  String get location => 'assets/images/vector/location.svg';
 }
 
 class Raster {
+  Random _random = Random();
   //String onboardingImage(int index) => 'assets/images/raster/onboarding_image$index.png';
   String get loginScreenMain => 'assets/images/raster/login_screen_main.png';
   String get signUpScreenMain => 'assets/images/raster/sign_up_screen_main.png';
@@ -33,4 +43,11 @@ class Raster {
   String get onboarding3 => 'assets/images/raster/onboarding_3.png';
 
   String onboarding(int key) => 'assets/images/raster/onboarding_$key.png';
+
+  String get sliverOverlay => 'assets/images/raster/sliver_overlay.png';
+
+  String get categoryRandom => 'assets/images/raster/category_${_random.nextInt(2) + 1}.png';
+  String get productRandom => 'assets/images/raster/product_${_random.nextInt(5) + 1}.png';
+  String get sellerAvatarRandom => 'assets/images/raster/seller_${_random.nextInt(3) + 1}.png';
+  String get sellerBannerRandom => 'assets/images/raster/seller_banner_${_random.nextInt(3) + 1}.png';
 }

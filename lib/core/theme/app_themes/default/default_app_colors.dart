@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/painting/gradient.dart';
 import 'package:rogo/core/theme/app_color_scheme.dart';
 import 'package:rogo/core/theme/app_colors.dart';
 
@@ -78,5 +77,35 @@ class DefaultAppColors extends AppColors {
   @override
   Color errorColor() {
     return AppColorScheme.redOrange;
+  }
+
+  @override
+  Color hintColor() {
+    return AppColorScheme.regentGray;
+  }
+
+  @override
+  Color sliverAppBarBackgroundColor() {
+    return AppColorScheme.remi;
+  }
+
+  @override
+  Color sliverAppBarSearchFillolor() {
+    return AppColorScheme.white;
+  }
+
+  @override
+  Color categoryItemBackgroundColor() {
+    return AppColorScheme.wispPink;
+  }
+
+  @override
+  Color productsBackgroundColor() {
+    return AppColorScheme.whitePointer;
+  }
+
+  @override
+  Color productItemBackgroundColor() {
+    return AppColorScheme.white;
   }
 }
