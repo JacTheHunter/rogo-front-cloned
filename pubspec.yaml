@@ -92,6 +92,12 @@ flutter:
           weight: 200
         - asset: assets/fonts/SanFranciscoPro/SFProDisplay-Ultralight.ttf
           weight: 100
+    - family: SanFranciscoProText
+      fonts:
+        - asset: assets/fonts/SanFranciscoProText/SF-Pro-Text-Semibold.otf
+          weight: 600
+        - asset: assets/fonts/SanFranciscoProText/SF-Pro-Text-Bold.otf
+          weight: 700
     # - family: Trajan Pro
     #   fonts:
   #     - asset: fonts/TrajanPro.ttf
