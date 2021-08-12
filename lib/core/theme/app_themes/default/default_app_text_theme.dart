@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
-import 'package:rogo/core/theme/app_text_theme.dart';
+
+
+import '../../app_color_scheme.dart';
+import '../../app_text_theme.dart';
 
 class DefaultAppTextTheme extends AppTextTheme {
   @override
@@ -21,7 +23,8 @@ class DefaultAppTextTheme extends AppTextTheme {
 
   @override
   TextStyle onboardingCrossedTextStyle() {
-    return onboardingTextStyle()..copyWith(decoration: TextDecoration.lineThrough);
+    return onboardingTextStyle()
+      ..copyWith(decoration: TextDecoration.lineThrough);
   }
 
   @override
@@ -285,4 +288,6 @@ class DefaultAppTextTheme extends AppTextTheme {
       color: AppColorScheme.haiti06,
     );
   }
+
+ 
 }
