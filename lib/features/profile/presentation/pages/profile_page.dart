@@ -117,27 +117,10 @@ class ProfilePage extends StatelessWidget {
           body: TabBarView(
             children: [
               Builder(builder: (context) {
-                return ListView(
-                  shrinkWrap: true,
-                  children: [
-                    StaggeredGridView.countBuilder(
-                      primary: false,
-                      shrinkWrap: true,
-                      itemCount: 10,
-                      crossAxisCount: 4,
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 9,
-                      itemBuilder: (context, index) => RecommendedItem(
-                        image: AppImages.raster.productRandom,
-                      ),
-                      staggeredTileBuilder: (index) => StaggeredTile.fit(2),
-                    ),
-                  ],
-                );
-              }),
-              Builder(
-                builder: (context) {
-                  return ListView(
+                return Container(
+                  color: context.read<AppThemeCubit>().state.appColors().sliverAppBarBackgroundColor(),
+                  padding: const EdgeInsets.all(20),
+                  child: ListView(
                     shrinkWrap: true,
                     children: [
                       StaggeredGridView.countBuilder(
@@ -153,6 +136,31 @@ class ProfilePage extends StatelessWidget {
                         staggeredTileBuilder: (index) => StaggeredTile.fit(2),
                       ),
                     ],
+                  ),
+                );
+              }),
+              Builder(
+                builder: (context) {
+                  return Container(
+                    color: context.read<AppThemeCubit>().state.appColors().sliverAppBarBackgroundColor(),
+                    padding: const EdgeInsets.all(20),
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: [
+                        StaggeredGridView.countBuilder(
+                          primary: false,
+                          shrinkWrap: true,
+                          itemCount: 10,
+                          crossAxisCount: 4,
+                          mainAxisSpacing: 12,
+                          crossAxisSpacing: 9,
+                          itemBuilder: (context, index) => RecommendedItem(
+                            image: AppImages.raster.productRandom,
+                          ),
+                          staggeredTileBuilder: (index) => StaggeredTile.fit(2),
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),
