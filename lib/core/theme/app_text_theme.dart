@@ -48,4 +48,8 @@ abstract class AppTextTheme {
   TextStyle productItemPriceTextStyle();
   TextStyle productItemNameTextStyle();
   TextStyle productItemLocationTextStyle();
+
+  TextStyle profileAvatarLettersTextStyle();
+  TextStyle profileNameTextStyle();
+  TextStyle profileReviewsTextStyle();
 }

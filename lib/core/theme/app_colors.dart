@@ -20,5 +20,7 @@ abstract class AppColors {
   Color productsBackgroundColor();
   Color productItemBackgroundColor();
 
+  Color profileAvatarBackgroundColor();
+
   Gradient createAccountHeaderGradient();
 }

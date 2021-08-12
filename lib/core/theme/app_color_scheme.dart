@@ -31,6 +31,10 @@ class AppColorScheme {
 
   static const lilac = Color(0xFFCCA3BD);
 
+  static const vividTangerine = Color(0xFFCCA3BD);
+
+  static const forgetMeNot = Color(0xFFFFF1EB);
+
   static const wispPink = Color(0xFFFDE9FD);
   static const whitePointer = Color(0xFFFDF7FF);
 }

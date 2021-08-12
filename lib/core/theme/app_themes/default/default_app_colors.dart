@@ -108,4 +108,9 @@ class DefaultAppColors extends AppColors {
   Color productItemBackgroundColor() {
     return AppColorScheme.white;
   }
+
+  @override
+  Color profileAvatarBackgroundColor() {
+    return AppColorScheme.forgetMeNot;
+  }
 }

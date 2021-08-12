@@ -34,7 +34,7 @@ class Recommended extends StatelessWidget {
               image: AppImages.raster.productRandom,
             ),
             staggeredTileBuilder: (index) => StaggeredTile.fit(2),
-          )
+          ),
         ],
       ),
     );

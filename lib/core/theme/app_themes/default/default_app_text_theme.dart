@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../app_color_scheme.dart';
 import '../../app_text_theme.dart';
 
@@ -23,8 +22,7 @@ class DefaultAppTextTheme extends AppTextTheme {
 
   @override
   TextStyle onboardingCrossedTextStyle() {
-    return onboardingTextStyle()
-      ..copyWith(decoration: TextDecoration.lineThrough);
+    return onboardingTextStyle()..copyWith(decoration: TextDecoration.lineThrough);
   }
 
   @override
@@ -289,5 +287,29 @@ class DefaultAppTextTheme extends AppTextTheme {
     );
   }
 
- 
+  @override
+  TextStyle profileAvatarLettersTextStyle() {
+    return TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w600,
+      color: AppColorScheme.vividTangerine,
+    );
+  }
+
+  @override
+  TextStyle profileNameTextStyle() {
+    return TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: AppColorScheme.white,
+    );
+  }
+
+  @override
+  TextStyle profileReviewsTextStyle() {
+    return TextStyle(
+      fontSize: 12,
+      color: AppColorScheme.white,
+    );
+  }
 }
