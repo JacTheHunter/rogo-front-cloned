@@ -23,4 +23,7 @@ class AppColors {
   static const gradient1_1 = Color(0xFF0FCFFE);
   static const gradient1_2 = Color(0xFFD91FFC);
   static const gradient1_3 = Color(0xFFFF00A4);
+
+  static const vividTangerine = Color.fromRGBO(254, 161, 122, 0.8);
+  static const forgetMeNot = Color.fromRGBO(255, 241, 235, 1);
 }
