@@ -11,4 +11,6 @@ abstract class AppIcons {
 
   Widget searchIcon();
   Widget searchFilterIcon();
+
+  Widget favoriteIcon();
 }

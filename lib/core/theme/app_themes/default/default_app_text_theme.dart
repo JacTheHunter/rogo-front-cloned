@@ -22,7 +22,8 @@ class DefaultAppTextTheme extends AppTextTheme {
 
   @override
   TextStyle onboardingCrossedTextStyle() {
-    return onboardingTextStyle()..copyWith(decoration: TextDecoration.lineThrough);
+    return onboardingTextStyle()
+      ..copyWith(decoration: TextDecoration.lineThrough);
   }
 
   @override
@@ -310,6 +311,29 @@ class DefaultAppTextTheme extends AppTextTheme {
     return TextStyle(
       fontSize: 12,
       color: AppColorScheme.white,
+    );
+  }
+
+  @override
+  TextStyle wishlistsProductItemPriceNumberTextStyle() {
+    return TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  @override
+  TextStyle wishlistsProductItemNameTextStyle() {
+    return TextStyle(
+      fontSize: 14,
+    );
+  }
+
+  @override
+  TextStyle wishlistsProductItemPriceTextStyle() {
+    return TextStyle(
+      fontSize: 14,
+      color: AppColorScheme.lilac,
     );
   }
 }

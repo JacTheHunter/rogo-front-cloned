@@ -66,6 +66,16 @@
       "whatAreYouLookingFor": "What are you looking for"
     }
   },
+  "wishlists": {
+    "wishlistsPage": {
+      "feed": "Feed",
+      "liveSearch": "Live-search",
+      "description": "Description",
+      "pickUpAndDrop": "Pick up and drop",
+      "itemUponReturn": "Item upon return",
+      "reviews": "reviews"
+    }
+  },
   "onboarding": {
     "next": "Next",
     "start": "Start",

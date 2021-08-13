@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:rogo/features/wishlists/presentation/pages/wishlists_page.dart';
 
 import '../../../features/authentication/presentation/blocs/authentication_bloc/authentication_bloc.dart';
 import '../../../features/authentication/presentation/pages/login_page.dart';
@@ -124,9 +125,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
       case 0:
         return BrowsePage();
       case 1:
-        return Center(
-          child: AppText(currentIndex.toString()),
-        );
+        return WhishListsPage();
       case 2:
         return Center(
           child: AppText(currentIndex.toString()),

@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:rogo/core/configs/constants/app_images.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RecommendedItem extends StatelessWidget {
+import '../../../../core/configs/constants/app_images.dart';
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_image.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
+
+class WishListItem extends StatelessWidget {
   final String image;
-  const RecommendedItem({Key? key, required this.image}) : super(key: key);
+
+  const WishListItem({Key? key, required this.image}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(right: 12),
+      height: 140,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
         color: context
@@ -20,55 +24,58 @@ class RecommendedItem extends StatelessWidget {
             .appColors()
             .productItemBackgroundColor(),
       ),
-      child: Column(
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.start,
         children: [
           AppImage.asset(
             image,
             borderRadius: BorderRadius.only(
-              topRight: Radius.circular(14),
               topLeft: Radius.circular(14),
+              bottomLeft: Radius.circular(14),
             ),
-            fit: BoxFit.fitHeight,
-            width: double.infinity,
-            //  height: 100,
+            width: 150,
+            fit: BoxFit.cover,
+            // width: double.infinity,
           ),
-          SizedBox(height: 4),
+          SizedBox(width: 16),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            padding: const EdgeInsets.only(top: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     AppText(
-                      '\$100',
+                      '\$50',
                       style: context
                           .read<AppThemeCubit>()
                           .state
                           .textTheme()
-                          .productItemPriceNumberTextStyle(),
+                          .wishlistsProductItemPriceNumberTextStyle(),
                     ),
-                    SizedBox(width: 2),
+                    SizedBox(width: 4),
                     AppText(
-                      'p/month',
+                      'p/day',
                       style: context
                           .read<AppThemeCubit>()
                           .state
                           .textTheme()
-                          .productItemPriceTextStyle(),
+                          .wishlistsProductItemPriceTextStyle(),
                     ),
+                    SizedBox(width: 120),
+                    context.read<AppThemeCubit>().state.appIcons().favoriteIcon(),
                   ],
                 ),
-                SizedBox(height: 4),
+                SizedBox(height: 5),
                 AppText(
-                  'Сamera lens',
+                  'Pioneer surfboards',
                   style: context
                       .read<AppThemeCubit>()
                       .state
                       .textTheme()
-                      .productItemNameTextStyle(),
+                      .wishlistsProductItemNameTextStyle(),
                 ),
-                SizedBox(height: 11),
+                SizedBox(height: 36),
                 Row(
                   children: [
                     AppImage.asset(
@@ -88,7 +95,7 @@ class RecommendedItem extends StatelessWidget {
                 )
               ],
             ),
-          )
+          ),
         ],
         mainAxisSize: MainAxisSize.min,
       ),

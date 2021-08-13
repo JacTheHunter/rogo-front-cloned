@@ -52,4 +52,8 @@ abstract class AppTextTheme {
   TextStyle profileAvatarLettersTextStyle();
   TextStyle profileNameTextStyle();
   TextStyle profileReviewsTextStyle();
+
+  TextStyle wishlistsProductItemPriceNumberTextStyle();
+  TextStyle wishlistsProductItemPriceTextStyle();
+  TextStyle wishlistsProductItemNameTextStyle();
 }
