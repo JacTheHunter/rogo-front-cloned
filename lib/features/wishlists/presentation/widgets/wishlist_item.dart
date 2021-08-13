@@ -33,7 +33,7 @@ class WishListItem extends StatelessWidget {
               topLeft: Radius.circular(14),
               bottomLeft: Radius.circular(14),
             ),
-            width: 150,
+            width: MediaQuery.of(context).size.width * 0.33, // overflow fix
             fit: BoxFit.cover,
             // width: double.infinity,
           ),
@@ -63,7 +63,11 @@ class WishListItem extends StatelessWidget {
                           .wishlistsProductItemPriceTextStyle(),
                     ),
                     SizedBox(width: 120),
-                    context.read<AppThemeCubit>().state.appIcons().favoriteIcon(),
+                    context
+                        .read<AppThemeCubit>()
+                        .state
+                        .appIcons()
+                        .favoriteIcon(),
                   ],
                 ),
                 SizedBox(height: 5),
