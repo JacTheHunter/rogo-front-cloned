@@ -39,14 +39,17 @@ class WishListItem extends StatelessWidget {
           ),
           SizedBox(width: 16),
           Padding(
-            padding: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(
+              top: 20,
+              bottom: 20,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     AppText(
-                      '\$50',
+                      '\$50-\$1000',
                       style: context
                           .read<AppThemeCubit>()
                           .state
@@ -62,7 +65,6 @@ class WishListItem extends StatelessWidget {
                           .textTheme()
                           .wishlistsProductItemPriceTextStyle(),
                     ),
-                    SizedBox(width: 120),
                     context
                         .read<AppThemeCubit>()
                         .state
@@ -71,15 +73,16 @@ class WishListItem extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 5),
-                AppText(
-                  'Pioneer surfboards',
-                  style: context
-                      .read<AppThemeCubit>()
-                      .state
-                      .textTheme()
-                      .wishlistsProductItemNameTextStyle(),
+                Expanded(
+                  child: AppText(
+                    'Pioneer surfboards',
+                    style: context
+                        .read<AppThemeCubit>()
+                        .state
+                        .textTheme()
+                        .wishlistsProductItemNameTextStyle(),
+                  ),
                 ),
-                SizedBox(height: 36),
                 Row(
                   children: [
                     AppImage.asset(
