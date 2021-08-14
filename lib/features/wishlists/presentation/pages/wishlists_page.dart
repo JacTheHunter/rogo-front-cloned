@@ -16,14 +16,22 @@ class WhishListsPage extends StatelessWidget {
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
-            backgroundColor: AppColorScheme.whitePointer,
+            backgroundColor: context
+                .read<AppThemeCubit>()
+                .state
+                .appColors()
+                .sliverWishlistsAppBarBackgroundColor(),
             toolbarHeight: 120,
             floating: false,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: EdgeInsets.zero,
               title: Container(
                 width: double.infinity,
-                color: AppColorScheme.whitePointer,
+                color: context
+                    .read<AppThemeCubit>()
+                    .state
+                    .appColors()
+                    .sliverWishlistsAppBarBackgroundColor(),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +54,11 @@ class WhishListsPage extends StatelessWidget {
             ),
           ),
           SliverAppBar(
-            backgroundColor: AppColorScheme.whitePointer,
+            backgroundColor: context
+                .read<AppThemeCubit>()
+                .state
+                .appColors()
+                .sliverWishlistsAppBarBackgroundColor(),
             elevation: 0,
             snap: true,
             floating: true,
@@ -109,7 +121,11 @@ class WhishListsPage extends StatelessWidget {
           children: [
             Builder(builder: (context) {
               return Container(
-                color: AppColorScheme.whitePointer,
+                color: context
+                    .read<AppThemeCubit>()
+                    .state
+                    .appColors()
+                    .sliverWishlistsAppBarBackgroundColor(),
                 padding: const EdgeInsets.all(20),
                 child: ListView.builder(
                   shrinkWrap: true,
@@ -126,7 +142,11 @@ class WhishListsPage extends StatelessWidget {
             Builder(
               builder: (context) {
                 return Container(
-                  color: AppColorScheme.whitePointer,
+                  color: context
+                      .read<AppThemeCubit>()
+                      .state
+                      .appColors()
+                      .sliverWishlistsAppBarBackgroundColor(),
                   padding: const EdgeInsets.all(20),
                   child: ListView.builder(
                     shrinkWrap: true,

@@ -95,10 +95,6 @@ class DefaultAppIcons extends AppIcons {
 
   @override
   Widget favoriteIcon() {
-    return Icon(
-      Icons.favorite,
-      color: AppColorScheme.hollywoodCerise,
-      size: 28,
-    );
+    return AppImage.asset(AppImages.vector.heart);
   }
 }

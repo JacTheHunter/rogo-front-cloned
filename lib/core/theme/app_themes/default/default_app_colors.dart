@@ -113,4 +113,9 @@ class DefaultAppColors extends AppColors {
   Color profileAvatarBackgroundColor() {
     return AppColorScheme.forgetMeNot;
   }
+
+  @override
+  Color sliverWishlistsAppBarBackgroundColor() {
+   return AppColorScheme.whitePointer;
+  }
 }

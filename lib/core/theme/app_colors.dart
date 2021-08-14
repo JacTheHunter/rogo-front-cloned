@@ -15,6 +15,7 @@ abstract class AppColors {
   Color errorColor();
   Color hintColor();
   Color sliverAppBarBackgroundColor();
+  Color sliverWishlistsAppBarBackgroundColor();
   Color sliverAppBarSearchFillolor();
   Color categoryItemBackgroundColor();
   Color productsBackgroundColor();
