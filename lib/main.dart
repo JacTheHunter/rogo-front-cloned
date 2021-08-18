@@ -26,12 +26,23 @@ import 'features/onboarding/presentation/blocs/onboarding_page_cubit/onboarding_
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await SystemChrome.setEnabledSystemUIOverlays([]);
+  await SystemChrome.setEnabledSystemUIOverlays([
+    SystemUiOverlay.bottom,
+    SystemUiOverlay.top,
+  ]);
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarBrightness: Brightness.dark,
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: Colors.transparent,
+    systemNavigationBarDividerColor: Colors.transparent,
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-
   await Firebase.initializeApp();
 
   HydratedBloc.storage = await HydratedStorage.build(
