@@ -7,6 +7,7 @@ import 'package:rogo/core/presentation/pages/main_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/forgot_password_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/login_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/sign_up_page.dart';
+import 'package:rogo/features/browse/data/repositories/pages/browse_item_page.dart';
 import 'package:rogo/features/onboarding/presentation/pages/onboarding_page.dart';
 
 class AppRouteGenerator {
@@ -16,7 +17,8 @@ class AppRouteGenerator {
     switch (settings.name) {
       case AppRoutes.onboardingPage:
         return PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => OnBoardingPage(),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              OnBoardingPage(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return slideFromRight(animation, child);
           },
@@ -63,6 +65,11 @@ class AppRouteGenerator {
       //     settings: RouteSettings(name: settings.name),
       //     builder: (_) => AppLockPage(),
       //   );
+      case AppRoutes.browseItemPage:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => BrowseItemPage(),
+        );
 
       case AppRoutes.mainPage:
         return CupertinoPageRoute(

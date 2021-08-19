@@ -7,6 +7,9 @@ abstract class AppTextTheme {
 
   TextStyle textButtonTextStyle();
   TextStyle simpleButtonTextStyle();
+  TextStyle haitiButtonTextStyle();
+  TextStyle itemDescriptionTitle();
+  TextStyle itemDescription();
 
   TextStyle authenticationTitleTextStyle();
   TextStyle authenticationSubTitleTextStyle();
@@ -56,4 +59,15 @@ abstract class AppTextTheme {
   TextStyle wishlistsProductItemPriceNumberTextStyle();
   TextStyle wishlistsProductItemPriceTextStyle();
   TextStyle wishlistsProductItemNameTextStyle();
+
+  TextStyle browseItemPriceNumberTextStyle();
+  TextStyle browseItemPriceTextStyle();
+  TextStyle browseItemNameTextStyle();
+  TextStyle browseItemLocationTextStyle();
+  TextStyle browseItemRatingNumberTextStyle();
+  TextStyle browseItemRatingTextStyle();
+  TextStyle browseItemLanguagesTextStyle();
+  TextStyle browseItemImageCountTextStyle();
+
+
 }

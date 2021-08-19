@@ -7,6 +7,7 @@ class AppColorScheme {
   //main text color
   static const haiti = Color(0xFF100B26);
   static const haiti06 = Color(0x60100B26);
+  static const haitiWithOpacity40 = Color.fromRGBO(16, 11, 38, 0.4);
 
   static const transparent = Color(0x00000000);
   static const white = Color(0xFFFFFFFF);
@@ -37,4 +38,6 @@ class AppColorScheme {
 
   static const wispPink = Color(0xFFFDE9FD);
   static const whitePointer = Color(0xFFFDF7FF);
+
+  static const pinkLace = Color(0xFFFEE5FE);
 }

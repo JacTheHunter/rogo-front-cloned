@@ -13,4 +13,9 @@ abstract class AppIcons {
   Widget searchFilterIcon();
 
   Widget favoriteIcon();
+
+  Widget browseItemArrowLeftIcon();
+  Widget browseItemEmptyHeartIcon();
+
+  Widget locationIconWithPinkTone();
 }

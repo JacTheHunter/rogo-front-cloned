@@ -97,4 +97,56 @@ class DefaultAppIcons extends AppIcons {
   Widget favoriteIcon() {
     return AppImage.asset(AppImages.vector.heart);
   }
+
+  @override
+  Widget browseItemArrowLeftIcon() {
+    return AppImage.asset(
+      AppImages.vector.arrowLeftWithOpacity,
+      width: 38,
+    );
+  }
+
+  @override
+  Widget browseItemEmptyHeartIcon() {
+    return Container(
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 3,
+            blurRadius: 9,
+            offset: Offset(0, 5),
+          ),
+        ],
+      ),
+      child: CircleAvatar(
+        radius: 26,
+        backgroundColor: Colors.white,
+        child: AppImage.asset(
+          AppImages.vector.heartEmpty,
+          color: AppColorScheme.hollywoodCerise,
+          width: 33,
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget locationIconWithPinkTone() {
+    return Container(
+      height: 24,
+      width: 24,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: AppColorScheme.pinkLace,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: AppImage.asset(
+        AppImages.vector.location,
+        height: 14,
+      ),
+    );
+  }
 }

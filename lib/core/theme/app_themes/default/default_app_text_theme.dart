@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../../app_color_scheme.dart';
@@ -62,6 +64,15 @@ class DefaultAppTextTheme extends AppTextTheme {
       fontSize: 18,
       fontWeight: FontWeight.w500,
       color: AppColorScheme.white,
+    );
+  }
+
+  @override
+  TextStyle haitiButtonTextStyle() {
+    return TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w500,
+      color: AppColorScheme.haiti,
     );
   }
 
@@ -334,6 +345,95 @@ class DefaultAppTextTheme extends AppTextTheme {
     return TextStyle(
       fontSize: 14,
       color: AppColorScheme.lilac,
+    );
+  }
+
+  @override
+  TextStyle browseItemLocationTextStyle() {
+    return TextStyle(
+      fontSize: 14,
+      color: AppColorScheme.haiti06,
+    );
+  }
+
+  @override
+  TextStyle browseItemNameTextStyle() {
+    return TextStyle(
+      fontSize: 18,
+      color: AppColorScheme.haiti,
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  @override
+  TextStyle browseItemPriceNumberTextStyle() {
+    return TextStyle(
+      fontSize: 24,
+      color: AppColorScheme.haiti,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  @override
+  TextStyle browseItemPriceTextStyle() {
+    return TextStyle(
+      fontSize: 24,
+      color: AppColorScheme.haiti,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  @override
+  TextStyle itemDescriptionTitle() {
+    return TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColorScheme.haiti,
+    );
+  }
+
+  @override
+  TextStyle itemDescription() {
+    return TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: AppColorScheme.haiti06,
+    );
+  }
+
+  @override
+  TextStyle browseItemRatingNumberTextStyle() {
+    return TextStyle(
+      fontSize: 12,
+      color: AppColorScheme.haiti,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  @override
+  TextStyle browseItemRatingTextStyle() {
+    return TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: AppColorScheme.haiti06,
+    );
+  }
+
+  @override
+  TextStyle browseItemLanguagesTextStyle() {
+    return TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: AppColorScheme.haiti,
+    );
+  }
+
+  @override
+  TextStyle browseItemImageCountTextStyle() {
+    return TextStyle(
+      fontSize: 10,
+      fontWeight: FontWeight.w500,
+      color: AppColorScheme.white,
     );
   }
 }

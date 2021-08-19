@@ -48,6 +48,7 @@ class WishListItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
+                    //TODO: Fix long text overflow
                     AppText(
                       '\$50-\$1000',
                       style: context

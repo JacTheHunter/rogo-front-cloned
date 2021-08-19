@@ -6,4 +6,5 @@ abstract class AppRoutes {
   static const ressetPasswordPage = 'ressetPasswordPage';
   static const onboardingPage = 'onboardingPage';
   static const profilePage = 'profilePage';
+  static const browseItemPage = 'browseItemPage';
 }
