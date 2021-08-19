@@ -21,6 +21,7 @@ class AppColorScheme {
   static const frenchLilac = Color(0xFFEFE1F5);
   static const manatee = Color(0xFF9895A6);
   static const mystic = Color(0xFFE7EBF1);
+  static const mercury = Color(0xFFE5E5E5);
 
   static const gradient1_1 = Color(0xFF0FCFFE);
   static const gradient1_2 = Color(0xFFD91FFC);
@@ -40,4 +41,6 @@ class AppColorScheme {
   static const whitePointer = Color(0xFFFDF7FF);
 
   static const pinkLace = Color(0xFFFEE5FE);
+
+  
 }
