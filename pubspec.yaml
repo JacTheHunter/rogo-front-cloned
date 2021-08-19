@@ -45,6 +45,7 @@ dependencies:
   hydrated_bloc: ^7.0.1
   shimmer: ^2.0.0
   carousel_slider: ^4.0.0
+  expandable_text: ^2.2.0
 
 dev_dependencies:
   flutter_test:
