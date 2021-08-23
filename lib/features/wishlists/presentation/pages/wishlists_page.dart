@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
 
 import '../../../../core/configs/constants/app_images.dart';
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
-import '../widgets/wishlist_item.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../widgets/feed_item.dart';
+import '../widgets/live_search_item.dart';
 
 class WhishListsPage extends StatelessWidget {
   @override
@@ -132,7 +133,7 @@ class WhishListsPage extends StatelessWidget {
                   itemCount: 10,
                   itemBuilder: (contex, index) => Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12),
-                    child: WishListItem(
+                    child: FeedItem(
                       image: AppImages.raster.productRandom,
                     ),
                   ),
@@ -153,7 +154,7 @@ class WhishListsPage extends StatelessWidget {
                     itemCount: 10,
                     itemBuilder: (contex, index) => Padding(
                       padding: const EdgeInsets.symmetric(vertical: 12),
-                      child: WishListItem(
+                      child: LiveSearchItem(
                         image: AppImages.raster.productRandom,
                       ),
                     ),

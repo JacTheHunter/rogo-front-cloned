@@ -6,10 +6,10 @@ import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 
-class WishListItem extends StatelessWidget {
+class FeedItem extends StatelessWidget {
   final String image;
 
-  const WishListItem({Key? key, required this.image}) : super(key: key);
+  const FeedItem({Key? key, required this.image}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class WishListItem extends StatelessWidget {
               topLeft: Radius.circular(14),
               bottomLeft: Radius.circular(14),
             ),
-            width: MediaQuery.of(context).size.width * 0.33, // overflow fix
+            width: MediaQuery.of(context).size.width * 0.32, // overflow fix
             fit: BoxFit.cover,
             // width: double.infinity,
           ),
@@ -46,37 +46,42 @@ class WishListItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    //TODO: Fix long text overflow
-                    AppText(
-                      '\$50-\$1000',
-                      style: context
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.52,
+                  child: Row(
+                    children: [
+                      AppText(
+                        '\$50',
+                        style: context
+                            .read<AppThemeCubit>()
+                            .state
+                            .textTheme()
+                            .wishlistsProductItemPriceNumberTextStyle(),
+                      ),
+                      SizedBox(width: 4),
+                      AppText(
+                        'p/day',
+                        style: context
+                            .read<AppThemeCubit>()
+                            .state
+                            .textTheme()
+                            .wishlistsProductItemPriceTextStyle(),
+                      ),
+                      Spacer(),
+                      context
                           .read<AppThemeCubit>()
                           .state
-                          .textTheme()
-                          .wishlistsProductItemPriceNumberTextStyle(),
-                    ),
-                    SizedBox(width: 4),
-                    AppText(
-                      'p/day',
-                      style: context
-                          .read<AppThemeCubit>()
-                          .state
-                          .textTheme()
-                          .wishlistsProductItemPriceTextStyle(),
-                    ),
-                    context
-                        .read<AppThemeCubit>()
-                        .state
-                        .appIcons()
-                        .favoriteIcon(),
-                  ],
+                          .appIcons()
+                          .favoriteIcon(),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 5),
-                Expanded(
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.46,
                   child: AppText(
-                    'Pioneer surfboards',
+                    'Vinyl Photography Background',
+                    maxLines: 2,
                     style: context
                         .read<AppThemeCubit>()
                         .state
@@ -84,6 +89,7 @@ class WishListItem extends StatelessWidget {
                         .wishlistsProductItemNameTextStyle(),
                   ),
                 ),
+                Spacer(),
                 Row(
                   children: [
                     AppImage.asset(
