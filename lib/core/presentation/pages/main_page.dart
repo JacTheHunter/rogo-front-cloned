@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../features/authentication/presentation/blocs/authentication_bloc/authentication_bloc.dart';
 import '../../../features/authentication/presentation/pages/login_page.dart';
-import '../../../features/browse/data/repositories/pages/browse_page.dart';
+import '../../../features/browse/presentation/pages/browse_page.dart';
 import '../../../features/profile/presentation/pages/profile_page.dart';
 import '../../../features/wishlists/presentation/pages/wishlists_page.dart';
 import '../blocs/app_nav_bar_cubit/app_nav_bar_cubit.dart';

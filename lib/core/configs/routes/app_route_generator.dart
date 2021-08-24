@@ -7,7 +7,7 @@ import 'package:rogo/core/presentation/pages/main_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/forgot_password_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/login_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/sign_up_page.dart';
-import 'package:rogo/features/browse/data/repositories/pages/browse_item_page.dart';
+import 'package:rogo/features/browse/presentation/pages/browse_item_page.dart';
 import 'package:rogo/features/onboarding/presentation/pages/onboarding_page.dart';
 
 class AppRouteGenerator {

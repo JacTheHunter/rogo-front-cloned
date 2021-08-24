@@ -3,7 +3,8 @@ import 'package:rogo/core/configs/constants/app_images.dart';
 import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/features/browse/data/repositories/widgets/top_seller_item.dart';
+import 'package:rogo/features/browse/presentation/widgets/top_seller_item.dart';
+
 
 class TopSellers extends StatelessWidget {
   const TopSellers({Key? key}) : super(key: key);
