@@ -37,13 +37,13 @@ class SimpleButton extends StatelessWidget {
                 child: child ??
                     AppText(
                       text,
-                      style: context.read<AppThemeCubit>().state.textTheme().simpleButtonTextStyle(),
+                      style: context.read<AppThemeCubit>().state.textTheme.simpleButtonTextStyle,
                     ),
               )
             : child ??
                 AppText(
                   text,
-                  style: context.read<AppThemeCubit>().state.textTheme().simpleButtonTextStyle(),
+                  style: context.read<AppThemeCubit>().state.textTheme.simpleButtonTextStyle,
                 ),
       ),
     );

@@ -7,6 +7,8 @@
       "verifyYourPhonenumber": "Verify your phone\nnumber"
     },
     "createAccountPage": {
+      "accept": "Accept",
+      "addLanguage": "Add language",
       "back": "Back",
       "basicDetails": "/3 Basic details",
       "birthDate": "Birth date",
@@ -20,10 +22,12 @@
       "lastName": "Last name",
       "next": "Next",
       "phoneNumber": "Phone number",
+      "searchLanguages": "Search languages",
       "specifyCountryAndCity": "Specify country and\ncity of residence ",
       "submit": "Submit",
       "whatLanguages": "What languages\ndo you speak?",
-      "yourPhoneNumber": "Your phone number"
+      "yourPhoneNumber": "Your phone number",
+      "zip": "Zip"
     },
     "forgotPasswordPage": {
       "backToLogin": "Back to login",
@@ -85,6 +89,7 @@
     "invalidEmail": "Please enter a valid email address",
     "invalidPassword": "Password must have at least 6 characters",
     "invalidPasswordConfirm": "Passwords must match",
+    "languages": "Select at least one language",
     "thisFieldIsRequired": "This field is required"
   }
 }

@@ -1,72 +1,50 @@
-// import 'package:equatable/equatable.dart';
-// import 'package:hive/hive.dart';
-// import 'package:hydrated_bloc/hydrated_bloc.dart';
-// import 'package:tegen/core/error/failures.dart';
-// import 'package:tegen/core/injection/injection_container.dart';
-// import 'package:tegen/core/services/navigation_service.dart';
-// import 'package:tegen/features/authentication/data/models/bearer_token_model.dart';
-// import 'package:tegen/features/authentication/domain/entities/bearer_token.dart';
-// import 'package:tegen/features/authentication/domain/usecases/refresh_bearer_token_usecase.dart';
+import 'package:equatable/equatable.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:rogo/core/usecase/usecase.dart';
+import 'package:rogo/features/authentication/domain/entities/user.dart';
+import 'package:rogo/features/authentication/domain/usecases/get_current_user_usecase.dart';
 
-// part 'authentication_state.dart';
+part 'authentication_state.dart';
 
-// class AuthenticationCubit extends HydratedCubit<AuthenticationState> {
-//   final RefreshBearerTokenUseCase _refreshBearerTokenUseCase;
-//   AuthenticationCubit({required RefreshBearerTokenUseCase refreshBearerTokenUseCase})
-//       : _refreshBearerTokenUseCase = refreshBearerTokenUseCase,
-//         super(AuthenticationState.unauthenticated());
+class AuthenticationCubit extends Cubit<AuthenticationState> {
+  final GetCurrentUserUseCase _getCurrentUser;
+  AuthenticationCubit({required GetCurrentUserUseCase getCurrentUser})
+      : _getCurrentUser = getCurrentUser,
+        super(AuthenticationState.unregistered());
 
-//   final box = Hive.box('appSettings');
+  void getCurrentUser() async {
+    emit(AuthenticationState.loading());
+    final result = await _getCurrentUser.call(NoParams());
+    result.fold((l) {
+      emit(AuthenticationState.unregistered());
+    }, (r) {
+      if (r.phone.isNotEmpty) {
+        emit(AuthenticationState.registered(r));
+      } else {
+        emit(AuthenticationState.unregistered());
+      }
+    });
+  }
 
-//   void refreshBearerToken() async {
-//     if (state.bearerToken != null) {
-//       final result = await _refreshBearerTokenUseCase.call(Params(refreshToken: state.bearerToken!.refreshToken));
-//       result.fold((l) {
-//         print((l as ServerFailure).message);
-//       }, (r) {
-//         updateBearerToken(r);
-//       });
-//     }
-//   }
+  void updateUser(User user) {
+    emit(AuthenticationState.registered(user));
+  }
 
-//   void updateBearerToken(BearerToken bearerToken) {
-//     box.put('bearerToken', bearerToken.token);
-//     emit(AuthenticationState.authenticated(bearerToken));
-//   }
+  // @override
+  // AuthenticationState? fromJson(Map<String, dynamic> json) {
+  //   if (json.isEmpty) {
+  //     return AuthenticationState.unregistered();
+  //   } else {
+  //     return AuthenticationState.registered(UserModel.fromJson(json));
+  //   }
+  // }
 
-//   void logout() {
-//     box.delete('bearerToken');
-//     emit(AuthenticationState.unauthenticated());
-//     sl<NavigatorService>().popUNtilFirst();
-//   }
-
-//   void checkTokenExpiration() {
-//     if (state.bearerToken != null) {
-//       if (state.bearerToken!.expirationDate.isAfter(DateTime.now().add(Duration(days: 1)))) {
-//         refreshBearerToken();
-//       }
-//     }
-//   }
-
-//   @override
-//   AuthenticationState? fromJson(Map<String, dynamic> json) {
-//     if (json.isEmpty) {
-//       return AuthenticationState.unauthenticated();
-//     } else {
-//       return AuthenticationState.authenticated(BearerTokenModel.fromJson(json));
-//     }
-//   }
-
-//   @override
-//   Map<String, dynamic>? toJson(AuthenticationState state) {
-//     if (state.bearerToken == null) {
-//       return {};
-//     } else {
-//       return BearerTokenModel(
-//         token: state.bearerToken!.token,
-//         refreshToken: state.bearerToken!.refreshToken,
-//         expirationDate: state.bearerToken!.expirationDate,
-//       ).toJson();
-//     }
-//   }
-// }
+  // @override
+  // Map<String, dynamic>? toJson(AuthenticationState state) {
+  //   if (state.currentUser == null || (state.currentUser?.phone ?? '').isEmpty) {
+  //     return {};
+  //   } else {
+  //     return UserModel(id: state.currentUser?.id ?? 0, phone: state.currentUser?.phone ?? '').toJson();
+  //   }
+  // }
+}

@@ -1,55 +1,61 @@
 import 'package:flutter/material.dart';
 
 abstract class AppTextTheme {
-  TextStyle onboardingTitleTextStyle();
-  TextStyle onboardingTextStyle();
-  TextStyle onboardingCrossedTextStyle();
+  TextStyle get onboardingTitleTextStyle;
+  TextStyle get onboardingTextStyle;
+  TextStyle get onboardingCrossedTextStyle;
 
-  TextStyle textButtonTextStyle();
-  TextStyle simpleButtonTextStyle();
+  TextStyle get textButtonTextStyle;
+  TextStyle get simpleButtonTextStyle;
 
-  TextStyle authenticationTitleTextStyle();
-  TextStyle authenticationSubTitleTextStyle();
-  TextStyle authenticationTextStyle();
-  TextStyle inputLabelTextStyle();
-  TextStyle inputErrorTextStyle();
-  TextStyle inputGroupTitleTextStyle();
+  TextStyle get authenticationTitleTextStyle;
+  TextStyle get authenticationSubTitleTextStyle;
+  TextStyle get authenticationTextStyle;
+  TextStyle get inputLabelTextStyle;
+  TextStyle get inputErrorTextStyle;
+  TextStyle get inputGroupTitleTextStyle;
 
-  TextStyle privacyTextStyle();
-  TextStyle privacyLinkTextStyle();
+  TextStyle get privacyTextStyle;
+  TextStyle get privacyLinkTextStyle;
 
-  TextStyle createAccountHeaderTitleTextStyle();
-  TextStyle createAccountHeaderTextStyle();
-  TextStyle createAccountHeaderBiggerNumberTextStyle();
-  TextStyle createAccountTitleTextStyle();
+  TextStyle get createAccountHeaderTitleTextStyle;
+  TextStyle get createAccountHeaderTextStyle;
+  TextStyle get createAccountHeaderBiggerNumberTextStyle;
+  TextStyle get createAccountTitleTextStyle;
 
-  TextStyle inputTextStyle();
-  TextStyle inputHintTextStyle();
+  TextStyle get inputTextStyle;
+  TextStyle get inputHintTextStyle;
 
-  TextStyle searchInputHintTextStyle();
+  TextStyle get searchInputHintTextStyle;
 
-  TextStyle confirmPhoneSubtitleTextStyle();
-  TextStyle confirmPhoneSelectedNumberTextStyle();
-  TextStyle confirmPhoneNumberPadTextStyle();
+  TextStyle get confirmPhoneSubtitleTextStyle;
+  TextStyle get confirmPhoneSelectedNumberTextStyle;
+  TextStyle get confirmPhoneNumberPadTextStyle;
 
-  TextStyle sliverHeaderTitleTextStyle();
+  TextStyle get sliverHeaderTitleTextStyle;
 
-  TextStyle tabBarSelectedLabelTextStyle();
-  TextStyle tabBarUnSelectedLabelTextStyle();
+  TextStyle get tabBarSelectedLabelTextStyle;
+  TextStyle get tabBarUnSelectedLabelTextStyle;
 
-  TextStyle browseTitleTextStyle();
-  TextStyle browseCategoryTextStyle();
+  TextStyle get browseTitleTextStyle;
+  TextStyle get browseCategoryTextStyle;
 
-  TextStyle topSellerNameTextStyle();
-  TextStyle topSellerRatingTextStyle();
-  TextStyle topSellerReviewsTextStyle();
+  TextStyle get topSellerNameTextStyle;
+  TextStyle get topSellerRatingTextStyle;
+  TextStyle get topSellerReviewsTextStyle;
 
-  TextStyle productItemPriceNumberTextStyle();
-  TextStyle productItemPriceTextStyle();
-  TextStyle productItemNameTextStyle();
-  TextStyle productItemLocationTextStyle();
+  TextStyle get productItemPriceNumberTextStyle;
+  TextStyle get productItemPriceTextStyle;
+  TextStyle get productItemNameTextStyle;
+  TextStyle get productItemLocationTextStyle;
 
-  TextStyle profileAvatarLettersTextStyle();
-  TextStyle profileNameTextStyle();
-  TextStyle profileReviewsTextStyle();
+  TextStyle get profileAvatarLettersTextStyle;
+  TextStyle get profileNameTextStyle;
+  TextStyle get profileReviewsTextStyle;
+
+  TextStyle get bottomSheetTitleTextStyle;
+  TextStyle get bottomSheetButtonTextStyle;
+
+  TextStyle get languageSelectBottomSheetLanguageSelectedTextStyle;
+  TextStyle get languageSelectBottomSheetLanguageTextStyle;
 }

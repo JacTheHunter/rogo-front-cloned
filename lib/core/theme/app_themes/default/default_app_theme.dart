@@ -8,22 +8,14 @@ import 'package:rogo/core/theme/app_themes/default/default_app_text_theme.dart';
 
 class DefaultAppTheme extends AppTheme {
   @override
-  AppColors appColors() {
-    return DefaultAppColors();
-  }
+  AppColors get appColors => DefaultAppColors();
 
   @override
-  String fontFamily() {
-    return 'SanFranciscoPro';
-  }
+  String get fontFamily => 'SanFranciscoPro';
 
   @override
-  AppTextTheme textTheme() {
-    return DefaultAppTextTheme();
-  }
+  AppTextTheme get textTheme => DefaultAppTextTheme();
 
   @override
-  AppIcons appIcons() {
-    return DefaultAppIcons();
-  }
+  AppIcons get appIcons => DefaultAppIcons();
 }

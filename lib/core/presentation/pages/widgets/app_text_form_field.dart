@@ -97,37 +97,35 @@ class AppTextFormField extends StatelessWidget {
       textAlign: textAlign,
       inputFormatters: inputFormatters,
       textCapitalization: textCapitalization,
-      style: textStyle ?? context.read<AppThemeCubit>().state.textTheme().inputTextStyle(),
+      style: textStyle ?? context.read<AppThemeCubit>().state.textTheme.inputTextStyle,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 16),
-        fillColor: fillColor ?? context.read<AppThemeCubit>().state.appColors().inputFillColor(),
+        fillColor: fillColor ?? context.read<AppThemeCubit>().state.appColors.inputFillColor,
         counterText: '',
         hintText: translate(hintText ?? ''),
         //  isDense: true,
         prefixText: prefixText,
-        prefixStyle: context.read<AppThemeCubit>().state.textTheme().inputTextStyle(),
+        prefixStyle: context.read<AppThemeCubit>().state.textTheme.inputTextStyle,
         prefix: prefix,
         prefixIcon: prefixIcon,
         prefixIconConstraints: prefixIconConstraints,
         suffix: suffix,
         suffixIcon: suffixIcon,
         suffixIconConstraints: suffixIconConstraints,
-        hintStyle: hintStyle ?? context.read<AppThemeCubit>().state.textTheme().inputHintTextStyle(),
+        hintStyle: hintStyle ?? context.read<AppThemeCubit>().state.textTheme.inputHintTextStyle,
         enabledBorder: OutlineInputBorder(
           borderRadius: const BorderRadius.all(
             const Radius.circular(10.0),
           ),
-          borderSide: isInvalid
-              ? BorderSide(color: context.read<AppThemeCubit>().state.appColors().errorColor())
-              : BorderSide.none,
+          borderSide:
+              isInvalid ? BorderSide(color: context.read<AppThemeCubit>().state.appColors.errorColor) : BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: const BorderRadius.all(
             const Radius.circular(10.0),
           ),
-          borderSide: isInvalid
-              ? BorderSide(color: context.read<AppThemeCubit>().state.appColors().errorColor())
-              : BorderSide.none,
+          borderSide:
+              isInvalid ? BorderSide(color: context.read<AppThemeCubit>().state.appColors.errorColor) : BorderSide.none,
         ),
         filled: true,
       ),

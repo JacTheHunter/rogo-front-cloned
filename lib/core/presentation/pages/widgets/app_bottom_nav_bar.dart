@@ -20,7 +20,7 @@ class AppBottomNavBar extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(14)),
         boxShadow: [
           BoxShadow(
-            color: context.read<AppThemeCubit>().state.appColors().appbarShadowColor(),
+            color: context.read<AppThemeCubit>().state.appColors.appbarShadowColor,
             blurRadius: 24,
             offset: Offset(0, -4),
           )

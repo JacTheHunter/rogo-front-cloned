@@ -31,7 +31,7 @@ class AppText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorizedStyle =
-        style?.copyWith(color: style?.color ?? context.read<AppThemeCubit>().state.appColors().primaryTextColor());
+        style?.copyWith(color: style?.color ?? context.read<AppThemeCubit>().state.appColors.primaryTextColor);
     return Text(
       translate(data),
       overflow: overflow,

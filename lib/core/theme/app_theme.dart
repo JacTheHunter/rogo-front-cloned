@@ -4,8 +4,8 @@ import 'package:rogo/core/theme/app_icons.dart';
 import 'app_text_theme.dart';
 
 abstract class AppTheme {
-  AppTextTheme textTheme();
-  AppColors appColors();
-  String fontFamily();
-  AppIcons appIcons();
+  AppTextTheme get textTheme;
+  AppColors get appColors;
+  String get fontFamily;
+  AppIcons get appIcons;
 }

@@ -15,8 +15,8 @@ class Indicator extends StatelessWidget {
         width: isCurrent ? 32 : 8,
         decoration: BoxDecoration(
           color: isCurrent
-              ? context.read<AppThemeCubit>().state.appColors().onboardingIndicatorSelectedColor()
-              : context.read<AppThemeCubit>().state.appColors().onboardingIndicatorColor(),
+              ? context.read<AppThemeCubit>().state.appColors.onboardingIndicatorSelectedColor
+              : context.read<AppThemeCubit>().state.appColors.onboardingIndicatorColor,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
         duration: Duration(milliseconds: 400),

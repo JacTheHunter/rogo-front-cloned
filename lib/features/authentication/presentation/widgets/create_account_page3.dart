@@ -1,74 +1,115 @@
 import 'package:flutter/material.dart';
+import 'package:formz/formz.dart';
+import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
 import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
 import 'package:rogo/core/presentation/pages/widgets/simple_button.dart';
-import 'package:rogo/features/authentication/presentation/widgets/language_item.dart';
+import 'package:rogo/core/theme/app_color_scheme.dart';
+import 'package:rogo/features/authentication/presentation/blocs/create_account_cubit/create_account_cubit.dart';
+import 'package:rogo/features/authentication/presentation/widgets/language_wrap_item.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/features/authentication/presentation/widgets/languages_sheet.dart';
+import 'package:rogo/features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
+
+import 'add_languages_button.dart';
 
 class CreateAccountPage3 extends StatelessWidget {
-  const CreateAccountPage3({Key? key}) : super(key: key);
+  final CreateAccountState state;
+  const CreateAccountPage3({Key? key, required this.state}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppText(
-            'authentication.createAccountPage.whatLanguages',
-            style: context.read<AppThemeCubit>().state.textTheme().createAccountTitleTextStyle(),
-          ),
-          SizedBox(height: 16),
-          Wrap(
+      child: BlocBuilder<LanguagesCubit, LanguagesState>(
+        builder: (context, lstate) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              LanguageItem('English', isSelected: true),
-              LanguageItem('French', isSelected: true),
-              LanguageItem('Spanish'),
-              LanguageItem('Hindi'),
-              LanguageItem('Italian'),
-              LanguageItem('German'),
-            ],
-          ),
-          Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
+              AppText(
+                'authentication.createAccountPage.whatLanguages',
+                style: context.read<AppThemeCubit>().state.textTheme.createAccountTitleTextStyle,
+              ),
+              SizedBox(height: 16),
+              Wrap(
+                children: lstate.topLanguages
+                    .map((tl) => LanguageWrapItem(
+                          tl,
+                          isSelected: lstate.selectedLanguages.contains(tl),
+                        ))
+                    .toList(),
+              ),
+              // SizedBox(height: 16),
+              AddLanguagesButton(
+                onTap: () => onAddLanguageButton(context),
+              ),
+              if (state.languages.invalid) ...[
+                SizedBox(height: 10),
+                AppText(
+                  'validators.languages',
+                  style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                ),
+              ],
+              Spacer(),
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  context.read<AppThemeCubit>().state.appIcons().textButtonArrowLeftIcon(),
-                  SizedBox(
-                    width: 8,
+                  GestureDetector(
+                    onTap: () => context.read<CreateAccountCubit>().onBack(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        context.read<AppThemeCubit>().state.appIcons.textButtonArrowLeftIcon,
+                        SizedBox(
+                          width: 8,
+                        ),
+                        AppText(
+                          'authentication.createAccountPage.back',
+                          style: context.read<AppThemeCubit>().state.textTheme.textButtonTextStyle,
+                        ),
+                      ],
+                    ),
                   ),
-                  AppText(
-                    'authentication.createAccountPage.back',
-                    style: context.read<AppThemeCubit>().state.textTheme().textButtonTextStyle(),
-                  ),
+                  Spacer(),
+                  state.status == FormzStatus.submissionInProgress
+                      ? SimpleButton(
+                          isWide: false,
+                          child: Center(child: AppLoader(reverse: true)),
+                        )
+                      : SimpleButton(
+                          onTap: () => context.read<CreateAccountCubit>().onNext(),
+                          isWide: false,
+                          child: Row(
+                            children: [
+                              AppText(
+                                'authentication.createAccountPage.next',
+                                style: context.read<AppThemeCubit>().state.textTheme.simpleButtonTextStyle,
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              context.read<AppThemeCubit>().state.appIcons.textButtonArrowRightIcon,
+                            ],
+                          ),
+                        ),
                 ],
               ),
-              Spacer(),
-              SimpleButton(
-                isWide: false,
-                child: Row(
-                  children: [
-                    AppText(
-                      'authentication.createAccountPage.submit',
-                      style: context.read<AppThemeCubit>().state.textTheme().simpleButtonTextStyle(),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    context.read<AppThemeCubit>().state.appIcons().simpleButtonArrowRightIcon(),
-                  ],
-                ),
-              ),
+              SizedBox(
+                height: 20,
+              )
             ],
-          ),
-          SizedBox(
-            height: 20,
-          )
-        ],
+          );
+        },
       ),
+    );
+  }
+
+  void onAddLanguageButton(BuildContext context) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      backgroundColor: AppColorScheme.transparent,
+      context: context,
+      builder: (context) => LanguagesSheet(),
     );
   }
 }

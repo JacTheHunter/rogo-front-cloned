@@ -3,16 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:rogo/core/configs/constants/app_colors.dart';
 import 'package:rogo/core/configs/constants/app_images.dart';
-import 'package:rogo/core/form_models/email.dart';
+import 'package:rogo/core/form_models/email_form_model.dart';
 import 'package:rogo/core/injection/injection_container.dart';
 import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import 'package:rogo/core/presentation/pages/widgets/app_app_bar.dart';
 import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
+import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
 import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
 import 'package:rogo/core/presentation/pages/widgets/app_text_form_field.dart';
 import 'package:rogo/core/presentation/pages/widgets/simple_button.dart';
 import 'package:rogo/core/services/navigation_service.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
 import 'package:rogo/features/authentication/presentation/blocs/forgot_password_cubit/forgot_password_cubit.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
@@ -63,17 +63,15 @@ class ForgotPasswordPage extends StatelessWidget {
                     ),
                     if (state.email.invalid)
                       AppText(
-                        state.email.error == EmailValidationError.empty
+                        state.email.error == EmailFormModelValidationError.empty
                             ? 'validators.thisFieldIsRequired'
                             : 'validators.invalidEmail',
-                        style: context.read<AppThemeCubit>().state.textTheme().inputErrorTextStyle(),
+                        style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
                       ),
                     SizedBox(height: 40),
                     state.status == FormzStatus.submissionInProgress
                         ? SimpleButton(
-                            child: CircularProgressIndicator(
-                              color: AppColorScheme.white,
-                            ),
+                            child: AppLoader(reverse: true),
                           )
                         : SimpleButton(
                             text: 'authentication.forgotPasswordPage.submit',
