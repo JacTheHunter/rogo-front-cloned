@@ -14,6 +14,7 @@ class CategoriesCubit extends Cubit<CategoriesState> {
         super(CategoriesState());
 
   void fetchCategories() async {
+    emit(state.copyWith(isLoading: true));
     final result = await _getCategoriesUsecase(NoParams());
     result.fold(
       (failure) => emit(state.copyWith(errorMessage: failure.message)),

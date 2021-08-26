@@ -21,7 +21,10 @@ class CategoryItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          AppImage.asset(icon),
+          AppImage.network(
+            icon,
+            height: 24,
+          ),
           SizedBox(width: 16),
           AppText(
             text,

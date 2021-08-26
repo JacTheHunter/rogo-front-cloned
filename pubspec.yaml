@@ -22,11 +22,14 @@ environment:
 
 dependencies:
   bloc: ^7.0.0
+  cached_network_image: ^3.1.0
+  carousel_slider: ^4.0.0
   country_code_picker: ^2.0.2
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0-nullsafety.2
   dio: ^4.0.0
   equatable: ^2.0.3
+  expandable_text: ^2.2.0
   firebase_auth: ^3.0.1
   firebase_core: ^1.4.0
   flutter:
@@ -45,8 +48,6 @@ dependencies:
   hive_flutter: ^1.1.0
   hydrated_bloc: ^7.0.1
   shimmer: ^2.0.0
-  carousel_slider: ^4.0.0
-  expandable_text: ^2.2.0
 
 dev_dependencies:
   flutter_test:

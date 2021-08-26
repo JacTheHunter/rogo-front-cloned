@@ -6,7 +6,7 @@ class Category extends Equatable {
   final String name;
   final int treeId;
   final int level;
-  final int parent;
+  final int? parent;
 
   Category({
     required this.id,
@@ -18,7 +18,7 @@ class Category extends Equatable {
   });
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [id, icon, name, treeId, level, parent];
   }
 }

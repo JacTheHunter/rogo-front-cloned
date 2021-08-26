@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
@@ -89,15 +90,32 @@ class AppImage extends StatelessWidget {
       } else {
         return ClipRRect(
           borderRadius: borderRadius,
-          child: Image.network(
-            source,
-            alignment: alignment,
+          child:
+              //  Image.network(
+              //   source,
+              //   alignment: alignment,
+              //   width: width,
+              //   height: height,
+              //   fit: fit,
+              // color: color,
+              // loadingBuilder: (_, __, ___) => placeholder(),
+              // errorBuilder: (context, error, stackTrace) {
+              //   print(error);
+              //   print(stackTrace);
+              //   return placeholder();
+              // },
+              // ),
+
+              CachedNetworkImage(
+            imageUrl: source,
+            //alignment: alignment,
             width: width,
             height: height,
             fit: fit,
             color: color,
-            loadingBuilder: (_, __, ___) => placeholder(),
-            errorBuilder: (_, __, ___) => placeholder(),
+
+            placeholder: (_, __) => placeholder(),
+            errorWidget: (_, __, ___) => placeholder(),
           ),
         );
       }

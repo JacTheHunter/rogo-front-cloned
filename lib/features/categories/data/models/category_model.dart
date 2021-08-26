@@ -8,7 +8,7 @@ class CategoryModel extends Category {
   final String name;
   final int treeId;
   final int level;
-  final int parent;
+  final int? parent;
 
   CategoryModel({
     required this.id,
@@ -42,7 +42,7 @@ class CategoryModel extends Category {
       id: map['id'],
       icon: map['icon'],
       name: map['name'],
-      treeId: map['treeId'],
+      treeId: map['tree_id'],
       level: map['level'],
       parent: map['parent'],
     );

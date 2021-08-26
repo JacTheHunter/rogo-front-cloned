@@ -5,6 +5,7 @@ import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
 import 'package:rogo/features/authentication/presentation/blocs/authentication_cubit/authentication_cubit.dart';
 import 'package:rogo/features/authentication/presentation/pages/create_account_page.dart';
 import 'package:rogo/features/browse/presentation/pages/browse_page.dart';
+import 'package:rogo/features/categories/presentation/bloc/categories_cubit/categories_cubit.dart';
 import 'package:rogo/features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
 import 'package:rogo/features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
 
@@ -93,6 +94,9 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
           return BlocConsumer<AuthenticationCubit, AuthenticationState>(
             listener: (context, state) {
               print(state.currentUser);
+              if (state.authenticated) {
+                context.read<CategoriesCubit>().fetchCategories();
+              }
             },
             builder: (context, state) {
               if (state.status == AuthenticationStatus.loading) {
