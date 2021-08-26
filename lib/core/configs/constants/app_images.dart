@@ -39,6 +39,12 @@ class Vector {
       'assets/images/vector/arrow_left_with_opacity.svg';
   // String get browseItemProfileImage => 'assets/images/vector/vladlena.svg';
   String get imageIcon => 'assets/images/vector/image.svg';
+
+  String get plus => 'assets/images/vector/plus.svg';
+  String get checkbox => 'assets/images/vector/checkbox.svg';
+  String get xCircle => 'assets/images/vector/x_circle.svg';
+
+  String get sliverOverlay => 'assets/images/vector/sliver_overlay.svg';
 }
 
 class Raster {

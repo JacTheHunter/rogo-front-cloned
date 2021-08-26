@@ -57,7 +57,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             Spacer(),
                             AppText(
                               'onboarding.title$state',
-                              style: context.read<AppThemeCubit>().state.textTheme().onboardingTitleTextStyle(),
+                              style: context.read<AppThemeCubit>().state.textTheme.onboardingTitleTextStyle,
                             ),
                             SizedBox(
                               height: 12,
@@ -66,24 +66,18 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                 ? Text.rich(TextSpan(children: [
                                     TextSpan(
                                         text: translate('onboarding.text1.1'),
-                                        style: context
-                                            .read<AppThemeCubit>()
-                                            .state
-                                            .textTheme()
-                                            .onboardingCrossedTextStyle()),
+                                        style:
+                                            context.read<AppThemeCubit>().state.textTheme.onboardingCrossedTextStyle),
                                     TextSpan(text: translate('onboarding.text1.2')),
                                     TextSpan(
                                         text: translate('onboarding.text1.3'),
-                                        style: context
-                                            .read<AppThemeCubit>()
-                                            .state
-                                            .textTheme()
-                                            .onboardingCrossedTextStyle()),
+                                        style:
+                                            context.read<AppThemeCubit>().state.textTheme.onboardingCrossedTextStyle),
                                     TextSpan(text: translate('onboarding.text1.4'))
-                                  ], style: context.read<AppThemeCubit>().state.textTheme().onboardingTextStyle()))
+                                  ], style: context.read<AppThemeCubit>().state.textTheme.onboardingTextStyle))
                                 : AppText(
                                     'onboarding.text$state',
-                                    style: context.read<AppThemeCubit>().state.textTheme().onboardingTextStyle(),
+                                    style: context.read<AppThemeCubit>().state.textTheme.onboardingTextStyle,
                                   ),
                             Spacer(),
                             AppImage.asset(
@@ -110,12 +104,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           children: [
                             AppText(
                               state == 3 ? 'onboarding.start' : 'onboarding.next',
-                              style: context.read<AppThemeCubit>().state.textTheme().textButtonTextStyle(),
+                              style: context.read<AppThemeCubit>().state.textTheme.textButtonTextStyle,
                             ),
                             SizedBox(
                               width: 12,
                             ),
-                            context.read<AppThemeCubit>().state.appIcons().textButtonArrowRightIcon(),
+                            context.read<AppThemeCubit>().state.appIcons.textButtonArrowRightIcon,
                           ],
                         ),
                       ),

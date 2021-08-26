@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 
 abstract class AppIcons {
-  Widget textButtonArrowRightIcon();
-  Widget simpleButtonArrowRightIcon();
-  Widget textButtonArrowLeftIcon();
-  Widget inputEyeIcon();
-  Widget inputEyeOffIcon();
-  Widget dropDownIcon();
-  Widget numberPadErraseIcon();
+  Widget get textButtonArrowRightIcon;
+  Widget get simpleButtonArrowRightIcon;
+  Widget get textButtonArrowLeftIcon;
+  Widget get textButtonCheckboxIcon;
+  Widget get appBarArrowLeftIcon;
+  Widget get inputEyeIcon;
+  Widget get inputEyeOffIcon;
+  Widget get dropDownIcon;
+  Widget get numberPadErraseIcon;
 
-  Widget searchIcon();
-  Widget searchFilterIcon();
+  Widget get searchIcon;
+  Widget get searchFilterIcon;
 
-  Widget favoriteIcon();
+  Widget get favoriteIcon;
 
-  Widget browseItemArrowLeftIcon();
-  Widget browseItemEmptyHeartIcon();
+  Widget get browseItemArrowLeftIcon;
+  Widget get browseItemEmptyHeartIcon;
 
-  Widget locationIconWithPinkTone();
+  Widget get locationIconWithPinkTone;
+  
+  Widget get searchClearIcon;
+
+  Widget get addLanguageButtonIcon;
+  Widget get languageItemSelectedCheckboxIcon;
 }

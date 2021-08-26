@@ -1,15 +1,25 @@
-// part of 'authentication_cubit.dart';
+part of 'authentication_cubit.dart';
 
-// class AuthenticationState extends Equatable {
-//   final BearerToken? bearerToken;
+enum AuthenticationStatus { registered, unregistered, loading }
 
-//   AuthenticationState._({this.bearerToken});
+class AuthenticationState extends Equatable {
+  final User? currentUser;
+  final AuthenticationStatus status;
 
-//   AuthenticationState.authenticated(BearerToken token) : this._(bearerToken: token);
-//   AuthenticationState.unauthenticated() : this._();
+  AuthenticationState._({
+    this.currentUser,
+    required this.status,
+  });
 
-//   bool get authenticated => bearerToken != null;
+  AuthenticationState.registered(User u) : this._(currentUser: u, status: AuthenticationStatus.registered);
+  AuthenticationState.unregistered() : this._(status: AuthenticationStatus.unregistered);
+  AuthenticationState.loading() : this._(status: AuthenticationStatus.loading);
 
-//   @override
-//   List<Object?> get props => [bearerToken];
-// }
+  bool get authenticated => currentUser != null;
+
+  @override
+  List<Object?> get props => [
+        currentUser,
+        status,
+      ];
+}

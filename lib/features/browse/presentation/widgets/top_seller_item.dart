@@ -51,14 +51,14 @@ class TopSellerItem extends StatelessWidget {
                 children: [
                   AppText(
                     name,
-                    style: context.read<AppThemeCubit>().state.textTheme().topSellerNameTextStyle(),
+                    style: context.read<AppThemeCubit>().state.textTheme.topSellerNameTextStyle,
                   ),
                   SizedBox(height: 4),
                   Row(
                     children: [
                       AppText(
                         rating.toString(),
-                        style: context.read<AppThemeCubit>().state.textTheme().topSellerRatingTextStyle(),
+                        style: context.read<AppThemeCubit>().state.textTheme.topSellerRatingTextStyle,
                       ),
                       SizedBox(width: 4),
                       AppImage.asset(
@@ -69,7 +69,7 @@ class TopSellerItem extends StatelessWidget {
                       SizedBox(width: 16),
                       AppText(
                         '$reviews ' + translate('browse.browsePage.reviews'),
-                        style: context.read<AppThemeCubit>().state.textTheme().topSellerReviewsTextStyle(),
+                        style: context.read<AppThemeCubit>().state.textTheme.topSellerReviewsTextStyle,
                       ),
                     ],
                   )

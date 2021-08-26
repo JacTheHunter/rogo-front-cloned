@@ -12,13 +12,13 @@ class AppAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: context.read<AppThemeCubit>().state.appColors().appBarBackgroundColor(),
+      backgroundColor: context.read<AppThemeCubit>().state.appColors.appBarBackgroundColor,
       leading: sl<NavigatorService>().canPop()
           ? GestureDetector(
               onTap: () => sl<NavigatorService>().pop(),
               child: Icon(
                 CupertinoIcons.arrow_left,
-                color: backArrowColor ?? context.read<AppThemeCubit>().state.appColors().appBarBackArrowColor(),
+                color: backArrowColor ?? context.read<AppThemeCubit>().state.appColors.appBarBackArrowColor,
               ),
             )
           : Container(),

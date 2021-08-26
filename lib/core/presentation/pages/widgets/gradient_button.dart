@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/core/configs/constants/app_colors.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
+
+import '../../../configs/constants/app_colors.dart';
+import '../../blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'app_text.dart';
 
 class GradientButton extends StatelessWidget {
   final Function()? onTap;
@@ -43,8 +44,8 @@ class GradientButton extends StatelessWidget {
                       style: context
                           .read<AppThemeCubit>()
                           .state
-                          .textTheme()
-                          .simpleButtonTextStyle(),
+                          .textTheme
+                          .simpleButtonTextStyle,
                     ),
               )
             : child ??
@@ -53,8 +54,8 @@ class GradientButton extends StatelessWidget {
                   style: context
                       .read<AppThemeCubit>()
                       .state
-                      .textTheme()
-                      .simpleButtonTextStyle(),
+                      .textTheme
+                      .simpleButtonTextStyle,
                 ),
       ),
     );

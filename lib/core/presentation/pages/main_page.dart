@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
+import 'package:rogo/features/authentication/presentation/blocs/authentication_cubit/authentication_cubit.dart';
+import 'package:rogo/features/authentication/presentation/pages/create_account_page.dart';
+import 'package:rogo/features/browse/presentation/pages/browse_page.dart';
+import 'package:rogo/features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
+import 'package:rogo/features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
 
-import '../../../features/authentication/presentation/blocs/authentication_bloc/authentication_bloc.dart';
+import '../../../features/authentication/presentation/blocs/firebase_authentication_bloc/firebase_authentication_bloc.dart';
 import '../../../features/authentication/presentation/pages/login_page.dart';
 import '../../../features/browse/presentation/pages/browse_page.dart';
 import '../../../features/profile/presentation/pages/profile_page.dart';
@@ -30,7 +35,6 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   @override
   void initState() {
     pageController = PageController();
-    box = Hive.box('appSettings');
     //final bool selectLangPassed = box.get('selectLangPassed') ?? false;
 
     WidgetsBinding.instance!.addObserver(this);
@@ -39,7 +43,8 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
       // if (!onboardingPassed) sl<NavigatorService>().pushNamed(AppRoutes.onboardingPage);
       //  if (!selectLangPassed) sl<NavigatorService>().pushNamed(AppRoutes.selectLanguagePage);
     });
-
+    context.read<CountriesAndCitiesCubit>().fetchCountries();
+    context.read<LanguagesCubit>().fetchLanguages();
     // context.read<AuthenticationCubit>().checkTokenExpiration();
     // context.read<NewsCubit>().fetchNews();
     // context.read<PromotionCubit>().fetchPromotions();
@@ -74,44 +79,56 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthenticationBloc, AuthenticationState>(
+    return BlocConsumer<FirebaseAuthenticationBloc, FirebaseAuthenticationState>(
       listener: (context, state) {
         print(state.status);
+        if (state.status == FirebaseAuthenticationStatus.authenticated) {
+          context.read<AuthenticationCubit>().getCurrentUser();
+        }
       },
       builder: (context, state) {
-        if (state.status == AuthenticationStatus.unauthenticated) {
+        if (state.status == FirebaseAuthenticationStatus.unauthenticated) {
           return LoginPage();
         } else {
-          return BlocBuilder<AppNavBarCubit, int>(
+          return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+            listener: (context, state) {
+              print(state.currentUser);
+            },
             builder: (context, state) {
-              return Scaffold(
-                extendBody: true,
-                //backgroundColor: AppColorScheme.transparent,
-                bottomNavigationBar: AppBottomNavBar(
-                  currentIndex: state,
-                  onNavItemTap: onNavItemTap,
-                ),
-                floatingActionButton: FloatingActionButton(
-                  onPressed: () {
-                    context
-                        .read<AuthenticationBloc>()
-                        .add(AuthenticationLogoutRequested());
-                  },
-                  backgroundColor: context
-                      .read<AppThemeCubit>()
-                      .state
-                      .appColors()
-                      .primaryColor(),
-                  child: Icon(Icons.exit_to_app),
-                ),
-                body: PageView.builder(
-                  controller: pageController,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return _buildPageViewBody(state);
-                  },
-                  onPageChanged: onPageChanged,
-                ),
+              if (state.status == AuthenticationStatus.loading) {
+                return Scaffold(
+                  body: AppLoader(),
+                );
+              }
+              if (state.status == AuthenticationStatus.unregistered) {
+                return CreateAccountPage();
+              }
+              return BlocBuilder<AppNavBarCubit, int>(
+                builder: (context, state) {
+                  return Scaffold(
+                    extendBody: true,
+                    //backgroundColor: AppColorScheme.transparent,
+                    bottomNavigationBar: AppBottomNavBar(
+                      currentIndex: state,
+                      onNavItemTap: onNavItemTap,
+                    ),
+                    floatingActionButton: FloatingActionButton(
+                      onPressed: () {
+                        context.read<FirebaseAuthenticationBloc>().add(FirebaseAuthenticationLogoutRequested());
+                      },
+                      backgroundColor: context.read<AppThemeCubit>().state.appColors.primaryColor,
+                      child: Icon(Icons.exit_to_app),
+                    ),
+                    body: PageView.builder(
+                      controller: pageController,
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return _buildPageViewBody(state);
+                      },
+                      onPageChanged: onPageChanged,
+                    ),
+                  );
+                },
               );
             },
           );

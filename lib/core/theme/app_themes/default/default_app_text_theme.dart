@@ -7,433 +7,349 @@ import '../../app_text_theme.dart';
 
 class DefaultAppTextTheme extends AppTextTheme {
   @override
-  TextStyle onboardingTitleTextStyle() {
-    return TextStyle(
-      fontWeight: FontWeight.w700,
-      fontSize: 36,
-    );
-  }
+  TextStyle get onboardingTitleTextStyle => TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 36,
+      );
 
   @override
-  TextStyle onboardingTextStyle() {
-    return TextStyle(
-      fontSize: 16,
-      color: AppColorScheme.manatee,
-    );
-  }
+  TextStyle get onboardingTextStyle => TextStyle(
+        fontSize: 16,
+        color: AppColorScheme.manatee,
+      );
 
   @override
-  TextStyle onboardingCrossedTextStyle() {
-    return onboardingTextStyle()
-      ..copyWith(decoration: TextDecoration.lineThrough);
-  }
+  TextStyle get onboardingCrossedTextStyle =>
+      onboardingTextStyle..copyWith(decoration: TextDecoration.lineThrough);
 
   @override
-  TextStyle textButtonTextStyle() {
-    return TextStyle(
-      color: AppColorScheme.hollywoodCerise,
-      fontWeight: FontWeight.w500,
-      fontSize: 14,
-    );
-  }
+  TextStyle get textButtonTextStyle => TextStyle(
+        color: AppColorScheme.hollywoodCerise,
+        fontWeight: FontWeight.w500,
+        fontSize: 14,
+      );
 
   @override
-  TextStyle authenticationTitleTextStyle() {
-    return TextStyle(fontSize: 36);
-  }
+  TextStyle get authenticationTitleTextStyle => TextStyle(fontSize: 36);
 
   @override
-  TextStyle inputLabelTextStyle() {
-    return TextStyle(
-      fontSize: 14,
-      color: AppColorScheme.regentGray,
-    );
-  }
+  TextStyle get inputLabelTextStyle => TextStyle(
+        fontSize: 14,
+        color: AppColorScheme.regentGray,
+      );
 
   @override
-  TextStyle inputErrorTextStyle() {
-    return TextStyle(
-      fontSize: 12,
-      color: AppColorScheme.pomegranate,
-    );
-  }
+  TextStyle get inputErrorTextStyle => TextStyle(
+        fontSize: 12,
+        color: AppColorScheme.pomegranate,
+      );
 
   @override
-  TextStyle simpleButtonTextStyle() {
-    return TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w500,
-      color: AppColorScheme.white,
-    );
-  }
+  TextStyle get simpleButtonTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.white,
+      );
 
   @override
-  TextStyle haitiButtonTextStyle() {
-    return TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w500,
-      color: AppColorScheme.haiti,
-    );
-  }
+  TextStyle get authenticationSubTitleTextStyle => TextStyle(
+        fontSize: 14,
+        color: AppColorScheme.regentGray,
+        fontWeight: FontWeight.w500,
+      );
 
   @override
-  TextStyle authenticationSubTitleTextStyle() {
-    return TextStyle(
-      fontSize: 14,
-      color: AppColorScheme.regentGray,
-      fontWeight: FontWeight.w500,
-    );
-  }
+  TextStyle get authenticationTextStyle => TextStyle(
+        color: AppColorScheme.pickledBluewood,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+      );
 
   @override
-  TextStyle authenticationTextStyle() {
-    return TextStyle(
-      color: AppColorScheme.pickledBluewood,
-      fontSize: 14,
-      fontWeight: FontWeight.w500,
-    );
-  }
+  TextStyle get privacyLinkTextStyle => privacyTextStyle.copyWith(
+        color: AppColorScheme.hollywoodCerise,
+      );
 
   @override
-  TextStyle privacyLinkTextStyle() {
-    return privacyTextStyle().copyWith(
-      color: AppColorScheme.hollywoodCerise,
-    );
-  }
+  TextStyle get privacyTextStyle => TextStyle(
+        color: AppColorScheme.pickledBluewood,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+      );
 
   @override
-  TextStyle privacyTextStyle() {
-    return TextStyle(
-      color: AppColorScheme.pickledBluewood,
-      fontSize: 14,
-      fontWeight: FontWeight.w500,
-    );
-  }
+  TextStyle get createAccountHeaderTitleTextStyle => TextStyle(
+        color: AppColorScheme.white,
+        fontSize: 28,
+        fontWeight: FontWeight.w500,
+      );
 
   @override
-  TextStyle createAccountHeaderTitleTextStyle() {
-    return TextStyle(
-      color: AppColorScheme.white,
-      fontSize: 28,
-      fontWeight: FontWeight.w500,
-    );
-  }
+  TextStyle get createAccountTitleTextStyle => TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w500,
+      );
 
   @override
-  TextStyle createAccountTitleTextStyle() {
-    return TextStyle(
-      fontSize: 28,
-      fontWeight: FontWeight.w500,
-    );
-  }
+  TextStyle get createAccountHeaderBiggerNumberTextStyle => TextStyle(
+        color: AppColorScheme.frenchLilac,
+        fontSize: 24,
+      );
 
   @override
-  TextStyle createAccountHeaderBiggerNumberTextStyle() {
-    return TextStyle(
-      color: AppColorScheme.frenchLilac,
-      fontSize: 24,
-    );
-  }
+  TextStyle get createAccountHeaderTextStyle => TextStyle(
+        color: AppColorScheme.frenchLilac,
+        fontSize: 16,
+      );
 
   @override
-  TextStyle createAccountHeaderTextStyle() {
-    return TextStyle(
-      color: AppColorScheme.frenchLilac,
-      fontSize: 16,
-    );
-  }
+  TextStyle get inputTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.ebonyClay,
+      );
 
   @override
-  TextStyle inputTextStyle() {
-    return TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w500,
-      color: AppColorScheme.ebonyClay,
-    );
-  }
+  TextStyle get inputHintTextStyle => TextStyle(
+        fontSize: 14,
+        color: AppColorScheme.regentGray,
+      );
 
   @override
-  TextStyle inputHintTextStyle() {
-    return TextStyle(
-      fontSize: 14,
-      color: AppColorScheme.regentGray,
-    );
-  }
+  TextStyle get searchInputHintTextStyle => TextStyle(
+        fontSize: 14,
+        color: AppColorScheme.lilac,
+      );
+
+  TextStyle get inputGroupTitleTextStyle => TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.haiti,
+      );
 
   @override
-  TextStyle searchInputHintTextStyle() {
-    return TextStyle(
-      fontSize: 14,
-      color: AppColorScheme.lilac,
-    );
-  }
+  TextStyle get confirmPhoneSubtitleTextStyle => TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.regentGray,
+      );
 
   @override
-  TextStyle inputGroupTitleTextStyle() {
-    return TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      color: AppColorScheme.haiti,
-    );
-  }
+  TextStyle get confirmPhoneSelectedNumberTextStyle => TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.white,
+      );
 
   @override
-  TextStyle confirmPhoneSubtitleTextStyle() {
-    return TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      color: AppColorScheme.regentGray,
-    );
-  }
+  TextStyle get confirmPhoneNumberPadTextStyle => TextStyle(
+        fontSize: 36,
+        color: AppColorScheme.black,
+      );
 
   @override
-  TextStyle confirmPhoneSelectedNumberTextStyle() {
-    return TextStyle(
-      fontSize: 36,
-      fontWeight: FontWeight.w500,
-      color: AppColorScheme.white,
-    );
-  }
+  TextStyle get sliverHeaderTitleTextStyle => TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+      );
 
   @override
-  TextStyle confirmPhoneNumberPadTextStyle() {
-    return TextStyle(
-      fontSize: 36,
-      color: AppColorScheme.black,
-    );
-  }
+  TextStyle get tabBarSelectedLabelTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+      );
 
   @override
-  TextStyle sliverHeaderTitleTextStyle() {
-    return TextStyle(
-      fontSize: 28,
-      fontWeight: FontWeight.w700,
-    );
-  }
+  TextStyle get tabBarUnSelectedLabelTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        color: AppColorScheme.lilac,
+      );
 
   @override
-  TextStyle tabBarSelectedLabelTextStyle() {
-    return TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w700,
-    );
-  }
+  TextStyle get browseTitleTextStyle => TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+      );
 
   @override
-  TextStyle tabBarUnSelectedLabelTextStyle() {
-    return TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w700,
-      color: AppColorScheme.lilac,
-    );
-  }
+  TextStyle get browseCategoryTextStyle => TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      );
 
   @override
-  TextStyle browseTitleTextStyle() {
-    return TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.w600,
-    );
-  }
+  TextStyle get topSellerNameTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+      );
 
   @override
-  TextStyle browseCategoryTextStyle() {
-    return TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w600,
-    );
-  }
+  TextStyle get topSellerRatingTextStyle => TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      );
 
   @override
-  TextStyle topSellerNameTextStyle() {
-    return TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w600,
-    );
-  }
+  TextStyle get topSellerReviewsTextStyle => TextStyle(
+        fontSize: 12,
+        color: AppColorScheme.haiti06,
+      );
 
   @override
-  TextStyle topSellerRatingTextStyle() {
-    return TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w600,
-    );
-  }
+  TextStyle get haitiButtonTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.haiti,
+      );
+
+  TextStyle get productItemPriceNumberTextStyle => TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      );
 
   @override
-  TextStyle topSellerReviewsTextStyle() {
-    return TextStyle(
-      fontSize: 12,
-      color: AppColorScheme.haiti06,
-    );
-  }
+  TextStyle get productItemPriceTextStyle => TextStyle(
+        fontSize: 12,
+        color: AppColorScheme.lilac,
+      );
 
   @override
-  TextStyle productItemPriceNumberTextStyle() {
-    return TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w600,
-    );
-  }
+  TextStyle get productItemNameTextStyle => TextStyle(
+        fontSize: 12,
+      );
 
   @override
-  TextStyle productItemPriceTextStyle() {
-    return TextStyle(
-      fontSize: 12,
-      color: AppColorScheme.lilac,
-    );
-  }
+  TextStyle get productItemLocationTextStyle => TextStyle(
+        fontSize: 10,
+        color: AppColorScheme.haiti06,
+      );
 
   @override
-  TextStyle productItemNameTextStyle() {
-    return TextStyle(
-      fontSize: 12,
-    );
-  }
+  TextStyle get profileAvatarLettersTextStyle => TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+        color: AppColorScheme.vividTangerine,
+      );
 
   @override
-  TextStyle productItemLocationTextStyle() {
-    return TextStyle(
-      fontSize: 10,
-      color: AppColorScheme.haiti06,
-    );
-  }
+  TextStyle get profileNameTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        color: AppColorScheme.white,
+      );
 
   @override
-  TextStyle profileAvatarLettersTextStyle() {
-    return TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.w600,
-      color: AppColorScheme.vividTangerine,
-    );
-  }
+  TextStyle get profileReviewsTextStyle => TextStyle(
+        fontSize: 12,
+        color: AppColorScheme.white,
+      );
 
   @override
-  TextStyle profileNameTextStyle() {
-    return TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w600,
-      color: AppColorScheme.white,
-    );
-  }
+  TextStyle get bottomSheetTitleTextStyle =>
+      TextStyle(fontSize: 17, fontWeight: FontWeight.w600);
 
   @override
-  TextStyle profileReviewsTextStyle() {
-    return TextStyle(
-      fontSize: 12,
-      color: AppColorScheme.white,
-    );
-  }
+  TextStyle get bottomSheetButtonTextStyle => TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: AppColorScheme.hollywoodCerise,
+      );
 
   @override
-  TextStyle wishlistsProductItemPriceNumberTextStyle() {
-    return TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w700,
-    );
-  }
+  TextStyle get languageSelectBottomSheetLanguageSelectedTextStyle => TextStyle(
+        fontSize: 18,
+        color: AppColorScheme.hollywoodCerise,
+      );
 
   @override
-  TextStyle wishlistsProductItemNameTextStyle() {
-    return TextStyle(
-      fontSize: 14,
-    );
-  }
+  TextStyle get wishlistsProductItemPriceNumberTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+      );
 
   @override
-  TextStyle wishlistsProductItemPriceTextStyle() {
-    return TextStyle(
-      fontSize: 14,
-      color: AppColorScheme.lilac,
-    );
-  }
+  TextStyle get wishlistsProductItemNameTextStyle => TextStyle(
+        fontSize: 14,
+      );
 
   @override
-  TextStyle browseItemLocationTextStyle() {
-    return TextStyle(
-      fontSize: 14,
-      color: AppColorScheme.haiti06,
-    );
-  }
+  TextStyle get wishlistsProductItemPriceTextStyle => TextStyle(
+        fontSize: 14,
+        color: AppColorScheme.lilac,
+      );
 
   @override
-  TextStyle browseItemNameTextStyle() {
-    return TextStyle(
-      fontSize: 18,
-      color: AppColorScheme.haiti,
-      fontWeight: FontWeight.w500,
-    );
-  }
+  TextStyle get browseItemLocationTextStyle => TextStyle(
+        fontSize: 14,
+        color: AppColorScheme.haiti06,
+      );
 
   @override
-  TextStyle browseItemPriceNumberTextStyle() {
-    return TextStyle(
-      fontSize: 24,
-      color: AppColorScheme.haiti,
-      fontWeight: FontWeight.w700,
-    );
-  }
+  TextStyle get browseItemNameTextStyle => TextStyle(
+        fontSize: 18,
+        color: AppColorScheme.haiti,
+        fontWeight: FontWeight.w500,
+      );
 
   @override
-  TextStyle browseItemPriceTextStyle() {
-    return TextStyle(
-      fontSize: 24,
-      color: AppColorScheme.haiti,
-      fontWeight: FontWeight.w700,
-    );
-  }
+  TextStyle get browseItemPriceNumberTextStyle => TextStyle(
+        fontSize: 24,
+        color: AppColorScheme.haiti,
+        fontWeight: FontWeight.w700,
+      );
 
   @override
-  TextStyle itemDescriptionTitle() {
-    return TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      color: AppColorScheme.haiti,
-    );
-  }
+  TextStyle get browseItemPriceTextStyle => TextStyle(
+        fontSize: 24,
+        color: AppColorScheme.haiti,
+        fontWeight: FontWeight.w700,
+      );
 
   @override
-  TextStyle itemDescription() {
-    return TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      color: AppColorScheme.haiti06,
-    );
-  }
+  TextStyle get itemDescriptionTitle => TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.haiti,
+      );
 
   @override
-  TextStyle browseItemRatingNumberTextStyle() {
-    return TextStyle(
-      fontSize: 12,
-      color: AppColorScheme.haiti,
-      fontWeight: FontWeight.w600,
-    );
-  }
+  TextStyle get itemDescription => TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: AppColorScheme.haiti06,
+      );
 
   @override
-  TextStyle browseItemRatingTextStyle() {
-    return TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w400,
-      color: AppColorScheme.haiti06,
-    );
-  }
+  TextStyle get browseItemRatingNumberTextStyle => TextStyle(
+        fontSize: 12,
+        color: AppColorScheme.haiti,
+        fontWeight: FontWeight.w600,
+      );
 
   @override
-  TextStyle browseItemLanguagesTextStyle() {
-    return TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w400,
-      color: AppColorScheme.haiti,
-    );
-  }
+  TextStyle get browseItemRatingTextStyle => TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: AppColorScheme.haiti06,
+      );
 
   @override
-  TextStyle browseItemImageCountTextStyle() {
-    return TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.w500,
-      color: AppColorScheme.white,
-    );
-  }
+  TextStyle get browseItemLanguagesTextStyle => TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: AppColorScheme.haiti,
+      );
+
+  @override
+  TextStyle get browseItemImageCountTextStyle => TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.white,
+      );
+
+  TextStyle get languageSelectBottomSheetLanguageTextStyle => TextStyle(
+        fontSize: 18,
+        color: AppColorScheme.haiti06,
+      );
 }

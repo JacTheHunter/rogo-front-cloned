@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rogo/core/configs/constants/app_images.dart';
+import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import '../../../../core/presentation/pages/widgets/app_text.dart';
-import '../../../categories/presentation/bloc/categories_cubit/categories_cubit.dart';
 import 'category_item.dart';
 
 class Catogies extends StatelessWidget {
@@ -18,37 +18,25 @@ class Catogies extends StatelessWidget {
         children: [
           AppText(
             'browse.browsePage.categories',
-            style: context
-                .read<AppThemeCubit>()
-                .state
-                .textTheme()
-                .browseTitleTextStyle(),
+            style: context.read<AppThemeCubit>().state.textTheme.browseTitleTextStyle,
           ),
           SizedBox(height: 16),
           SizedBox(
-            height: 44,
-            //  width: 100,
-            child: BlocBuilder<CategoriesCubit, CategoriesState>(
-                builder: (context, state) {
-              if (state.errorMessage.isNotEmpty) {
-                return AppText(state.errorMessage);
-              }
-              if (state.isLoading) {
-                //TODO: replace this widget with AppLoader
-                return CircularProgressIndicator();
-              } else {
-                return ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: state.categories.length,
-                    itemBuilder: (context, i) {
-                      return CategoryItem(
-                        text: state.categories[i].name,
-                        icon: state.categories[i].icon,
-                      );
-                    });
-              }
-            }),
-          ),
+              height: 44,
+              //  width: 100,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  CategoryItem(text: 'Events', icon: AppImages.raster.categoryRandom),
+                  CategoryItem(text: 'Technology', icon: AppImages.raster.categoryRandom),
+                  CategoryItem(text: 'Events', icon: AppImages.raster.categoryRandom),
+                  CategoryItem(text: 'Technology', icon: AppImages.raster.categoryRandom),
+                ],
+              )),
+
+          // ListView(
+          //   scrollDirection: Axis.horizontal,
+          // )
         ],
       ),
     );

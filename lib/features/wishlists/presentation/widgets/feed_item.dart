@@ -21,8 +21,8 @@ class FeedItem extends StatelessWidget {
         color: context
             .read<AppThemeCubit>()
             .state
-            .appColors()
-            .productItemBackgroundColor(),
+            .appColors
+            .productItemBackgroundColor,
       ),
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.start,
@@ -55,8 +55,8 @@ class FeedItem extends StatelessWidget {
                         style: context
                             .read<AppThemeCubit>()
                             .state
-                            .textTheme()
-                            .wishlistsProductItemPriceNumberTextStyle(),
+                            .textTheme
+                            .wishlistsProductItemPriceNumberTextStyle,
                       ),
                       SizedBox(width: 4),
                       AppText(
@@ -64,15 +64,15 @@ class FeedItem extends StatelessWidget {
                         style: context
                             .read<AppThemeCubit>()
                             .state
-                            .textTheme()
-                            .wishlistsProductItemPriceTextStyle(),
+                            .textTheme
+                            .wishlistsProductItemPriceTextStyle,
                       ),
                       Spacer(),
                       context
                           .read<AppThemeCubit>()
                           .state
-                          .appIcons()
-                          .favoriteIcon(),
+                          .appIcons
+                          .favoriteIcon,
                     ],
                   ),
                 ),
@@ -85,8 +85,8 @@ class FeedItem extends StatelessWidget {
                     style: context
                         .read<AppThemeCubit>()
                         .state
-                        .textTheme()
-                        .wishlistsProductItemNameTextStyle(),
+                        .textTheme
+                        .wishlistsProductItemNameTextStyle,
                   ),
                 ),
                 Spacer(),
@@ -102,8 +102,8 @@ class FeedItem extends StatelessWidget {
                       style: context
                           .read<AppThemeCubit>()
                           .state
-                          .textTheme()
-                          .productItemLocationTextStyle(),
+                          .textTheme
+                          .productItemLocationTextStyle,
                     ),
                   ],
                 )

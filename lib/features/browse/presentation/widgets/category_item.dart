@@ -16,7 +16,7 @@ class CategoryItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
       margin: const EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
-        color: context.read<AppThemeCubit>().state.appColors().categoryItemBackgroundColor(),
+        color: context.read<AppThemeCubit>().state.appColors.categoryItemBackgroundColor,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -25,7 +25,7 @@ class CategoryItem extends StatelessWidget {
           SizedBox(width: 16),
           AppText(
             text,
-            style: context.read<AppThemeCubit>().state.textTheme().browseCategoryTextStyle(),
+            style: context.read<AppThemeCubit>().state.textTheme.browseCategoryTextStyle,
           )
         ],
       ),

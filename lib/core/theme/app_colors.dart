@@ -1,27 +1,28 @@
 import 'package:flutter/cupertino.dart';
 
 abstract class AppColors {
-  Color primaryColor();
-  Color primaryTextColor();
-  Color scaffoldBackgroundColor();
-  Color onboardingIndicatorColor();
-  Color onboardingIndicatorSelectedColor();
-  Color checkboxColor();
-  Color appBarBackgroundColor();
-  Color appBarBackArrowColor();
-  Color appBarBackArrowAlternativeColor();
-  Color inputFillColor();
-  Color appbarShadowColor();
-  Color errorColor();
-  Color hintColor();
-  Color sliverAppBarBackgroundColor();
-  Color sliverWishlistsAppBarBackgroundColor();
-  Color sliverAppBarSearchFillolor();
-  Color categoryItemBackgroundColor();
-  Color productsBackgroundColor();
-  Color productItemBackgroundColor();
+  Color get primaryColor;
+  Color get primaryTextColor;
+  Color get scaffoldBackgroundColor;
+  Color get onboardingIndicatorColor;
+  Color get onboardingIndicatorSelectedColor;
+  Color get checkboxColor;
+  Color get appBarBackgroundColor;
+  Color get appBarBackArrowColor;
+  Color get appBarBackArrowAlternativeColor;
+  Color get inputFillColor;
+  Color get appbarShadowColor;
+  Color get errorColor;
+  Color get hintColor;
+  Color get sliverAppBarBackgroundColor;
+  Color get sliverAppBarSearchFillolor;
+  Color get categoryItemBackgroundColor;
+  Color get productsBackgroundColor;
+  Color get productItemBackgroundColor;
 
-  Color profileAvatarBackgroundColor();
+  Color get profileAvatarBackgroundColor;
 
-  Gradient createAccountHeaderGradient();
+  Color get sliverWishlistsAppBarBackgroundColor;
+
+  Gradient get createAccountHeaderGradient;
 }

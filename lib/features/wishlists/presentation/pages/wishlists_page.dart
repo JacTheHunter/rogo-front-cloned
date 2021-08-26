@@ -22,8 +22,8 @@ class WhishListsPage extends StatelessWidget {
             backgroundColor: context
                 .read<AppThemeCubit>()
                 .state
-                .appColors()
-                .sliverWishlistsAppBarBackgroundColor(),
+                .appColors
+                .sliverWishlistsAppBarBackgroundColor,
             toolbarHeight: 120,
             floating: false,
             flexibleSpace: FlexibleSpaceBar(
@@ -33,8 +33,8 @@ class WhishListsPage extends StatelessWidget {
                 color: context
                     .read<AppThemeCubit>()
                     .state
-                    .appColors()
-                    .sliverWishlistsAppBarBackgroundColor(),
+                    .appColors
+                    .sliverWishlistsAppBarBackgroundColor,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,8 +47,8 @@ class WhishListsPage extends StatelessWidget {
                         style: context
                             .read<AppThemeCubit>()
                             .state
-                            .textTheme()
-                            .sliverHeaderTitleTextStyle(),
+                            .textTheme
+                            .sliverHeaderTitleTextStyle,
                       ),
                     ),
                   ],
@@ -60,8 +60,8 @@ class WhishListsPage extends StatelessWidget {
             backgroundColor: context
                 .read<AppThemeCubit>()
                 .state
-                .appColors()
-                .sliverWishlistsAppBarBackgroundColor(),
+                .appColors
+                .sliverWishlistsAppBarBackgroundColor,
             elevation: 0,
             snap: true,
             floating: true,
@@ -74,33 +74,33 @@ class WhishListsPage extends StatelessWidget {
                 indicatorColor: context
                     .read<AppThemeCubit>()
                     .state
-                    .appColors()
-                    .primaryColor(),
+                    .appColors
+                    .primaryColor,
                 labelStyle: context
                     .read<AppThemeCubit>()
                     .state
-                    .textTheme()
-                    .tabBarSelectedLabelTextStyle(),
+                    .textTheme
+                    .tabBarSelectedLabelTextStyle,
                 unselectedLabelStyle: context
                     .read<AppThemeCubit>()
                     .state
-                    .textTheme()
-                    .tabBarUnSelectedLabelTextStyle(),
+                    .textTheme
+                    .tabBarUnSelectedLabelTextStyle,
                 labelColor: context
                     .read<AppThemeCubit>()
                     .state
-                    .appColors()
-                    .primaryTextColor(),
+                    .appColors
+                    .primaryTextColor,
                 unselectedLabelColor:
-                    context.read<AppThemeCubit>().state.appColors().hintColor(),
+                    context.read<AppThemeCubit>().state.appColors.hintColor,
                 isScrollable: true,
                 indicator: UnderlineTabIndicator(
                   borderSide: BorderSide(
                     color: context
                         .read<AppThemeCubit>()
                         .state
-                        .appColors()
-                        .primaryColor(),
+                        .appColors
+                        .primaryColor,
                     width: 2,
                   ),
                   //  insets: EdgeInsets.only(left: 0, right: 0, bottom: 0),
@@ -127,8 +127,8 @@ class WhishListsPage extends StatelessWidget {
                 color: context
                     .read<AppThemeCubit>()
                     .state
-                    .appColors()
-                    .sliverWishlistsAppBarBackgroundColor(),
+                    .appColors
+                    .sliverWishlistsAppBarBackgroundColor,
                 padding: const EdgeInsets.all(20),
                 child: ListView.builder(
                   shrinkWrap: true,
@@ -148,8 +148,8 @@ class WhishListsPage extends StatelessWidget {
                   color: context
                       .read<AppThemeCubit>()
                       .state
-                      .appColors()
-                      .sliverWishlistsAppBarBackgroundColor(),
+                      .appColors
+                      .sliverWishlistsAppBarBackgroundColor,
                   padding: const EdgeInsets.all(20),
                   child: ListView.builder(
                     shrinkWrap: true,

@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/form_models/email.dart';
-import 'package:rogo/core/form_models/password.dart';
+import 'package:rogo/core/form_models/email_form_model.dart';
+import 'package:rogo/core/form_models/password_form_model.dart';
 import 'package:rogo/core/injection/injection_container.dart';
 import 'package:rogo/core/services/navigation_service.dart';
 import 'package:rogo/features/authentication/domain/usecases/sign_in_with_email_and_password_in_firebase_usecase.dart';
@@ -18,11 +18,11 @@ class LoginCubit extends Cubit<LoginState> {
         super(LoginState());
 
   void updateEmail(String email) {
-    final ef = Email.dirty(email);
+    final ef = EmailFormModel.dirty(email);
     emit(
       state.copyWith(
         errorMessage: '',
-        email: ef.valid ? ef : Email.pure(email),
+        email: ef.valid ? ef : EmailFormModel.pure(email),
         status: Formz.validate(
           [
             ef,
@@ -34,11 +34,11 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void updatePassword(String password) {
-    final pf = Password.dirty(password);
+    final pf = PasswordFormModel.dirty(password);
     emit(
       state.copyWith(
         errorMessage: '',
-        password: pf.valid ? pf : Password.pure(password),
+        password: pf.valid ? pf : PasswordFormModel.pure(password),
         status: Formz.validate(
           [
             pf,
@@ -59,8 +59,8 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void send() async {
-    final ef = Email.dirty(state.email.value);
-    final pf = Password.dirty(state.password.value);
+    final ef = EmailFormModel.dirty(state.email.value);
+    final pf = PasswordFormModel.dirty(state.password.value);
     emit(
       state.copyWith(
           errorMessage: '',

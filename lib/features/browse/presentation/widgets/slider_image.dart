@@ -50,8 +50,8 @@ class SliderImage extends StatelessWidget {
                         style: context
                             .read<AppThemeCubit>()
                             .state
-                            .textTheme()
-                            .browseItemImageCountTextStyle(),
+                            .textTheme
+                            .browseItemImageCountTextStyle,
                       ),
                     ],
                   ),
@@ -76,8 +76,8 @@ class SliderImage extends StatelessWidget {
             child: context
                 .read<AppThemeCubit>()
                 .state
-                .appIcons()
-                .browseItemArrowLeftIcon(),
+                .appIcons
+                .browseItemArrowLeftIcon,
           ),
         ),
         Positioned(
@@ -86,8 +86,8 @@ class SliderImage extends StatelessWidget {
           child: context
               .read<AppThemeCubit>()
               .state
-              .appIcons()
-              .browseItemEmptyHeartIcon(),
+              .appIcons
+              .browseItemEmptyHeartIcon,
         ),
       ],
     );

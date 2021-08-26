@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/form_models/accept_policy.dart';
-import 'package:rogo/core/form_models/email.dart';
-import 'package:rogo/core/form_models/password.dart';
-import 'package:rogo/core/form_models/password_confirm.dart';
+import 'package:rogo/core/form_models/accept_policy_form_model.dart';
+import 'package:rogo/core/form_models/email_form_model.dart';
+import 'package:rogo/core/form_models/password_form_model.dart';
+import 'package:rogo/core/form_models/password_confirm_form_model.dart';
 import 'package:rogo/core/injection/injection_container.dart';
 import 'package:rogo/core/services/navigation_service.dart';
 import 'package:rogo/features/authentication/domain/usecases/create_user_with_email_and_password_in_firebase_usecase.dart';
@@ -21,11 +21,11 @@ class SignUpCubit extends Cubit<SingUpState> {
         super(SingUpState());
 
   void updateEmail(String email) {
-    final ef = Email.dirty(email);
+    final ef = EmailFormModel.dirty(email);
     emit(
       state.copyWith(
         errorMessage: '',
-        email: ef.valid ? ef : Email.pure(email),
+        email: ef.valid ? ef : EmailFormModel.pure(email),
         status: Formz.validate(
           [
             ef,
@@ -39,16 +39,16 @@ class SignUpCubit extends Cubit<SingUpState> {
   }
 
   void updatePassword(String password) {
-    final pf = Password.dirty(password);
-    final pcf = PasswordConfirm.dirty(
-        PaswordAndConfirmPassword(password: password, passwordConfirm: state.passwordConfirm.value.passwordConfirm));
+    final pf = PasswordFormModel.dirty(password);
+    final pcf = PasswordConfirm.dirty(PaswordAndConfirmPasswordFormModel(
+        password: password, passwordConfirm: state.passwordConfirm.value.passwordConfirm));
     emit(
       state.copyWith(
         errorMessage: '',
-        password: pf.valid ? pf : Password.pure(password),
+        password: pf.valid ? pf : PasswordFormModel.pure(password),
         passwordConfirm: pcf.valid
             ? pcf
-            : PasswordConfirm.pure(PaswordAndConfirmPassword(
+            : PasswordConfirm.pure(PaswordAndConfirmPasswordFormModel(
                 password: password, passwordConfirm: state.passwordConfirm.value.passwordConfirm)),
         status: Formz.validate(
           [
@@ -64,14 +64,14 @@ class SignUpCubit extends Cubit<SingUpState> {
 
   void updatePasswordConfirm(String passwordConfirm) {
     final pcf = PasswordConfirm.dirty(
-        PaswordAndConfirmPassword(password: state.password.value, passwordConfirm: passwordConfirm));
+        PaswordAndConfirmPasswordFormModel(password: state.password.value, passwordConfirm: passwordConfirm));
     emit(
       state.copyWith(
         errorMessage: '',
         passwordConfirm: pcf.valid
             ? pcf
             : PasswordConfirm.pure(
-                PaswordAndConfirmPassword(password: state.password.value, passwordConfirm: passwordConfirm)),
+                PaswordAndConfirmPasswordFormModel(password: state.password.value, passwordConfirm: passwordConfirm)),
         status: Formz.validate(
           [
             pcf,
@@ -85,11 +85,11 @@ class SignUpCubit extends Cubit<SingUpState> {
   }
 
   void updateAcceptPolicy(bool? acceptPolicy) {
-    final apf = AcceptPolicy.dirty(acceptPolicy ?? false);
+    final apf = AcceptPolicyFormModel.dirty(acceptPolicy ?? false);
     emit(
       state.copyWith(
         errorMessage: '',
-        acceptPolicy: apf.valid ? apf : AcceptPolicy.pure(acceptPolicy ?? false),
+        acceptPolicy: apf.valid ? apf : AcceptPolicyFormModel.pure(acceptPolicy ?? false),
         status: Formz.validate(
           [
             apf,
@@ -112,10 +112,10 @@ class SignUpCubit extends Cubit<SingUpState> {
   }
 
   void send() async {
-    final ef = Email.dirty(state.email.value);
-    final pf = Password.dirty(state.password.value);
-    final apf = AcceptPolicy.dirty(state.acceptPolicy.value);
-    final pcf = PasswordConfirm.dirty(PaswordAndConfirmPassword(
+    final ef = EmailFormModel.dirty(state.email.value);
+    final pf = PasswordFormModel.dirty(state.password.value);
+    final apf = AcceptPolicyFormModel.dirty(state.acceptPolicy.value);
+    final pcf = PasswordConfirm.dirty(PaswordAndConfirmPasswordFormModel(
         password: state.password.value, passwordConfirm: state.passwordConfirm.value.passwordConfirm));
     emit(
       state.copyWith(

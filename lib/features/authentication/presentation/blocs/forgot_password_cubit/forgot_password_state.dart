@@ -1,12 +1,12 @@
 part of 'forgot_password_cubit.dart';
 
 class ForgotPasswordState extends Equatable {
-  final Email email;
+  final EmailFormModel email;
   final FormzStatus status;
   final String errorMessage;
 
   const ForgotPasswordState({
-    this.email = const Email.pure(),
+    this.email = const EmailFormModel.pure(),
     this.status = FormzStatus.pure,
     this.errorMessage = '',
   });
@@ -19,7 +19,7 @@ class ForgotPasswordState extends Equatable {
       ];
 
   ForgotPasswordState copyWith({
-    Email? email,
+    EmailFormModel? email,
     FormzStatus? status,
     String? errorMessage,
   }) {

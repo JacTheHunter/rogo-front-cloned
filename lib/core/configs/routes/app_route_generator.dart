@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:rogo/core/configs/constants/app_routes.dart';
 import 'package:rogo/core/presentation/pages/error_page.dart';
 import 'package:rogo/core/presentation/pages/main_page.dart';
+import 'package:rogo/features/authentication/presentation/pages/confirm_phone_number_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/forgot_password_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/login_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/sign_up_page.dart';
@@ -43,6 +44,11 @@ class AppRouteGenerator {
         return CupertinoPageRoute(
           settings: RouteSettings(name: settings.name),
           builder: (_) => ForgotPasswordPage(),
+        );
+      case AppRoutes.confirmPhoneNumberPage:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => ConfirmPhoneNumberPage(),
         );
 
       // case AppRoutes.confirmNumberPage:

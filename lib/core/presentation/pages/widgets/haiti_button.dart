@@ -44,8 +44,8 @@ class HaitiButton extends StatelessWidget {
                       style: context
                           .read<AppThemeCubit>()
                           .state
-                          .textTheme()
-                          .haitiButtonTextStyle(),
+                          .textTheme
+                          .haitiButtonTextStyle,
                     ),
               )
             : child ??
@@ -54,8 +54,8 @@ class HaitiButton extends StatelessWidget {
                   style: context
                       .read<AppThemeCubit>()
                       .state
-                      .textTheme()
-                      .haitiButtonTextStyle(),
+                      .textTheme
+                      .haitiButtonTextStyle,
                 ),
       ),
     );

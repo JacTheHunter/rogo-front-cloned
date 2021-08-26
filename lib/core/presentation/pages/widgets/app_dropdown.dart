@@ -18,14 +18,14 @@ class AppDropdown<T> extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: context.read<AppThemeCubit>().state.appColors().inputFillColor(),
+          color: context.read<AppThemeCubit>().state.appColors.inputFillColor,
         ),
         padding: const EdgeInsets.fromLTRB(20, 4, 8, 2),
         child: DropdownButtonHideUnderline(
           child: DropdownButton<T>(
             itemHeight: 50,
             value: value,
-            icon: context.read<AppThemeCubit>().state.appIcons().dropDownIcon(),
+            icon: context.read<AppThemeCubit>().state.appIcons.dropDownIcon,
             iconSize: 24,
             elevation: 16,
             style: const TextStyle(color: Colors.deepPurple),
@@ -36,7 +36,7 @@ class AppDropdown<T> extends StatelessWidget {
                 value: value,
                 child: AppText(
                   value.toString(),
-                  style: context.read<AppThemeCubit>().state.textTheme().inputTextStyle(),
+                  style: context.read<AppThemeCubit>().state.textTheme.inputTextStyle,
                 ),
               );
             }).toList(),

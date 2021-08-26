@@ -26,8 +26,8 @@ class AppGradientBottomNavBar extends StatelessWidget {
             color: context
                 .read<AppThemeCubit>()
                 .state
-                .appColors()
-                .appbarShadowColor(),
+                .appColors
+                .appbarShadowColor,
             blurRadius: 24,
             offset: Offset(0, -4),
           )
@@ -40,8 +40,8 @@ class AppGradientBottomNavBar extends StatelessWidget {
             style: context
                 .read<AppThemeCubit>()
                 .state
-                .textTheme()
-                .browseItemPriceNumberTextStyle()
+                .textTheme
+                .browseItemPriceNumberTextStyle
                 .copyWith(
                   color: AppColorScheme.white,
                   fontSize: 18,
@@ -53,8 +53,8 @@ class AppGradientBottomNavBar extends StatelessWidget {
             style: context
                 .read<AppThemeCubit>()
                 .state
-                .textTheme()
-                .browseItemPriceTextStyle()
+                .textTheme
+                .browseItemPriceTextStyle
                 .copyWith(
                     color: AppColorScheme.white,
                     fontSize: 18,
@@ -67,8 +67,8 @@ class AppGradientBottomNavBar extends StatelessWidget {
             gradient: context
                 .read<AppThemeCubit>()
                 .state
-                .appColors()
-                .createAccountHeaderGradient(),
+                .appColors
+                .createAccountHeaderGradient,
           ),
         ],
       ),

@@ -1,18 +1,17 @@
 import 'dart:ui';
 
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:hive/hive.dart';
+import 'package:rogo/core/injection/injection_container.dart';
+import 'package:rogo/core/services/box_service.dart';
 
 class TranslatePreferences implements ITranslatePreferences {
   @override
   Future<Locale> getPreferredLocale() async {
-    final box = Hive.box('appSettings');
-    return localeFromString(box.get('appLang') ?? 'ru');
+    return localeFromString(sl<BoxService>().appSettings.get('appLang') ?? 'ru');
   }
 
   @override
   Future savePreferredLocale(Locale locale) async {
-    final box = Hive.box('appSettings');
-    box.put('appLang', localeToString(locale));
+    sl<BoxService>().appSettings.put('appLang', localeToString(locale));
   }
 }
