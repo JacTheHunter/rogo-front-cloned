@@ -1,7 +1,7 @@
 //!Api constants
 //Base
-const String k_API_BASE_URL = 'http://188.166.167.179';
-const String k_API_END_POINT_BASE = k_API_BASE_URL + '/api';
+const String k_API_BASE_URL = 'http://143.244.187.211:8000';
+const String k_API_END_POINT_BASE = k_API_BASE_URL + '/api/v1/mobile';
 
 //End points
 const String k_API_END_POINT_AUTH = '/auth';
@@ -14,3 +14,7 @@ const String k_API_END_POINT_SUPPORT_GET_STORES = '/stores/get';
 const String k_API_END_POINT_SUPPORT_SEND_FEEDBACK = '/feedback/create';
 
 const String k_API_END_POINT_POFILE = '/profile';
+const String k_API_END_POINT_TOP_SELLERS = '/topsellers/';
+const String k_API_END_POINT_CATEGORIES = '/category/';
+
+
