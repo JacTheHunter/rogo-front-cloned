@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/form_models/email.dart';
+import 'package:rogo/core/form_models/email_form_model.dart';
 import 'package:rogo/features/authentication/domain/usecases/send_password_reset_email_in_firebase_usecase.dart';
 
 part 'forgot_password_state.dart';
@@ -15,11 +15,11 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
         super(ForgotPasswordState());
 
   void updateEmail(String email) {
-    final ef = Email.dirty(email);
+    final ef = EmailFormModel.dirty(email);
     emit(
       state.copyWith(
         errorMessage: '',
-        email: ef.valid ? ef : Email.pure(email),
+        email: ef.valid ? ef : EmailFormModel.pure(email),
         status: Formz.validate(
           [
             ef,
@@ -30,7 +30,7 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
   }
 
   void send() async {
-    final ef = Email.dirty(state.email.value);
+    final ef = EmailFormModel.dirty(state.email.value);
     emit(
       state.copyWith(
         errorMessage: '',

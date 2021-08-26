@@ -15,7 +15,17 @@ abstract class FirebaseAuthenticationDatasource {
   //forgot password
   Future<void> sendPasswordResetEmailInFirebase({required String email});
   Future<void> confirmPasswordResetInFirebase({required String code, required String newPassword});
+  Future<void> updatePhoneNumber({required PhoneAuthCredential phoneAuthCredential});
   Future<String> verifyPasswordResetCodeInFirebase({required String code});
+
+  Future<String> getJwtOfFirebaseUser();
+  Future<void> verifyPhoneNumber({
+    required String phoneNumber,
+    required Function(PhoneAuthCredential) verificationCompleted,
+    required Function(String, int?) codeSent,
+    required Function(FirebaseAuthException) verificationFailed,
+    int? forceResendingToken,
+  });
 }
 
 class FirebaseAuthenticationDatasourceImpl implements FirebaseAuthenticationDatasource {
@@ -126,6 +136,47 @@ class FirebaseAuthenticationDatasourceImpl implements FirebaseAuthenticationData
   Future<String> verifyPasswordResetCodeInFirebase({required String code}) async {
     try {
       return await FirebaseAuth.instance.verifyPasswordResetCode(code);
+    } on FirebaseAuthException catch (e) {
+      throw ServerException(message: e.message);
+    }
+  }
+
+  @override
+  Future<void> verifyPhoneNumber({
+    required String phoneNumber,
+    required Function(PhoneAuthCredential) verificationCompleted,
+    required Function(String, int?) codeSent,
+    required Function(FirebaseAuthException) verificationFailed,
+    int? forceResendingToken,
+  }) async {
+    try {
+      await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (phoneAuthCredential) {},
+        verificationFailed: verificationFailed,
+        codeSent: codeSent,
+        timeout: Duration(seconds: 60),
+        codeAutoRetrievalTimeout: (verificationId) {},
+        forceResendingToken: forceResendingToken,
+      );
+    } on FirebaseAuthException catch (e) {
+      throw ServerException(message: e.message);
+    }
+  }
+
+  @override
+  Future<void> updatePhoneNumber({required PhoneAuthCredential phoneAuthCredential}) async {
+    try {
+      await FirebaseAuth.instance.currentUser?.updatePhoneNumber(phoneAuthCredential);
+    } on FirebaseAuthException catch (e) {
+      throw ServerException(message: e.message);
+    }
+  }
+
+  @override
+  Future<String> getJwtOfFirebaseUser() async {
+    try {
+      return await FirebaseAuth.instance.currentUser?.getIdToken() ?? '';
     } on FirebaseAuthException catch (e) {
       throw ServerException(message: e.message);
     }

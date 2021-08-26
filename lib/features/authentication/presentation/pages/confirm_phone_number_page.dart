@@ -2,22 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:rogo/core/presentation/pages/widgets/app_app_bar.dart';
+import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
 import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
 import 'package:rogo/core/theme/app_color_scheme.dart';
 import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/features/authentication/presentation/blocs/phone_verification_cubit/phone_verification_cubit.dart';
+import 'package:rogo/features/authentication/presentation/widgets/confirm_phone_number_code_item.dart';
 import 'package:rogo/features/authentication/presentation/widgets/confirm_phone_number_pad_item.dart';
 
-enum ConfirmPhonePreviousPage {
-  AddCardPage,
-  CreateCardPage,
-}
-
 class ConfirmPhoneNumberPage extends StatefulWidget {
-  final ConfirmPhonePreviousPage? previousPage;
-
   const ConfirmPhoneNumberPage({
     Key? key,
-    this.previousPage,
   }) : super(key: key);
 
   @override
@@ -37,220 +32,183 @@ class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // if (state.seconds != '00')
-              // AppText(
-              //   '00:${state.seconds}',
-              //   textAlign: TextAlign.center,
-              //   fontSize: 36,
-              //   fontWeight: FontWeight.w500,
-              //   color: AppColors.black,
-              // ),
-              Spacer(flex: 3),
-              AppText(
-                'authentication.confirmPhoneNumberPage.verifyYourPhonenumber',
-                style: context.read<AppThemeCubit>().state.textTheme().createAccountTitleTextStyle(),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              AppText(
-                'authentication.confirmPhoneNumberPage.enterYourCodeHere',
-                style: context.read<AppThemeCubit>().state.textTheme().confirmPhoneSubtitleTextStyle(),
-              ),
-              // if (state.errorMessage.isNotEmpty)
-              //   AppText(
-              //     state.errorMessage,
-              //     textAlign: TextAlign.center,
-              //     fontSize: 16,
-              //     color: AppColors.redOrange,
-              //   ),
-              Spacer(flex: 3),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: BlocConsumer<PhoneVerificationCubit, PhoneVerificationState>(
+            listener: (context, state) {
+              if (state.errorMessage.isNotEmpty) {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    content: AppText(state.errorMessage),
+                  ),
+                );
+              }
+            },
+            builder: (context, state) {
+              final val1 = (state.code.length > 0) ? state.code.substring(0, 1) : '';
+
+              final val2 = (state.code.length > 1) ? state.code.substring(1, 2) : '';
+
+              final val3 = (state.code.length > 2) ? state.code.substring(2, 3) : '';
+
+              final val4 = (state.code.length > 3) ? state.code.substring(3, 4) : '';
+
+              final val5 = (state.code.length > 4) ? state.code.substring(4, 5) : '';
+
+              final val6 = (state.code.length > 5) ? state.code.substring(5, 6) : '';
+
+              return Stack(
                 children: [
-                  Container(
-                    width: 56,
-                    height: 56,
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: context.read<AppThemeCubit>().state.appColors().primaryColor(),
-                    ),
-                    child: Center(
-                      child: AppText(
-                        '1',
-                        textAlign: TextAlign.center,
-                        style: context.read<AppThemeCubit>().state.textTheme().confirmPhoneSelectedNumberTextStyle(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // if (state.seconds != '00')
+                      // AppText(
+                      //   '00:${state.seconds}',
+                      //   textAlign: TextAlign.center,
+                      //   fontSize: 36,
+                      //   fontWeight: FontWeight.w500,
+                      //   color: AppColors.black,
+                      // ),
+                      Spacer(flex: 3),
+                      AppText(
+                        'authentication.confirmPhoneNumberPage.verifyYourPhonenumber',
+                        style: context.read<AppThemeCubit>().state.textTheme.createAccountTitleTextStyle,
                       ),
-                    ),
-                  ),
-                  Container(
-                    width: 56,
-                    height: 56,
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: context.read<AppThemeCubit>().state.appColors().inputFillColor(),
-                    ),
-                    child: Center(
-                      child: AppText(
-                        '',
-                        textAlign: TextAlign.center,
-                        style: context.read<AppThemeCubit>().state.textTheme().confirmPhoneSelectedNumberTextStyle(),
+                      SizedBox(
+                        height: 16,
                       ),
-                    ),
-                  ),
-                  Container(
-                    width: 56,
-                    height: 56,
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: context.read<AppThemeCubit>().state.appColors().inputFillColor(),
-                    ),
-                    child: Center(
-                      child: AppText(
-                        '',
-                        textAlign: TextAlign.center,
-                        style: context.read<AppThemeCubit>().state.textTheme().confirmPhoneSelectedNumberTextStyle(),
+                      AppText(
+                        'authentication.confirmPhoneNumberPage.enterYourCodeHere',
+                        style: context.read<AppThemeCubit>().state.textTheme.confirmPhoneSubtitleTextStyle,
                       ),
-                    ),
-                  ),
-                  Container(
-                    width: 56,
-                    height: 56,
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: context.read<AppThemeCubit>().state.appColors().inputFillColor(),
-                    ),
-                    child: Center(
-                      child: AppText(
-                        '',
-                        textAlign: TextAlign.center,
-                        style: context.read<AppThemeCubit>().state.textTheme().confirmPhoneSelectedNumberTextStyle(),
+                      // if (state.errorMessage.isNotEmpty)
+                      //   AppText(
+                      //     state.errorMessage,
+                      //     textAlign: TextAlign.center,
+                      //     fontSize: 16,
+                      //     color: AppColors.redOrange,
+                      //   ),
+                      Spacer(flex: 3),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ConfirmPhoneNumberCodeItem(text: val1),
+                          ConfirmPhoneNumberCodeItem(text: val2),
+                          ConfirmPhoneNumberCodeItem(text: val3),
+                          ConfirmPhoneNumberCodeItem(text: val4),
+                          ConfirmPhoneNumberCodeItem(text: val5),
+                          ConfirmPhoneNumberCodeItem(text: val6),
+                        ],
                       ),
-                    ),
-                  ),
-                  Container(
-                    width: 56,
-                    height: 56,
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: context.read<AppThemeCubit>().state.appColors().inputFillColor(),
-                    ),
-                    child: Center(
-                      child: AppText(
-                        '',
-                        textAlign: TextAlign.center,
-                        style: context.read<AppThemeCubit>().state.textTheme().confirmPhoneSelectedNumberTextStyle(),
+                      Spacer(flex: 3),
+                      if (state.seconds != '00')
+                        Center(
+                          child: AppText(
+                            translate('authentication.confirmPhoneNumberPage.didntRecieveAnyCode') +
+                                ' (00:${state.seconds})',
+                            style: context.read<AppThemeCubit>().state.textTheme.confirmPhoneSubtitleTextStyle,
+                          ),
+                        ),
+                      SizedBox(
+                        height: 8,
                       ),
-                    ),
+                      if (state.seconds == '00')
+                        Center(
+                          child: GestureDetector(
+                            onTap: () => context.read<PhoneVerificationCubit>().resendCode(),
+                            child: AppText(
+                              'authentication.confirmPhoneNumberPage.resendNewCode',
+                              style: context.read<AppThemeCubit>().state.textTheme.textButtonTextStyle,
+                            ),
+                          ),
+                        ),
+                      Spacer(flex: 3),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ConfirmPhoneNumberPadItem(
+                            text: '1',
+                          ),
+                          ConfirmPhoneNumberPadItem(
+                            text: '2',
+                          ),
+                          ConfirmPhoneNumberPadItem(
+                            text: '3',
+                          ),
+                        ],
+                      ),
+                      Spacer(flex: 2),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ConfirmPhoneNumberPadItem(
+                            text: '4',
+                          ),
+                          ConfirmPhoneNumberPadItem(
+                            text: '5',
+                          ),
+                          ConfirmPhoneNumberPadItem(
+                            text: '6',
+                          ),
+                        ],
+                      ),
+                      Spacer(flex: 2),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ConfirmPhoneNumberPadItem(
+                            text: '7',
+                          ),
+                          ConfirmPhoneNumberPadItem(
+                            text: '8',
+                          ),
+                          ConfirmPhoneNumberPadItem(
+                            text: '9',
+                          ),
+                        ],
+                      ),
+                      Spacer(flex: 2),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(
+                            height: 75,
+                            width: 75,
+                          ),
+                          ConfirmPhoneNumberPadItem(
+                            text: '0',
+                          ),
+                          SizedBox(
+                            width: 75,
+                            height: 75,
+                            child: InkWell(
+                              borderRadius: BorderRadius.all(Radius.circular(75)),
+                              splashColor: context.read<AppThemeCubit>().state.appColors.inputFillColor,
+                              highlightColor: AppColorScheme.transparent,
+                              onTap: context.read<PhoneVerificationCubit>().erraseCode,
+                              child: context.read<AppThemeCubit>().state.appIcons.numberPadErraseIcon,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer(flex: 3)
+                    ],
                   ),
+                  if (state.loading)
+                    Center(
+                      child: Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: AppColorScheme.haiti06,
+                          ),
+                          child: AppLoader()),
+                    )
                 ],
-              ),
-              Spacer(flex: 3),
-              Center(
-                child: AppText(
-                  translate('authentication.confirmPhoneNumberPage.didntRecieveAnyCode') + ' (0:59)',
-                  style: context.read<AppThemeCubit>().state.textTheme().confirmPhoneSubtitleTextStyle(),
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Center(
-                child: AppText(
-                  'authentication.confirmPhoneNumberPage.resendNewCode',
-                  style: context.read<AppThemeCubit>().state.textTheme().textButtonTextStyle(),
-                ),
-              ),
-              Spacer(flex: 3),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ConfirmPhoneNumberPadItem(
-                    text: '1', onTap: () {},
-                    // onTap: () => context.read<ConfirmPhoneNumberCubit>().updateCode('1'),
-                  ),
-                  ConfirmPhoneNumberPadItem(
-                    text: '2', onTap: () {},
-                    // onTap: () => context.read<ConfirmPhoneNumberCubit>().updateCode('1'),
-                  ),
-                  ConfirmPhoneNumberPadItem(
-                    text: '3', onTap: () {},
-                    // onTap: () => context.read<ConfirmPhoneNumberCubit>().updateCode('1'),
-                  ),
-                ],
-              ),
-              Spacer(flex: 2),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ConfirmPhoneNumberPadItem(
-                    text: '4', onTap: () {},
-                    // onTap: () => context.read<ConfirmPhoneNumberCubit>().updateCode('1'),
-                  ),
-                  ConfirmPhoneNumberPadItem(
-                    text: '5', onTap: () {},
-                    // onTap: () => context.read<ConfirmPhoneNumberCubit>().updateCode('1'),
-                  ),
-                  ConfirmPhoneNumberPadItem(
-                    text: '6', onTap: () {},
-                    // onTap: () => context.read<ConfirmPhoneNumberCubit>().updateCode('1'),
-                  ),
-                ],
-              ),
-              Spacer(flex: 2),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ConfirmPhoneNumberPadItem(
-                    text: '7', onTap: () {},
-                    // onTap: () => context.read<ConfirmPhoneNumberCubit>().updateCode('1'),
-                  ),
-                  ConfirmPhoneNumberPadItem(
-                    text: '8', onTap: () {},
-                    // onTap: () => context.read<ConfirmPhoneNumberCubit>().updateCode('1'),
-                  ),
-                  ConfirmPhoneNumberPadItem(
-                    text: '9', onTap: () {},
-                    // onTap: () => context.read<ConfirmPhoneNumberCubit>().updateCode('1'),
-                  ),
-                ],
-              ),
-              Spacer(flex: 2),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(
-                    height: 75,
-                    width: 75,
-                  ),
-                  ConfirmPhoneNumberPadItem(
-                    text: '0', onTap: () {},
-                    // onTap: () => context.read<ConfirmPhoneNumberCubit>().updateCode('1'),
-                  ),
-                  SizedBox(
-                    width: 75,
-                    height: 75,
-                    child: InkWell(
-                      borderRadius: BorderRadius.all(Radius.circular(75)),
-                      splashColor: context.read<AppThemeCubit>().state.appColors().inputFillColor(),
-                      highlightColor: AppColorScheme.transparent,
-                      //  onTap: context.read<ConfirmPhoneNumberCubit>().erraseCode,
-                      child: context.read<AppThemeCubit>().state.appIcons().numberPadErraseIcon(),
-                    ),
-                  ),
-                ],
-              ),
-              Spacer(flex: 3)
-            ],
+              );
+            },
           ),
         ),
       ),

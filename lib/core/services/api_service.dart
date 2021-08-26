@@ -6,8 +6,12 @@ class ApiService {
   late Dio _dio;
 
   ApiService() {
-    BaseOptions baseOptions =
-        BaseOptions(receiveTimeout: 3500, connectTimeout: 3500, baseUrl: k_API_END_POINT_BASE, maxRedirects: 2);
+    BaseOptions baseOptions = BaseOptions(
+      connectTimeout: 60 * 1000, // 60 seconds
+      receiveTimeout: 60 * 1000,
+      baseUrl: k_API_END_POINT_BASE,
+      maxRedirects: 2,
+    );
     _dio = Dio(baseOptions);
     // adding logging interceptor.
     _dio.interceptors.add(LogInterceptor(
@@ -44,8 +48,9 @@ class ApiService {
         options: options?.copyWith(responseType: ResponseType.json) ?? Options(responseType: ResponseType.json),
       );
     } on DioError catch (exception) {
-      if (exception.response?.data != null && exception.response?.data['message'] != null) {
-        throw ServerException(message: exception.response?.data['message']);
+      if (exception.response?.data != null &&
+          (exception.response?.data['message'] != null || exception.response?.data['detail'])) {
+        throw ServerException(message: exception.response?.data['message'] ?? exception.response?.data['detail']);
       } else {
         throw ServerException(message: exception.error);
       }

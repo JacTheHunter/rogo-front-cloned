@@ -1,21 +1,21 @@
 part of 'sign_up_cubit.dart';
 
 class SingUpState extends Equatable {
-  final Email email;
-  final Password password;
+  final EmailFormModel email;
+  final PasswordFormModel password;
   final PasswordConfirm passwordConfirm;
   final FormzStatus status;
-  final AcceptPolicy acceptPolicy;
+  final AcceptPolicyFormModel acceptPolicy;
   final String errorMessage;
 
   final bool obsecurePassword;
   final bool obsecurePasswordConfirm;
 
   const SingUpState({
-    this.email = const Email.pure(),
-    this.password = const Password.pure(),
+    this.email = const EmailFormModel.pure(),
+    this.password = const PasswordFormModel.pure(),
     this.passwordConfirm = const PasswordConfirm.pure(),
-    this.acceptPolicy = const AcceptPolicy.pure(),
+    this.acceptPolicy = const AcceptPolicyFormModel.pure(),
     this.status = FormzStatus.pure,
     this.errorMessage = '',
     this.obsecurePassword = true,
@@ -35,10 +35,10 @@ class SingUpState extends Equatable {
       ];
 
   SingUpState copyWith({
-    Email? email,
-    Password? password,
+    EmailFormModel? email,
+    PasswordFormModel? password,
     PasswordConfirm? passwordConfirm,
-    AcceptPolicy? acceptPolicy,
+    AcceptPolicyFormModel? acceptPolicy,
     FormzStatus? status,
     String? errorMessage,
     bool? obsecurePassword,

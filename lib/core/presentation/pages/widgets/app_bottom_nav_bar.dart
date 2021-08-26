@@ -20,7 +20,7 @@ class AppBottomNavBar extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(14)),
         boxShadow: [
           BoxShadow(
-            color: context.read<AppThemeCubit>().state.appColors().appbarShadowColor(),
+            color: context.read<AppThemeCubit>().state.appColors.appbarShadowColor,
             blurRadius: 24,
             offset: Offset(0, -4),
           )
@@ -33,16 +33,16 @@ class AppBottomNavBar extends StatelessWidget {
             onTap: () => onNavItemTap(0),
             child: AppImage.asset(
               currentIndex == 0 ? AppImages.vector.appbarBrowseSelected : AppImages.vector.appbarBrowse,
-              width: 25,
-              height: 26,
+              width: 28,
+              height: 30,
             ),
           ),
           GestureDetector(
             onTap: () => onNavItemTap(1),
             child: AppImage.asset(
               currentIndex == 1 ? AppImages.vector.appbarWishlistSelected : AppImages.vector.appbarWishlist,
-              width: 25,
-              height: 23,
+              width: 28,
+              height: 26,
             ),
           ),
           GestureDetector(
@@ -57,16 +57,16 @@ class AppBottomNavBar extends StatelessWidget {
             onTap: () => onNavItemTap(3),
             child: AppImage.asset(
               currentIndex == 3 ? AppImages.vector.appbarInboxSelected : AppImages.vector.appbarInbox,
-              width: 25,
-              height: 24,
+              width: 40,
+              height: 26,
             ),
           ),
           GestureDetector(
             onTap: () => onNavItemTap(4),
             child: AppImage.asset(
               currentIndex == 4 ? AppImages.vector.appbarProfileSelected : AppImages.vector.appbarProfile,
-              width: 18,
-              height: 25,
+              width: 22,
+              height: 28,
             ),
           ),
         ],

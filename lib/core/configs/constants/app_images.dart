@@ -30,6 +30,12 @@ class Vector {
   String get search => 'assets/images/vector/search.svg';
   String get star => 'assets/images/vector/star.svg';
   String get location => 'assets/images/vector/location.svg';
+
+  String get plus => 'assets/images/vector/plus.svg';
+  String get checkbox => 'assets/images/vector/checkbox.svg';
+  String get xCircle => 'assets/images/vector/x_circle.svg';
+
+  String get sliverOverlay => 'assets/images/vector/sliver_overlay.svg';
 }
 
 class Raster {
