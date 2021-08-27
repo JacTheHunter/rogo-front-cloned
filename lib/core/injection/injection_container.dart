@@ -26,11 +26,11 @@ import '../../features/authentication/presentation/blocs/forgot_password_cubit/f
 import '../../features/authentication/presentation/blocs/login_cubit/login_cubit.dart';
 import '../../features/authentication/presentation/blocs/phone_verification_cubit/phone_verification_cubit.dart';
 import '../../features/authentication/presentation/blocs/sign_up_cubit/sign_up_cubit.dart';
-import '../../features/browse/data/datasources/top_selleres_data_source.dart';
+import '../../features/browse/data/datasources/top_sellers_data_source.dart';
 import '../../features/browse/data/repositories/top_sellers_repository_impl.dart';
 import '../../features/browse/domain/repositories/top_sellers_repository.dart';
-import '../../features/browse/domain/usecases/get_top_sellers.dart';
-import '../../features/browse/presentation/cubit/top_sellers_cubit.dart';
+import '../../features/browse/domain/usecases/get_top_sellers_usecase.dart';
+import '../../features/browse/presentation/bloc/cubit/top_sellers_cubit.dart';
 import '../../features/categories/data/datasources/categories_data_source.dart';
 import '../../features/categories/data/repositories/categories_repository_impl.dart';
 import '../../features/categories/domain/repositories/categories_repository.dart';
@@ -182,7 +182,7 @@ Future<void> init() async {
   // sl.registerLazySingleton<NewsDataSource>(() => NewsDataSourceImpl(client: sl()));
 
   //!Feature Browse
-  //TODO: Refactor
+
   //Blocs
   sl.registerFactory(() => TopSellersCubit(getTopSellersUsecase: sl()));
   //UseCases
@@ -192,7 +192,7 @@ Future<void> init() async {
       () => TopSellersRepositoryImpl(topSellersDataSource: sl()));
   //Data Source
   sl.registerLazySingleton<TopSellersDataSource>(
-      () => TopSellersRemoteDataSourceImpl(client: sl()));
+      () => TopSellersDataSourceImpl(client: sl()));
 
   //!Feature Categories
   //Blocs

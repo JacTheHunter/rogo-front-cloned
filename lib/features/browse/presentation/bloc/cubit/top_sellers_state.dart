@@ -2,7 +2,7 @@ part of 'top_sellers_cubit.dart';
 
 @immutable
 class TopSellersState {
-  final List<TopSellersEntity> topSellers;
+  final List<TopSeller> topSellers;
   final String errorMessage;
   final bool isLoading;
 
@@ -13,7 +13,7 @@ class TopSellersState {
   });
 
   TopSellersState copyWith({
-    List<TopSellersEntity>? topSellers,
+    List<TopSeller>? topSellers,
     String? errorMessage,
     bool? isLoading,
   }) {

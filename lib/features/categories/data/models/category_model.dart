@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:rogo/features/categories/domain/entities/category.dart';
+import '../../domain/entities/category.dart';
 
 class CategoryModel extends Category {
   final int id;

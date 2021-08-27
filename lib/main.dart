@@ -24,7 +24,7 @@ import 'features/authentication/presentation/blocs/forgot_password_cubit/forgot_
 import 'features/authentication/presentation/blocs/login_cubit/login_cubit.dart';
 import 'features/authentication/presentation/blocs/phone_verification_cubit/phone_verification_cubit.dart';
 import 'features/authentication/presentation/blocs/sign_up_cubit/sign_up_cubit.dart';
-import 'features/browse/presentation/cubit/top_sellers_cubit.dart';
+import 'features/browse/presentation/bloc/cubit/top_sellers_cubit.dart';
 import 'features/categories/presentation/bloc/categories_cubit/categories_cubit.dart';
 import 'features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
 import 'features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';

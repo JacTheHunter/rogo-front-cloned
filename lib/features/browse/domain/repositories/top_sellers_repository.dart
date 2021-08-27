@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
-import '../entities/top_sellers_entity.dart';
+import '../entities/top_seller.dart';
 
 abstract class TopSellersRepository {
-  Future<Either<Failure, List<TopSellersEntity>>> getTopSellers();
+  Future<Either<Failure, List<TopSeller>>> getTopSellers();
 }

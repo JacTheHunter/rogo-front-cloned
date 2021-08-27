@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:rogo/core/usecase/usecase.dart';
-import 'package:rogo/features/categories/domain/entities/category.dart';
-import 'package:rogo/features/categories/domain/usecases/get_categories_usecase.dart';
+
+import '../../../../../core/usecase/usecase.dart';
+import '../../../domain/entities/category.dart';
+import '../../../domain/usecases/get_categories_usecase.dart';
 
 part 'categories_state.dart';
 

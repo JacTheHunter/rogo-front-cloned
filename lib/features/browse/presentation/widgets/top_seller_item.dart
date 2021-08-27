@@ -29,11 +29,11 @@ class TopSellerItem extends StatelessWidget {
       padding: const EdgeInsets.only(right: 24),
       child: Column(
         children: [
-          AppImage.asset(
+          AppImage.network(
             bannerImage,
             width: 220,
             height: 120,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
             borderRadius: BorderRadius.circular(8),
           ),
           SizedBox(height: 9),
@@ -46,12 +46,18 @@ class TopSellerItem extends StatelessWidget {
                 fit: BoxFit.contain,
                 borderRadius: BorderRadius.circular(12),
               ),
+              // SizedBox(width: 16.2),
               Spacer(),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppText(
-                    name,
-                    style: context.read<AppThemeCubit>().state.textTheme.topSellerNameTextStyle,
+                  Container(
+                    width: 128,
+                    child: AppText(
+                      name,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.read<AppThemeCubit>().state.textTheme.topSellerNameTextStyle,
+                    ),
                   ),
                   SizedBox(height: 4),
                   Row(

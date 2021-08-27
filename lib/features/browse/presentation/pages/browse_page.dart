@@ -23,7 +23,11 @@ class BrowsePage extends StatelessWidget {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              backgroundColor: context.read<AppThemeCubit>().state.appColors.sliverAppBarBackgroundColor,
+              backgroundColor: context
+                  .read<AppThemeCubit>()
+                  .state
+                  .appColors
+                  .sliverAppBarBackgroundColor,
               toolbarHeight: 80,
               floating: false,
               flexibleSpace: FlexibleSpaceBar(
@@ -50,7 +54,11 @@ class BrowsePage extends StatelessWidget {
                             child: AppText(
                               "Welcome Text",
                               maxLines: 1,
-                              style: context.read<AppThemeCubit>().state.textTheme.sliverHeaderTitleTextStyle,
+                              style: context
+                                  .read<AppThemeCubit>()
+                                  .state
+                                  .textTheme
+                                  .sliverHeaderTitleTextStyle,
                             ),
                           ),
                         ],
@@ -66,7 +74,11 @@ class BrowsePage extends StatelessWidget {
               ),
             ),
             SliverAppBar(
-              backgroundColor: context.read<AppThemeCubit>().state.appColors.sliverAppBarBackgroundColor,
+              backgroundColor: context
+                  .read<AppThemeCubit>()
+                  .state
+                  .appColors
+                  .sliverAppBarBackgroundColor,
               //  expandedHeight: 160,
               elevation: 0,
               shape: RoundedRectangleBorder(
@@ -83,25 +95,53 @@ class BrowsePage extends StatelessWidget {
 
                 title: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
-                    color: context.read<AppThemeCubit>().state.appColors.sliverAppBarBackgroundColor,
+                    borderRadius:
+                        BorderRadius.vertical(bottom: Radius.circular(28)),
+                    color: context
+                        .read<AppThemeCubit>()
+                        .state
+                        .appColors
+                        .sliverAppBarBackgroundColor,
                   ),
-                  padding: const EdgeInsets.fromLTRB(20, 30, 20, 16),
+                  padding: const EdgeInsets.fromLTRB(20, 30, 20, 24),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TabBar(
-                        indicatorColor: context.read<AppThemeCubit>().state.appColors.primaryColor,
-                        labelStyle: context.read<AppThemeCubit>().state.textTheme.tabBarSelectedLabelTextStyle,
-                        unselectedLabelStyle:
-                            context.read<AppThemeCubit>().state.textTheme.tabBarUnSelectedLabelTextStyle,
-                        labelColor: context.read<AppThemeCubit>().state.appColors.primaryTextColor,
-                        unselectedLabelColor: context.read<AppThemeCubit>().state.appColors.hintColor,
+                        indicatorColor: context
+                            .read<AppThemeCubit>()
+                            .state
+                            .appColors
+                            .primaryColor,
+                        labelStyle: context
+                            .read<AppThemeCubit>()
+                            .state
+                            .textTheme
+                            .tabBarSelectedLabelTextStyle,
+                        unselectedLabelStyle: context
+                            .read<AppThemeCubit>()
+                            .state
+                            .textTheme
+                            .tabBarUnSelectedLabelTextStyle,
+                        labelColor: context
+                            .read<AppThemeCubit>()
+                            .state
+                            .appColors
+                            .primaryTextColor,
+                        unselectedLabelColor: context
+                            .read<AppThemeCubit>()
+                            .state
+                            .appColors
+                            .hintColor,
                         isScrollable: true,
                         indicator: UnderlineTabIndicator(
                           borderSide: BorderSide(
-                            color: context.read<AppThemeCubit>().state.appColors.primaryColor,
+                            color: context
+                                .read<AppThemeCubit>()
+                                .state
+                                .appColors
+                                .primaryColor,
                             width: 2,
                           ),
                           //  insets: EdgeInsets.only(left: 0, right: 0, bottom: 0),
@@ -122,19 +162,34 @@ class BrowsePage extends StatelessWidget {
                         height: 24,
                       ),
                       AppTextFormField(
-                        fillColor: context.read<AppThemeCubit>().state.appColors.sliverAppBarSearchFillolor,
+                        fillColor: context
+                            .read<AppThemeCubit>()
+                            .state
+                            .appColors
+                            .sliverAppBarSearchFillolor,
                         prefixIconConstraints: BoxConstraints(maxHeight: 18),
                         prefixIcon: Padding(
                             padding: const EdgeInsets.only(left: 18, right: 10),
-                            child: context.read<AppThemeCubit>().state.appIcons.searchIcon),
+                            child: context
+                                .read<AppThemeCubit>()
+                                .state
+                                .appIcons
+                                .searchIcon),
                         suffixIconConstraints: BoxConstraints(maxHeight: 20),
                         suffixIcon: Padding(
                             padding: const EdgeInsets.only(left: 10, right: 16),
-                            child: context.read<AppThemeCubit>().state.appIcons.searchFilterIcon),
+                            child: context
+                                .read<AppThemeCubit>()
+                                .state
+                                .appIcons
+                                .searchFilterIcon),
                         hintText: 'browse.browsePage.whatAreYouLookingFor',
-                        hintStyle: context.read<AppThemeCubit>().state.textTheme.searchInputHintTextStyle,
+                        hintStyle: context
+                            .read<AppThemeCubit>()
+                            .state
+                            .textTheme
+                            .searchInputHintTextStyle,
                       ),
-                      SizedBox(height: 10),
                     ],
                   ),
                 ),

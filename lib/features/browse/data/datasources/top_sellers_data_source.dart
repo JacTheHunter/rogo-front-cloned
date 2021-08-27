@@ -1,8 +1,7 @@
-
 import '../../../../core/configs/constants/api.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/services/api_service.dart';
-import '../../domain/entities/top_sellers_entity.dart';
+import '../../domain/entities/top_seller.dart';
 import '../models/top_sellers_model.dart';
 
 abstract class TopSellersDataSource {
@@ -10,21 +9,22 @@ abstract class TopSellersDataSource {
   ///
   /// Throws a [ServerException] for all error codes.
 
-  Future<List<TopSellersEntity>> getTopSellersData();
+  Future<List<TopSeller>> getTopSellers();
 }
 
-class TopSellersRemoteDataSourceImpl implements TopSellersDataSource {
+class TopSellersDataSourceImpl implements TopSellersDataSource {
   final ApiService _client;
 
-  TopSellersRemoteDataSourceImpl({required ApiService client})
-      : _client = client;
+  TopSellersDataSourceImpl({required ApiService client}) : _client = client;
 
   @override
-  Future<List<TopSellersEntity>> getTopSellersData() async {
+  Future<List<TopSeller>> getTopSellers() async {
+     print('blyat');
     try {
       final result = await _client.get(k_API_END_POINT_TOP_SELLERS);
-      return (result.data as List)
-          .map((topSeller) => TopSellersModel.fromMap(topSeller))
+      print('aaaaaa');
+      return  (result.data as List)
+          .map((topSeller) => TopSellerModel.fromMap(topSeller))
           .toList();
     } on ServerException catch (e) {
       throw ServerException(message: e.message);
