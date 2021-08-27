@@ -19,13 +19,9 @@ class TopSellersDataSourceImpl implements TopSellersDataSource {
 
   @override
   Future<List<TopSeller>> getTopSellers() async {
-     print('blyat');
     try {
       final result = await _client.get(k_API_END_POINT_TOP_SELLERS);
-      print('aaaaaa');
-      return  (result.data as List)
-          .map((topSeller) => TopSellerModel.fromMap(topSeller))
-          .toList();
+      return (result.data as List).map((topSeller) => TopSellerModel.fromMap(topSeller)).toList();
     } on ServerException catch (e) {
       throw ServerException(message: e.message);
     }

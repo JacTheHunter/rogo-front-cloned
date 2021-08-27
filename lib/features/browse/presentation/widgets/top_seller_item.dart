@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_translate/flutter_translate.dart';
-import 'package:rogo/core/configs/constants/app_images.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_translate/flutter_translate.dart';
+
+import '../../../../core/configs/constants/app_images.dart';
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_image.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
 
 class TopSellerItem extends StatelessWidget {
   final String name;

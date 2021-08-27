@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rogo/core/configs/constants/app_colors.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../configs/constants/app_colors.dart';
+import '../../blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'app_text.dart';
 
 class SimpleButton extends StatelessWidget {
   final Function()? onTap;

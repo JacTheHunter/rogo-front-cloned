@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rogo/core/configs/constants/app_colors.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
+
+import '../../../../core/configs/constants/app_colors.dart';
+import '../../../../core/presentation/pages/widgets/app_image.dart';
 
 class LoginMethodButton extends StatelessWidget {
   final Function()? onTap;

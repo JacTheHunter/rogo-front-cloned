@@ -1,8 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:rogo/core/injection/injection_container.dart';
-import 'package:rogo/core/services/box_service.dart';
+
+import '../injection/injection_container.dart';
+import '../services/box_service.dart';
 
 class TranslatePreferences implements ITranslatePreferences {
   @override

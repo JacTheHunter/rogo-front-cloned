@@ -7,9 +7,9 @@ class TopSellersState {
   final bool isLoading;
 
   TopSellersState({
-     this.topSellers = const [],
-     this.errorMessage = '',
-     this.isLoading = false,
+    this.topSellers = const [],
+    this.errorMessage = '',
+    this.isLoading = false,
   });
 
   TopSellersState copyWith({

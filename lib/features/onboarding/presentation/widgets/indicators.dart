@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rogo/features/onboarding/presentation/widgets/indicator.dart';
+
+import 'indicator.dart';
 
 class Indocators extends StatelessWidget {
   final int total;

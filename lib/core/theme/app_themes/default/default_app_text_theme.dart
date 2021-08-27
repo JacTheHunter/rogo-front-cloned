@@ -19,8 +19,7 @@ class DefaultAppTextTheme extends AppTextTheme {
       );
 
   @override
-  TextStyle get onboardingCrossedTextStyle =>
-      onboardingTextStyle..copyWith(decoration: TextDecoration.lineThrough);
+  TextStyle get onboardingCrossedTextStyle => onboardingTextStyle..copyWith(decoration: TextDecoration.lineThrough);
 
   @override
   TextStyle get textButtonTextStyle => TextStyle(
@@ -246,8 +245,7 @@ class DefaultAppTextTheme extends AppTextTheme {
       );
 
   @override
-  TextStyle get bottomSheetTitleTextStyle =>
-      TextStyle(fontSize: 17, fontWeight: FontWeight.w600);
+  TextStyle get bottomSheetTitleTextStyle => TextStyle(fontSize: 17, fontWeight: FontWeight.w600);
 
   @override
   TextStyle get bottomSheetButtonTextStyle => TextStyle(

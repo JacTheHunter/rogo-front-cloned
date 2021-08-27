@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rogo/core/configs/constants/app_images.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+
+import '../../../configs/constants/app_images.dart';
+import '../../../theme/app_color_scheme.dart';
+import '../../blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'app_image.dart';
 
 class AppBottomNavBar extends StatelessWidget {
   final int currentIndex;

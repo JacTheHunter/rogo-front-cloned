@@ -1,9 +1,10 @@
-import 'package:rogo/core/error/exceptions.dart';
-import 'package:rogo/features/authentication/data/datasources/authentication_datasource.dart';
-import 'package:rogo/features/authentication/domain/entities/user.dart';
-import 'package:rogo/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:rogo/features/authentication/domain/repositories/authentication_repository.dart';
+
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/error/failures.dart';
+import '../../domain/entities/user.dart';
+import '../../domain/repositories/authentication_repository.dart';
+import '../datasources/authentication_datasource.dart';
 
 class AuthenticationRepositoryImpl extends AuthenticationRepository {
   final AuthenticationDatasource _datasource;

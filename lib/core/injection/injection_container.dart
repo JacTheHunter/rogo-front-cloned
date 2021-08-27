@@ -109,8 +109,7 @@ Future<void> init() async {
   sl.registerFactory(() => PhoneVerificationCubit(updatePhoneNumberInFirebaseUseCase: sl(), createAccountCubit: sl()));
 
   //UseCases
-  sl.registerLazySingleton(
-      () => GetUserStreamInFirebaseUseCase(repository: sl()));
+  sl.registerLazySingleton(() => GetUserStreamInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => SignOutInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => CreateUserWithEmailAndPasswordInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => SignInWithEmailAndPasswordInFirebaseUseCase(repository: sl()));
@@ -188,11 +187,9 @@ Future<void> init() async {
   //UseCases
   sl.registerLazySingleton(() => GetTopSellersUsecase(repository: sl()));
   //Repository
-  sl.registerLazySingleton<TopSellersRepository>(
-      () => TopSellersRepositoryImpl(topSellersDataSource: sl()));
+  sl.registerLazySingleton<TopSellersRepository>(() => TopSellersRepositoryImpl(topSellersDataSource: sl()));
   //Data Source
-  sl.registerLazySingleton<TopSellersDataSource>(
-      () => TopSellersDataSourceImpl(client: sl()));
+  sl.registerLazySingleton<TopSellersDataSource>(() => TopSellersDataSourceImpl(client: sl()));
 
   //!Feature Categories
   //Blocs
@@ -200,11 +197,9 @@ Future<void> init() async {
   //UseCases
   sl.registerLazySingleton(() => GetCategoriesUsecase(repository: sl()));
   //Repository
-  sl.registerLazySingleton<CategoriesRepository>(
-      () => CategoriesRepositoryImpl(dataSource: sl()));
+  sl.registerLazySingleton<CategoriesRepository>(() => CategoriesRepositoryImpl(dataSource: sl()));
   //Data Source
-  sl.registerLazySingleton<CategoriesDataSource>(
-      () => CategoriesDataSourceImpl(client: sl()));
+  sl.registerLazySingleton<CategoriesDataSource>(() => CategoriesDataSourceImpl(client: sl()));
 
   //!External
   //DIO

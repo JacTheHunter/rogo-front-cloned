@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rogo/core/configs/constants/app_images.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
-import 'package:rogo/core/theme/app_icons.dart';
 
+import '../../../configs/constants/app_images.dart';
+import '../../../presentation/pages/widgets/app_image.dart';
 import '../../app_color_scheme.dart';
+import '../../app_icons.dart';
 
 class DefaultAppIcons extends AppIcons {
   @override
@@ -99,8 +99,7 @@ class DefaultAppIcons extends AppIcons {
   Widget get favoriteIcon => AppImage.asset(AppImages.vector.heart);
 
   @override
-  Widget get browseItemArrowLeftIcon =>
-      AppImage.asset(AppImages.vector.arrowLeftWithOpacity, width: 38);
+  Widget get browseItemArrowLeftIcon => AppImage.asset(AppImages.vector.arrowLeftWithOpacity, width: 38);
 
   @override
   Widget get browseItemEmptyHeartIcon => Container(

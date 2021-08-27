@@ -2,16 +2,17 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:rogo/core/injection/injection_container.dart';
-import 'package:rogo/core/services/box_service.dart';
-import 'package:rogo/core/services/navigation_service.dart';
-import 'package:rogo/core/usecase/usecase.dart';
-import 'package:rogo/features/authentication/domain/entities/firebase_user.dart';
-import 'package:rogo/features/authentication/domain/usecases/get_jwt_of_firebase_user_usecase.dart';
-import 'package:rogo/features/authentication/domain/usecases/get_user_stream_from_firebase_usecase.dart';
-import 'package:rogo/features/authentication/domain/usecases/sign_in_anonymous_firebase_usecase.dart';
-import 'package:rogo/features/authentication/domain/usecases/sign_in_with_google_in_firebase_usecase.dart';
-import 'package:rogo/features/authentication/domain/usecases/sign_out_in_firebase_usecase.dart';
+
+import '../../../../../core/injection/injection_container.dart';
+import '../../../../../core/services/box_service.dart';
+import '../../../../../core/services/navigation_service.dart';
+import '../../../../../core/usecase/usecase.dart';
+import '../../../domain/entities/firebase_user.dart';
+import '../../../domain/usecases/get_jwt_of_firebase_user_usecase.dart';
+import '../../../domain/usecases/get_user_stream_from_firebase_usecase.dart';
+import '../../../domain/usecases/sign_in_anonymous_firebase_usecase.dart';
+import '../../../domain/usecases/sign_in_with_google_in_firebase_usecase.dart';
+import '../../../domain/usecases/sign_out_in_firebase_usecase.dart';
 
 part 'firebase_authentication_event.dart';
 part 'firebase_authentication_state.dart';

@@ -1,10 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:rogo/core/error/exceptions.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/features/authentication/data/datasources/firebase_authentication_datasource.dart';
-import 'package:rogo/features/authentication/domain/entities/firebase_user.dart';
-import 'package:rogo/features/authentication/domain/repositories/firebase_authentication_repository.dart';
+
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/error/failures.dart';
+import '../../domain/entities/firebase_user.dart';
+import '../../domain/repositories/firebase_authentication_repository.dart';
+import '../datasources/firebase_authentication_datasource.dart';
 
 class FirebaseAuthenticationRepositoryImpl implements FirebaseAuthenticationRepository {
   FirebaseAuthenticationDatasource _datasource;

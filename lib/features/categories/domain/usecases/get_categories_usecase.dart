@@ -8,8 +8,7 @@ import '../repositories/categories_repository.dart';
 class GetCategoriesUsecase extends UseCase<List<Category>, NoParams> {
   final CategoriesRepository _repository;
 
-  GetCategoriesUsecase({required CategoriesRepository repository})
-      : _repository = repository;
+  GetCategoriesUsecase({required CategoriesRepository repository}) : _repository = repository;
 
   @override
   Future<Either<Failure, List<Category>>> call(NoParams params) async {

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_dropdown.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text_form_field.dart';
-import 'package:rogo/core/presentation/pages/widgets/simple_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/features/authentication/presentation/blocs/create_account_cubit/create_account_cubit.dart';
-import 'package:rogo/features/countries_and_cities/domain/entities/city.dart';
-import 'package:rogo/features/countries_and_cities/domain/entities/country.dart';
-import 'package:rogo/features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
+
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_dropdown.dart';
+import '../../../../core/presentation/pages/widgets/app_loader.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
+import '../../../../core/presentation/pages/widgets/app_text_form_field.dart';
+import '../../../../core/presentation/pages/widgets/simple_button.dart';
+import '../../../countries_and_cities/domain/entities/city.dart';
+import '../../../countries_and_cities/domain/entities/country.dart';
+import '../../../countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
+import '../blocs/create_account_cubit/create_account_cubit.dart';
 
 class CreateAccountPage2 extends StatelessWidget {
   final CreateAccountState state;

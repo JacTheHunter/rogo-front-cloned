@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 
+import '../../blocs/app_theme_cubit/app_theme_cubit.dart';
 import 'app_text.dart';
 
 class AppDropdown<T> extends StatelessWidget {

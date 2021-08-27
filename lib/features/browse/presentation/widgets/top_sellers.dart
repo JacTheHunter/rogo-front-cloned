@@ -20,11 +20,7 @@ class TopSellers extends StatelessWidget {
         children: [
           AppText(
             'browse.browsePage.topSellers',
-            style: context
-                .read<AppThemeCubit>()
-                .state
-                .textTheme
-                .browseTitleTextStyle,
+            style: context.read<AppThemeCubit>().state.textTheme.browseTitleTextStyle,
           ),
           SizedBox(height: 16),
           SizedBox(

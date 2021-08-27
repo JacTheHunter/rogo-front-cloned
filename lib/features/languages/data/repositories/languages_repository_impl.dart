@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:rogo/core/error/exceptions.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/features/languages/data/datasources/languages_datasource.dart';
-import 'package:rogo/features/languages/domain/entities/language.dart';
-import 'package:rogo/features/languages/domain/repositories/languages_repository.dart';
+
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/error/failures.dart';
+import '../../domain/entities/language.dart';
+import '../../domain/repositories/languages_repository.dart';
+import '../datasources/languages_datasource.dart';
 
 class LanguagesRepositoryImpl extends LanguagesRepository {
   final LanguagesDatasource _datasource;

@@ -20,7 +20,7 @@ abstract class AppIcons {
   Widget get browseItemEmptyHeartIcon;
 
   Widget get locationIconWithPinkTone;
-  
+
   Widget get searchClearIcon;
 
   Widget get addLanguageButtonIcon;

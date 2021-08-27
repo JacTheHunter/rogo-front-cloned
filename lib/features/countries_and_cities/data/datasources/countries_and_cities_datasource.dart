@@ -1,10 +1,10 @@
-import 'package:rogo/core/configs/constants/api.dart';
-import 'package:rogo/core/error/exceptions.dart';
-import 'package:rogo/core/services/api_service.dart';
-import 'package:rogo/features/countries_and_cities/data/models/city_model.dart';
-import 'package:rogo/features/countries_and_cities/data/models/country_model.dart';
-import 'package:rogo/features/countries_and_cities/domain/entities/city.dart';
-import 'package:rogo/features/countries_and_cities/domain/entities/country.dart';
+import '../../../../core/configs/constants/api.dart';
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/services/api_service.dart';
+import '../../domain/entities/city.dart';
+import '../../domain/entities/country.dart';
+import '../models/city_model.dart';
+import '../models/country_model.dart';
 
 abstract class CountriesAndCitiesDatasource {
   Future<List<City>> getAllCitiesOfSelectedCountry({required int countryId});

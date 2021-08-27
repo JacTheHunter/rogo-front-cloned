@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/usecase/usecase.dart';
-import 'package:rogo/features/countries_and_cities/domain/entities/city.dart';
-import 'package:rogo/features/countries_and_cities/domain/repositories/countries_and_cities_repository.dart';
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../entities/city.dart';
+import '../repositories/countries_and_cities_repository.dart';
 
 class GetAllCitiesOfSelectedCountryUseCase extends UseCase<List<City>, Params> {
   final CountriesAndCitiesRepository _repository;

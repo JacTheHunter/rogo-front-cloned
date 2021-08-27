@@ -6,7 +6,6 @@ import '../../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../../core/theme/app_color_scheme.dart';
 import 'gradient_button.dart';
 
-
 class AppGradientBottomNavBar extends StatelessWidget {
   const AppGradientBottomNavBar({
     Key? key,
@@ -23,11 +22,7 @@ class AppGradientBottomNavBar extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(14)),
         boxShadow: [
           BoxShadow(
-            color: context
-                .read<AppThemeCubit>()
-                .state
-                .appColors
-                .appbarShadowColor,
+            color: context.read<AppThemeCubit>().state.appColors.appbarShadowColor,
             blurRadius: 24,
             offset: Offset(0, -4),
           )
@@ -37,12 +32,7 @@ class AppGradientBottomNavBar extends StatelessWidget {
         children: [
           AppText(
             '\$50',
-            style: context
-                .read<AppThemeCubit>()
-                .state
-                .textTheme
-                .browseItemPriceNumberTextStyle
-                .copyWith(
+            style: context.read<AppThemeCubit>().state.textTheme.browseItemPriceNumberTextStyle.copyWith(
                   color: AppColorScheme.white,
                   fontSize: 18,
                 ),
@@ -55,20 +45,13 @@ class AppGradientBottomNavBar extends StatelessWidget {
                 .state
                 .textTheme
                 .browseItemPriceTextStyle
-                .copyWith(
-                    color: AppColorScheme.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500),
+                .copyWith(color: AppColorScheme.white, fontSize: 18, fontWeight: FontWeight.w500),
           ),
           Spacer(),
           GradientButton(
             isWide: false,
             text: 'Rent now',
-            gradient: context
-                .read<AppThemeCubit>()
-                .state
-                .appColors
-                .createAccountHeaderGradient,
+            gradient: context.read<AppThemeCubit>().state.appColors.createAccountHeaderGradient,
           ),
         ],
       ),

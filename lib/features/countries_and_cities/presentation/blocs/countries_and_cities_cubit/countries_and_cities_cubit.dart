@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:rogo/core/usecase/usecase.dart';
 
-import 'package:rogo/features/countries_and_cities/domain/entities/city.dart';
-import 'package:rogo/features/countries_and_cities/domain/entities/country.dart';
-import 'package:rogo/features/countries_and_cities/domain/usecases/get_all_cities_of_selected_country_usecase.dart';
-import 'package:rogo/features/countries_and_cities/domain/usecases/get_all_countries_usecase.dart';
+import '../../../../../core/usecase/usecase.dart';
+import '../../../domain/entities/city.dart';
+import '../../../domain/entities/country.dart';
+import '../../../domain/usecases/get_all_cities_of_selected_country_usecase.dart';
+import '../../../domain/usecases/get_all_countries_usecase.dart';
 
 part 'countries_and_cities_state.dart';
 

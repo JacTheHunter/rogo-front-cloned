@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:rogo/core/configs/constants/app_colors.dart';
-import 'package:rogo/core/configs/constants/app_images.dart';
-import 'package:rogo/core/form_models/email_form_model.dart';
-import 'package:rogo/core/injection/injection_container.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_app_bar.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text_form_field.dart';
-import 'package:rogo/core/presentation/pages/widgets/simple_button.dart';
-import 'package:rogo/core/services/navigation_service.dart';
-import 'package:rogo/features/authentication/presentation/blocs/forgot_password_cubit/forgot_password_cubit.dart';
+
+import '../../../../core/configs/constants/app_colors.dart';
+import '../../../../core/configs/constants/app_images.dart';
+import '../../../../core/form_models/email_form_model.dart';
+import '../../../../core/injection/injection_container.dart';
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_app_bar.dart';
+import '../../../../core/presentation/pages/widgets/app_image.dart';
+import '../../../../core/presentation/pages/widgets/app_loader.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
+import '../../../../core/presentation/pages/widgets/app_text_form_field.dart';
+import '../../../../core/presentation/pages/widgets/simple_button.dart';
+import '../../../../core/services/navigation_service.dart';
+import '../blocs/forgot_password_cubit/forgot_password_cubit.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);

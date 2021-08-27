@@ -9,8 +9,7 @@ import '../datasources/categories_data_source.dart';
 class CategoriesRepositoryImpl implements CategoriesRepository {
   final CategoriesDataSource _categoriesDataSource;
 
-  CategoriesRepositoryImpl({required CategoriesDataSource dataSource})
-      : _categoriesDataSource = dataSource;
+  CategoriesRepositoryImpl({required CategoriesDataSource dataSource}) : _categoriesDataSource = dataSource;
 
   @override
   Future<Either<Failure, List<Category>>> getCategories() async {

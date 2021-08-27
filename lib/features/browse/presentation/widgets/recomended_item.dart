@@ -15,11 +15,7 @@ class RecommendedItem extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
-        color: context
-            .read<AppThemeCubit>()
-            .state
-            .appColors
-            .productItemBackgroundColor,
+        color: context.read<AppThemeCubit>().state.appColors.productItemBackgroundColor,
       ),
       child: Column(
         children: [
@@ -43,31 +39,19 @@ class RecommendedItem extends StatelessWidget {
                   children: [
                     AppText(
                       '\$100',
-                      style: context
-                          .read<AppThemeCubit>()
-                          .state
-                          .textTheme
-                          .productItemPriceNumberTextStyle,
+                      style: context.read<AppThemeCubit>().state.textTheme.productItemPriceNumberTextStyle,
                     ),
                     SizedBox(width: 2),
                     AppText(
                       'p/month',
-                      style: context
-                          .read<AppThemeCubit>()
-                          .state
-                          .textTheme
-                          .productItemPriceTextStyle,
+                      style: context.read<AppThemeCubit>().state.textTheme.productItemPriceTextStyle,
                     ),
                   ],
                 ),
                 SizedBox(height: 4),
                 AppText(
                   'Сamera lens',
-                  style: context
-                      .read<AppThemeCubit>()
-                      .state
-                      .textTheme
-                      .productItemNameTextStyle,
+                  style: context.read<AppThemeCubit>().state.textTheme.productItemNameTextStyle,
                 ),
                 SizedBox(height: 11),
                 Row(
@@ -79,11 +63,7 @@ class RecommendedItem extends StatelessWidget {
                     SizedBox(width: 5),
                     AppText(
                       'Camas, WA',
-                      style: context
-                          .read<AppThemeCubit>()
-                          .state
-                          .textTheme
-                          .productItemLocationTextStyle,
+                      style: context.read<AppThemeCubit>().state.textTheme.productItemLocationTextStyle,
                     ),
                   ],
                 )

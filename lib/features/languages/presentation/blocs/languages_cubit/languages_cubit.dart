@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:rogo/core/usecase/usecase.dart';
 
-import 'package:rogo/features/languages/domain/entities/language.dart';
-import 'package:rogo/features/languages/domain/usecases/get_all_languages_usecase.dart';
+import '../../../../../core/usecase/usecase.dart';
+import '../../../domain/entities/language.dart';
+import '../../../domain/usecases/get_all_languages_usecase.dart';
 
 part 'languages_state.dart';
 

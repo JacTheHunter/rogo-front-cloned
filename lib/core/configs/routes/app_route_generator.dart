@@ -18,8 +18,7 @@ class AppRouteGenerator {
     switch (settings.name) {
       case AppRoutes.onboardingPage:
         return PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) =>
-              OnBoardingPage(),
+          pageBuilder: (context, animation, secondaryAnimation) => OnBoardingPage(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return slideFromRight(animation, child);
           },

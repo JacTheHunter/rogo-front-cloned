@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:rogo/core/usecase/usecase.dart';
-import 'package:rogo/features/authentication/domain/entities/user.dart';
-import 'package:rogo/features/authentication/domain/usecases/get_current_user_usecase.dart';
+
+import '../../../../../core/usecase/usecase.dart';
+import '../../../domain/entities/user.dart';
+import '../../../domain/usecases/get_current_user_usecase.dart';
 
 part 'authentication_state.dart';
 

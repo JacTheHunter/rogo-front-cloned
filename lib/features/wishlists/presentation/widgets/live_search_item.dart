@@ -18,11 +18,7 @@ class LiveSearchItem extends StatelessWidget {
       height: 140,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
-        color: context
-            .read<AppThemeCubit>()
-            .state
-            .appColors
-            .productItemBackgroundColor,
+        color: context.read<AppThemeCubit>().state.appColors.productItemBackgroundColor,
       ),
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.start,
@@ -52,27 +48,15 @@ class LiveSearchItem extends StatelessWidget {
                     children: [
                       AppText(
                         '\$50-\$100',
-                        style: context
-                            .read<AppThemeCubit>()
-                            .state
-                            .textTheme
-                            .wishlistsProductItemPriceNumberTextStyle,
+                        style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemPriceNumberTextStyle,
                       ),
                       SizedBox(width: 4),
                       AppText(
                         'p/day',
-                        style: context
-                            .read<AppThemeCubit>()
-                            .state
-                            .textTheme
-                            .wishlistsProductItemPriceTextStyle,
+                        style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemPriceTextStyle,
                       ),
                       Spacer(),
-                      context
-                          .read<AppThemeCubit>()
-                          .state
-                          .appIcons
-                          .favoriteIcon,
+                      context.read<AppThemeCubit>().state.appIcons.favoriteIcon,
                     ],
                   ),
                 ),
@@ -82,11 +66,7 @@ class LiveSearchItem extends StatelessWidget {
                   child: AppText(
                     'Vinyl Photography Background',
                     maxLines: 2,
-                    style: context
-                        .read<AppThemeCubit>()
-                        .state
-                        .textTheme
-                        .wishlistsProductItemNameTextStyle,
+                    style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemNameTextStyle,
                   ),
                 ),
                 Spacer(),
@@ -99,11 +79,7 @@ class LiveSearchItem extends StatelessWidget {
                     SizedBox(width: 5),
                     AppText(
                       'Camas, WA',
-                      style: context
-                          .read<AppThemeCubit>()
-                          .state
-                          .textTheme
-                          .productItemLocationTextStyle,
+                      style: context.read<AppThemeCubit>().state.textTheme.productItemLocationTextStyle,
                     ),
                   ],
                 )

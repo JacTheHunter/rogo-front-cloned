@@ -8,8 +8,7 @@ import '../repositories/top_sellers_repository.dart';
 class GetTopSellersUsecase extends UseCase<List<TopSeller>, NoParams> {
   final TopSellersRepository _repository;
 
-  GetTopSellersUsecase({required TopSellersRepository repository})
-      : _repository = repository;
+  GetTopSellersUsecase({required TopSellersRepository repository}) : _repository = repository;
 
   @override
   Future<Either<Failure, List<TopSeller>>> call(NoParams params) async {

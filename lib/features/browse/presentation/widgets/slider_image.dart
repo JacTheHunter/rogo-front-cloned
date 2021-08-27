@@ -22,8 +22,7 @@ class SliderImage extends StatelessWidget {
       children: [
         CarouselSlider.builder(
           itemCount: 3,
-          itemBuilder: (BuildContext context, int itemIndex, _) =>
-              Stack(
+          itemBuilder: (BuildContext context, int itemIndex, _) => Stack(
             children: [
               AppImage.asset(
                 AppImages.raster.productRandom,
@@ -47,11 +46,7 @@ class SliderImage extends StatelessWidget {
                       SizedBox(width: 5),
                       AppText(
                         '${itemIndex + 1}/3',
-                        style: context
-                            .read<AppThemeCubit>()
-                            .state
-                            .textTheme
-                            .browseItemImageCountTextStyle,
+                        style: context.read<AppThemeCubit>().state.textTheme.browseItemImageCountTextStyle,
                       ),
                     ],
                   ),
@@ -73,21 +68,13 @@ class SliderImage extends StatelessWidget {
           left: MediaQuery.of(context).size.width * .03,
           child: GestureDetector(
             onTap: () => sl<NavigatorService>().pop(),
-            child: context
-                .read<AppThemeCubit>()
-                .state
-                .appIcons
-                .browseItemArrowLeftIcon,
+            child: context.read<AppThemeCubit>().state.appIcons.browseItemArrowLeftIcon,
           ),
         ),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.28,
           left: MediaQuery.of(context).size.width * 0.85,
-          child: context
-              .read<AppThemeCubit>()
-              .state
-              .appIcons
-              .browseItemEmptyHeartIcon,
+          child: context.read<AppThemeCubit>().state.appIcons.browseItemEmptyHeartIcon,
         ),
       ],
     );

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:rogo/features/browse/domain/entities/top_seller.dart';
 
 import '../../../../../core/usecase/usecase.dart';
+import '../../../domain/entities/top_seller.dart';
 import '../../../domain/usecases/get_top_sellers_usecase.dart';
 
 part 'top_sellers_state.dart';

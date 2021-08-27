@@ -41,21 +41,13 @@ class HaitiButton extends StatelessWidget {
                 child: child ??
                     AppText(
                       text,
-                      style: context
-                          .read<AppThemeCubit>()
-                          .state
-                          .textTheme
-                          .haitiButtonTextStyle,
+                      style: context.read<AppThemeCubit>().state.textTheme.haitiButtonTextStyle,
                     ),
               )
             : child ??
                 AppText(
                   text,
-                  style: context
-                      .read<AppThemeCubit>()
-                      .state
-                      .textTheme
-                      .haitiButtonTextStyle,
+                  style: context.read<AppThemeCubit>().state.textTheme.haitiButtonTextStyle,
                 ),
       ),
     );

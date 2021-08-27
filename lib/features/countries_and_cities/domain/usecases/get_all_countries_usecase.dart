@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/usecase/usecase.dart';
-import 'package:rogo/features/countries_and_cities/domain/entities/country.dart';
-import 'package:rogo/features/countries_and_cities/domain/repositories/countries_and_cities_repository.dart';
+
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../entities/country.dart';
+import '../repositories/countries_and_cities_repository.dart';
 
 class GetAllCountriesUseCase extends UseCase<List<Country>, NoParams> {
   final CountriesAndCitiesRepository _repository;

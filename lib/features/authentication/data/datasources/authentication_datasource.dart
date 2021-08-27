@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:rogo/core/configs/constants/api.dart';
-import 'package:rogo/core/error/exceptions.dart';
-import 'package:rogo/core/injection/injection_container.dart';
-import 'package:rogo/core/services/api_service.dart';
-import 'package:rogo/core/services/box_service.dart';
-import 'package:rogo/features/authentication/data/models/user_model.dart';
-import 'package:rogo/features/authentication/domain/entities/user.dart';
+
+import '../../../../core/configs/constants/api.dart';
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/injection/injection_container.dart';
+import '../../../../core/services/api_service.dart';
+import '../../../../core/services/box_service.dart';
+import '../../domain/entities/user.dart';
+import '../models/user_model.dart';
 
 abstract class AuthenticationDatasource {
   Future<User> getCurrentUser();
@@ -39,7 +40,7 @@ class AuthenticationDatasourceImpl implements AuthenticationDatasource {
           },
         ),
       );
-      
+
       // await Future.delayed(Duration(seconds: 2));
       return UserModel.fromJson(result.data);
     } on ServerException catch (exception) {

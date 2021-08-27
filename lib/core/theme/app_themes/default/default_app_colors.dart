@@ -1,8 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
-import 'package:rogo/core/theme/app_colors.dart';
+
+import '../../app_color_scheme.dart';
+import '../../app_colors.dart';
 
 class DefaultAppColors extends AppColors {
   @override

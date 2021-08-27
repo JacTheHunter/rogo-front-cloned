@@ -10,7 +10,6 @@ abstract class AppTextTheme {
   TextStyle get haitiButtonTextStyle;
   TextStyle get itemDescriptionTitle;
   TextStyle get itemDescription;
-  
 
   TextStyle get authenticationTitleTextStyle;
   TextStyle get authenticationSubTitleTextStyle;
@@ -69,9 +68,6 @@ abstract class AppTextTheme {
   TextStyle get browseItemRatingTextStyle;
   TextStyle get browseItemLanguagesTextStyle;
   TextStyle get browseItemImageCountTextStyle;
-
-
-  
 
   TextStyle get bottomSheetTitleTextStyle;
   TextStyle get bottomSheetButtonTextStyle;

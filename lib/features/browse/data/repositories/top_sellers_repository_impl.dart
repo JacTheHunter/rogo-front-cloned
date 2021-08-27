@@ -9,8 +9,7 @@ import '../datasources/top_sellers_data_source.dart';
 class TopSellersRepositoryImpl implements TopSellersRepository {
   final TopSellersDataSource _topSellersDataSource;
 
-  TopSellersRepositoryImpl(
-      {required TopSellersDataSource topSellersDataSource})
+  TopSellersRepositoryImpl({required TopSellersDataSource topSellersDataSource})
       : _topSellersDataSource = topSellersDataSource;
 
   @override

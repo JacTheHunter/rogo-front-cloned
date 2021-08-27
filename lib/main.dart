@@ -154,8 +154,7 @@ class App extends StatelessWidget {
                     theme: ThemeData(
                       primaryColor: state.appColors.primaryColor,
                       fontFamily: state.fontFamily,
-                      scaffoldBackgroundColor:
-                          state.appColors.scaffoldBackgroundColor,
+                      scaffoldBackgroundColor: state.appColors.scaffoldBackgroundColor,
                     ),
                     initialRoute: AppRoutes.mainPage,
                   );

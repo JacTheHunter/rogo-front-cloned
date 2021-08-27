@@ -13,8 +13,6 @@ class TopSellerModel extends TopSeller {
     required this.image,
   }) : super(id: id, image: image, seller: seller);
 
-  
-
   Map<String, dynamic> toMap() {
     return {
       'id': id,
