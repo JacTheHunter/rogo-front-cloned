@@ -30,7 +30,6 @@ class AuthenticationDatasourceImpl implements AuthenticationDatasource {
   @override
   Future<User> getCurrentUser() async {
     final jwt = sl<BoxService>().appSettings.get('jwt');
-    print(jwt);
     try {
       final result = await _client.get(
         k_API_END_POINT_USER_MY_PROFILE,

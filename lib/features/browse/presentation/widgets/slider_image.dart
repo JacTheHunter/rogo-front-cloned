@@ -17,6 +17,8 @@ class SliderImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final querySize = MediaQuery.of(context).size;
+
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -30,8 +32,8 @@ class SliderImage extends StatelessWidget {
                 width: double.infinity,
               ),
               Positioned(
-                top: MediaQuery.of(context).size.height * 0.275,
-                left: MediaQuery.of(context).size.width * .03,
+                top: querySize.height * 0.275,
+                left: querySize.width * .03,
                 child: Container(
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
@@ -64,16 +66,16 @@ class SliderImage extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: MediaQuery.of(context).size.height * .06,
-          left: MediaQuery.of(context).size.width * .03,
+          top: querySize.height * .06,
+          left: querySize.width * .03,
           child: GestureDetector(
             onTap: () => sl<NavigatorService>().pop(),
             child: context.read<AppThemeCubit>().state.appIcons.browseItemArrowLeftIcon,
           ),
         ),
         Positioned(
-          top: MediaQuery.of(context).size.height * 0.28,
-          left: MediaQuery.of(context).size.width * 0.85,
+          top: querySize.height * 0.28,
+          left: querySize.width * 0.85,
           child: context.read<AppThemeCubit>().state.appIcons.browseItemEmptyHeartIcon,
         ),
       ],
