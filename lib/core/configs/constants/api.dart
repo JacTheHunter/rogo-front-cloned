@@ -9,4 +9,9 @@ const String k_API_END_POINT_USER_MY_PROFILE = '/user/my-profile/';
 const String k_API_END_POINT_COUNTRY = '/country/';
 const String k_API_END_POINT_CITY = '/city/';
 
+const String k_API_END_POINT_POFILE = '/profile';
+const String k_API_END_POINT_TOP_SELLERS = '/topsellers/';
+const String k_API_END_POINT_CATEGORIES = '/category/';
+
+
 const String k_API_END_POINT_LANGUAGES = '/languages/';

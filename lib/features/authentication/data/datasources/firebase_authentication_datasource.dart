@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:rogo/core/error/exceptions.dart';
-import 'package:rogo/features/authentication/data/models/firebase_user_model.dart';
-import 'package:rogo/features/authentication/domain/entities/firebase_user.dart';
+
+import '../../../../core/error/exceptions.dart';
+import '../../domain/entities/firebase_user.dart';
+import '../models/firebase_user_model.dart';
 
 abstract class FirebaseAuthenticationDatasource {
   Future<FirebaseUser> createUserWithEmailAndPasswordInFirebase({required String email, required String password});

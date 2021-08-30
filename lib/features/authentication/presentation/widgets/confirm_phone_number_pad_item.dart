@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/features/authentication/presentation/blocs/phone_verification_cubit/phone_verification_cubit.dart';
+
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../blocs/phone_verification_cubit/phone_verification_cubit.dart';
 
 class ConfirmPhoneNumberPadItem extends StatelessWidget {
   final String text;

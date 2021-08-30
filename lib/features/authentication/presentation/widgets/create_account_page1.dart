@@ -1,17 +1,18 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:formz/formz.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text_form_field.dart';
-import 'package:rogo/core/presentation/pages/widgets/simple_button.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/features/authentication/presentation/blocs/create_account_cubit/create_account_cubit.dart';
+
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_image.dart';
+import '../../../../core/presentation/pages/widgets/app_loader.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
+import '../../../../core/presentation/pages/widgets/app_text_form_field.dart';
+import '../../../../core/presentation/pages/widgets/simple_button.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../blocs/create_account_cubit/create_account_cubit.dart';
 
 class CreateAccountPage1 extends StatelessWidget {
   final CreateAccountState state;

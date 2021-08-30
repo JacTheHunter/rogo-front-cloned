@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:formz/formz.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/presentation/pages/widgets/simple_button.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
-import 'package:rogo/features/authentication/presentation/blocs/create_account_cubit/create_account_cubit.dart';
-import 'package:rogo/features/authentication/presentation/widgets/language_wrap_item.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/features/authentication/presentation/widgets/languages_sheet.dart';
-import 'package:rogo/features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
+import 'package:formz/formz.dart';
 
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_loader.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
+import '../../../../core/presentation/pages/widgets/simple_button.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../languages/presentation/blocs/languages_cubit/languages_cubit.dart';
+import '../blocs/create_account_cubit/create_account_cubit.dart';
 import 'add_languages_button.dart';
+import 'language_wrap_item.dart';
+import 'languages_sheet.dart';
 
 class CreateAccountPage3 extends StatelessWidget {
   final CreateAccountState state;

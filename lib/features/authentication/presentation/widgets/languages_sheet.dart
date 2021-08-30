@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:rogo/core/injection/injection_container.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text_form_field.dart';
-import 'package:rogo/core/services/navigation_service.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/features/authentication/presentation/widgets/language_list_item.dart';
-import 'package:rogo/features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
+
+import '../../../../core/injection/injection_container.dart';
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
+import '../../../../core/presentation/pages/widgets/app_text_form_field.dart';
+import '../../../../core/services/navigation_service.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../languages/presentation/blocs/languages_cubit/languages_cubit.dart';
+import 'language_list_item.dart';
 
 class LanguagesSheet extends StatelessWidget {
   const LanguagesSheet({Key? key}) : super(key: key);

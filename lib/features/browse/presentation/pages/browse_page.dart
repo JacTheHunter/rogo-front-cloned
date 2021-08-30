@@ -86,7 +86,7 @@ class BrowsePage extends StatelessWidget {
                     borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
                     color: context.read<AppThemeCubit>().state.appColors.sliverAppBarBackgroundColor,
                   ),
-                  padding: const EdgeInsets.fromLTRB(20, 30, 20, 16),
+                  padding: const EdgeInsets.fromLTRB(20, 30, 20, 24),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -134,7 +134,6 @@ class BrowsePage extends StatelessWidget {
                         hintText: 'browse.browsePage.whatAreYouLookingFor',
                         hintStyle: context.read<AppThemeCubit>().state.textTheme.searchInputHintTextStyle,
                       ),
-                      SizedBox(height: 10),
                     ],
                   ),
                 ),

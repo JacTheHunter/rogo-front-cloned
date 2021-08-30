@@ -68,6 +68,22 @@
       "reviews": "reviews",
       "topSellers": "Top Sellers",
       "whatAreYouLookingFor": "What are you looking for"
+    },
+    "browseItemPage": {
+      "description": "Description",
+      "pickUpAndDrop": "Pick up and drop",
+      "itemUponReturn": "Item upon return",
+      "reviews": "reviews"
+    }
+  },
+  "wishlists": {
+    "wishlistsPage": {
+      "feed": "Feed",
+      "liveSearch": "Live-search",
+      "description": "Description",
+      "pickUpAndDrop": "Pick up and drop",
+      "itemUponReturn": "Item upon return",
+      "reviews": "reviews"
     }
   },
   "onboarding": {

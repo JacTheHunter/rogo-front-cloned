@@ -1,4 +1,4 @@
-import 'package:rogo/features/authentication/domain/entities/user.dart';
+import '../../domain/entities/user.dart';
 
 class UserModel extends User {
   final int id;

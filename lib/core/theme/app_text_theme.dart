@@ -7,6 +7,9 @@ abstract class AppTextTheme {
 
   TextStyle get textButtonTextStyle;
   TextStyle get simpleButtonTextStyle;
+  TextStyle get haitiButtonTextStyle;
+  TextStyle get itemDescriptionTitle;
+  TextStyle get itemDescription;
 
   TextStyle get authenticationTitleTextStyle;
   TextStyle get authenticationSubTitleTextStyle;
@@ -52,6 +55,19 @@ abstract class AppTextTheme {
   TextStyle get profileAvatarLettersTextStyle;
   TextStyle get profileNameTextStyle;
   TextStyle get profileReviewsTextStyle;
+
+  TextStyle get wishlistsProductItemPriceNumberTextStyle;
+  TextStyle get wishlistsProductItemPriceTextStyle;
+  TextStyle get wishlistsProductItemNameTextStyle;
+
+  TextStyle get browseItemPriceNumberTextStyle;
+  TextStyle get browseItemPriceTextStyle;
+  TextStyle get browseItemNameTextStyle;
+  TextStyle get browseItemLocationTextStyle;
+  TextStyle get browseItemRatingNumberTextStyle;
+  TextStyle get browseItemRatingTextStyle;
+  TextStyle get browseItemLanguagesTextStyle;
+  TextStyle get browseItemImageCountTextStyle;
 
   TextStyle get bottomSheetTitleTextStyle;
   TextStyle get bottomSheetButtonTextStyle;

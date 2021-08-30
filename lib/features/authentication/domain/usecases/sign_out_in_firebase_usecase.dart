@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/usecase/usecase.dart';
-import 'package:rogo/features/authentication/domain/repositories/firebase_authentication_repository.dart';
+
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../repositories/firebase_authentication_repository.dart';
 
 class SignOutInFirebaseUseCase extends UseCase<bool, NoParams> {
   final FirebaseAuthenticationRepository _repository;

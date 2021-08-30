@@ -3,11 +3,12 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/injection/injection_container.dart';
-import 'package:rogo/core/services/navigation_service.dart';
-import 'package:rogo/features/authentication/domain/usecases/update_phone_number_in_firebase_usecase.dart';
-import 'package:rogo/features/authentication/presentation/blocs/create_account_cubit/create_account_cubit.dart';
+
+import '../../../../../core/error/failures.dart';
+import '../../../../../core/injection/injection_container.dart';
+import '../../../../../core/services/navigation_service.dart';
+import '../../../domain/usecases/update_phone_number_in_firebase_usecase.dart';
+import '../create_account_cubit/create_account_cubit.dart';
 
 part 'phone_verification_state.dart';
 

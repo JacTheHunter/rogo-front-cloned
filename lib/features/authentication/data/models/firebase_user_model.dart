@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:rogo/features/authentication/domain/entities/firebase_user.dart';
+
+import '../../domain/entities/firebase_user.dart';
 
 class FirebaseUserModel extends FirebaseUser {
   final String uid;

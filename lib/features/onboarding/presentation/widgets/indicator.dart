@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 
 class Indicator extends StatelessWidget {
   final bool isCurrent;

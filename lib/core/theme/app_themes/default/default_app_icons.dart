@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rogo/core/configs/constants/app_images.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
-import 'package:rogo/core/theme/app_icons.dart';
 
+import '../../../configs/constants/app_images.dart';
+import '../../../presentation/pages/widgets/app_image.dart';
 import '../../app_color_scheme.dart';
+import '../../app_icons.dart';
 
 class DefaultAppIcons extends AppIcons {
   @override
@@ -96,6 +96,51 @@ class DefaultAppIcons extends AppIcons {
       );
 
   @override
+  Widget get favoriteIcon => AppImage.asset(AppImages.vector.heart);
+
+  @override
+  Widget get browseItemArrowLeftIcon => AppImage.asset(AppImages.vector.arrowLeftWithOpacity, width: 38);
+
+  @override
+  Widget get browseItemEmptyHeartIcon => Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 3,
+              blurRadius: 9,
+              offset: Offset(0, 5),
+            ),
+          ],
+        ),
+        child: CircleAvatar(
+          radius: 26,
+          backgroundColor: Colors.white,
+          child: AppImage.asset(
+            AppImages.vector.heartEmpty,
+            color: AppColorScheme.hollywoodCerise,
+            width: 33,
+          ),
+        ),
+      );
+
+  @override
+  Widget get locationIconWithPinkTone => Container(
+        height: 24,
+        width: 24,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: AppColorScheme.pinkLace,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: AppImage.asset(
+          AppImages.vector.location,
+          height: 14,
+        ),
+      );
+
   Widget get searchClearIcon => AppImage.asset(
         AppImages.vector.xCircle,
         height: 20,

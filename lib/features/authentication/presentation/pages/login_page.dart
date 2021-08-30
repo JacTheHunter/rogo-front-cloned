@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:formz/formz.dart';
-import 'package:rogo/core/configs/constants/app_images.dart';
-import 'package:rogo/core/configs/constants/app_routes.dart';
-import 'package:rogo/core/form_models/email_form_model.dart';
-import 'package:rogo/core/form_models/password_form_model.dart';
-import 'package:rogo/core/injection/injection_container.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text_form_field.dart';
-import 'package:rogo/core/presentation/pages/widgets/simple_button.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/core/services/navigation_service.dart';
-import 'package:rogo/features/authentication/presentation/blocs/firebase_authentication_bloc/firebase_authentication_bloc.dart';
-import 'package:rogo/features/authentication/presentation/blocs/login_cubit/login_cubit.dart';
-import 'package:rogo/features/authentication/presentation/widgets/guest_mode.dart';
-import 'package:rogo/features/authentication/presentation/widgets/login_method_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
+
+import '../../../../core/configs/constants/app_images.dart';
+import '../../../../core/configs/constants/app_routes.dart';
+import '../../../../core/form_models/email_form_model.dart';
+import '../../../../core/form_models/password_form_model.dart';
+import '../../../../core/injection/injection_container.dart';
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_image.dart';
+import '../../../../core/presentation/pages/widgets/app_loader.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
+import '../../../../core/presentation/pages/widgets/app_text_form_field.dart';
+import '../../../../core/presentation/pages/widgets/simple_button.dart';
+import '../../../../core/services/navigation_service.dart';
+import '../blocs/firebase_authentication_bloc/firebase_authentication_bloc.dart';
+import '../blocs/login_cubit/login_cubit.dart';
+import '../widgets/guest_mode.dart';
+import '../widgets/login_method_button.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);

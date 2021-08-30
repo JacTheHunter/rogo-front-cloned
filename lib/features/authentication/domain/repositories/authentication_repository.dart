@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/features/authentication/domain/entities/user.dart';
+
+import '../../../../core/error/failures.dart';
+import '../entities/user.dart';
 
 abstract class AuthenticationRepository {
   Future<Either<Failure, User>> getCurrentUser();

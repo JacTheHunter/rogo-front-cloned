@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/usecase/usecase.dart';
-import 'package:rogo/features/authentication/domain/repositories/firebase_authentication_repository.dart';
+
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../repositories/firebase_authentication_repository.dart';
 
 class VerifyPhoneNumberInFirebaseUseCase extends UseCase<bool, Params> {
   final FirebaseAuthenticationRepository _repository;

@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/features/authentication/domain/entities/firebase_user.dart';
+
+import '../../../../core/error/failures.dart';
+import '../entities/firebase_user.dart';
 
 abstract class FirebaseAuthenticationRepository {
   Future<Either<Failure, FirebaseUser>> createUserWithEmailAndPasswordInFirebase(

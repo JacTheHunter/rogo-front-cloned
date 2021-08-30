@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/usecase/usecase.dart';
-import 'package:rogo/features/authentication/domain/entities/user.dart';
-import 'package:rogo/features/authentication/domain/repositories/authentication_repository.dart';
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../entities/user.dart';
+import '../repositories/authentication_repository.dart';
 
 class RegisterUserUseCase extends UseCase<User, Params> {
   final AuthenticationRepository _repository;

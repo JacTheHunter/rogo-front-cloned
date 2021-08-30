@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:rogo/core/configs/constants/api.dart';
-import 'package:rogo/core/error/exceptions.dart';
+
+import '../configs/constants/api.dart';
+import '../error/exceptions.dart';
 
 class ApiService {
   late Dio _dio;

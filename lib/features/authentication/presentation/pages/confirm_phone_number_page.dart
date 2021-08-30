@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_app_bar.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
-import 'package:rogo/core/theme/app_color_scheme.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/features/authentication/presentation/blocs/phone_verification_cubit/phone_verification_cubit.dart';
-import 'package:rogo/features/authentication/presentation/widgets/confirm_phone_number_code_item.dart';
-import 'package:rogo/features/authentication/presentation/widgets/confirm_phone_number_pad_item.dart';
+
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_app_bar.dart';
+import '../../../../core/presentation/pages/widgets/app_loader.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../blocs/phone_verification_cubit/phone_verification_cubit.dart';
+import '../widgets/confirm_phone_number_code_item.dart';
+import '../widgets/confirm_phone_number_pad_item.dart';
 
 class ConfirmPhoneNumberPage extends StatefulWidget {
   const ConfirmPhoneNumberPage({

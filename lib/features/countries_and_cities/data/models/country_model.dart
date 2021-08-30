@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:rogo/features/countries_and_cities/domain/entities/country.dart';
+import '../../domain/entities/country.dart';
 
 class CountryModel extends Country {
   final int id;

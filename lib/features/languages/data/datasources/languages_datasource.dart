@@ -1,8 +1,8 @@
-import 'package:rogo/core/configs/constants/api.dart';
-import 'package:rogo/core/error/exceptions.dart';
-import 'package:rogo/core/services/api_service.dart';
-import 'package:rogo/features/languages/data/models/language_model.dart';
-import 'package:rogo/features/languages/domain/entities/language.dart';
+import '../../../../core/configs/constants/api.dart';
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/services/api_service.dart';
+import '../../domain/entities/language.dart';
+import '../models/language_model.dart';
 
 abstract class LanguagesDatasource {
   Future<List<Language>> getAllLanguages();

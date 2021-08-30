@@ -13,6 +13,14 @@ abstract class AppIcons {
 
   Widget get searchIcon;
   Widget get searchFilterIcon;
+
+  Widget get favoriteIcon;
+
+  Widget get browseItemArrowLeftIcon;
+  Widget get browseItemEmptyHeartIcon;
+
+  Widget get locationIconWithPinkTone;
+
   Widget get searchClearIcon;
 
   Widget get addLanguageButtonIcon;

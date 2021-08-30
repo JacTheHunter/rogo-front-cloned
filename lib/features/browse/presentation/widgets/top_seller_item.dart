@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_translate/flutter_translate.dart';
-import 'package:rogo/core/configs/constants/app_images.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_image.dart';
-import 'package:rogo/core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_translate/flutter_translate.dart';
+
+import '../../../../core/configs/constants/app_images.dart';
+import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_image.dart';
+import '../../../../core/presentation/pages/widgets/app_text.dart';
 
 class TopSellerItem extends StatelessWidget {
   final String name;
@@ -29,11 +30,11 @@ class TopSellerItem extends StatelessWidget {
       padding: const EdgeInsets.only(right: 24),
       child: Column(
         children: [
-          AppImage.asset(
+          AppImage.network(
             bannerImage,
             width: 220,
             height: 120,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
             borderRadius: BorderRadius.circular(8),
           ),
           SizedBox(height: 9),
@@ -46,12 +47,18 @@ class TopSellerItem extends StatelessWidget {
                 fit: BoxFit.contain,
                 borderRadius: BorderRadius.circular(12),
               ),
+              // SizedBox(width: 16.2),
               Spacer(),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppText(
-                    name,
-                    style: context.read<AppThemeCubit>().state.textTheme.topSellerNameTextStyle,
+                  Container(
+                    width: 128,
+                    child: AppText(
+                      name,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.read<AppThemeCubit>().state.textTheme.topSellerNameTextStyle,
+                    ),
                   ),
                   SizedBox(height: 4),
                   Row(

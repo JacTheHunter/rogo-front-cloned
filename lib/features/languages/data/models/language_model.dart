@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:rogo/features/languages/domain/entities/language.dart';
+import '../../domain/entities/language.dart';
 
 class LanguageModel extends Language {
   final int id;

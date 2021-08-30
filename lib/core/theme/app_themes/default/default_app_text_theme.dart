@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../../app_color_scheme.dart';
@@ -118,7 +120,6 @@ class DefaultAppTextTheme extends AppTextTheme {
         color: AppColorScheme.lilac,
       );
 
-  @override
   TextStyle get inputGroupTitleTextStyle => TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w500,
@@ -195,6 +196,12 @@ class DefaultAppTextTheme extends AppTextTheme {
       );
 
   @override
+  TextStyle get haitiButtonTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.haiti,
+      );
+
   TextStyle get productItemPriceNumberTextStyle => TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w600,
@@ -254,6 +261,91 @@ class DefaultAppTextTheme extends AppTextTheme {
       );
 
   @override
+  TextStyle get wishlistsProductItemPriceNumberTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+      );
+
+  @override
+  TextStyle get wishlistsProductItemNameTextStyle => TextStyle(
+        fontSize: 14,
+      );
+
+  @override
+  TextStyle get wishlistsProductItemPriceTextStyle => TextStyle(
+        fontSize: 14,
+        color: AppColorScheme.lilac,
+      );
+
+  @override
+  TextStyle get browseItemLocationTextStyle => TextStyle(
+        fontSize: 14,
+        color: AppColorScheme.haiti06,
+      );
+
+  @override
+  TextStyle get browseItemNameTextStyle => TextStyle(
+        fontSize: 18,
+        color: AppColorScheme.haiti,
+        fontWeight: FontWeight.w500,
+      );
+
+  @override
+  TextStyle get browseItemPriceNumberTextStyle => TextStyle(
+        fontSize: 24,
+        color: AppColorScheme.haiti,
+        fontWeight: FontWeight.w700,
+      );
+
+  @override
+  TextStyle get browseItemPriceTextStyle => TextStyle(
+        fontSize: 24,
+        color: AppColorScheme.haiti,
+        fontWeight: FontWeight.w700,
+      );
+
+  @override
+  TextStyle get itemDescriptionTitle => TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.haiti,
+      );
+
+  @override
+  TextStyle get itemDescription => TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: AppColorScheme.haiti06,
+      );
+
+  @override
+  TextStyle get browseItemRatingNumberTextStyle => TextStyle(
+        fontSize: 12,
+        color: AppColorScheme.haiti,
+        fontWeight: FontWeight.w600,
+      );
+
+  @override
+  TextStyle get browseItemRatingTextStyle => TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: AppColorScheme.haiti06,
+      );
+
+  @override
+  TextStyle get browseItemLanguagesTextStyle => TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: AppColorScheme.haiti,
+      );
+
+  @override
+  TextStyle get browseItemImageCountTextStyle => TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.white,
+      );
+
   TextStyle get languageSelectBottomSheetLanguageTextStyle => TextStyle(
         fontSize: 18,
         color: AppColorScheme.haiti06,

@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
-import 'package:rogo/features/authentication/presentation/blocs/authentication_cubit/authentication_cubit.dart';
-import 'package:rogo/features/authentication/presentation/pages/create_account_page.dart';
-import 'package:rogo/features/browse/presentation/pages/browse_page.dart';
-import 'package:rogo/features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
-import 'package:rogo/features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
 
+import '../../../features/authentication/presentation/blocs/authentication_cubit/authentication_cubit.dart';
 import '../../../features/authentication/presentation/blocs/firebase_authentication_bloc/firebase_authentication_bloc.dart';
+import '../../../features/authentication/presentation/pages/create_account_page.dart';
 import '../../../features/authentication/presentation/pages/login_page.dart';
+import '../../../features/browse/presentation/bloc/cubit/top_sellers_cubit.dart';
+import '../../../features/browse/presentation/pages/browse_page.dart';
+import '../../../features/categories/presentation/bloc/categories_cubit/categories_cubit.dart';
+import '../../../features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
+import '../../../features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
 import '../../../features/profile/presentation/pages/profile_page.dart';
+import '../../../features/wishlists/presentation/pages/wishlists_page.dart';
 import '../blocs/app_nav_bar_cubit/app_nav_bar_cubit.dart';
 import '../blocs/app_theme_cubit/app_theme_cubit.dart';
 import 'widgets/app_bottom_nav_bar.dart';
+import 'widgets/app_loader.dart';
 import 'widgets/app_text.dart';
 
 class MainPage extends StatefulWidget {
@@ -77,7 +80,8 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<FirebaseAuthenticationBloc, FirebaseAuthenticationState>(
+    return BlocConsumer<FirebaseAuthenticationBloc,
+        FirebaseAuthenticationState>(
       listener: (context, state) {
         print(state.status);
         if (state.status == FirebaseAuthenticationStatus.authenticated) {
@@ -91,6 +95,10 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
           return BlocConsumer<AuthenticationCubit, AuthenticationState>(
             listener: (context, state) {
               print(state.currentUser);
+              if (state.authenticated) {
+                context.read<CategoriesCubit>().fetchCategories();
+                context.read<TopSellersCubit>().fetchTopSellers();
+              }
             },
             builder: (context, state) {
               if (state.status == AuthenticationStatus.loading) {
@@ -112,9 +120,15 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                     ),
                     floatingActionButton: FloatingActionButton(
                       onPressed: () {
-                        context.read<FirebaseAuthenticationBloc>().add(FirebaseAuthenticationLogoutRequested());
+                        context
+                            .read<FirebaseAuthenticationBloc>()
+                            .add(FirebaseAuthenticationLogoutRequested());
                       },
-                      backgroundColor: context.read<AppThemeCubit>().state.appColors.primaryColor,
+                      backgroundColor: context
+                          .read<AppThemeCubit>()
+                          .state
+                          .appColors
+                          .primaryColor,
                       child: Icon(Icons.exit_to_app),
                     ),
                     body: PageView.builder(
@@ -140,9 +154,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
       case 0:
         return BrowsePage();
       case 1:
-        return Center(
-          child: AppText(currentIndex.toString()),
-        );
+        return WhishListsPage();
       case 2:
         return Center(
           child: AppText(currentIndex.toString()),

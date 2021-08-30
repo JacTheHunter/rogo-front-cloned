@@ -22,5 +22,7 @@ abstract class AppColors {
 
   Color get profileAvatarBackgroundColor;
 
+  Color get sliverWishlistsAppBarBackgroundColor;
+
   Gradient get createAccountHeaderGradient;
 }

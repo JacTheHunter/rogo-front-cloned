@@ -1,9 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/form_models/email_form_model.dart';
-import 'package:rogo/features/authentication/domain/usecases/send_password_reset_email_in_firebase_usecase.dart';
+
+import '../../../../../core/error/failures.dart';
+import '../../../../../core/form_models/email_form_model.dart';
+import '../../../domain/usecases/send_password_reset_email_in_firebase_usecase.dart';
 
 part 'forgot_password_state.dart';
 

@@ -8,6 +8,7 @@ import 'package:rogo/features/authentication/presentation/pages/confirm_phone_nu
 import 'package:rogo/features/authentication/presentation/pages/forgot_password_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/login_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/sign_up_page.dart';
+import 'package:rogo/features/browse/presentation/pages/browse_item_page.dart';
 import 'package:rogo/features/onboarding/presentation/pages/onboarding_page.dart';
 
 class AppRouteGenerator {
@@ -69,6 +70,11 @@ class AppRouteGenerator {
       //     settings: RouteSettings(name: settings.name),
       //     builder: (_) => AppLockPage(),
       //   );
+      case AppRoutes.browseItemPage:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => BrowseItemPage(),
+        );
 
       case AppRoutes.mainPage:
         return CupertinoPageRoute(

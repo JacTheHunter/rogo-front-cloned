@@ -1,14 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/core/form_models/accept_policy_form_model.dart';
-import 'package:rogo/core/form_models/email_form_model.dart';
-import 'package:rogo/core/form_models/password_form_model.dart';
-import 'package:rogo/core/form_models/password_confirm_form_model.dart';
-import 'package:rogo/core/injection/injection_container.dart';
-import 'package:rogo/core/services/navigation_service.dart';
-import 'package:rogo/features/authentication/domain/usecases/create_user_with_email_and_password_in_firebase_usecase.dart';
+
+import '../../../../../core/error/failures.dart';
+import '../../../../../core/form_models/accept_policy_form_model.dart';
+import '../../../../../core/form_models/email_form_model.dart';
+import '../../../../../core/form_models/password_confirm_form_model.dart';
+import '../../../../../core/form_models/password_form_model.dart';
+import '../../../../../core/injection/injection_container.dart';
+import '../../../../../core/services/navigation_service.dart';
+import '../../../domain/usecases/create_user_with_email_and_password_in_firebase_usecase.dart';
 
 part 'sign_up_state.dart';
 

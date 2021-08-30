@@ -30,6 +30,9 @@ class Vector {
   String get search => 'assets/images/vector/search.svg';
   String get star => 'assets/images/vector/star.svg';
   String get location => 'assets/images/vector/location.svg';
+  String get arrowLeftWithOpacity => 'assets/images/vector/arrow_left_with_opacity.svg';
+  // String get browseItemProfileImage => 'assets/images/vector/vladlena.svg';
+  String get imageIcon => 'assets/images/vector/image.svg';
 
   String get plus => 'assets/images/vector/plus.svg';
   String get checkbox => 'assets/images/vector/checkbox.svg';
@@ -51,6 +54,7 @@ class Raster {
   String onboarding(int key) => 'assets/images/raster/onboarding_$key.png';
 
   String get sliverOverlay => 'assets/images/raster/sliver_overlay.png';
+  String get browseItemProfileImage => 'assets/images/raster/vladlena.png';
 
   String get categoryRandom => 'assets/images/raster/category_${_random.nextInt(2) + 1}.png';
   String get productRandom => 'assets/images/raster/product_${_random.nextInt(5) + 1}.png';

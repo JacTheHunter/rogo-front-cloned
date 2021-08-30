@@ -1,10 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:rogo/core/error/exceptions.dart';
-import 'package:rogo/core/error/failures.dart';
-import 'package:rogo/features/countries_and_cities/data/datasources/countries_and_cities_datasource.dart';
-import 'package:rogo/features/countries_and_cities/domain/entities/city.dart';
-import 'package:rogo/features/countries_and_cities/domain/entities/country.dart';
-import 'package:rogo/features/countries_and_cities/domain/repositories/countries_and_cities_repository.dart';
+
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/error/failures.dart';
+import '../../domain/entities/city.dart';
+import '../../domain/entities/country.dart';
+import '../../domain/repositories/countries_and_cities_repository.dart';
+import '../datasources/countries_and_cities_datasource.dart';
 
 class CountriesAndCitiesRepositoryImpl extends CountriesAndCitiesRepository {
   final CountriesAndCitiesDatasource _datasource;
