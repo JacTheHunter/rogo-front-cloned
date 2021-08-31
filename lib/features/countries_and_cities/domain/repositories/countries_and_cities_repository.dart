@@ -1,10 +1,17 @@
 import 'package:dartz/dartz.dart';
+import '../entities/paginated_cities.dart';
+import '../entities/paginated_countries.dart';
 
 import '../../../../core/error/failures.dart';
-import '../entities/city.dart';
-import '../entities/country.dart';
 
 abstract class CountriesAndCitiesRepository {
-  Future<Either<Failure, List<City>>> getAllCitiesOfSelectedCountry({required int countryId});
-  Future<Either<Failure, List<Country>>> getAllCountries();
+  Future<Either<Failure, PaginatedCities>> getAllCitiesOfSelectedCountry({
+    required int countryId,
+    int? page,
+    int? limit,
+  });
+  Future<Either<Failure, PaginatedCountries>> getAllCountries({
+    int? page,
+    int? limit,
+  });
 }

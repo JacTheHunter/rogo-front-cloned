@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../../core/usecase/usecase.dart';
 import '../../../domain/entities/top_seller.dart';
 import '../../../domain/usecases/get_top_sellers_usecase.dart';
 
@@ -16,10 +15,10 @@ class TopSellersCubit extends Cubit<TopSellersState> {
 
   void fetchTopSellers() async {
     emit(state.copyWith(isLoading: true));
-    final result = await _getTopSellersUsecase(NoParams());
+    final result = await _getTopSellersUsecase(TopSellersParams());
     result.fold(
       (failure) => emit(state.copyWith(errorMessage: failure.message)),
-      (topSellers) => emit(state.copyWith(topSellers: topSellers)),
+      (topSellers) => emit(state.copyWith(topSellers: topSellers.results)),
     );
   }
 }

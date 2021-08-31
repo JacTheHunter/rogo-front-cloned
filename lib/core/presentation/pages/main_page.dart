@@ -80,12 +80,17 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<FirebaseAuthenticationBloc,
-        FirebaseAuthenticationState>(
+    return BlocConsumer<FirebaseAuthenticationBloc, FirebaseAuthenticationState>(
       listener: (context, state) {
         print(state.status);
         if (state.status == FirebaseAuthenticationStatus.authenticated) {
-          context.read<AuthenticationCubit>().getCurrentUser();
+          if (state.user.isAnonymous) {
+            context.read<AuthenticationCubit>().currentUserIsGuest();
+            context.read<CategoriesCubit>().fetchCategories();
+            context.read<TopSellersCubit>().fetchTopSellers();
+          } else {
+            context.read<AuthenticationCubit>().getCurrentUser();
+          }
         }
       },
       builder: (context, state) {
@@ -120,15 +125,9 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                     ),
                     floatingActionButton: FloatingActionButton(
                       onPressed: () {
-                        context
-                            .read<FirebaseAuthenticationBloc>()
-                            .add(FirebaseAuthenticationLogoutRequested());
+                        context.read<FirebaseAuthenticationBloc>().add(FirebaseAuthenticationLogoutRequested());
                       },
-                      backgroundColor: context
-                          .read<AppThemeCubit>()
-                          .state
-                          .appColors
-                          .primaryColor,
+                      backgroundColor: context.read<AppThemeCubit>().state.appColors.primaryColor,
                       child: Icon(Icons.exit_to_app),
                     ),
                     body: PageView.builder(

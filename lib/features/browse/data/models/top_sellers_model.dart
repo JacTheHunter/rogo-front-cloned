@@ -1,10 +1,13 @@
 import 'dart:convert';
 
+import 'seller_model.dart';
+import '../../domain/entities/seller.dart';
+
 import '../../domain/entities/top_seller.dart';
 
 class TopSellerModel extends TopSeller {
   final int id;
-  final Map<String, dynamic> seller;
+  final Seller seller;
   final String image;
 
   TopSellerModel({
@@ -16,7 +19,7 @@ class TopSellerModel extends TopSeller {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'seller': seller,
+      'seller': (seller as SellerModel).toMap(),
       'image': image,
     };
   }
@@ -24,7 +27,7 @@ class TopSellerModel extends TopSeller {
   factory TopSellerModel.fromMap(Map<String, dynamic> map) {
     return TopSellerModel(
       id: map['id'],
-      seller: Map<String, dynamic>.from(map['seller']),
+      seller: SellerModel.fromMap(map['seller']),
       image: map['image'],
     );
   }

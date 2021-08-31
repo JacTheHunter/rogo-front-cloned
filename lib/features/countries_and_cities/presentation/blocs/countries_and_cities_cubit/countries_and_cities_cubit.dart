@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../../../core/usecase/usecase.dart';
 import '../../../domain/entities/city.dart';
 import '../../../domain/entities/country.dart';
 import '../../../domain/usecases/get_all_cities_of_selected_country_usecase.dart';
@@ -21,21 +20,21 @@ class CountriesAndCitiesCubit extends Cubit<CountriesAndCitiesState> {
 
   void fetchCountries() async {
     emit(state.copyWith(isLoading: true));
-    final countriesResult = await _getAllCountriesUseCase.call(NoParams());
+    final countriesResult = await _getAllCountriesUseCase.call(CountriesParams());
     countriesResult.fold((l) {
       emit(state.copyWith(errorMessage: l.message));
     }, (r) {
-      emit(state.copyWith(countries: r));
+      emit(state.copyWith(countries: r.results));
     });
   }
 
   void selectCountry(int countryId) async {
     emit(CountriesAndCitiesState(countries: state.countries, isLoading: true));
-    final citiesResult = await _getAllCitiesOfSelectedCountryUseCase(Params(countryId: countryId));
+    final citiesResult = await _getAllCitiesOfSelectedCountryUseCase(CitiesParams(countryId: countryId));
     citiesResult.fold((l) {
       emit(state.copyWith(errorMessage: l.message));
     }, (r) {
-      emit(state.copyWith(cities: r, selectedCountry: state.countries.firstWhere((c) => c.id == countryId)));
+      emit(state.copyWith(cities: r.results, selectedCountry: state.countries.firstWhere((c) => c.id == countryId)));
     });
   }
 

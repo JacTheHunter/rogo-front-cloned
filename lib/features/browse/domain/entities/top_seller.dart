@@ -1,8 +1,10 @@
 import 'package:equatable/equatable.dart';
 
+import 'seller.dart';
+
 class TopSeller extends Equatable {
   final int id;
-  final Map<String, dynamic> seller;
+  final Seller seller;
   final String image;
 
   TopSeller({

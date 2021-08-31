@@ -1,14 +1,22 @@
+import '../models/paginated_cities_model.dart';
+import '../models/paginated_countries_model.dart';
+import '../../domain/entities/paginated_cities.dart';
+import '../../domain/entities/paginated_countries.dart';
+
 import '../../../../core/configs/constants/api.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/services/api_service.dart';
-import '../../domain/entities/city.dart';
-import '../../domain/entities/country.dart';
-import '../models/city_model.dart';
-import '../models/country_model.dart';
 
 abstract class CountriesAndCitiesDatasource {
-  Future<List<City>> getAllCitiesOfSelectedCountry({required int countryId});
-  Future<List<Country>> getAllCountries();
+  Future<PaginatedCities> getAllCitiesOfSelectedCountry({
+    required int countryId,
+    int? page,
+    int? limit,
+  });
+  Future<PaginatedCountries> getAllCountries({
+    int? page,
+    int? limit,
+  });
 }
 
 class CountriesAndCitiesDatasourceImpl implements CountriesAndCitiesDatasource {
@@ -17,24 +25,39 @@ class CountriesAndCitiesDatasourceImpl implements CountriesAndCitiesDatasource {
   CountriesAndCitiesDatasourceImpl({required ApiService client}) : _client = client;
 
   @override
-  Future<List<City>> getAllCitiesOfSelectedCountry({required int countryId}) async {
+  Future<PaginatedCities> getAllCitiesOfSelectedCountry({
+    required int countryId,
+    int? page,
+    int? limit,
+  }) async {
     try {
       final result = await _client.get(
         k_API_END_POINT_COUNTRY + '$countryId' + k_API_END_POINT_CITY,
+        params: {
+          if (page != null) 'page': page.toString(),
+          if (limit != null) 'limit': limit.toString(),
+        },
       );
-      return (result.data as List).map((c) => CityModel.fromMap(c)).toList();
+      return PaginatedCitiesModel.fromMap(result.data);
     } on ServerException catch (exception) {
       throw ServerException(message: exception.message);
     }
   }
 
   @override
-  Future<List<Country>> getAllCountries() async {
+  Future<PaginatedCountries> getAllCountries({
+    int? page,
+    int? limit,
+  }) async {
     try {
       final result = await _client.get(
         k_API_END_POINT_COUNTRY,
+        params: {
+          if (page != null) 'page': page.toString(),
+          if (limit != null) 'limit': limit.toString(),
+        },
       );
-      return (result.data as List).map((c) => CountryModel.fromMap(c)).toList();
+      return PaginatedCountriesModel.fromMap(result.data);
     } on ServerException catch (exception) {
       throw ServerException(message: exception.message);
     }

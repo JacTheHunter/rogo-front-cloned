@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../../../core/usecase/usecase.dart';
 import '../../../domain/entities/language.dart';
 import '../../../domain/usecases/get_all_languages_usecase.dart';
 
@@ -16,12 +15,12 @@ class LanguagesCubit extends Cubit<LanguagesState> {
 
   void fetchLanguages() async {
     emit(state.copyWith(isLoading: true));
-    final countriesResult = await _getAllLanguagesUseCase.call(NoParams());
+    final countriesResult = await _getAllLanguagesUseCase.call(LanguagesParams());
     countriesResult.fold((l) {
       emit(state.copyWith(errorMessage: l.message));
     }, (r) {
-      final topLanguages = List<Language>.from(r.where((l) => l.isTop));
-      emit(state.copyWith(languages: r, topLanguages: topLanguages, filteredLanguages: r));
+      final topLanguages = List<Language>.from(r.results.where((l) => l.isTop));
+      emit(state.copyWith(languages: r.results, topLanguages: topLanguages, filteredLanguages: r.results));
     });
   }
 

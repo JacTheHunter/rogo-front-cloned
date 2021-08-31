@@ -32,16 +32,15 @@ class TopSellers extends StatelessWidget {
                 if (!state.isLoading && state.topSellers.isEmpty) {
                   return Container();
                 }
-                //TODO: When Alisher adds avatarImages, we should convert avatarImage property from 'asset' type to 'network' type
                 return ListView.builder(
                   itemCount: state.topSellers.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => TopSellerItem(
-                    name: state.topSellers[index].seller['full_name'],
+                    name: state.topSellers[index].seller.fullName,
                     bannerImage: state.topSellers[index].image,
                     avatarImage: AppImages.raster.sellerAvatarRandom,
-                    rating: state.topSellers[index].seller['rating'],
-                    reviews: state.topSellers[index].seller['reviews'],
+                    rating: state.topSellers[index].seller.rating.toDouble(),
+                    reviews: state.topSellers[index].seller.reviews.toInt(),
                   ),
                 );
               },

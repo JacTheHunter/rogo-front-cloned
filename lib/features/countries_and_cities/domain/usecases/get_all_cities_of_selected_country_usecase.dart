@@ -1,28 +1,32 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import '../entities/paginated_cities.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../entities/city.dart';
 import '../repositories/countries_and_cities_repository.dart';
 
-class GetAllCitiesOfSelectedCountryUseCase extends UseCase<List<City>, Params> {
+class GetAllCitiesOfSelectedCountryUseCase extends UseCase<PaginatedCities, CitiesParams> {
   final CountriesAndCitiesRepository _repository;
 
   GetAllCitiesOfSelectedCountryUseCase({required CountriesAndCitiesRepository repository}) : _repository = repository;
 
   @override
-  Future<Either<Failure, List<City>>> call(Params params) async {
+  Future<Either<Failure, PaginatedCities>> call(CitiesParams params) async {
     return await _repository.getAllCitiesOfSelectedCountry(countryId: params.countryId);
   }
 }
 
-class Params extends Equatable {
+class CitiesParams extends Equatable {
   final int countryId;
-  Params({
+  final int? page;
+  final int? limit;
+  CitiesParams({
     required this.countryId,
+    this.page,
+    this.limit,
   });
 
   @override
-  List<Object> get props => [countryId];
+  List<Object?> get props => [countryId, page, limit];
 }

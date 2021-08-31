@@ -1,8 +1,11 @@
 import 'package:dartz/dartz.dart';
+import '../entities/paginated_top_sellers.dart';
 
 import '../../../../core/error/failures.dart';
-import '../entities/top_seller.dart';
 
 abstract class TopSellersRepository {
-  Future<Either<Failure, List<TopSeller>>> getTopSellers();
+  Future<Either<Failure, PaginatedTopSellers>> getTopSellers({
+    int? page,
+    int? limit,
+  });
 }

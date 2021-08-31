@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import '../../features/authentication/domain/usecases/sign_in_with_facebook_in_firebase_usecase.dart';
 
 import '../../features/authentication/data/datasources/authentication_datasource.dart';
 import '../../features/authentication/data/datasources/firebase_authentication_datasource.dart';
@@ -94,6 +95,7 @@ Future<void> init() async {
         signOutInFirebaseUseCase: sl(),
         signInAnonymousInFirebaseUseCase: sl(),
         signInWithGoogleInFirebaseUseCase: sl(),
+        signInWithFacebookInFirebaseUseCase: sl(),
         getJWTofFirebseUserUseCase: sl(),
       ));
   sl.registerFactory(() => AuthenticationCubit(getCurrentUser: sl()));
@@ -115,6 +117,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SignInWithEmailAndPasswordInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => SignInAnonymousInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => SignInWithGoogleInFirebaseUseCase(repository: sl()));
+  sl.registerLazySingleton(() => SignInWithFacebookInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => SendPasswordResetEmailInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => GetJWTofFirebseUserUseCase(repository: sl()));
   sl.registerLazySingleton(() => GetCurrentUserUseCase(repository: sl()));

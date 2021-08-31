@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/error/exceptions.dart';
@@ -10,6 +11,7 @@ abstract class FirebaseAuthenticationDatasource {
   Future<FirebaseUser> signInWithEmailAndPasswordInFirebase({required String email, required String password});
   Future<FirebaseUser> signInAnonymousInFirebase();
   Future<FirebaseUser> signInWithGoogleInFirebase();
+  Future<FirebaseUser> signInWithFacebookInFirebase();
   Future<void> signOutInFirebase();
   Stream<FirebaseUser> getUserStreamInFirebase();
 
@@ -103,6 +105,26 @@ class FirebaseAuthenticationDatasourceImpl implements FirebaseAuthenticationData
       );
 
       return FirebaseUserModel.fromFirebaseUserCredential(await FirebaseAuth.instance.signInWithCredential(credential));
+    } on FirebaseAuthException catch (e) {
+      throw ServerException(message: e.message);
+    }
+  }
+
+  @override
+  Future<FirebaseUser> signInWithFacebookInFirebase() async {
+    try {
+      // Trigger the sign-in flow
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+
+      print(loginResult.message);
+      if (loginResult.accessToken == null) throw ServerException(message: 'FB ERROR');
+
+      // Create a credential from the access token
+      final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+      // Once signed in, return the UserCredential
+      return FirebaseUserModel.fromFirebaseUserCredential(
+          await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential));
     } on FirebaseAuthException catch (e) {
       throw ServerException(message: e.message);
     }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import '../../../domain/usecases/sign_in_with_facebook_in_firebase_usecase.dart';
 
 import '../../../../../core/injection/injection_container.dart';
 import '../../../../../core/services/box_service.dart';
@@ -23,11 +24,13 @@ class FirebaseAuthenticationBloc extends Bloc<FirebaseAuthenticationEvent, Fireb
     required SignOutInFirebaseUseCase signOutInFirebaseUseCase,
     required SignInAnonymousInFirebaseUseCase signInAnonymousInFirebaseUseCase,
     required SignInWithGoogleInFirebaseUseCase signInWithGoogleInFirebaseUseCase,
+    required SignInWithFacebookInFirebaseUseCase signInWithFacebookInFirebaseUseCase,
     required GetJWTofFirebseUserUseCase getJWTofFirebseUserUseCase,
   })  : _signOutInFirebaseUseCase = signOutInFirebaseUseCase,
         _getUserStreamInFirebaseUseCase = getUserStreamInFirebaseUseCase,
         _signInAnonymousInFirebaseUseCase = signInAnonymousInFirebaseUseCase,
         _signInWithGoogleInFirebaseUseCase = signInWithGoogleInFirebaseUseCase,
+        _signInWithFacebookInFirebaseUseCase = signInWithFacebookInFirebaseUseCase,
         _getJWTofFirebseUserUseCase = getJWTofFirebseUserUseCase,
         super(
           const FirebaseAuthenticationState.unauthenticated(),
@@ -42,6 +45,8 @@ class FirebaseAuthenticationBloc extends Bloc<FirebaseAuthenticationEvent, Fireb
   final SignInAnonymousInFirebaseUseCase _signInAnonymousInFirebaseUseCase;
 
   final SignInWithGoogleInFirebaseUseCase _signInWithGoogleInFirebaseUseCase;
+
+  final SignInWithFacebookInFirebaseUseCase _signInWithFacebookInFirebaseUseCase;
 
   final GetJWTofFirebseUserUseCase _getJWTofFirebseUserUseCase;
 
@@ -64,6 +69,9 @@ class FirebaseAuthenticationBloc extends Bloc<FirebaseAuthenticationEvent, Fireb
     } else if (event is FirebaseAuthenticationSignInWithGoogleRequested) {
       // unawaited(_signOutInFirebaseUseCase.call(NoParams()));
       _signInWithGoogleInFirebaseUseCase.call(NoParams());
+    } else if (event is FirebaseAuthenticationSignInWithFacebookRequested) {
+      // unawaited(_signOutInFirebaseUseCase.call(NoParams()));
+      _signInWithFacebookInFirebaseUseCase.call(NoParams());
     } else if (event is FirebaseAuthenticationGetJWTofFirebaseUserRequested) {
       getAndStoreJwt();
     }
