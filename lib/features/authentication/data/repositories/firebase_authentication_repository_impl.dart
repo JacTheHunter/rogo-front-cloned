@@ -118,4 +118,14 @@ class FirebaseAuthenticationRepositoryImpl implements FirebaseAuthenticationRepo
       return Left(ServerFailure(message: e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, FirebaseUser>> signInWithFacebookInFirebase() async {
+    try {
+      final firebaseUser = await _datasource.signInWithFacebookInFirebase();
+      return Right(firebaseUser);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
 }

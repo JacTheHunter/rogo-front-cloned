@@ -126,6 +126,9 @@ class LoginPage extends StatelessWidget {
                             Expanded(
                               child: LoginMethodButton(
                                 icon: AppImages.vector.fb,
+                                onTap: () => context
+                                    .read<FirebaseAuthenticationBloc>()
+                                    .add(FirebaseAuthenticationSignInWithFacebookRequested()),
                               ),
                             ),
                             SizedBox(width: 18),

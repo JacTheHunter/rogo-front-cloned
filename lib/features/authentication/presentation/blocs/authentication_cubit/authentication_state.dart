@@ -1,6 +1,6 @@
 part of 'authentication_cubit.dart';
 
-enum AuthenticationStatus { registered, unregistered, loading }
+enum AuthenticationStatus { guest, registered, unregistered, loading }
 
 class AuthenticationState extends Equatable {
   final User? currentUser;
@@ -14,6 +14,7 @@ class AuthenticationState extends Equatable {
   AuthenticationState.registered(User u) : this._(currentUser: u, status: AuthenticationStatus.registered);
   AuthenticationState.unregistered() : this._(status: AuthenticationStatus.unregistered);
   AuthenticationState.loading() : this._(status: AuthenticationStatus.loading);
+  AuthenticationState.guest() : this._(status: AuthenticationStatus.guest);
 
   bool get authenticated => currentUser != null;
 

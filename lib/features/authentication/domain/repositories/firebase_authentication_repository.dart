@@ -12,6 +12,7 @@ abstract class FirebaseAuthenticationRepository {
 
   Future<Either<Failure, FirebaseUser>> signInAnonymousInFirebase();
   Future<Either<Failure, FirebaseUser>> signInWithGoogleInFirebase();
+  Future<Either<Failure, FirebaseUser>> signInWithFacebookInFirebase();
 
   Future<Either<Failure, bool>> signOutInFirebase();
   Future<Either<Failure, bool>> sendPasswordResetEmailInFirebase({required String email});

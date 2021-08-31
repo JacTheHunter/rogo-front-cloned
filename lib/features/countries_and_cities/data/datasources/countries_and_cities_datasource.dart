@@ -34,7 +34,8 @@ class CountriesAndCitiesDatasourceImpl implements CountriesAndCitiesDatasource {
       final result = await _client.get(
         k_API_END_POINT_COUNTRY,
       );
-      return (result.data as List).map((c) => CountryModel.fromMap(c)).toList();
+      //TODO: Make languageListData or something
+      return (result.data['results'] as List).map((c) => CountryModel.fromMap(c)).toList();
     } on ServerException catch (exception) {
       throw ServerException(message: exception.message);
     }

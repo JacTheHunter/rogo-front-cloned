@@ -81,7 +81,10 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
       listener: (context, state) {
         print(state.status);
         if (state.status == FirebaseAuthenticationStatus.authenticated) {
-          context.read<AuthenticationCubit>().getCurrentUser();
+          if (state.user.isAnonymous)
+            context.read<AuthenticationCubit>().currentUserIsGuest();
+          else
+            context.read<AuthenticationCubit>().getCurrentUser();
         }
       },
       builder: (context, state) {

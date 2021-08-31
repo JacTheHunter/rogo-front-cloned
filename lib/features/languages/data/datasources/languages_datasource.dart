@@ -19,7 +19,8 @@ class LanguagesDatasourceImpl implements LanguagesDatasource {
       final result = await _client.get(
         k_API_END_POINT_LANGUAGES,
       );
-      return (result.data as List).map((c) => LanguageModel.fromMap(c)).toList();
+      //TODO: Make languageListData or something
+      return (result.data['results'] as List).map((c) => LanguageModel.fromMap(c)).toList();
     } on ServerException catch (exception) {
       throw ServerException(message: exception.message);
     }

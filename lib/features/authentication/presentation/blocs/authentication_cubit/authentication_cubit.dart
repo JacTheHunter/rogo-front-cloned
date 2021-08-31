@@ -26,6 +26,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     });
   }
 
+  void currentUserIsGuest() {
+    emit(AuthenticationState.guest());
+  }
+
   void updateUser(User user) {
     emit(AuthenticationState.registered(user));
   }

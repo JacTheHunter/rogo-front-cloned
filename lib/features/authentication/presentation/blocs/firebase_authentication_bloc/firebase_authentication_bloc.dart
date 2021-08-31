@@ -10,6 +10,7 @@ import 'package:rogo/features/authentication/domain/entities/firebase_user.dart'
 import 'package:rogo/features/authentication/domain/usecases/get_jwt_of_firebase_user_usecase.dart';
 import 'package:rogo/features/authentication/domain/usecases/get_user_stream_from_firebase_usecase.dart';
 import 'package:rogo/features/authentication/domain/usecases/sign_in_anonymous_firebase_usecase.dart';
+import 'package:rogo/features/authentication/domain/usecases/sign_in_with_facebook_in_firebase_usecase.dart';
 import 'package:rogo/features/authentication/domain/usecases/sign_in_with_google_in_firebase_usecase.dart';
 import 'package:rogo/features/authentication/domain/usecases/sign_out_in_firebase_usecase.dart';
 
@@ -22,11 +23,13 @@ class FirebaseAuthenticationBloc extends Bloc<FirebaseAuthenticationEvent, Fireb
     required SignOutInFirebaseUseCase signOutInFirebaseUseCase,
     required SignInAnonymousInFirebaseUseCase signInAnonymousInFirebaseUseCase,
     required SignInWithGoogleInFirebaseUseCase signInWithGoogleInFirebaseUseCase,
+    required SignInWithFacebookInFirebaseUseCase signInWithFacebookInFirebaseUseCase,
     required GetJWTofFirebseUserUseCase getJWTofFirebseUserUseCase,
   })  : _signOutInFirebaseUseCase = signOutInFirebaseUseCase,
         _getUserStreamInFirebaseUseCase = getUserStreamInFirebaseUseCase,
         _signInAnonymousInFirebaseUseCase = signInAnonymousInFirebaseUseCase,
         _signInWithGoogleInFirebaseUseCase = signInWithGoogleInFirebaseUseCase,
+        _signInWithFacebookInFirebaseUseCase = signInWithFacebookInFirebaseUseCase,
         _getJWTofFirebseUserUseCase = getJWTofFirebseUserUseCase,
         super(
           const FirebaseAuthenticationState.unauthenticated(),
@@ -41,6 +44,8 @@ class FirebaseAuthenticationBloc extends Bloc<FirebaseAuthenticationEvent, Fireb
   final SignInAnonymousInFirebaseUseCase _signInAnonymousInFirebaseUseCase;
 
   final SignInWithGoogleInFirebaseUseCase _signInWithGoogleInFirebaseUseCase;
+
+  final SignInWithFacebookInFirebaseUseCase _signInWithFacebookInFirebaseUseCase;
 
   final GetJWTofFirebseUserUseCase _getJWTofFirebseUserUseCase;
 
@@ -63,6 +68,9 @@ class FirebaseAuthenticationBloc extends Bloc<FirebaseAuthenticationEvent, Fireb
     } else if (event is FirebaseAuthenticationSignInWithGoogleRequested) {
       // unawaited(_signOutInFirebaseUseCase.call(NoParams()));
       _signInWithGoogleInFirebaseUseCase.call(NoParams());
+    } else if (event is FirebaseAuthenticationSignInWithFacebookRequested) {
+      // unawaited(_signOutInFirebaseUseCase.call(NoParams()));
+      _signInWithFacebookInFirebaseUseCase.call(NoParams());
     } else if (event is FirebaseAuthenticationGetJWTofFirebaseUserRequested) {
       getAndStoreJwt();
     }

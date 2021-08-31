@@ -18,6 +18,7 @@ import 'package:rogo/features/authentication/domain/usecases/register_user_useca
 import 'package:rogo/features/authentication/domain/usecases/send_password_reset_email_in_firebase_usecase.dart';
 import 'package:rogo/features/authentication/domain/usecases/sign_in_anonymous_firebase_usecase.dart';
 import 'package:rogo/features/authentication/domain/usecases/sign_in_with_email_and_password_in_firebase_usecase.dart';
+import 'package:rogo/features/authentication/domain/usecases/sign_in_with_facebook_in_firebase_usecase.dart';
 import 'package:rogo/features/authentication/domain/usecases/sign_in_with_google_in_firebase_usecase.dart';
 import 'package:rogo/features/authentication/domain/usecases/sign_out_in_firebase_usecase.dart';
 import 'package:rogo/features/authentication/domain/usecases/update_phone_number_in_firebase_usecase.dart';
@@ -82,6 +83,7 @@ Future<void> init() async {
         signOutInFirebaseUseCase: sl(),
         signInAnonymousInFirebaseUseCase: sl(),
         signInWithGoogleInFirebaseUseCase: sl(),
+        signInWithFacebookInFirebaseUseCase: sl(),
         getJWTofFirebseUserUseCase: sl(),
       ));
   sl.registerFactory(() => AuthenticationCubit(getCurrentUser: sl()));
@@ -103,6 +105,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SignInWithEmailAndPasswordInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => SignInAnonymousInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => SignInWithGoogleInFirebaseUseCase(repository: sl()));
+  sl.registerLazySingleton(() => SignInWithFacebookInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => SendPasswordResetEmailInFirebaseUseCase(repository: sl()));
   sl.registerLazySingleton(() => GetJWTofFirebseUserUseCase(repository: sl()));
   sl.registerLazySingleton(() => GetCurrentUserUseCase(repository: sl()));

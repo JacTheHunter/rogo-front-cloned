@@ -13,6 +13,8 @@ class FirebaseAuthenticationSignInAnonimousRequested extends FirebaseAuthenticat
 
 class FirebaseAuthenticationSignInWithGoogleRequested extends FirebaseAuthenticationEvent {}
 
+class FirebaseAuthenticationSignInWithFacebookRequested extends FirebaseAuthenticationEvent {}
+
 class FirebaseAuthenticationGetJWTofFirebaseUserRequested extends FirebaseAuthenticationEvent {}
 
 class FirebaseAuthenticationUserChanged extends FirebaseAuthenticationEvent {
