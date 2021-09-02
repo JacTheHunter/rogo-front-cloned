@@ -1,16 +1,16 @@
 import 'package:equatable/equatable.dart';
 
-import 'top_seller.dart';
+import 'wishlists_feed.dart';
 
-class PaginatedTopSellers extends Equatable {
+class PaginatedWishlistsFeed extends Equatable {
   final int page;
   final int totalObjects;
   final int currentPageSize;
   final int limit;
   final int totalPages;
-  final List<TopSeller> results;
+  final List<WishlistsFeed> results;
 
-  PaginatedTopSellers({
+  PaginatedWishlistsFeed({
     required this.page,
     required this.totalObjects,
     required this.currentPageSize,

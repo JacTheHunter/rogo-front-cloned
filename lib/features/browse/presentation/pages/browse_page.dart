@@ -97,7 +97,7 @@ class BrowsePage extends StatelessWidget {
                         unselectedLabelStyle:
                             context.read<AppThemeCubit>().state.textTheme.tabBarUnSelectedLabelTextStyle,
                         labelColor: context.read<AppThemeCubit>().state.appColors.primaryTextColor,
-                        unselectedLabelColor: context.read<AppThemeCubit>().state.appColors.hintColor,
+                        unselectedLabelColor: context.read<AppThemeCubit>().state.appColors.tabTextColor,
                         isScrollable: true,
                         indicator: UnderlineTabIndicator(
                           borderSide: BorderSide(

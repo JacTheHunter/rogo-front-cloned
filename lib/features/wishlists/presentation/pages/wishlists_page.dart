@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:rogo/features/wishlists/presentation/bloc/wishlists_live_search_cubit/wishlists_live_search_cubit.dart';
 
 import '../../../../core/configs/constants/app_images.dart';
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_loader.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../bloc/wishlists_feed_cubit/wishlists_feed_cubit.dart';
 import '../widgets/feed_item.dart';
 import '../widgets/live_search_item.dart';
 
+//TODO: REMOVE EXTRA PADDINGS IN TOP PART
 //TODO: FIX LISTVIEW OVERLAY AT BOTTOM
 class WhishListsPage extends StatelessWidget {
   @override
@@ -52,13 +56,13 @@ class WhishListsPage extends StatelessWidget {
             toolbarHeight: 70,
             flexibleSpace: Container(
               color: AppColorScheme.whitePointer,
-              padding: const EdgeInsets.only(top: 20, left: 20, bottom: 12),
+              padding: const EdgeInsets.only(top: 20, left: 20),
               child: TabBar(
                 indicatorColor: context.read<AppThemeCubit>().state.appColors.primaryColor,
                 labelStyle: context.read<AppThemeCubit>().state.textTheme.tabBarSelectedLabelTextStyle,
                 unselectedLabelStyle: context.read<AppThemeCubit>().state.textTheme.tabBarUnSelectedLabelTextStyle,
                 labelColor: context.read<AppThemeCubit>().state.appColors.primaryTextColor,
-                unselectedLabelColor: context.read<AppThemeCubit>().state.appColors.hintColor,
+                unselectedLabelColor: context.read<AppThemeCubit>().state.appColors.tabTextColor,
                 isScrollable: true,
                 indicator: UnderlineTabIndicator(
                   borderSide: BorderSide(
@@ -87,16 +91,27 @@ class WhishListsPage extends StatelessWidget {
             Builder(builder: (context) {
               return Container(
                 color: context.read<AppThemeCubit>().state.appColors.sliverWishlistsAppBarBackgroundColor,
-                padding: const EdgeInsets.all(20),
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  itemBuilder: (contex, index) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    child: FeedItem(
-                      image: AppImages.raster.productRandom,
-                    ),
-                  ),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: BlocBuilder<WishlistsFeedCubit, WishlistsFeedState>(
+                  builder: (context, state) {
+                    if (state.isLoading) return AppLoader();
+                    if (!state.isLoading && state.wishlistsFeed.isEmpty) {
+                      return Container();
+                    }
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: state.wishlistsFeed.length,
+                      itemBuilder: (contex, index) => Padding(
+                        padding: const EdgeInsets.only(bottom: 24),
+                        child: FeedItem(
+                          state: state.wishlistsFeed[index],
+                          //TODO: No pictures on server to display
+                          // image: state.wishlistsFeed[index].image,
+                          image: AppImages.raster.productRandom,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               );
             }),
@@ -104,16 +119,25 @@ class WhishListsPage extends StatelessWidget {
               builder: (context) {
                 return Container(
                   color: context.read<AppThemeCubit>().state.appColors.sliverWishlistsAppBarBackgroundColor,
-                  padding: const EdgeInsets.all(20),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 10,
-                    itemBuilder: (contex, index) => Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      child: LiveSearchItem(
-                        image: AppImages.raster.productRandom,
-                      ),
-                    ),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: BlocBuilder<WishlistsLiveSearchCubit, WishlistsLiveSearchState>(
+                    builder: (context, state) {
+                      if (state.isLoading) return AppLoader();
+                      if (!state.isLoading && state.wishlistsLiveSearch.isEmpty) {
+                        return Container();
+                      }
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: state.wishlistsLiveSearch.length,
+                        itemBuilder: (contex, index) => Padding(
+                          padding: const EdgeInsets.only(bottom: 24),
+                          child: LiveSearchItem(
+                            image: state.wishlistsLiveSearch[index].image,
+                            state: state.wishlistsLiveSearch[index],
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 );
               },

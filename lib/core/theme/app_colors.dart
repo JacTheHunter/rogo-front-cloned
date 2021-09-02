@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 abstract class AppColors {
   Color get primaryColor;
   Color get primaryTextColor;
+  Color get tabTextColor;
   Color get scaffoldBackgroundColor;
   Color get onboardingIndicatorColor;
   Color get onboardingIndicatorSelectedColor;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rogo/core/configs/constants/app_images.dart';
 
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import '../../../../core/presentation/pages/widgets/app_loader.dart';
@@ -31,7 +32,8 @@ class Catogies extends StatelessWidget {
                   if (!state.isLoading && state.categories.isEmpty) return Container();
                   return ListView.builder(
                     itemBuilder: (context, index) =>
-                        CategoryItem(text: state.categories[index].name, icon: state.categories[index].icon),
+                        //TODO: Fetch icons from server when Alisher adds them to server
+                        CategoryItem(text: state.categories[index].name, icon: AppImages.raster.categoryRandom),
                     itemCount: state.categories.length,
                     scrollDirection: Axis.horizontal,
                   );

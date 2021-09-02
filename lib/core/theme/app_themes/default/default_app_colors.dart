@@ -77,4 +77,7 @@ class DefaultAppColors extends AppColors {
 
   @override
   Color get sliverWishlistsAppBarBackgroundColor => AppColorScheme.whitePointer;
+
+  @override
+  Color get tabTextColor => AppColorScheme.lilac;
 }

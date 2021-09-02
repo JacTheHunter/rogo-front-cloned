@@ -1,16 +1,16 @@
 import 'package:equatable/equatable.dart';
 
-import 'top_seller.dart';
+import 'wishlists_live_search.dart';
 
-class PaginatedTopSellers extends Equatable {
+class PaginatedWishlistsLiveSearch extends Equatable {
   final int page;
   final int totalObjects;
   final int currentPageSize;
   final int limit;
   final int totalPages;
-  final List<TopSeller> results;
+  final List<WishlistsLiveSearch> results;
 
-  PaginatedTopSellers({
+  PaginatedWishlistsLiveSearch({
     required this.page,
     required this.totalObjects,
     required this.currentPageSize,
@@ -20,7 +20,7 @@ class PaginatedTopSellers extends Equatable {
   });
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       page,
       totalObjects,

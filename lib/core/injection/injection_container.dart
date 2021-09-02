@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import '../../features/authentication/domain/usecases/sign_in_with_facebook_in_firebase_usecase.dart';
 
 import '../../features/authentication/data/datasources/authentication_datasource.dart';
 import '../../features/authentication/data/datasources/firebase_authentication_datasource.dart';
@@ -16,6 +15,7 @@ import '../../features/authentication/domain/usecases/register_user_usecase.dart
 import '../../features/authentication/domain/usecases/send_password_reset_email_in_firebase_usecase.dart';
 import '../../features/authentication/domain/usecases/sign_in_anonymous_firebase_usecase.dart';
 import '../../features/authentication/domain/usecases/sign_in_with_email_and_password_in_firebase_usecase.dart';
+import '../../features/authentication/domain/usecases/sign_in_with_facebook_in_firebase_usecase.dart';
 import '../../features/authentication/domain/usecases/sign_in_with_google_in_firebase_usecase.dart';
 import '../../features/authentication/domain/usecases/sign_out_in_firebase_usecase.dart';
 import '../../features/authentication/domain/usecases/update_phone_number_in_firebase_usecase.dart';
@@ -49,6 +49,16 @@ import '../../features/languages/domain/repositories/languages_repository.dart';
 import '../../features/languages/domain/usecases/get_all_languages_usecase.dart';
 import '../../features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
 import '../../features/onboarding/presentation/blocs/onboarding_page_cubit/onboarding_page_cubit.dart';
+import '../../features/wishlists/data/datasources/wishlists_feed_data_source.dart';
+import '../../features/wishlists/data/datasources/wishlists_live_search_data_source.dart';
+import '../../features/wishlists/data/repositories/wishlists_feed_repository_impl.dart';
+import '../../features/wishlists/data/repositories/wishlists_live_search_repository_impl.dart';
+import '../../features/wishlists/domain/repositories/wishlists_feed_repository.dart';
+import '../../features/wishlists/domain/repositories/wishlists_live_search_repository.dart';
+import '../../features/wishlists/domain/usecases/wishlists_feed_usecase.dart';
+import '../../features/wishlists/domain/usecases/wishlists_live_search_usecase.dart';
+import '../../features/wishlists/presentation/bloc/wishlists_feed_cubit/wishlists_feed_cubit.dart';
+import '../../features/wishlists/presentation/bloc/wishlists_live_search_cubit/wishlists_live_search_cubit.dart';
 import '../presentation/blocs/app_nav_bar_cubit/app_nav_bar_cubit.dart';
 import '../presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import '../services/api_service.dart';
@@ -193,6 +203,29 @@ Future<void> init() async {
   sl.registerLazySingleton<TopSellersRepository>(() => TopSellersRepositoryImpl(topSellersDataSource: sl()));
   //Data Source
   sl.registerLazySingleton<TopSellersDataSource>(() => TopSellersDataSourceImpl(client: sl()));
+
+  //!Feature WishlistsFeed
+
+  //Blocs
+  sl.registerFactory(() => WishlistsFeedCubit(getWishlistsFeedUsecase: sl()));
+  //UseCases
+  sl.registerLazySingleton(() => GetWishlistsFeedUsecase(repository: sl()));
+  //Repository
+  sl.registerLazySingleton<WishlistsFeedRepository>(() => WishlistsFeedRepositoryImpl(wishlistsFeedDataSource: sl()));
+  //Data Source
+  sl.registerLazySingleton<WishlistsFeedDataSource>(() => WishlistsFeedDataSourceImpl(client: sl()));
+
+  //!Feature WishlistsLiveSearch
+
+  //Blocs
+  sl.registerFactory(() => WishlistsLiveSearchCubit(getWishlistsLiveSearchUsecase: sl()));
+  //UseCases
+  sl.registerLazySingleton(() => GetWishlistsLiveSearchUsecase(repository: sl()));
+  //Repository
+  sl.registerLazySingleton<WishlistsLiveSearchRepository>(
+      () => WishlistsLiveSearchRepositoryImpl(wishlistsLiveSearchDataSource: sl()));
+  //Data Source
+  sl.registerLazySingleton<WishlistsLiveSearchDataSource>(() => WishlistsLiveSearchDataSourceImpl(client: sl()));
 
   //!Feature Categories
   //Blocs

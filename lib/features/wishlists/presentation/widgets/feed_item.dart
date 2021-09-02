@@ -5,11 +5,13 @@ import '../../../../core/configs/constants/app_images.dart';
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
+import '../../domain/entities/wishlists_feed.dart';
 
 class FeedItem extends StatelessWidget {
   final String image;
+  final WishlistsFeed state;
 
-  const FeedItem({Key? key, required this.image}) : super(key: key);
+  const FeedItem({Key? key, required this.image, required this.state}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class FeedItem extends StatelessWidget {
                   child: Row(
                     children: [
                       AppText(
-                        '\$50',
+                        state.pricePerDay + '\$',
                         style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemPriceNumberTextStyle,
                       ),
                       SizedBox(width: 4),
@@ -64,7 +66,7 @@ class FeedItem extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.46,
                   child: AppText(
-                    'Vinyl Photography Background',
+                    state.title,
                     maxLines: 2,
                     style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemNameTextStyle,
                   ),
@@ -78,7 +80,7 @@ class FeedItem extends StatelessWidget {
                     ),
                     SizedBox(width: 5),
                     AppText(
-                      'Camas, WA',
+                      state.city,
                       style: context.read<AppThemeCubit>().state.textTheme.productItemLocationTextStyle,
                     ),
                   ],

@@ -89,7 +89,7 @@ class ProfilePage extends StatelessWidget {
                   labelStyle: context.read<AppThemeCubit>().state.textTheme.tabBarSelectedLabelTextStyle,
                   unselectedLabelStyle: context.read<AppThemeCubit>().state.textTheme.tabBarUnSelectedLabelTextStyle,
                   labelColor: context.read<AppThemeCubit>().state.appColors.primaryTextColor,
-                  unselectedLabelColor: context.read<AppThemeCubit>().state.appColors.hintColor,
+                  unselectedLabelColor: context.read<AppThemeCubit>().state.appColors.tabTextColor,
                   isScrollable: true,
                   indicator: UnderlineTabIndicator(
                     borderSide: BorderSide(

@@ -1,9 +1,8 @@
-import '../models/paginated_top_sellers_model.dart';
-import '../../domain/entities/paginated_top_sellers.dart';
-
 import '../../../../core/configs/constants/api.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/services/api_service.dart';
+import '../../domain/entities/paginated_top_sellers.dart';
+import '../models/paginated_top_sellers_model.dart';
 
 abstract class TopSellersDataSource {
   Future<PaginatedTopSellers> getTopSellers({

@@ -13,5 +13,7 @@ const String k_API_END_POINT_POFILE = '/profile';
 const String k_API_END_POINT_TOP_SELLERS = '/topsellers/';
 const String k_API_END_POINT_CATEGORIES = '/category/';
 
-
 const String k_API_END_POINT_LANGUAGES = '/languages/';
+
+const String k_API_END_POINT_PUBLICATION = '/publication/';
+const String k_API_END_POINT_LIVE_SEARCH = '/live-search/';

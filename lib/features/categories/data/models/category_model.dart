@@ -4,7 +4,7 @@ import '../../domain/entities/category.dart';
 
 class CategoryModel extends Category {
   final int id;
-  final String icon;
+  final String image;
   final String name;
   final int treeId;
   final int level;
@@ -12,14 +12,14 @@ class CategoryModel extends Category {
 
   CategoryModel({
     required this.id,
-    required this.icon,
+    required this.image,
     required this.name,
     required this.treeId,
     required this.level,
     required this.parent,
   }) : super(
           id: id,
-          icon: icon,
+          image: image,
           name: name,
           treeId: treeId,
           level: level,
@@ -29,7 +29,7 @@ class CategoryModel extends Category {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'icon': icon,
+      'image': image,
       'name': name,
       'treeId': treeId,
       'level': level,
@@ -40,7 +40,7 @@ class CategoryModel extends Category {
   factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
       id: map['id'],
-      icon: map['icon'],
+      image: map['image'],
       name: map['name'],
       treeId: map['tree_id'],
       level: map['level'],

@@ -1,9 +1,8 @@
 import 'dart:convert';
 
-import 'seller_model.dart';
 import '../../domain/entities/seller.dart';
-
 import '../../domain/entities/top_seller.dart';
+import 'seller_model.dart';
 
 class TopSellerModel extends TopSeller {
   final int id;

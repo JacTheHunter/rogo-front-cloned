@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:rogo/features/wishlists/presentation/bloc/wishlists_live_search_cubit/wishlists_live_search_cubit.dart';
 
 import 'core/configs/constants/app_routes.dart';
 import 'core/configs/routes/app_route_generator.dart';
@@ -29,6 +30,7 @@ import 'features/categories/presentation/bloc/categories_cubit/categories_cubit.
 import 'features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
 import 'features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
 import 'features/onboarding/presentation/blocs/onboarding_page_cubit/onboarding_page_cubit.dart';
+import 'features/wishlists/presentation/bloc/wishlists_feed_cubit/wishlists_feed_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -120,6 +122,12 @@ class App extends StatelessWidget {
           create: (context) => sl<TopSellersCubit>(),
         ),
         BlocProvider<CategoriesCubit>(
+          create: (context) => sl(),
+        ),
+        BlocProvider<WishlistsFeedCubit>(
+          create: (context) => sl(),
+        ),
+        BlocProvider<WishlistsLiveSearchCubit>(
           create: (context) => sl(),
         ),
       ],

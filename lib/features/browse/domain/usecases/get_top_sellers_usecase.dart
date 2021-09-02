@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import '../entities/paginated_top_sellers.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecase/usecase.dart';
+import '../entities/paginated_top_sellers.dart';
 import '../repositories/top_sellers_repository.dart';
 
 class GetTopSellersUsecase extends UseCase<PaginatedTopSellers, TopSellersParams> {

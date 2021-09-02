@@ -5,11 +5,16 @@ import '../../../../core/configs/constants/app_images.dart';
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
+import '../../domain/entities/wishlists_live_search.dart';
 
 class LiveSearchItem extends StatelessWidget {
   final String image;
-
-  const LiveSearchItem({Key? key, required this.image}) : super(key: key);
+  final WishlistsLiveSearch state;
+  const LiveSearchItem({
+    Key? key,
+    required this.image,
+    required this.state,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,7 @@ class LiveSearchItem extends StatelessWidget {
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          AppImage.asset(
+          AppImage.network(
             image,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(14),
@@ -47,7 +52,7 @@ class LiveSearchItem extends StatelessWidget {
                   child: Row(
                     children: [
                       AppText(
-                        '\$50-\$100',
+                        state.rentalPriceRange,
                         style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemPriceNumberTextStyle,
                       ),
                       SizedBox(width: 4),
@@ -64,7 +69,7 @@ class LiveSearchItem extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.46,
                   child: AppText(
-                    'Vinyl Photography Background',
+                    state.title,
                     maxLines: 2,
                     style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemNameTextStyle,
                   ),
@@ -78,7 +83,7 @@ class LiveSearchItem extends StatelessWidget {
                     ),
                     SizedBox(width: 5),
                     AppText(
-                      'Camas, WA',
+                      state.city,
                       style: context.read<AppThemeCubit>().state.textTheme.productItemLocationTextStyle,
                     ),
                   ],

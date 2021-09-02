@@ -12,6 +12,8 @@ import '../../../features/categories/presentation/bloc/categories_cubit/categori
 import '../../../features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
 import '../../../features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
 import '../../../features/profile/presentation/pages/profile_page.dart';
+import '../../../features/wishlists/presentation/bloc/wishlists_feed_cubit/wishlists_feed_cubit.dart';
+import '../../../features/wishlists/presentation/bloc/wishlists_live_search_cubit/wishlists_live_search_cubit.dart';
 import '../../../features/wishlists/presentation/pages/wishlists_page.dart';
 import '../blocs/app_nav_bar_cubit/app_nav_bar_cubit.dart';
 import '../blocs/app_theme_cubit/app_theme_cubit.dart';
@@ -88,6 +90,8 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
             context.read<AuthenticationCubit>().currentUserIsGuest();
             context.read<CategoriesCubit>().fetchCategories();
             context.read<TopSellersCubit>().fetchTopSellers();
+            context.read<WishlistsFeedCubit>().fetchWishlistsFeed();
+            context.read<WishlistsLiveSearchCubit>().fetchWishlistsLiveSearch();
           } else {
             context.read<AuthenticationCubit>().getCurrentUser();
           }
@@ -103,6 +107,8 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
               if (state.authenticated) {
                 context.read<CategoriesCubit>().fetchCategories();
                 context.read<TopSellersCubit>().fetchTopSellers();
+                context.read<WishlistsFeedCubit>().fetchWishlistsFeed();
+                context.read<WishlistsLiveSearchCubit>().fetchWishlistsLiveSearch();
               }
             },
             builder: (context, state) {
