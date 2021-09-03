@@ -25,7 +25,7 @@ class FeedItem extends StatelessWidget {
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          AppImage.asset(
+          AppImage.network(
             image,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(14),

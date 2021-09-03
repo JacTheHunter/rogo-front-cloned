@@ -22,7 +22,7 @@ class CategoryItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          AppImage.asset(
+          AppImage.network(
             icon,
             height: 24,
           ),

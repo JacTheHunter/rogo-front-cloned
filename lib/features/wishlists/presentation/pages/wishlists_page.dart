@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:rogo/features/wishlists/presentation/bloc/wishlists_live_search_cubit/wishlists_live_search_cubit.dart';
 
-import '../../../../core/configs/constants/app_images.dart';
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import '../../../../core/presentation/pages/widgets/app_loader.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../bloc/wishlists_feed_cubit/wishlists_feed_cubit.dart';
+import '../bloc/wishlists_live_search_cubit/wishlists_live_search_cubit.dart';
 import '../widgets/feed_item.dart';
 import '../widgets/live_search_item.dart';
 
-//TODO: REMOVE EXTRA PADDINGS IN TOP PART
 //TODO: FIX LISTVIEW OVERLAY AT BOTTOM
 class WhishListsPage extends StatelessWidget {
   @override
@@ -52,11 +50,11 @@ class WhishListsPage extends StatelessWidget {
             elevation: 0,
             snap: true,
             floating: true,
-            expandedHeight: 84,
-            toolbarHeight: 70,
+            expandedHeight: 50,
+            toolbarHeight: 50,
             flexibleSpace: Container(
               color: AppColorScheme.whitePointer,
-              padding: const EdgeInsets.only(top: 20, left: 20),
+              padding: const EdgeInsets.only(left: 20),
               child: TabBar(
                 indicatorColor: context.read<AppThemeCubit>().state.appColors.primaryColor,
                 labelStyle: context.read<AppThemeCubit>().state.textTheme.tabBarSelectedLabelTextStyle,
@@ -106,8 +104,8 @@ class WhishListsPage extends StatelessWidget {
                         child: FeedItem(
                           state: state.wishlistsFeed[index],
                           //TODO: No pictures on server to display
-                          // image: state.wishlistsFeed[index].image,
-                          image: AppImages.raster.productRandom,
+                          image: state.wishlistsFeed[index].image,
+                          // image: AppImages.raster.productRandom,
                         ),
                       ),
                     );

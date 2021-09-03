@@ -128,7 +128,6 @@ class BrowseItemPage extends StatelessWidget {
                                     style: context.read<AppThemeCubit>().state.textTheme.itemDescriptionTitle,
                                   ),
                                 ),
-                                //TODO: ADD "READ MORE" FEATURE
                                 ExpandableText(
                                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
                                   expandText: 'read more',

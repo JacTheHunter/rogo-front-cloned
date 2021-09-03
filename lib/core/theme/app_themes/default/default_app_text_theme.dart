@@ -264,11 +264,13 @@ class DefaultAppTextTheme extends AppTextTheme {
   TextStyle get wishlistsProductItemPriceNumberTextStyle => TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w700,
+        color: AppColorScheme.haiti,
       );
 
   @override
   TextStyle get wishlistsProductItemNameTextStyle => TextStyle(
         fontSize: 14,
+        color: AppColorScheme.haiti,
       );
 
   @override
