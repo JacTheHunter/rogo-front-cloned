@@ -15,6 +15,7 @@ class AppColorScheme {
 
   static const regentGray = Color(0xFF7D889C);
   static const remi = Color(0xFFFEF0FE);
+  static const pinkLace = Color(0xFFFEE5FE);
   static const ebonyClay = Color(0xFF1A1F26);
   static const pickledBluewood = Color(0xFF1A1F26);
   static const redOrange = Color(0xFFFF333A);
@@ -22,6 +23,7 @@ class AppColorScheme {
   static const manatee = Color(0xFF9895A6);
   static const mystic = Color(0xFFE7EBF1);
   static const mercury = Color(0xFFE5E5E5);
+  static const stormGray = Color(0xFF706D7D);
 
   static const gradient1_1 = Color(0xFF0FCFFE);
   static const gradient1_2 = Color(0xFFD91FFC);
@@ -40,5 +42,6 @@ class AppColorScheme {
   static const wispPink = Color(0xFFFDE9FD);
   static const whitePointer = Color(0xFFFDF7FF);
 
-  static const pinkLace = Color(0xFFFEE5FE);
+  static const sweetPink = Color(0xFFFC9696);
+  static const chablis = Color(0xFFFFEFEF);
 }

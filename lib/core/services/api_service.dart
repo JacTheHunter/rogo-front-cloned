@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../configs/constants/api.dart';
 import '../error/exceptions.dart';
+import 'api_interceptors/token_interceptor.dart';
 
 class ApiService {
   late Dio _dio;
@@ -20,37 +21,37 @@ class ApiService {
   }
 
   // for HTTP.GET Request.
-  Future<Response> get(String url, {Map<String, String>? params, Options? options}) async {
+  Future<Response> get(String url, {Map<String, String>? params, bool isSecure = true}) async {
     Response response;
+    if (isSecure) _dio.interceptors.add(TokenInterceptor());
     try {
       response = await _dio.get(
         url,
         queryParameters: params,
-        options: options?.copyWith(responseType: ResponseType.json) ?? Options(responseType: ResponseType.json),
       );
     } on DioError catch (exception) {
       if (exception.response?.data != null && exception.response?.data['message'] != null) {
         throw ServerException(message: exception.response?.data['message']);
       } else {
-        throw ServerException(message: exception.error);
+        throw ServerException(message: exception.error ?? 'Error');
       }
     }
     return response;
   }
 
   // for HTTP.POST Request.
-  Future<Response> post(String url, {dynamic data, Map<String, String>? params, Options? options}) async {
+  Future<Response> post(String url, {dynamic data, Map<String, String>? params, bool isSecure = true}) async {
     Response response;
+    if (isSecure) _dio.interceptors.add(TokenInterceptor());
     try {
       response = await _dio.post(
         url,
         data: data,
         queryParameters: params,
-        options: options?.copyWith(responseType: ResponseType.json) ?? Options(responseType: ResponseType.json),
       );
     } on DioError catch (exception) {
       if (exception.response?.data != null &&
-          (exception.response?.data['message'] != null || exception.response?.data['detail'])) {
+          (exception.response?.data['message'] != null || exception.response?.data['detail'] != null)) {
         throw ServerException(message: exception.response?.data['message'] ?? exception.response?.data['detail']);
       } else {
         throw ServerException(message: exception.error);
@@ -60,14 +61,14 @@ class ApiService {
   }
 
   // for HTTP.PATCH Request.
-  Future<Response> patch(String url, {Map<String, String>? params, Options? options}) async {
+  Future<Response> patch(String url, {Map<String, String>? params, bool isSecure = true}) async {
     Response response;
+    if (isSecure) _dio.interceptors.add(TokenInterceptor());
 
     try {
       response = await _dio.patch(
         url,
         data: params,
-        options: options?.copyWith(responseType: ResponseType.json) ?? Options(responseType: ResponseType.json),
       );
     } on DioError catch (exception) {
       if (exception.response?.data != null && exception.response?.data['message'] != null) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/configs/constants/app_images.dart';
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_loader.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../bloc/cubit/top_sellers_cubit.dart';
@@ -20,7 +20,7 @@ class TopSellers extends StatelessWidget {
         children: [
           AppText(
             'browse.browsePage.topSellers',
-            style: context.read<AppThemeCubit>().state.textTheme.browseTitleTextStyle,
+            style: context.appTextTheme.browseTitleTextStyle,
           ),
           SizedBox(height: 16),
           SizedBox(

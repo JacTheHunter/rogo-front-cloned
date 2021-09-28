@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import 'app_text.dart';
 
 class AppDropdown<T> extends StatelessWidget {
@@ -18,14 +17,14 @@ class AppDropdown<T> extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: context.read<AppThemeCubit>().state.appColors.inputFillColor,
+          color: context.appColors.inputFillColor,
         ),
         padding: const EdgeInsets.fromLTRB(20, 4, 8, 2),
         child: DropdownButtonHideUnderline(
           child: DropdownButton<T>(
             itemHeight: 50,
             value: value,
-            icon: context.read<AppThemeCubit>().state.appIcons.dropDownIcon,
+            icon: context.appIcons.dropDownIcon,
             iconSize: 24,
             elevation: 16,
             style: const TextStyle(color: Colors.deepPurple),
@@ -36,7 +35,7 @@ class AppDropdown<T> extends StatelessWidget {
                 value: value,
                 child: AppText(
                   value.toString(),
-                  style: context.read<AppThemeCubit>().state.textTheme.inputTextStyle,
+                  style: context.appTextTheme.inputTextStyle,
                 ),
               );
             }).toList(),

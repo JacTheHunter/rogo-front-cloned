@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:rogo/core/usecase/paginated_response_params.dart';
 
 import '../../../domain/entities/top_seller.dart';
 import '../../../domain/usecases/get_top_sellers_usecase.dart';
@@ -15,7 +16,7 @@ class TopSellersCubit extends Cubit<TopSellersState> {
 
   void fetchTopSellers() async {
     emit(state.copyWith(isLoading: true));
-    final result = await _getTopSellersUsecase(TopSellersParams());
+    final result = await _getTopSellersUsecase(PaginatedResponseParams());
     result.fold(
       (failure) => emit(state.copyWith(errorMessage: failure.message)),
       (topSellers) => emit(state.copyWith(topSellers: topSellers.results)),

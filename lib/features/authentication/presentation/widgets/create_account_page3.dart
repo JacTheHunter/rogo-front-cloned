@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_loader.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../core/presentation/pages/widgets/simple_button.dart';
@@ -28,7 +28,7 @@ class CreateAccountPage3 extends StatelessWidget {
             children: [
               AppText(
                 'authentication.createAccountPage.whatLanguages',
-                style: context.read<AppThemeCubit>().state.textTheme.createAccountTitleTextStyle,
+                style: context.appTextTheme.createAccountTitleTextStyle,
               ),
               SizedBox(height: 16),
               Wrap(
@@ -47,7 +47,7 @@ class CreateAccountPage3 extends StatelessWidget {
                 SizedBox(height: 10),
                 AppText(
                   'validators.languages',
-                  style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                  style: context.appTextTheme.inputErrorTextStyle,
                 ),
               ],
               Spacer(),
@@ -59,13 +59,13 @@ class CreateAccountPage3 extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        context.read<AppThemeCubit>().state.appIcons.textButtonArrowLeftIcon,
+                        context.appIcons.textButtonArrowLeftIcon,
                         SizedBox(
                           width: 8,
                         ),
                         AppText(
                           'authentication.createAccountPage.back',
-                          style: context.read<AppThemeCubit>().state.textTheme.textButtonTextStyle,
+                          style: context.appTextTheme.textButtonTextStyle,
                         ),
                       ],
                     ),
@@ -83,12 +83,12 @@ class CreateAccountPage3 extends StatelessWidget {
                             children: [
                               AppText(
                                 'authentication.createAccountPage.next',
-                                style: context.read<AppThemeCubit>().state.textTheme.simpleButtonTextStyle,
+                                style: context.appTextTheme.simpleButtonTextStyle,
                               ),
                               SizedBox(
                                 width: 8,
                               ),
-                              context.read<AppThemeCubit>().state.appIcons.textButtonArrowRightIcon,
+                              context.appIcons.textButtonArrowRightIcon,
                             ],
                           ),
                         ),

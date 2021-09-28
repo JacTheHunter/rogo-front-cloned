@@ -77,4 +77,37 @@ class DefaultAppColors extends AppColors {
 
   @override
   Color get sliverWishlistsAppBarBackgroundColor => AppColorScheme.whitePointer;
+
+  @override
+  Color get inboxChatRoomItemBackgroundColor => AppColorScheme.white;
+
+  @override
+  Color get inboxChatRoomItemBorderColor => AppColorScheme.hollywoodCerise;
+
+  @override
+  Color get inboxChatRoomBackgroundColor => AppColorScheme.whitePointer;
+
+  @override
+  Color get inboxChatRoomItemNewMessagesBackgroundColor => AppColorScheme.hollywoodCerise;
+
+  @override
+  Color get chatBackgroundColor => AppColorScheme.whitePointer;
+
+  @override
+  Color get chatInputsBackgroundColor => AppColorScheme.white;
+
+  @override
+  Color get chatInputsBorderColor => AppColorScheme.remi;
+
+  @override
+  Color get chatOwnMessageBackgroundColor => AppColorScheme.pinkLace;
+
+  @override
+  Color get chatPartnerMessageBackgroundColor => AppColorScheme.white;
+
+  @override
+  Color get chatInputsSendButtonBackgroundColor => AppColorScheme.hollywoodCerise;
+
+  @override
+  Color get chatAvatarBackgroundColor => AppColorScheme.chablis;
 }

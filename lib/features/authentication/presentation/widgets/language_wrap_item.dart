@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../languages/domain/entities/language.dart';
@@ -25,13 +25,13 @@ class LanguageWrapItem extends StatelessWidget {
         margin: const EdgeInsets.only(right: 16, bottom: 16),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: isSelected ? context.read<AppThemeCubit>().state.appColors.primaryColor : AppColorScheme.white,
+            color: isSelected ? context.appColors.primaryColor : AppColorScheme.white,
             border: isSelected
                 ? Border.all(width: 1, color: AppColorScheme.transparent)
                 : Border.all(color: AppColorScheme.remi, width: 1)),
         child: AppText(
           language.name,
-          color: isSelected ? AppColorScheme.white : context.read<AppThemeCubit>().state.appColors.primaryTextColor,
+          color: isSelected ? AppColorScheme.white : context.appColors.primaryTextColor,
           fontSize: 18,
           fontWeight: FontWeight.w500,
         ),

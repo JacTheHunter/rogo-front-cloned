@@ -6,6 +6,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:rogo/features/inbox/presentation/blocs/chat_rooms_bloc/chat_rooms_bloc.dart';
+import 'package:rogo/features/inbox/presentation/blocs/send_message_cubit/send_message_cubit.dart';
 
 import 'core/configs/constants/app_routes.dart';
 import 'core/configs/routes/app_route_generator.dart';
@@ -27,6 +29,7 @@ import 'features/authentication/presentation/blocs/sign_up_cubit/sign_up_cubit.d
 import 'features/browse/presentation/bloc/cubit/top_sellers_cubit.dart';
 import 'features/categories/presentation/bloc/categories_cubit/categories_cubit.dart';
 import 'features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
+import 'features/inbox/presentation/blocs/chat_messages_bloc/chat_messages_bloc.dart';
 import 'features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
 import 'features/onboarding/presentation/blocs/onboarding_page_cubit/onboarding_page_cubit.dart';
 
@@ -68,7 +71,7 @@ Future<void> main() async {
     preferences: TranslatePreferences(),
   );
 
-  // await HydratedBloc.storage.clear();
+  await HydratedBloc.storage.clear();
   runApp(LocalizedApp(delegate, App()));
 }
 
@@ -89,10 +92,10 @@ class App extends StatelessWidget {
         BlocProvider<AppThemeCubit>(
           create: (context) => sl(),
         ),
-        BlocProvider<FirebaseAuthenticationBloc>(
+        BlocProvider<AuthenticationCubit>(
           create: (context) => sl(),
         ),
-        BlocProvider<AuthenticationCubit>(
+        BlocProvider<FirebaseAuthenticationBloc>(
           create: (context) => sl(),
         ),
         BlocProvider<SignUpCubit>(
@@ -102,9 +105,6 @@ class App extends StatelessWidget {
           create: (context) => sl(),
         ),
         BlocProvider<ForgotPasswordCubit>(
-          create: (context) => sl(),
-        ),
-        BlocProvider<CreateAccountCubit>(
           create: (context) => sl(),
         ),
         BlocProvider<PhoneVerificationCubit>(
@@ -122,44 +122,60 @@ class App extends StatelessWidget {
         BlocProvider<CategoriesCubit>(
           create: (context) => sl(),
         ),
+        BlocProvider<ChatRoomsBloc>(
+          create: (context) => sl(),
+        ),
+        BlocProvider<ChatMessagesBloc>(
+          create: (context) => sl(),
+        ),
       ],
       child: Builder(builder: (context) {
-        return BlocProvider(
-          create: (context) => CreateAccountCubit(
-              countriesAndCitiesCubit: context.read<CountriesAndCitiesCubit>(),
-              languagesCubit: context.read<LanguagesCubit>(),
-              authenticationCubit: context.read<AuthenticationCubit>(),
-              registerUserUseCase: sl(),
-              verifyPhoneNumberInFirebaseUseCase: sl()),
-          child: Builder(builder: (context) {
-            return BlocProvider(
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<SendMessageCubit>(
+              create: (context) => SendMessageCubit(
+                sendMessageUseCase: sl(),
+                chatMessagesBloc: context.read<ChatMessagesBloc>(),
+              ),
+            ),
+            BlocProvider(
+              create: (context) => CreateAccountCubit(
+                  countriesAndCitiesCubit: context.read<CountriesAndCitiesCubit>(),
+                  languagesCubit: context.read<LanguagesCubit>(),
+                  authenticationCubit: context.read<AuthenticationCubit>(),
+                  registerUserUseCase: sl(),
+                  verifyPhoneNumberInFirebaseUseCase: sl()),
+            ),
+            BlocProvider(
               create: (context) => PhoneVerificationCubit(
                 updatePhoneNumberInFirebaseUseCase: sl(),
                 createAccountCubit: context.read<CreateAccountCubit>(),
               ),
-              child: BlocBuilder<AppThemeCubit, AppTheme>(
-                builder: (context, state) {
-                  return MaterialApp(
-                    localizationsDelegates: [
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      localizationDelegate
-                    ],
-                    supportedLocales: localizationDelegate.supportedLocales,
-                    locale: localizationDelegate.currentLocale,
-                    debugShowCheckedModeBanner: false,
-                    navigatorKey: sl<NavigatorService>().key,
-                    onGenerateRoute: AppRouteGenerator.generateRoute,
-                    title: 'Rogo',
-                    theme: ThemeData(
-                      primaryColor: state.appColors.primaryColor,
-                      fontFamily: state.fontFamily,
-                      scaffoldBackgroundColor: state.appColors.scaffoldBackgroundColor,
-                    ),
-                    initialRoute: AppRoutes.mainPage,
-                  );
-                },
-              ),
+            ),
+          ],
+          child: Builder(builder: (context) {
+            return BlocBuilder<AppThemeCubit, AppTheme>(
+              builder: (context, state) {
+                return MaterialApp(
+                  localizationsDelegates: [
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    localizationDelegate
+                  ],
+                  supportedLocales: localizationDelegate.supportedLocales,
+                  locale: localizationDelegate.currentLocale,
+                  debugShowCheckedModeBanner: false,
+                  navigatorKey: sl<NavigatorService>().key,
+                  onGenerateRoute: AppRouteGenerator.generateRoute,
+                  title: 'Rogo',
+                  theme: ThemeData(
+                    primaryColor: state.appColors.primaryColor,
+                    fontFamily: state.fontFamily,
+                    scaffoldBackgroundColor: state.appColors.scaffoldBackgroundColor,
+                  ),
+                  initialRoute: AppRoutes.mainPage,
+                );
+              },
             );
           }),
         );

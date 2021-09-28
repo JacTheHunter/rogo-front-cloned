@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_app_bar.dart';
 import '../../../../core/presentation/pages/widgets/app_loader.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
@@ -74,14 +74,14 @@ class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
                       Spacer(flex: 3),
                       AppText(
                         'authentication.confirmPhoneNumberPage.verifyYourPhonenumber',
-                        style: context.read<AppThemeCubit>().state.textTheme.createAccountTitleTextStyle,
+                        style: context.appTextTheme.createAccountTitleTextStyle,
                       ),
                       SizedBox(
                         height: 16,
                       ),
                       AppText(
                         'authentication.confirmPhoneNumberPage.enterYourCodeHere',
-                        style: context.read<AppThemeCubit>().state.textTheme.confirmPhoneSubtitleTextStyle,
+                        style: context.appTextTheme.confirmPhoneSubtitleTextStyle,
                       ),
                       // if (state.errorMessage.isNotEmpty)
                       //   AppText(
@@ -108,7 +108,7 @@ class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
                           child: AppText(
                             translate('authentication.confirmPhoneNumberPage.didntRecieveAnyCode') +
                                 ' (00:${state.seconds})',
-                            style: context.read<AppThemeCubit>().state.textTheme.confirmPhoneSubtitleTextStyle,
+                            style: context.appTextTheme.confirmPhoneSubtitleTextStyle,
                           ),
                         ),
                       SizedBox(
@@ -120,7 +120,7 @@ class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
                             onTap: () => context.read<PhoneVerificationCubit>().resendCode(),
                             child: AppText(
                               'authentication.confirmPhoneNumberPage.resendNewCode',
-                              style: context.read<AppThemeCubit>().state.textTheme.textButtonTextStyle,
+                              style: context.appTextTheme.textButtonTextStyle,
                             ),
                           ),
                         ),
@@ -185,10 +185,10 @@ class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
                             height: 75,
                             child: InkWell(
                               borderRadius: BorderRadius.all(Radius.circular(75)),
-                              splashColor: context.read<AppThemeCubit>().state.appColors.inputFillColor,
+                              splashColor: context.appColors.inputFillColor,
                               highlightColor: AppColorScheme.transparent,
                               onTap: context.read<PhoneVerificationCubit>().erraseCode,
-                              child: context.read<AppThemeCubit>().state.appIcons.numberPadErraseIcon,
+                              child: context.appIcons.numberPadErraseIcon,
                             ),
                           ),
                         ],

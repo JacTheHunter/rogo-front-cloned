@@ -8,4 +8,6 @@ abstract class AppRoutes {
   static const onboardingPage = 'onboardingPage';
   static const profilePage = 'profilePage';
   static const browseItemPage = 'browseItemPage';
+  static const chatPage = 'chatPage';
+  static const usersPage = 'usersPage';
 }

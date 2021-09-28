@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 
 class Indicator extends StatelessWidget {
   final bool isCurrent;
@@ -16,8 +16,8 @@ class Indicator extends StatelessWidget {
         width: isCurrent ? 32 : 8,
         decoration: BoxDecoration(
           color: isCurrent
-              ? context.read<AppThemeCubit>().state.appColors.onboardingIndicatorSelectedColor
-              : context.read<AppThemeCubit>().state.appColors.onboardingIndicatorColor,
+              ? context.appColors.onboardingIndicatorSelectedColor
+              : context.appColors.onboardingIndicatorColor,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
         duration: Duration(milliseconds: 400),

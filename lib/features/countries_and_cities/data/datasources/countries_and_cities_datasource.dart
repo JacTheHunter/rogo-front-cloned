@@ -32,7 +32,7 @@ class CountriesAndCitiesDatasourceImpl implements CountriesAndCitiesDatasource {
   }) async {
     try {
       final result = await _client.get(
-        k_API_END_POINT_COUNTRY + '$countryId' + k_API_END_POINT_CITY,
+        k_API_END_POINT_COUNTRIES + '$countryId' + k_API_END_POINT_CITIES,
         params: {
           if (page != null) 'page': page.toString(),
           if (limit != null) 'limit': limit.toString(),
@@ -51,7 +51,7 @@ class CountriesAndCitiesDatasourceImpl implements CountriesAndCitiesDatasource {
   }) async {
     try {
       final result = await _client.get(
-        k_API_END_POINT_COUNTRY,
+        k_API_END_POINT_COUNTRIES,
         params: {
           if (page != null) 'page': page.toString(),
           if (limit != null) 'limit': limit.toString(),

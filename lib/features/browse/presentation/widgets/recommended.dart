@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../../../core/configs/constants/app_images.dart';
-import '../../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../../core/presentation/pages/widgets/app_text.dart';
 import 'recomended_item.dart';
 
@@ -13,14 +13,14 @@ class Recommended extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.read<AppThemeCubit>().state.appColors.productsBackgroundColor,
+      color: context.appColors.productsBackgroundColor,
       padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppText(
             'browse.browsePage.recommended',
-            style: context.read<AppThemeCubit>().state.textTheme.browseTitleTextStyle,
+            style: context.appTextTheme.browseTitleTextStyle,
           ),
           SizedBox(height: 16),
           StaggeredGridView.countBuilder(

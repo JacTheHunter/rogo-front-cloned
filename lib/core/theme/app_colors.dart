@@ -24,5 +24,18 @@ abstract class AppColors {
 
   Color get sliverWishlistsAppBarBackgroundColor;
 
+  Color get inboxChatRoomItemBackgroundColor;
+  Color get inboxChatRoomItemBorderColor;
+  Color get inboxChatRoomBackgroundColor;
+  Color get inboxChatRoomItemNewMessagesBackgroundColor;
+
+  Color get chatBackgroundColor;
+  Color get chatInputsBackgroundColor;
+  Color get chatInputsSendButtonBackgroundColor;
+  Color get chatInputsBorderColor;
+  Color get chatOwnMessageBackgroundColor;
+  Color get chatPartnerMessageBackgroundColor;
+  Color get chatAvatarBackgroundColor;
+
   Gradient get createAccountHeaderGradient;
 }

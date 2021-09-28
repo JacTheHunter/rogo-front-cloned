@@ -6,7 +6,7 @@ import '../../../../core/configs/constants/app_colors.dart';
 import '../../../../core/configs/constants/app_images.dart';
 import '../../../../core/form_models/email_form_model.dart';
 import '../../../../core/injection/injection_container.dart';
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_app_bar.dart';
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_loader.dart';
@@ -67,7 +67,7 @@ class ForgotPasswordPage extends StatelessWidget {
                         state.email.error == EmailFormModelValidationError.empty
                             ? 'validators.thisFieldIsRequired'
                             : 'validators.invalidEmail',
-                        style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                        style: context.appTextTheme.inputErrorTextStyle,
                       ),
                     SizedBox(height: 40),
                     state.status == FormzStatus.submissionInProgress

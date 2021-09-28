@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
 import '../../../../../core/configs/constants/app_images.dart';
-import '../../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../../core/presentation/pages/widgets/app_text_form_field.dart';
@@ -23,7 +22,7 @@ class BrowsePage extends StatelessWidget {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              backgroundColor: context.read<AppThemeCubit>().state.appColors.sliverAppBarBackgroundColor,
+              backgroundColor: context.appColors.sliverAppBarBackgroundColor,
               toolbarHeight: 80,
               floating: false,
               flexibleSpace: FlexibleSpaceBar(
@@ -50,7 +49,7 @@ class BrowsePage extends StatelessWidget {
                             child: AppText(
                               "Welcome Text",
                               maxLines: 1,
-                              style: context.read<AppThemeCubit>().state.textTheme.sliverHeaderTitleTextStyle,
+                              style: context.appTextTheme.sliverHeaderTitleTextStyle,
                             ),
                           ),
                         ],
@@ -66,7 +65,7 @@ class BrowsePage extends StatelessWidget {
               ),
             ),
             SliverAppBar(
-              backgroundColor: context.read<AppThemeCubit>().state.appColors.sliverAppBarBackgroundColor,
+              backgroundColor: context.appColors.sliverAppBarBackgroundColor,
               //  expandedHeight: 160,
               elevation: 0,
               shape: RoundedRectangleBorder(
@@ -84,7 +83,7 @@ class BrowsePage extends StatelessWidget {
                 title: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
-                    color: context.read<AppThemeCubit>().state.appColors.sliverAppBarBackgroundColor,
+                    color: context.appColors.sliverAppBarBackgroundColor,
                   ),
                   padding: const EdgeInsets.fromLTRB(20, 30, 20, 24),
                   child: Column(
@@ -92,16 +91,15 @@ class BrowsePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TabBar(
-                        indicatorColor: context.read<AppThemeCubit>().state.appColors.primaryColor,
-                        labelStyle: context.read<AppThemeCubit>().state.textTheme.tabBarSelectedLabelTextStyle,
-                        unselectedLabelStyle:
-                            context.read<AppThemeCubit>().state.textTheme.tabBarUnSelectedLabelTextStyle,
-                        labelColor: context.read<AppThemeCubit>().state.appColors.primaryTextColor,
-                        unselectedLabelColor: context.read<AppThemeCubit>().state.appColors.hintColor,
+                        indicatorColor: context.appColors.primaryColor,
+                        labelStyle: context.appTextTheme.tabBarSelectedLabelTextStyle,
+                        unselectedLabelStyle: context.appTextTheme.tabBarUnSelectedLabelTextStyle,
+                        labelColor: context.appColors.primaryTextColor,
+                        unselectedLabelColor: context.appColors.hintColor,
                         isScrollable: true,
                         indicator: UnderlineTabIndicator(
                           borderSide: BorderSide(
-                            color: context.read<AppThemeCubit>().state.appColors.primaryColor,
+                            color: context.appColors.primaryColor,
                             width: 2,
                           ),
                           //  insets: EdgeInsets.only(left: 0, right: 0, bottom: 0),
@@ -122,17 +120,16 @@ class BrowsePage extends StatelessWidget {
                         height: 24,
                       ),
                       AppTextFormField(
-                        fillColor: context.read<AppThemeCubit>().state.appColors.sliverAppBarSearchFillolor,
+                        fillColor: context.appColors.sliverAppBarSearchFillolor,
                         prefixIconConstraints: BoxConstraints(maxHeight: 18),
                         prefixIcon: Padding(
-                            padding: const EdgeInsets.only(left: 18, right: 10),
-                            child: context.read<AppThemeCubit>().state.appIcons.searchIcon),
+                            padding: const EdgeInsets.only(left: 18, right: 10), child: context.appIcons.searchIcon),
                         suffixIconConstraints: BoxConstraints(maxHeight: 20),
                         suffixIcon: Padding(
                             padding: const EdgeInsets.only(left: 10, right: 16),
-                            child: context.read<AppThemeCubit>().state.appIcons.searchFilterIcon),
+                            child: context.appIcons.searchFilterIcon),
                         hintText: 'browse.browsePage.whatAreYouLookingFor',
-                        hintStyle: context.read<AppThemeCubit>().state.textTheme.searchInputHintTextStyle,
+                        hintStyle: context.appTextTheme.searchInputHintTextStyle,
                       ),
                     ],
                   ),

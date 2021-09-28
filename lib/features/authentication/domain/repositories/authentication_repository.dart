@@ -5,6 +5,7 @@ import '../entities/user.dart';
 
 abstract class AuthenticationRepository {
   Future<Either<Failure, User>> getCurrentUser();
+  Future<Either<Failure, List<User>>> getallUsers();
   Future<Either<Failure, User>> registerUser({
     required String firstName,
     required String lastName,

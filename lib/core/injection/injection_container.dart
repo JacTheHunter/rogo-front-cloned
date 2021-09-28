@@ -1,5 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:rogo/core/services/device_info_service.dart';
+import 'package:rogo/core/services/notification_service.dart';
+import 'package:rogo/features/inbox/data/datasources/inbox_datasource.dart';
+import 'package:rogo/features/inbox/data/repositories/inbox_repository_iml.dart';
+import 'package:rogo/features/inbox/domain/usecases/create_chat_usecase.dart';
+import 'package:rogo/features/inbox/domain/usecases/get_chat_rooms_usecase.dart';
+import 'package:rogo/features/inbox/domain/repositories/inbox_repository.dart';
+import 'package:rogo/features/inbox/domain/usecases/get_messages_of_chat_usecase.dart';
+import 'package:rogo/features/inbox/domain/usecases/get_rest_of_messages_of_chat_usecase.dart';
+import 'package:rogo/features/inbox/domain/usecases/get_users_for_chat_usecase.dart';
+import 'package:rogo/features/inbox/domain/usecases/send_message_usecase.dart';
+import 'package:rogo/features/inbox/presentation/blocs/chat_messages_bloc/chat_messages_bloc.dart';
+import 'package:rogo/features/inbox/presentation/blocs/chat_rooms_bloc/chat_rooms_bloc.dart';
+import 'package:rogo/features/inbox/presentation/blocs/send_message_cubit/send_message_cubit.dart';
 import '../../features/authentication/domain/usecases/sign_in_with_facebook_in_firebase_usecase.dart';
 
 import '../../features/authentication/data/datasources/authentication_datasource.dart';
@@ -74,8 +88,15 @@ Future<void> init() async {
 
   //External
   sl.registerLazySingleton(() => ApiService());
+
   final boxService = await BoxService().init();
   sl.registerLazySingleton(() => boxService);
+
+  final notificationService = await NotificationsService().init();
+  sl.registerLazySingleton(() => notificationService);
+
+  final deviceInfoService = await DeviceInfoService().init();
+  sl.registerLazySingleton(() => deviceInfoService);
 
   //!Feature AppLock
 
@@ -203,6 +224,25 @@ Future<void> init() async {
   sl.registerLazySingleton<CategoriesRepository>(() => CategoriesRepositoryImpl(dataSource: sl()));
   //Data Source
   sl.registerLazySingleton<CategoriesDataSource>(() => CategoriesDataSourceImpl(client: sl()));
+
+  //!Feature Inbox
+  //Blocs
+  sl.registerFactory(
+      () => ChatRoomsBloc(getChatRoomsUseCase: sl(), createChatUseCase: sl(), getUsersForChatUseCase: sl()));
+  sl.registerFactory(() => ChatMessagesBloc(getMessagesOfChatUseCase: sl(), getRestOfMessagesOfChatUseCase: sl()));
+  sl.registerFactory(() => SendMessageCubit(sendMessageUseCase: sl(), chatMessagesBloc: sl()));
+  // sl.registerFactory(() => ChatMessagesBloc(getMessagesOfChatUseCase: sl(), sendMessageUseCase: sl()));
+  //UseCases
+  sl.registerLazySingleton(() => GetChatRoomsUseCase(repository: sl()));
+  sl.registerLazySingleton(() => GetRestOfMessagesOfChatUseCase(repository: sl()));
+  sl.registerLazySingleton(() => GetMessagesOfChatUseCase(repository: sl()));
+  sl.registerLazySingleton(() => SendMessageUseCase(repository: sl()));
+  sl.registerLazySingleton(() => CreateChatUseCase(repository: sl()));
+  sl.registerLazySingleton(() => GetUsersForChatUseCase(repository: sl()));
+  //Repository
+  sl.registerLazySingleton<InboxRepository>(() => InboxRepositoryImpl(datasource: sl()));
+  //Data Source
+  sl.registerLazySingleton<InboxDatasource>(() => InboxDatasourceImpl(client: sl()));
 
   //!External
   //DIO

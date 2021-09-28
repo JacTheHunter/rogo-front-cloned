@@ -7,7 +7,7 @@ import '../../../../core/configs/constants/app_routes.dart';
 import '../../../../core/form_models/email_form_model.dart';
 import '../../../../core/form_models/password_form_model.dart';
 import '../../../../core/injection/injection_container.dart';
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_loader.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
@@ -44,8 +44,9 @@ class LoginPage extends StatelessWidget {
               },
               builder: (context, state) {
                 return SingleChildScrollView(
+                  physics: NeverScrollableScrollPhysics(),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height - 70,
+                    height: MediaQuery.of(context).size.height - 60,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -56,12 +57,12 @@ class LoginPage extends StatelessWidget {
                         SizedBox(height: 15),
                         AppText(
                           'authentication.loginPage.login',
-                          style: context.read<AppThemeCubit>().state.textTheme.authenticationTitleTextStyle,
+                          style: context.appTextTheme.authenticationTitleTextStyle,
                         ),
                         SizedBox(height: 12),
                         AppText(
                           'authentication.loginPage.yourEmail',
-                          style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                          style: context.appTextTheme.inputLabelTextStyle,
                         ),
                         AppTextFormField(
                           onChanged: context.read<LoginCubit>().updateEmail,
@@ -73,12 +74,12 @@ class LoginPage extends StatelessWidget {
                             state.email.error == EmailFormModelValidationError.empty
                                 ? 'validators.thisFieldIsRequired'
                                 : 'validators.invalidEmail',
-                            style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                            style: context.appTextTheme.inputErrorTextStyle,
                           ),
                         SizedBox(height: 16),
                         AppText(
                           'authentication.loginPage.password',
-                          style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                          style: context.appTextTheme.inputLabelTextStyle,
                         ),
                         AppTextFormField(
                           onChanged: context.read<LoginCubit>().updatePassword,
@@ -92,7 +93,7 @@ class LoginPage extends StatelessWidget {
                               onTap: () => sl<NavigatorService>().pushNamed(AppRoutes.forgotPasswordPage),
                               child: AppText(
                                 'authentication.loginPage.forgot',
-                                style: context.read<AppThemeCubit>().state.textTheme.textButtonTextStyle,
+                                style: context.appTextTheme.textButtonTextStyle,
                               ),
                             ),
                           ),
@@ -102,7 +103,7 @@ class LoginPage extends StatelessWidget {
                             state.password.error == PasswordFormModelValidationError.empty
                                 ? 'validators.thisFieldIsRequired'
                                 : 'validators.invalidPassword',
-                            style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                            style: context.appTextTheme.inputErrorTextStyle,
                           ),
                         SizedBox(height: 28),
                         state.status == FormzStatus.submissionInProgress
@@ -117,7 +118,7 @@ class LoginPage extends StatelessWidget {
                         Center(
                           child: AppText(
                             'authentication.loginPage.orLoginWith',
-                            style: context.read<AppThemeCubit>().state.textTheme.authenticationSubTitleTextStyle,
+                            style: context.appTextTheme.authenticationSubTitleTextStyle,
                           ),
                         ),
                         SizedBox(height: 8),
@@ -157,14 +158,14 @@ class LoginPage extends StatelessWidget {
                           children: [
                             AppText(
                               'authentication.loginPage.dontHaveAnAccount',
-                              style: context.read<AppThemeCubit>().state.textTheme.authenticationTextStyle,
+                              style: context.appTextTheme.authenticationTextStyle,
                             ),
                             SizedBox(width: 8),
                             GestureDetector(
                               onTap: onSignUp,
                               child: AppText(
                                 'authentication.loginPage.signUp',
-                                style: context.read<AppThemeCubit>().state.textTheme.textButtonTextStyle,
+                                style: context.appTextTheme.textButtonTextStyle,
                               ),
                             ),
                           ],

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../theme/app_color_scheme.dart';
-import '../../blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 
 class AppLoader extends StatelessWidget {
   final bool reverse;
@@ -12,7 +11,7 @@ class AppLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: CircularProgressIndicator(
-        color: reverse ? AppColorScheme.white : context.read<AppThemeCubit>().state.appColors.primaryColor,
+        color: reverse ? AppColorScheme.white : context.appColors.primaryColor,
       ),
     );
   }

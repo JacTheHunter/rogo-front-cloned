@@ -33,7 +33,7 @@ class AppImage extends StatelessWidget {
     this.alignment = Alignment.center,
     this.height,
     this.width,
-    this.fit = BoxFit.fill,
+    this.fit = BoxFit.contain,
     this.color,
     this.borderRadius = BorderRadius.zero,
     this.package,

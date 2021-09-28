@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../../core/theme/app_color_scheme.dart';
 import 'gradient_button.dart';
@@ -22,7 +21,7 @@ class AppGradientBottomNavBar extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(14)),
         boxShadow: [
           BoxShadow(
-            color: context.read<AppThemeCubit>().state.appColors.appbarShadowColor,
+            color: context.appColors.appbarShadowColor,
             blurRadius: 24,
             offset: Offset(0, -4),
           )
@@ -32,26 +31,22 @@ class AppGradientBottomNavBar extends StatelessWidget {
         children: [
           AppText(
             '\$50',
-            style: context.read<AppThemeCubit>().state.textTheme.browseItemPriceNumberTextStyle.copyWith(
-                  color: AppColorScheme.white,
-                  fontSize: 18,
-                ),
+            style: context.appTextTheme.browseItemPriceNumberTextStyle.copyWith(
+              color: AppColorScheme.white,
+              fontSize: 18,
+            ),
           ),
           SizedBox(width: 8),
           AppText(
             'p/day',
-            style: context
-                .read<AppThemeCubit>()
-                .state
-                .textTheme
-                .browseItemPriceTextStyle
+            style: context.appTextTheme.browseItemPriceTextStyle
                 .copyWith(color: AppColorScheme.white, fontSize: 18, fontWeight: FontWeight.w500),
           ),
           Spacer(),
           GradientButton(
             isWide: false,
             text: 'Rent now',
-            gradient: context.read<AppThemeCubit>().state.appColors.createAccountHeaderGradient,
+            gradient: context.appColors.createAccountHeaderGradient,
           ),
         ],
       ),

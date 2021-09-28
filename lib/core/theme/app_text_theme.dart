@@ -74,4 +74,15 @@ abstract class AppTextTheme {
 
   TextStyle get languageSelectBottomSheetLanguageSelectedTextStyle;
   TextStyle get languageSelectBottomSheetLanguageTextStyle;
+
+  TextStyle get chatRoomItemNameTextStyle;
+  TextStyle get chatRoomItemLastMessageTextStyle;
+  TextStyle get chatRoomItemLastDateTextStyle;
+  TextStyle get chatRoomItemMesagesCountTextStyle;
+
+  TextStyle get chatInputHintTextStyle;
+  TextStyle get chatMessageTimeTextStyle;
+  TextStyle get chatMessageTextStyle;
+  TextStyle get chatMessagesDateDividerTextStyle;
+  TextStyle get chatAvatarLettersTextStyle;
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/configs/constants/app_images.dart';
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 
@@ -18,7 +18,7 @@ class FeedItem extends StatelessWidget {
       height: 140,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
-        color: context.read<AppThemeCubit>().state.appColors.productItemBackgroundColor,
+        color: context.appColors.productItemBackgroundColor,
       ),
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.start,
@@ -48,15 +48,15 @@ class FeedItem extends StatelessWidget {
                     children: [
                       AppText(
                         '\$50',
-                        style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemPriceNumberTextStyle,
+                        style: context.appTextTheme.wishlistsProductItemPriceNumberTextStyle,
                       ),
                       SizedBox(width: 4),
                       AppText(
                         'p/day',
-                        style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemPriceTextStyle,
+                        style: context.appTextTheme.wishlistsProductItemPriceTextStyle,
                       ),
                       Spacer(),
-                      context.read<AppThemeCubit>().state.appIcons.favoriteIcon,
+                      context.appIcons.favoriteIcon,
                     ],
                   ),
                 ),
@@ -66,7 +66,7 @@ class FeedItem extends StatelessWidget {
                   child: AppText(
                     'Vinyl Photography Background',
                     maxLines: 2,
-                    style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemNameTextStyle,
+                    style: context.appTextTheme.wishlistsProductItemNameTextStyle,
                   ),
                 ),
                 Spacer(),
@@ -79,7 +79,7 @@ class FeedItem extends StatelessWidget {
                     SizedBox(width: 5),
                     AppText(
                       'Camas, WA',
-                      style: context.read<AppThemeCubit>().state.textTheme.productItemLocationTextStyle,
+                      style: context.appTextTheme.productItemLocationTextStyle,
                     ),
                   ],
                 )

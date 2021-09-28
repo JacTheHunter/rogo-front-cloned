@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
 import '../../../theme/app_color_scheme.dart';
-import '../../blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 
 class AppText extends StatelessWidget {
   final String data;
@@ -31,8 +31,7 @@ class AppText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorizedStyle =
-        style?.copyWith(color: style?.color ?? context.read<AppThemeCubit>().state.appColors.primaryTextColor);
+    final colorizedStyle = style?.copyWith(color: style?.color ?? context.appColors.primaryTextColor);
     return Text(
       translate(data),
       overflow: overflow,

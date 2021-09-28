@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:rogo/core/usecase/paginated_response_params.dart';
 
 import '../../../domain/entities/language.dart';
 import '../../../domain/usecases/get_all_languages_usecase.dart';
@@ -15,7 +16,7 @@ class LanguagesCubit extends Cubit<LanguagesState> {
 
   void fetchLanguages() async {
     emit(state.copyWith(isLoading: true));
-    final countriesResult = await _getAllLanguagesUseCase.call(LanguagesParams());
+    final countriesResult = await _getAllLanguagesUseCase.call(PaginatedResponseParams());
     countriesResult.fold((l) {
       emit(state.copyWith(errorMessage: l.message));
     }, (r) {

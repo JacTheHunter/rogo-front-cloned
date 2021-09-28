@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../theme/app_color_scheme.dart';
-import '../../blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import 'app_text.dart';
 
 class HaitiButton extends StatelessWidget {
@@ -41,13 +41,13 @@ class HaitiButton extends StatelessWidget {
                 child: child ??
                     AppText(
                       text,
-                      style: context.read<AppThemeCubit>().state.textTheme.haitiButtonTextStyle,
+                      style: context.appTextTheme.haitiButtonTextStyle,
                     ),
               )
             : child ??
                 AppText(
                   text,
-                  style: context.read<AppThemeCubit>().state.textTheme.haitiButtonTextStyle,
+                  style: context.appTextTheme.haitiButtonTextStyle,
                 ),
       ),
     );

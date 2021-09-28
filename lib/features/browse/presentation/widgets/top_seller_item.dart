@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
 import '../../../../core/configs/constants/app_images.dart';
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 
@@ -57,7 +57,7 @@ class TopSellerItem extends StatelessWidget {
                     child: AppText(
                       name,
                       overflow: TextOverflow.ellipsis,
-                      style: context.read<AppThemeCubit>().state.textTheme.topSellerNameTextStyle,
+                      style: context.appTextTheme.topSellerNameTextStyle,
                     ),
                   ),
                   SizedBox(height: 4),
@@ -65,7 +65,7 @@ class TopSellerItem extends StatelessWidget {
                     children: [
                       AppText(
                         rating.toString(),
-                        style: context.read<AppThemeCubit>().state.textTheme.topSellerRatingTextStyle,
+                        style: context.appTextTheme.topSellerRatingTextStyle,
                       ),
                       SizedBox(width: 4),
                       AppImage.asset(
@@ -76,7 +76,7 @@ class TopSellerItem extends StatelessWidget {
                       SizedBox(width: 16),
                       AppText(
                         '$reviews ' + translate('browse.browsePage.reviews'),
-                        style: context.read<AppThemeCubit>().state.textTheme.topSellerReviewsTextStyle,
+                        style: context.appTextTheme.topSellerReviewsTextStyle,
                       ),
                     ],
                   )

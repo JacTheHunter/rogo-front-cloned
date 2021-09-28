@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 
 class AddLanguagesButton extends StatelessWidget {
   final Function()? onTap;
@@ -15,11 +15,11 @@ class AddLanguagesButton extends StatelessWidget {
         height: 40,
         width: 56,
         decoration: BoxDecoration(
-          border: Border.all(color: context.read<AppThemeCubit>().state.appColors.primaryTextColor),
+          border: Border.all(color: context.appColors.primaryTextColor),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: context.read<AppThemeCubit>().state.appIcons.addLanguageButtonIcon,
+          child: context.appIcons.addLanguageButtonIcon,
         ),
       ),
     );

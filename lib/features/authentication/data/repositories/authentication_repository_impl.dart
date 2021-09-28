@@ -22,6 +22,16 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
   }
 
   @override
+  Future<Either<Failure, List<User>>> getallUsers() async {
+    try {
+      final result = await _datasource.getallUsers();
+      return Right(result);
+    } on ServerException catch (exception) {
+      return Left(ServerFailure(message: exception.message));
+    }
+  }
+
+  @override
   Future<Either<Failure, User>> registerUser({
     required String firstName,
     required String lastName,

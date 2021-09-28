@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 
 class ConfirmPhoneNumberCodeItem extends StatelessWidget {
@@ -16,15 +16,13 @@ class ConfirmPhoneNumberCodeItem extends StatelessWidget {
       margin: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(15)),
-        color: text.isEmpty
-            ? context.read<AppThemeCubit>().state.appColors.inputFillColor
-            : context.read<AppThemeCubit>().state.appColors.primaryColor,
+        color: text.isEmpty ? context.appColors.inputFillColor : context.appColors.primaryColor,
       ),
       child: Center(
         child: AppText(
           text,
           textAlign: TextAlign.center,
-          style: context.read<AppThemeCubit>().state.textTheme.confirmPhoneSelectedNumberTextStyle,
+          style: context.appTextTheme.confirmPhoneSelectedNumberTextStyle,
         ),
       ),
     );

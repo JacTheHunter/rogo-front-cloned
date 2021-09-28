@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:rogo/core/injection/injection_container.dart';
+import 'package:rogo/core/services/notification_service.dart';
 
 import '../../../../../core/usecase/usecase.dart';
 import '../../../domain/entities/user.dart';
@@ -21,6 +23,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }, (r) {
       if (r.phone.isNotEmpty) {
         emit(AuthenticationState.registered(r));
+        sl<NotificationsService>().setFcm();
       } else {
         emit(AuthenticationState.unregistered());
       }

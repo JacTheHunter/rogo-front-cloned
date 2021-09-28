@@ -39,6 +39,10 @@ class Vector {
   String get xCircle => 'assets/images/vector/x_circle.svg';
 
   String get sliverOverlay => 'assets/images/vector/sliver_overlay.svg';
+
+  String get chatImage => 'assets/images/vector/chat_image.svg';
+  String get chatSend => 'assets/images/vector/chat_send.svg';
+  String get chatMapPin => 'assets/images/vector/chat_map_pin.svg';
 }
 
 class Raster {

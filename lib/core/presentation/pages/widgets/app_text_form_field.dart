@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
-import '../../blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 
 class AppTextFormField extends StatelessWidget {
   final TextStyle? textStyle;
@@ -98,35 +97,33 @@ class AppTextFormField extends StatelessWidget {
       textAlign: textAlign,
       inputFormatters: inputFormatters,
       textCapitalization: textCapitalization,
-      style: textStyle ?? context.read<AppThemeCubit>().state.textTheme.inputTextStyle,
+      style: textStyle ?? context.appTextTheme.inputTextStyle,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 16),
-        fillColor: fillColor ?? context.read<AppThemeCubit>().state.appColors.inputFillColor,
+        fillColor: fillColor ?? context.appColors.inputFillColor,
         counterText: '',
         hintText: translate(hintText ?? ''),
         //  isDense: true,
         prefixText: prefixText,
-        prefixStyle: context.read<AppThemeCubit>().state.textTheme.inputTextStyle,
+        prefixStyle: context.appTextTheme.inputTextStyle,
         prefix: prefix,
         prefixIcon: prefixIcon,
         prefixIconConstraints: prefixIconConstraints,
         suffix: suffix,
         suffixIcon: suffixIcon,
         suffixIconConstraints: suffixIconConstraints,
-        hintStyle: hintStyle ?? context.read<AppThemeCubit>().state.textTheme.inputHintTextStyle,
+        hintStyle: hintStyle ?? context.appTextTheme.inputHintTextStyle,
         enabledBorder: OutlineInputBorder(
           borderRadius: const BorderRadius.all(
             const Radius.circular(10.0),
           ),
-          borderSide:
-              isInvalid ? BorderSide(color: context.read<AppThemeCubit>().state.appColors.errorColor) : BorderSide.none,
+          borderSide: isInvalid ? BorderSide(color: context.appColors.errorColor) : BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: const BorderRadius.all(
             const Radius.circular(10.0),
           ),
-          borderSide:
-              isInvalid ? BorderSide(color: context.read<AppThemeCubit>().state.appColors.errorColor) : BorderSide.none,
+          borderSide: isInvalid ? BorderSide(color: context.appColors.errorColor) : BorderSide.none,
         ),
         filled: true,
       ),

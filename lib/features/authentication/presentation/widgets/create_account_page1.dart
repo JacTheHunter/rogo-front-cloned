@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:formz/formz.dart';
 
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_loader.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
@@ -29,12 +29,12 @@ class CreateAccountPage1 extends StatelessWidget {
           children: [
             AppText(
               'authentication.createAccountPage.enterNameDateOfBirthAndPhoneNumber',
-              style: context.read<AppThemeCubit>().state.textTheme.createAccountTitleTextStyle,
+              style: context.appTextTheme.createAccountTitleTextStyle,
             ),
             SizedBox(height: 16),
             AppText(
               'authentication.createAccountPage.firstName',
-              style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+              style: context.appTextTheme.inputLabelTextStyle,
             ),
             AppTextFormField(
               initialValue: context.read<CreateAccountCubit>().state.firstName.value,
@@ -47,12 +47,12 @@ class CreateAccountPage1 extends StatelessWidget {
             if (state.firstName.invalid)
               AppText(
                 'validators.thisFieldIsRequired',
-                style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                style: context.appTextTheme.inputErrorTextStyle,
               ),
             SizedBox(height: 16),
             AppText(
               'authentication.createAccountPage.lastName',
-              style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+              style: context.appTextTheme.inputLabelTextStyle,
             ),
             AppTextFormField(
               initialValue: context.read<CreateAccountCubit>().state.lastName.value,
@@ -65,12 +65,12 @@ class CreateAccountPage1 extends StatelessWidget {
             if (state.lastName.invalid)
               AppText(
                 'validators.thisFieldIsRequired',
-                style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                style: context.appTextTheme.inputErrorTextStyle,
               ),
             SizedBox(height: 16),
             AppText(
               'authentication.createAccountPage.birthDate',
-              style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+              style: context.appTextTheme.inputLabelTextStyle,
             ),
             GestureDetector(
               onTap: () {
@@ -87,37 +87,35 @@ class CreateAccountPage1 extends StatelessWidget {
                 );
               },
               child: Container(
-                decoration: BoxDecoration(
-                    color: context.read<AppThemeCubit>().state.appColors.inputFillColor,
-                    borderRadius: BorderRadius.circular(10)),
+                decoration:
+                    BoxDecoration(color: context.appColors.inputFillColor, borderRadius: BorderRadius.circular(10)),
                 width: double.infinity,
                 padding: const EdgeInsets.fromLTRB(20, 15, 20, 16),
                 child: AppText(
                   state.birthDate.value,
-                  style: context.read<AppThemeCubit>().state.textTheme.inputTextStyle,
+                  style: context.appTextTheme.inputTextStyle,
                 ),
               ),
             ),
             if (state.lastName.invalid)
               AppText(
                 'validators.thisFieldIsRequired',
-                style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                style: context.appTextTheme.inputErrorTextStyle,
               ),
 
             SizedBox(height: 40),
             AppText(
               'authentication.createAccountPage.phoneNumber',
-              style: context.read<AppThemeCubit>().state.textTheme.inputGroupTitleTextStyle,
+              style: context.appTextTheme.inputGroupTitleTextStyle,
             ),
             SizedBox(height: 8),
             AppText(
               'authentication.createAccountPage.countryRegion',
-              style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+              style: context.appTextTheme.inputLabelTextStyle,
             ),
             Container(
-              decoration: BoxDecoration(
-                  color: context.read<AppThemeCubit>().state.appColors.inputFillColor,
-                  borderRadius: BorderRadius.circular(10)),
+              decoration:
+                  BoxDecoration(color: context.appColors.inputFillColor, borderRadius: BorderRadius.circular(10)),
               width: double.infinity,
               padding: const EdgeInsets.fromLTRB(20, 15, 20, 16),
               child: CountryCodePicker(
@@ -125,7 +123,7 @@ class CreateAccountPage1 extends StatelessWidget {
                 initialSelection: 'UZ',
                 favorite: ['UZ', 'US', 'RU'],
                 alignLeft: false,
-                textStyle: context.read<AppThemeCubit>().state.textTheme.inputTextStyle,
+                textStyle: context.appTextTheme.inputTextStyle,
                 builder: (CountryCode? code) {
                   return Row(
                     children: [
@@ -137,10 +135,10 @@ class CreateAccountPage1 extends StatelessWidget {
                       SizedBox(width: 10),
                       AppText(
                         code?.name ?? '',
-                        style: context.read<AppThemeCubit>().state.textTheme.inputTextStyle,
+                        style: context.appTextTheme.inputTextStyle,
                       ),
                       Spacer(),
-                      context.read<AppThemeCubit>().state.appIcons.dropDownIcon,
+                      context.appIcons.dropDownIcon,
                     ],
                   );
                 },
@@ -149,7 +147,7 @@ class CreateAccountPage1 extends StatelessWidget {
             SizedBox(height: 16),
             AppText(
               'authentication.createAccountPage.phoneNumber',
-              style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+              style: context.appTextTheme.inputLabelTextStyle,
             ),
             AppTextFormField(
               prefixIcon: Padding(
@@ -159,7 +157,7 @@ class CreateAccountPage1 extends StatelessWidget {
                   children: [
                     AppText(
                       state.phoneCountryCode,
-                      style: context.read<AppThemeCubit>().state.textTheme.inputTextStyle,
+                      style: context.appTextTheme.inputTextStyle,
                     ),
                     SizedBox(width: 8),
                     Container(
@@ -197,12 +195,12 @@ class CreateAccountPage1 extends StatelessWidget {
                           children: [
                             AppText(
                               'authentication.createAccountPage.next',
-                              style: context.read<AppThemeCubit>().state.textTheme.simpleButtonTextStyle,
+                              style: context.appTextTheme.simpleButtonTextStyle,
                             ),
                             SizedBox(
                               width: 8,
                             ),
-                            context.read<AppThemeCubit>().state.appIcons.textButtonArrowRightIcon,
+                            context.appIcons.textButtonArrowRightIcon,
                           ],
                         ),
                       ),

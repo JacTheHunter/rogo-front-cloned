@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/injection/injection_container.dart';
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../core/presentation/pages/widgets/app_text_form_field.dart';
 import '../../../../core/services/navigation_service.dart';
@@ -42,15 +42,14 @@ class LanguagesSheet extends StatelessWidget {
                                   onTap: () => sl<NavigatorService>().pop(),
                                   child: SizedBox(
                                     child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: context.read<AppThemeCubit>().state.appIcons.appBarArrowLeftIcon),
+                                        alignment: Alignment.centerLeft, child: context.appIcons.appBarArrowLeftIcon),
                                     width: 46,
                                   ),
                                 ),
                                 Flexible(
                                   child: AppText(
                                     'authentication.createAccountPage.addLanguage',
-                                    style: context.read<AppThemeCubit>().state.textTheme.bottomSheetTitleTextStyle,
+                                    style: context.appTextTheme.bottomSheetTitleTextStyle,
                                   ),
                                 ),
                                 GestureDetector(
@@ -58,13 +57,13 @@ class LanguagesSheet extends StatelessWidget {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      context.read<AppThemeCubit>().state.appIcons.textButtonCheckboxIcon,
+                                      context.appIcons.textButtonCheckboxIcon,
                                       SizedBox(
                                         width: 6,
                                       ),
                                       AppText(
                                         'authentication.createAccountPage.accept',
-                                        style: context.read<AppThemeCubit>().state.textTheme.bottomSheetButtonTextStyle,
+                                        style: context.appTextTheme.bottomSheetButtonTextStyle,
                                       ),
                                     ],
                                   ),
@@ -73,11 +72,11 @@ class LanguagesSheet extends StatelessWidget {
                             ),
                             SizedBox(height: 40),
                             AppTextFormField(
-                              // fillColor: context.read<AppThemeCubit>().state.appColors.sliverAppBarSearchFillolor,
+                              // fillColor: context.appColors.sliverAppBarSearchFillolor,
                               prefixIconConstraints: BoxConstraints(maxHeight: 18),
                               prefixIcon: Padding(
                                   padding: const EdgeInsets.only(left: 18, right: 10),
-                                  child: context.read<AppThemeCubit>().state.appIcons.searchIcon),
+                                  child: context.appIcons.searchIcon),
 
                               // suffixIconConstraints: BoxConstraints(maxHeight: 20),
                               // suffixIcon: context.read<LanguagesCubit>().state.searchPhrase.isNotEmpty
@@ -85,12 +84,12 @@ class LanguagesSheet extends StatelessWidget {
                               //         onTap: context.read<LanguagesCubit>().clearSearch,
                               //         child: Padding(
                               //             padding: const EdgeInsets.only(left: 10, right: 16),
-                              //             child: context.read<AppThemeCubit>().state.appIcons.searchClearIcon),
+                              //             child: context.appIcons.searchClearIcon),
                               //       )
                               //     : Container(),
 
                               hintText: 'authentication.createAccountPage.searchLanguages',
-                              hintStyle: context.read<AppThemeCubit>().state.textTheme.searchInputHintTextStyle,
+                              hintStyle: context.appTextTheme.searchInputHintTextStyle,
                               onChanged: context.read<LanguagesCubit>().updateSearchPhrase,
                             ),
                           ],

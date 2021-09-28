@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
 import '../../../../core/configs/constants/app_images.dart';
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../blocs/onboarding_page_cubit/onboarding_page_cubit.dart';
@@ -58,7 +58,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             Spacer(),
                             AppText(
                               'onboarding.title$state',
-                              style: context.read<AppThemeCubit>().state.textTheme.onboardingTitleTextStyle,
+                              style: context.appTextTheme.onboardingTitleTextStyle,
                             ),
                             SizedBox(
                               height: 12,
@@ -67,18 +67,16 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                 ? Text.rich(TextSpan(children: [
                                     TextSpan(
                                         text: translate('onboarding.text1.1'),
-                                        style:
-                                            context.read<AppThemeCubit>().state.textTheme.onboardingCrossedTextStyle),
+                                        style: context.appTextTheme.onboardingCrossedTextStyle),
                                     TextSpan(text: translate('onboarding.text1.2')),
                                     TextSpan(
                                         text: translate('onboarding.text1.3'),
-                                        style:
-                                            context.read<AppThemeCubit>().state.textTheme.onboardingCrossedTextStyle),
+                                        style: context.appTextTheme.onboardingCrossedTextStyle),
                                     TextSpan(text: translate('onboarding.text1.4'))
-                                  ], style: context.read<AppThemeCubit>().state.textTheme.onboardingTextStyle))
+                                  ], style: context.appTextTheme.onboardingTextStyle))
                                 : AppText(
                                     'onboarding.text$state',
-                                    style: context.read<AppThemeCubit>().state.textTheme.onboardingTextStyle,
+                                    style: context.appTextTheme.onboardingTextStyle,
                                   ),
                             Spacer(),
                             AppImage.asset(
@@ -105,12 +103,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           children: [
                             AppText(
                               state == 3 ? 'onboarding.start' : 'onboarding.next',
-                              style: context.read<AppThemeCubit>().state.textTheme.textButtonTextStyle,
+                              style: context.appTextTheme.textButtonTextStyle,
                             ),
                             SizedBox(
                               width: 12,
                             ),
-                            context.read<AppThemeCubit>().state.appIcons.textButtonArrowRightIcon,
+                            context.appIcons.textButtonArrowRightIcon,
                           ],
                         ),
                       ),

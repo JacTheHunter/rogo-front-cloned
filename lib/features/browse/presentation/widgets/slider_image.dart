@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/configs/constants/app_images.dart';
 import '../../../../../core/injection/injection_container.dart';
-import '../../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../../core/services/navigation_service.dart';
@@ -48,7 +48,7 @@ class SliderImage extends StatelessWidget {
                       SizedBox(width: 5),
                       AppText(
                         '${itemIndex + 1}/3',
-                        style: context.read<AppThemeCubit>().state.textTheme.browseItemImageCountTextStyle,
+                        style: context.appTextTheme.browseItemImageCountTextStyle,
                       ),
                     ],
                   ),
@@ -70,13 +70,13 @@ class SliderImage extends StatelessWidget {
           left: querySize.width * .03,
           child: GestureDetector(
             onTap: () => sl<NavigatorService>().pop(),
-            child: context.read<AppThemeCubit>().state.appIcons.browseItemArrowLeftIcon,
+            child: context.appIcons.browseItemArrowLeftIcon,
           ),
         ),
         Positioned(
           top: querySize.height * 0.28,
           left: querySize.width * 0.85,
-          child: context.read<AppThemeCubit>().state.appIcons.browseItemEmptyHeartIcon,
+          child: context.appIcons.browseItemEmptyHeartIcon,
         ),
       ],
     );

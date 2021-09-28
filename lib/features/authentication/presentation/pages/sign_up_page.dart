@@ -9,7 +9,7 @@ import '../../../../core/form_models/email_form_model.dart';
 import '../../../../core/form_models/password_confirm_form_model.dart';
 import '../../../../core/form_models/password_form_model.dart';
 import '../../../../core/injection/injection_container.dart';
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_loader.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
@@ -54,7 +54,7 @@ class SignUpPage extends StatelessWidget {
                       SizedBox(height: 15),
                       AppText(
                         'authentication.signUpPage.signUp',
-                        style: context.read<AppThemeCubit>().state.textTheme.authenticationTitleTextStyle,
+                        style: context.appTextTheme.authenticationTitleTextStyle,
                       ),
                       SizedBox(height: 20),
                       Row(
@@ -83,12 +83,12 @@ class SignUpPage extends StatelessWidget {
                       Center(
                           child: AppText(
                         'authentication.signUpPage.orRegisterWithEmail',
-                        style: context.read<AppThemeCubit>().state.textTheme.authenticationSubTitleTextStyle,
+                        style: context.appTextTheme.authenticationSubTitleTextStyle,
                       )),
                       SizedBox(height: 16),
                       AppText(
                         'authentication.signUpPage.yourEmail',
-                        style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                        style: context.appTextTheme.inputLabelTextStyle,
                       ),
                       AppTextFormField(
                         onChanged: context.read<SignUpCubit>().updateEmail,
@@ -100,12 +100,12 @@ class SignUpPage extends StatelessWidget {
                           state.email.error == EmailFormModelValidationError.empty
                               ? 'validators.thisFieldIsRequired'
                               : 'validators.invalidEmail',
-                          style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                          style: context.appTextTheme.inputErrorTextStyle,
                         ),
                       SizedBox(height: 16),
                       AppText(
                         'authentication.signUpPage.password',
-                        style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                        style: context.appTextTheme.inputLabelTextStyle,
                       ),
                       AppTextFormField(
                         onChanged: context.read<SignUpCubit>().updatePassword,
@@ -118,8 +118,8 @@ class SignUpPage extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(right: 20),
                             child: state.obsecurePassword
-                                ? context.read<AppThemeCubit>().state.appIcons.inputEyeOffIcon
-                                : context.read<AppThemeCubit>().state.appIcons.inputEyeIcon,
+                                ? context.appIcons.inputEyeOffIcon
+                                : context.appIcons.inputEyeIcon,
                           ),
                         ),
                       ),
@@ -128,12 +128,12 @@ class SignUpPage extends StatelessWidget {
                           state.password.error == PasswordFormModelValidationError.empty
                               ? 'validators.thisFieldIsRequired'
                               : 'validators.invalidPassword',
-                          style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                          style: context.appTextTheme.inputErrorTextStyle,
                         ),
                       SizedBox(height: 16),
                       AppText(
                         'authentication.signUpPage.reenterPassword',
-                        style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                        style: context.appTextTheme.inputLabelTextStyle,
                       ),
                       AppTextFormField(
                         onChanged: context.read<SignUpCubit>().updatePasswordConfirm,
@@ -146,8 +146,8 @@ class SignUpPage extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(right: 20),
                             child: state.obsecurePasswordConfirm
-                                ? context.read<AppThemeCubit>().state.appIcons.inputEyeOffIcon
-                                : context.read<AppThemeCubit>().state.appIcons.inputEyeIcon,
+                                ? context.appIcons.inputEyeOffIcon
+                                : context.appIcons.inputEyeIcon,
                           ),
                         ),
                       ),
@@ -156,7 +156,7 @@ class SignUpPage extends StatelessWidget {
                           state.passwordConfirm.error == PasswordConfirmFormModelValidationError.empty
                               ? 'validators.thisFieldIsRequired'
                               : 'validators.invalidPasswordConfirm',
-                          style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                          style: context.appTextTheme.inputErrorTextStyle,
                         ),
                       SizedBox(height: 24),
                       Row(
@@ -164,10 +164,10 @@ class SignUpPage extends StatelessWidget {
                           Theme(
                             data: Theme.of(context).copyWith(
                                 unselectedWidgetColor: state.acceptPolicy.invalid
-                                    ? context.read<AppThemeCubit>().state.appColors.errorColor
-                                    : context.read<AppThemeCubit>().state.appColors.checkboxColor),
+                                    ? context.appColors.errorColor
+                                    : context.appColors.checkboxColor),
                             child: Checkbox(
-                              activeColor: context.read<AppThemeCubit>().state.appColors.checkboxColor,
+                              activeColor: context.appColors.checkboxColor,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
                               value: state.acceptPolicy.value,
                               onChanged: context.read<SignUpCubit>().updateAcceptPolicy,
@@ -175,18 +175,16 @@ class SignUpPage extends StatelessWidget {
                           ),
                           Flexible(
                             child: RichText(
-                              text: TextSpan(
-                                  style: context.read<AppThemeCubit>().state.textTheme.privacyTextStyle,
-                                  children: [
-                                    TextSpan(text: translate('authentication.signUpPage.beforeTerms')),
-                                    TextSpan(
-                                        text: translate('authentication.signUpPage.terms'),
-                                        style: context.read<AppThemeCubit>().state.textTheme.privacyLinkTextStyle),
-                                    TextSpan(text: translate('authentication.signUpPage.beforePolicy')),
-                                    TextSpan(
-                                        text: translate('authentication.signUpPage.policy'),
-                                        style: context.read<AppThemeCubit>().state.textTheme.privacyLinkTextStyle),
-                                  ]),
+                              text: TextSpan(style: context.appTextTheme.privacyTextStyle, children: [
+                                TextSpan(text: translate('authentication.signUpPage.beforeTerms')),
+                                TextSpan(
+                                    text: translate('authentication.signUpPage.terms'),
+                                    style: context.appTextTheme.privacyLinkTextStyle),
+                                TextSpan(text: translate('authentication.signUpPage.beforePolicy')),
+                                TextSpan(
+                                    text: translate('authentication.signUpPage.policy'),
+                                    style: context.appTextTheme.privacyLinkTextStyle),
+                              ]),
                             ),
                           )
                         ],
@@ -194,7 +192,7 @@ class SignUpPage extends StatelessWidget {
                       if (state.acceptPolicy.invalid)
                         AppText(
                           'validators.thisFieldIsRequired',
-                          style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                          style: context.appTextTheme.inputErrorTextStyle,
                         ),
                       SizedBox(height: 40),
                       state.status == FormzStatus.submissionInProgress
@@ -211,14 +209,14 @@ class SignUpPage extends StatelessWidget {
                         children: [
                           AppText(
                             'authentication.signUpPage.alreadyHaveAccount',
-                            style: context.read<AppThemeCubit>().state.textTheme.authenticationTextStyle,
+                            style: context.appTextTheme.authenticationTextStyle,
                           ),
                           SizedBox(width: 8),
                           GestureDetector(
                             onTap: onLogin,
                             child: AppText(
                               'authentication.signUpPage.login',
-                              style: context.read<AppThemeCubit>().state.textTheme.textButtonTextStyle,
+                              style: context.appTextTheme.textButtonTextStyle,
                             ),
                           ),
                         ],

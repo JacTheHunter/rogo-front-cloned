@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
-import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
+import 'package:rogo/features/authentication/presentation/blocs/firebase_authentication_bloc/firebase_authentication_bloc.dart';
 import '../../../../core/presentation/pages/widgets/app_app_bar.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../blocs/create_account_cubit/create_account_cubit.dart';
@@ -31,9 +32,16 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppAppbar(
-        backArrowColor: context.read<AppThemeCubit>().state.appColors.appBarBackArrowAlternativeColor,
+        backArrowColor: context.appColors.appBarBackArrowAlternativeColor,
       ),
       extendBodyBehindAppBar: true,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.read<FirebaseAuthenticationBloc>().add(FirebaseAuthenticationLogoutRequested());
+        },
+        backgroundColor: context.appColors.primaryColor,
+        child: Icon(Icons.exit_to_app),
+      ),
       body: MultiBlocListener(
         listeners: [
           BlocListener<CreateAccountCubit, CreateAccountState>(
@@ -75,7 +83,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      gradient: context.read<AppThemeCubit>().state.appColors.createAccountHeaderGradient,
+                      gradient: context.appColors.createAccountHeaderGradient,
                       borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(28),
                       ),
@@ -88,7 +96,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           SizedBox(height: 100),
                           AppText(
                             'authentication.createAccountPage.createAccount',
-                            style: context.read<AppThemeCubit>().state.textTheme.createAccountHeaderTitleTextStyle,
+                            style: context.appTextTheme.createAccountHeaderTitleTextStyle,
                           ),
                           SizedBox(height: 4),
                           Row(
@@ -96,15 +104,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                             children: [
                               AppText(
                                 state.step.toString(),
-                                style: context
-                                    .read<AppThemeCubit>()
-                                    .state
-                                    .textTheme
-                                    .createAccountHeaderBiggerNumberTextStyle,
+                                style: context.appTextTheme.createAccountHeaderBiggerNumberTextStyle,
                               ),
                               AppText(
                                 'authentication.createAccountPage.basicDetails',
-                                style: context.read<AppThemeCubit>().state.textTheme.createAccountHeaderTextStyle,
+                                style: context.appTextTheme.createAccountHeaderTextStyle,
                               ),
                               SizedBox(height: 25),
                             ],

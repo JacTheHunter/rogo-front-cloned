@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../configs/constants/app_images.dart';
 import '../../../theme/app_color_scheme.dart';
-import '../../blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import 'app_image.dart';
 
 class AppBottomNavBar extends StatelessWidget {
@@ -21,7 +21,7 @@ class AppBottomNavBar extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(14)),
         boxShadow: [
           BoxShadow(
-            color: context.read<AppThemeCubit>().state.appColors.appbarShadowColor,
+            color: context.appColors.appbarShadowColor,
             blurRadius: 24,
             offset: Offset(0, -4),
           )

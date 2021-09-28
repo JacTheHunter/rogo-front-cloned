@@ -40,7 +40,7 @@ class CategoryModel extends Category {
   factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
       id: map['id'],
-      icon: map['icon'],
+      icon: map['icon'] ?? '',
       name: map['name'],
       treeId: map['tree_id'],
       level: map['level'],

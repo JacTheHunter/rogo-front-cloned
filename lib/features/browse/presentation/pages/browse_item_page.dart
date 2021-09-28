@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/configs/constants/app_images.dart';
-import '../../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import 'package:rogo/core/helpers/extentions_on_build_context.dart';
 import '../../../../../core/presentation/pages/widgets/app_gradient_bottom_nav_bar.dart';
 import '../../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../../core/presentation/pages/widgets/app_text.dart';
@@ -44,12 +44,12 @@ class BrowseItemPage extends StatelessWidget {
                         children: [
                           AppText(
                             '\$50',
-                            style: context.read<AppThemeCubit>().state.textTheme.browseItemPriceNumberTextStyle,
+                            style: context.appTextTheme.browseItemPriceNumberTextStyle,
                           ),
                           SizedBox(width: 10),
                           AppText(
                             'p/day',
-                            style: context.read<AppThemeCubit>().state.textTheme.browseItemPriceTextStyle,
+                            style: context.appTextTheme.browseItemPriceTextStyle,
                           ),
                         ],
                       ),
@@ -58,18 +58,18 @@ class BrowseItemPage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 20, bottom: 4),
                       child: AppText(
                         'Pioneer surfboards',
-                        style: context.read<AppThemeCubit>().state.textTheme.browseItemNameTextStyle,
+                        style: context.appTextTheme.browseItemNameTextStyle,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20, bottom: 22),
                       child: Row(
                         children: [
-                          context.read<AppThemeCubit>().state.appIcons.locationIconWithPinkTone,
+                          context.appIcons.locationIconWithPinkTone,
                           SizedBox(width: 5),
                           AppText(
                             'Camas, WA',
-                            style: context.read<AppThemeCubit>().state.textTheme.browseItemLocationTextStyle,
+                            style: context.appTextTheme.browseItemLocationTextStyle,
                           ),
                         ],
                       ),
@@ -125,7 +125,7 @@ class BrowseItemPage extends StatelessWidget {
                                   padding: const EdgeInsets.only(bottom: 4),
                                   child: AppText(
                                     'Vladlena Dufresne',
-                                    style: context.read<AppThemeCubit>().state.textTheme.itemDescriptionTitle,
+                                    style: context.appTextTheme.itemDescriptionTitle,
                                   ),
                                 ),
                                 //TODO: ADD "READ MORE" FEATURE
@@ -136,8 +136,8 @@ class BrowseItemPage extends StatelessWidget {
                                   linkEllipsis: false,
                                   maxLines: 3,
                                   linkColor: AppColorScheme.hollywoodCerise,
-                                  linkStyle: context.read<AppThemeCubit>().state.textTheme.itemDescription,
-                                  style: context.read<AppThemeCubit>().state.textTheme.itemDescription,
+                                  linkStyle: context.appTextTheme.itemDescription,
+                                  style: context.appTextTheme.itemDescription,
                                 )
                                 // AppText(
                                 //   'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat... ',
@@ -166,14 +166,14 @@ class BrowseItemPage extends StatelessWidget {
                         children: [
                           AppText(
                             '5,0',
-                            style: context.read<AppThemeCubit>().state.textTheme.browseItemRatingNumberTextStyle,
+                            style: context.appTextTheme.browseItemRatingNumberTextStyle,
                           ),
                           SizedBox(width: 4.75),
                           AppImage.asset(AppImages.vector.star),
                           SizedBox(width: 16.75),
                           AppText(
                             '10 reviews',
-                            style: context.read<AppThemeCubit>().state.textTheme.browseItemRatingTextStyle,
+                            style: context.appTextTheme.browseItemRatingTextStyle,
                           ),
                         ],
                       ),
@@ -185,18 +185,18 @@ class BrowseItemPage extends StatelessWidget {
                         children: [
                           AppText(
                             'Joined in December 2021',
-                            style: context.read<AppThemeCubit>().state.textTheme.browseItemRatingTextStyle,
+                            style: context.appTextTheme.browseItemRatingTextStyle,
                           ),
                           SizedBox(height: 8),
                           Row(
                             children: [
                               AppText(
                                 'Languages: ',
-                                style: context.read<AppThemeCubit>().state.textTheme.browseItemRatingTextStyle,
+                                style: context.appTextTheme.browseItemRatingTextStyle,
                               ),
                               AppText(
                                 'English, Spanish',
-                                style: context.read<AppThemeCubit>().state.textTheme.browseItemLanguagesTextStyle,
+                                style: context.appTextTheme.browseItemLanguagesTextStyle,
                               ),
                             ],
                           ),
@@ -228,14 +228,14 @@ List<Widget> textBlockReturn(String title, String body, BuildContext context) {
       padding: const EdgeInsets.only(left: 20, bottom: 4),
       child: AppText(
         title,
-        style: context.read<AppThemeCubit>().state.textTheme.itemDescriptionTitle,
+        style: context.appTextTheme.itemDescriptionTitle,
       ),
     ),
     Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 24),
       child: AppText(
         body,
-        style: context.read<AppThemeCubit>().state.textTheme.itemDescription,
+        style: context.appTextTheme.itemDescription,
       ),
     ),
   ];

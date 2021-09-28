@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:rogo/core/usecase/paginated_response_params.dart';
 
 import '../../../domain/entities/city.dart';
 import '../../../domain/entities/country.dart';
@@ -20,7 +21,7 @@ class CountriesAndCitiesCubit extends Cubit<CountriesAndCitiesState> {
 
   void fetchCountries() async {
     emit(state.copyWith(isLoading: true));
-    final countriesResult = await _getAllCountriesUseCase.call(CountriesParams());
+    final countriesResult = await _getAllCountriesUseCase.call(PaginatedResponseParams());
     countriesResult.fold((l) {
       emit(state.copyWith(errorMessage: l.message));
     }, (r) {

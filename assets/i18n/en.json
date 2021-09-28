@@ -60,6 +60,12 @@
     }
   },
   "browse": {
+    "browseItemPage": {
+      "description": "Description",
+      "itemUponReturn": "Item upon return",
+      "pickUpAndDrop": "Pick up and drop",
+      "reviews": "reviews"
+    },
     "browsePage": {
       "categories": "Categories",
       "feed": "Feed",
@@ -68,22 +74,23 @@
       "reviews": "reviews",
       "topSellers": "Top Sellers",
       "whatAreYouLookingFor": "What are you looking for"
-    },
-    "browseItemPage": {
-      "description": "Description",
-      "pickUpAndDrop": "Pick up and drop",
-      "itemUponReturn": "Item upon return",
-      "reviews": "reviews"
     }
   },
-  "wishlists": {
-    "wishlistsPage": {
-      "feed": "Feed",
-      "liveSearch": "Live-search",
-      "description": "Description",
-      "pickUpAndDrop": "Pick up and drop",
-      "itemUponReturn": "Item upon return",
-      "reviews": "reviews"
+  "formaters": {
+    "date": {
+      "yesterday": "Yesterday"
+    }
+  },
+  "inbox": {
+    "chat": {
+      "justNow": "Just now",
+      "writeAMessage": "Write a message"
+    },
+    "inboxPage": {
+      "chatRoom": "Chat room",
+      "inbox": "Inbox",
+      "orders": "Orders",
+      "requests": "Requests"
     }
   },
   "onboarding": {
@@ -107,5 +114,15 @@
     "invalidPasswordConfirm": "Passwords must match",
     "languages": "Select at least one language",
     "thisFieldIsRequired": "This field is required"
+  },
+  "wishlists": {
+    "wishlistsPage": {
+      "description": "Description",
+      "feed": "Feed",
+      "itemUponReturn": "Item upon return",
+      "liveSearch": "Live-search",
+      "pickUpAndDrop": "Pick up and drop",
+      "reviews": "reviews"
+    }
   }
 }

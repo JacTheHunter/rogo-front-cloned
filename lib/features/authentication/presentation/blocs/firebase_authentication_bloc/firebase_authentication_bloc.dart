@@ -59,7 +59,7 @@ class FirebaseAuthenticationBloc extends Bloc<FirebaseAuthenticationEvent, Fireb
   @override
   Stream<FirebaseAuthenticationState> mapEventToState(FirebaseAuthenticationEvent event) async* {
     if (event is FirebaseAuthenticationUserChanged) {
-      yield _mapUserChangedToState(event, state);
+      yield await _mapUserChangedToState(event, state);
     } else if (event is FirebaseAuthenticationLogoutRequested) {
       // unawaited(_signOutInFirebaseUseCase.call(NoParams()));
       _signOutInFirebaseUseCase.call(NoParams());
@@ -77,19 +77,19 @@ class FirebaseAuthenticationBloc extends Bloc<FirebaseAuthenticationEvent, Fireb
     }
   }
 
-  FirebaseAuthenticationState _mapUserChangedToState(
-      FirebaseAuthenticationUserChanged event, FirebaseAuthenticationState state) {
+  Future<FirebaseAuthenticationState> _mapUserChangedToState(
+      FirebaseAuthenticationUserChanged event, FirebaseAuthenticationState state) async {
     sl<NavigatorService>().pop();
 
     if (event.user.uid.isNotEmpty) {
-      getAndStoreJwt();
+      await getAndStoreJwt();
       return FirebaseAuthenticationState.authenticated(event.user);
     } else {
       return const FirebaseAuthenticationState.unauthenticated();
     }
   }
 
-  void getAndStoreJwt() async {
+  Future<void> getAndStoreJwt() async {
     final result = await _getJWTofFirebseUserUseCase.call(NoParams());
     result.fold((l) {}, (r) {
       if (r.isNotEmpty) sl<BoxService>().appSettings.put('jwt', r);
