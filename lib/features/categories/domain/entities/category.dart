@@ -21,4 +21,9 @@ class Category extends Equatable {
   List<Object?> get props {
     return [id, image, name, treeId, level, parent];
   }
+
+  @override
+  String toString() {
+    return name;
+  }
 }

@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
 
-enum AppImageSource { asset, network }
+enum AppImageSource { asset, network, file }
 
 class AppImage extends StatelessWidget {
   final String source;
@@ -40,6 +42,19 @@ class AppImage extends StatelessWidget {
   })  : _source = AppImageSource.asset,
         super(key: key);
 
+  AppImage.file(
+    this.source, {
+    Key? key,
+    this.alignment = Alignment.center,
+    this.height,
+    this.width,
+    this.fit = BoxFit.fill,
+    this.color,
+    this.borderRadius = BorderRadius.zero,
+    this.package,
+  })  : _source = AppImageSource.file,
+        super(key: key);
+
   final AppImageSource _source;
 
   @override
@@ -73,7 +88,7 @@ class AppImage extends StatelessWidget {
           ),
         );
       }
-    } else {
+    } else if (_source == AppImageSource.network) {
       if (source.endsWith('.svg')) {
         return ClipRRect(
           borderRadius: borderRadius,
@@ -116,6 +131,34 @@ class AppImage extends StatelessWidget {
 
             placeholder: (_, __) => placeholder(),
             errorWidget: (_, __, ___) => placeholder(),
+          ),
+        );
+      }
+    } else {
+      if (source.endsWith('.svg')) {
+        return ClipRRect(
+          borderRadius: borderRadius,
+          child: SvgPicture.file(
+            File(source),
+            alignment: alignment,
+            width: width,
+            height: height,
+            fit: fit,
+            color: color,
+            placeholderBuilder: (_) => placeholder(),
+          ),
+        );
+      } else {
+        return ClipRRect(
+          borderRadius: borderRadius,
+          child: Image.file(
+            File(source),
+            alignment: alignment,
+            width: width,
+            height: height,
+            fit: fit,
+            color: color,
+            errorBuilder: (_, __, ___) => placeholder(),
           ),
         );
       }

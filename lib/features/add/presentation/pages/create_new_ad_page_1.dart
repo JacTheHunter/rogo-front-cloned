@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rogo/core/presentation/pages/widgets/app_dropdown.dart';
+import 'package:rogo/features/categories/domain/entities/category.dart';
+import 'package:rogo/features/categories/presentation/bloc/categories_cubit/categories_cubit.dart';
+import 'package:rogo/features/countries_and_cities/domain/entities/country.dart';
 
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
@@ -37,17 +41,20 @@ class CreateNewAdPage1 extends StatelessWidget {
                 Container(
                   child: GridView.builder(
                     shrinkWrap: true,
-                    itemCount: 3,
+                    itemCount: state.pickedImagesPaths.length + 1,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                     itemBuilder: (context, index) {
-                      return index == 2
+                      return index >= state.pickedImagesPaths.length
                           ? Padding(
                               padding: const EdgeInsets.only(bottom: 16, right: 15),
                               child: AddPhotoButton(querySize: querySize),
                             )
                           : Padding(
                               padding: const EdgeInsets.only(bottom: 16, right: 15),
-                              child: CoverPhotoItem(querySize: querySize, index: index),
+                              child: CoverPhotoItem(
+                                querySize: querySize,
+                                path: state.pickedImagesPaths[index],
+                              ),
                             );
                     },
                   ),
@@ -66,6 +73,12 @@ class CreateNewAdPage1 extends StatelessWidget {
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]')),
                   ],
+                ),
+                SizedBox(height: 16),
+                AppDropdown<Category>(
+                  value: state.selectedCategory,
+                  onChanged: context.read<AddPublicationCubit>().selectCategory,
+                  items: context.read<CategoriesCubit>().state.categories,
                 ),
                 SizedBox(height: 16),
                 Padding(

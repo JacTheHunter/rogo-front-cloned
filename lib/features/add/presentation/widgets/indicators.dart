@@ -15,8 +15,10 @@ class Indicators extends StatelessWidget {
     return Row(
       children: List.generate(
         total,
-        (step) => Indicator(
-          isCurrent: (step) <= currentStep,
+        (step) => Expanded(
+          child: Indicator(
+            isCurrent: (step) <= currentStep,
+          ),
         ),
       ),
     );

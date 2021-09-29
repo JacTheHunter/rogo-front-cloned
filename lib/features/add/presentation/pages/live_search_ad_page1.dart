@@ -47,7 +47,10 @@ class LiveSearchNewAdPage1 extends StatelessWidget {
                             )
                           : Padding(
                               padding: const EdgeInsets.only(bottom: 16, right: 15),
-                              child: CoverPhotoItem(querySize: querySize, index: index),
+                              child: CoverPhotoItem(
+                                querySize: querySize,
+                                path: '',
+                              ),
                             );
                     },
                   ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:rogo/features/add/presentation/bloc/add_publication_cubit/add_publication_cubit.dart';
 
 import '../../../../core/configs/constants/app_images.dart';
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
@@ -14,7 +16,13 @@ class AddPhotoButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () async {
+        final ImagePicker _picker = ImagePicker();
+        final xImageFile = await _picker.pickImage(source: ImageSource.gallery);
+        if (xImageFile != null) {
+          context.read<AddPublicationCubit>().addPhoto(xImageFile.path);
+        }
+      },
       child: Container(
         width: querySize.width * 0.41,
         height: querySize.width * 0.41,

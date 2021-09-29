@@ -49,6 +49,7 @@ class _AddPublicationPageState extends State<AddPublicationPage> {
                 padding: const EdgeInsets.fromLTRB(16, 58, 55, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     state.currentStep == 0
                         ? context.read<AppThemeCubit>().state.appIcons.closeIcon
@@ -57,14 +58,18 @@ class _AddPublicationPageState extends State<AddPublicationPage> {
                             child: context.read<AppThemeCubit>().state.appIcons.appBarArrowLeftIcon,
                           ),
                     if (state.currentStep >= 2 && state.isFeed == true)
-                      Padding(
-                        padding: const EdgeInsets.only(left: 24),
-                        child: Indicators(total: 4, currentStep: state.currentStep - 2),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 24),
+                          child: Indicators(total: 4, currentStep: state.currentStep - 2),
+                        ),
                       ),
                     if (state.currentStep >= 1 && state.isFeed == false)
-                      Padding(
-                        padding: const EdgeInsets.only(left: 58),
-                        child: Indicators(total: 3, currentStep: state.currentStep - 1),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 58),
+                          child: Indicators(total: 3, currentStep: state.currentStep - 1),
+                        ),
                       ),
                   ],
                 ),

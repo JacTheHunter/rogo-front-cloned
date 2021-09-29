@@ -11,11 +11,11 @@ class CoverPhotoItem extends StatelessWidget {
   const CoverPhotoItem({
     Key? key,
     required this.querySize,
-    required this.index,
+    required this.path,
   }) : super(key: key);
 
   final Size querySize;
-  final int index;
+  final String path;
 
   @override
   Widget build(BuildContext context) {
@@ -28,28 +28,28 @@ class CoverPhotoItem extends StatelessWidget {
           Container(
             width: querySize.width * 0.41,
             height: querySize.width * 0.41,
-            child: AppImage.asset(
-              AppImages.raster.productRandom,
-              fit: BoxFit.fill,
+            child: AppImage.file(
+              path,
+              fit: BoxFit.fitWidth,
               borderRadius: BorderRadius.circular(14),
             ),
           ),
-          if (index == 0)
-            Positioned(
-              top: querySize.height * .01,
-              left: querySize.width * .02,
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-                decoration: BoxDecoration(
-                  color: AppColorScheme.hollywoodCerise,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: AppText(
-                  'Cover',
-                  style: context.read<AppThemeCubit>().state.textTheme.photoLabelTextStyle,
-                ),
-              ),
-            ),
+          // if (index == 0)
+          //   Positioned(
+          //     top: querySize.height * .01,
+          //     left: querySize.width * .02,
+          //     child: Container(
+          //       padding: EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+          //       decoration: BoxDecoration(
+          //         color: AppColorScheme.hollywoodCerise,
+          //         borderRadius: BorderRadius.circular(4),
+          //       ),
+          //       child: AppText(
+          //         'Cover',
+          //         style: context.read<AppThemeCubit>().state.textTheme.photoLabelTextStyle,
+          //       ),
+          //     ),
+          //   ),
           Positioned(
             top: querySize.height * .01,
             left: querySize.width * .31,
