@@ -5,7 +5,7 @@ import '../../domain/entities/wishlists_feed.dart';
 class WishlistsFeedModel extends WishlistsFeed {
   final int id;
   final String image;
-  final String pricePerDay;
+  final String rentalPrice;
   final String title;
   final String city;
   final bool isFavorite;
@@ -13,7 +13,7 @@ class WishlistsFeedModel extends WishlistsFeed {
   WishlistsFeedModel({
     required this.id,
     required this.image,
-    required this.pricePerDay,
+    required this.rentalPrice,
     required this.title,
     required this.city,
     required this.isFavorite,
@@ -21,7 +21,7 @@ class WishlistsFeedModel extends WishlistsFeed {
           city: city,
           id: id,
           image: image,
-          pricePerDay: pricePerDay,
+          rentalPrice: rentalPrice,
           title: title,
           isFavorite: isFavorite,
         );
@@ -30,7 +30,7 @@ class WishlistsFeedModel extends WishlistsFeed {
     return {
       'id': id,
       'image': image,
-      'price_per_day': pricePerDay,
+      'rental_price': rentalPrice,
       'title': title,
       'city': city,
       'is_favorite': isFavorite,
@@ -41,7 +41,7 @@ class WishlistsFeedModel extends WishlistsFeed {
     return WishlistsFeedModel(
       id: map['id'],
       image: map['image'],
-      pricePerDay: map['price_per_day'],
+      rentalPrice: map['rental_price'],
       title: map['title'],
       city: map['city'],
       isFavorite: map['is_favorite'],

@@ -4,6 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:rogo/core/configs/constants/app_routes.dart';
 import 'package:rogo/core/presentation/pages/error_page.dart';
 import 'package:rogo/core/presentation/pages/main_page.dart';
+import 'package:rogo/features/add/presentation/pages/add_new_card_page.dart';
+import 'package:rogo/features/add/presentation/pages/add_publication_page.dart';
+import 'package:rogo/features/add/presentation/pages/cards_page.dart';
+import 'package:rogo/features/add/presentation/pages/create_new_ad_page_1.dart';
+import 'package:rogo/features/add/presentation/pages/create_new_ad_page_2.dart';
+import 'package:rogo/features/add/presentation/pages/create_new_ad_page_3.dart';
+import 'package:rogo/features/add/presentation/pages/live_search_ad_page1.dart';
+import 'package:rogo/features/add/presentation/pages/live_search_ad_page_2.dart';
+import 'package:rogo/features/add/presentation/pages/live_search_ad_page_3.dart';
+import 'package:rogo/features/add/presentation/pages/stripe_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/confirm_phone_number_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/forgot_password_page.dart';
 import 'package:rogo/features/authentication/presentation/pages/login_page.dart';
@@ -76,10 +86,61 @@ class AppRouteGenerator {
           builder: (_) => BrowseItemPage(),
         );
 
+      case AppRoutes.stripePage:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => StripePage(),
+        );
+
+      case AppRoutes.cardsPage:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => CardsPage(),
+        );
+      case AppRoutes.addNewCardPage:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => AddNewCardPage(),
+        );
+      case AppRoutes.createNewAdPage1:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => CreateNewAdPage1(),
+        );
+      case AppRoutes.createNewAdPage2:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => CreateNewAdPage2(),
+        );
+      case AppRoutes.createNewAdPage3:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => CreateNewAdPage3(),
+        );
+      case AppRoutes.liveSearchNewAdPage1:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => LiveSearchNewAdPage1(),
+        );
+      case AppRoutes.liveSearchNewAdPage2:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => LiveSearchNewAdPage2(),
+        );
+      case AppRoutes.liveSearchNewAdPage3:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => LiveSearchNewAdPage3(),
+        );
       case AppRoutes.mainPage:
         return CupertinoPageRoute(
           settings: RouteSettings(name: settings.name),
           builder: (_) => MainPage(),
+        );
+      case AppRoutes.addPublicationPage:
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => AddPublicationPage(),
         );
 
       default:

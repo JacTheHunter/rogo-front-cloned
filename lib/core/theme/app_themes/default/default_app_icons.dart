@@ -78,7 +78,7 @@ class DefaultAppIcons extends AppIcons {
   Widget get appBarArrowLeftIcon => Icon(
         CupertinoIcons.arrow_left,
         color: AppColorScheme.black,
-        size: 16,
+        size: 25,
       );
 
   @override
@@ -145,5 +145,25 @@ class DefaultAppIcons extends AppIcons {
         AppImages.vector.xCircle,
         height: 20,
         color: AppColorScheme.hollywoodCerise,
+      );
+
+  @override
+  Widget get closeIcon => Icon(
+        Icons.close,
+        size: 25,
+        color: AppColorScheme.haiti,
+      );
+
+  @override
+  Widget get checkIcon => CircleAvatar(
+        radius: 10,
+        backgroundColor: Colors.green,
+        child: FittedBox(
+          child: Icon(
+            Icons.check,
+            color: AppColorScheme.white,
+            size: 15,
+          ),
+        ),
       );
 }

@@ -49,7 +49,7 @@ class FeedItem extends StatelessWidget {
                   child: Row(
                     children: [
                       AppText(
-                        state.pricePerDay + '\$',
+                        state.rentalPrice + '\$',
                         style: context.read<AppThemeCubit>().state.textTheme.wishlistsProductItemPriceNumberTextStyle,
                       ),
                       SizedBox(width: 4),

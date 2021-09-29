@@ -352,4 +352,80 @@ class DefaultAppTextTheme extends AppTextTheme {
         fontSize: 18,
         color: AppColorScheme.haiti06,
       );
+
+  @override
+  TextStyle get addPublicationHeaderTextStyle => TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        color: AppColorScheme.haiti,
+      );
+
+  @override
+  TextStyle get addPublicationTypeTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        color: AppColorScheme.haiti,
+      );
+
+  @override
+  TextStyle get addPublicationStripeTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
+        color: AppColorScheme.haiti,
+      );
+
+  @override
+  TextStyle get cardExpDateTextStyle => TextStyle(
+        color: AppColorScheme.white,
+        fontWeight: FontWeight.w400,
+        fontSize: 12,
+      );
+
+  @override
+  TextStyle get cardNameTextStyle => TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 14,
+        color: AppColorScheme.white,
+      );
+
+  @override
+  TextStyle get cardNumberTextStyle => TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 18,
+        color: AppColorScheme.white,
+      );
+
+  @override
+  TextStyle get addPhotoTextStyle => TextStyle(
+        color: AppColorScheme.hollywoodCerise,
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      );
+
+  @override
+  TextStyle get photoLabelTextStyle => TextStyle(
+        color: AppColorScheme.white,
+        fontSize: 10,
+        fontWeight: FontWeight.w500,
+      );
+
+  @override
+  TextStyle get discountDialogButtonTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        color: AppColorScheme.hollywoodCerise,
+      );
+
+  @override
+  TextStyle get discountDialogContentTextStyle => TextStyle(
+        color: AppColorScheme.haiti06,
+        fontWeight: FontWeight.w400,
+        fontSize: 14,
+      );
+
+  @override
+  TextStyle get discountDialogHeaderTextStyle => TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 28,
+      );
 }

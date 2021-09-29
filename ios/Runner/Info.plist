@@ -41,5 +41,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string> To choose cover photos</string>
+	<key>NSCameraUsageDescription</key>
+	<string> To take a cover photo</string>
 </dict>
 </plist>

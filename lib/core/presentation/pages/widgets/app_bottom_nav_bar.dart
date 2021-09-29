@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rogo/core/configs/constants/app_routes.dart';
+import 'package:rogo/core/injection/injection_container.dart';
+import 'package:rogo/core/services/navigation_service.dart';
 
 import '../../../configs/constants/app_images.dart';
 import '../../../theme/app_color_scheme.dart';
@@ -47,7 +50,7 @@ class AppBottomNavBar extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () => onNavItemTap(2),
+            onTap: () => sl<NavigatorService>().pushNamed(AppRoutes.addPublicationPage),
             child: AppImage.asset(
               currentIndex == 2 ? AppImages.vector.appbarAddSelected : AppImages.vector.appbarAdd,
               width: 32,

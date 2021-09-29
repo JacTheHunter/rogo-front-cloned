@@ -41,4 +41,5 @@ class AppColorScheme {
   static const whitePointer = Color(0xFFFDF7FF);
 
   static const pinkLace = Color(0xFFFEE5FE);
+  static const alto = Color(0xFFD8D8D8);
 }

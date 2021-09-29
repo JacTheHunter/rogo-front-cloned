@@ -161,9 +161,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
       case 1:
         return WhishListsPage();
       case 2:
-        return Center(
-          child: AppText(currentIndex.toString()),
-        );
+        return Container();
       case 3:
         return Center(
           child: AppText(currentIndex.toString()),

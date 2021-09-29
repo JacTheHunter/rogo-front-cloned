@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/add/presentation/bloc/add_publication_cubit/add_publication_cubit.dart';
 import '../../features/authentication/data/datasources/authentication_datasource.dart';
 import '../../features/authentication/data/datasources/firebase_authentication_datasource.dart';
 import '../../features/authentication/data/repositories/authentication_repository_impl.dart';
@@ -236,6 +237,10 @@ Future<void> init() async {
   sl.registerLazySingleton<CategoriesRepository>(() => CategoriesRepositoryImpl(dataSource: sl()));
   //Data Source
   sl.registerLazySingleton<CategoriesDataSource>(() => CategoriesDataSourceImpl(client: sl()));
+
+  //! Add Publication feature
+  //Blocs
+  sl.registerFactory(() => AddPublicationCubit());
 
   //!External
   //DIO

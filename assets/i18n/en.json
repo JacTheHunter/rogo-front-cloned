@@ -86,6 +86,46 @@
       "reviews": "reviews"
     }
   },
+  "add": {
+    "addNewCardPage": {
+      "cardholderName": "Cardholder Name",
+      "cardNumber": "Card number",
+      "expires": "Expires",
+      "cvv": "CVV / CCV",
+      "saveMyCardDetails": "Save my card details"
+    },
+    "createNewAdPage1": {
+      "categories": "Categories",
+      "title": "Title",
+      "description": "Description"
+    },
+    "createNewAdPage2": {
+      "country": "Country",
+      "city": "City",
+      "zip": "Zip"
+    },
+    "createNewAdPage3": {
+      "rentalPrice": "Rental price (per day)",
+      "fromDays": "From (n) days",
+      "pricePerDay": "Price (per day)",
+      "pickUpAndDrop": "Pick up and drop",
+      "itemUponReturn": "Item upon return"
+    },
+    "liveSearchNewAdPage1": {
+      "title": "Title",
+      "description": "Description"
+    },
+    "liveSearchNewAdPage2": {
+      "country": "Country",
+      "city": "City",
+      "zip": "Zip"
+    },
+    "liveSearchNewAdPage3": {
+      "rentalPrice": "Rental price (per day)",
+      "from": "From",
+      "to": "To"
+    }
+  },
   "onboarding": {
     "next": "Next",
     "start": "Start",

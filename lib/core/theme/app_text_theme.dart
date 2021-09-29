@@ -60,6 +60,7 @@ abstract class AppTextTheme {
   TextStyle get wishlistsProductItemPriceTextStyle;
   TextStyle get wishlistsProductItemNameTextStyle;
 
+  //Browse single item feature
   TextStyle get browseItemPriceNumberTextStyle;
   TextStyle get browseItemPriceTextStyle;
   TextStyle get browseItemNameTextStyle;
@@ -74,4 +75,17 @@ abstract class AppTextTheme {
 
   TextStyle get languageSelectBottomSheetLanguageSelectedTextStyle;
   TextStyle get languageSelectBottomSheetLanguageTextStyle;
+
+  //Add feed/live-search publication feature
+  TextStyle get addPublicationHeaderTextStyle;
+  TextStyle get addPublicationTypeTextStyle;
+  TextStyle get addPublicationStripeTextStyle;
+  TextStyle get cardNameTextStyle;
+  TextStyle get cardNumberTextStyle;
+  TextStyle get cardExpDateTextStyle;
+  TextStyle get addPhotoTextStyle;
+  TextStyle get photoLabelTextStyle;
+  TextStyle get discountDialogHeaderTextStyle;
+  TextStyle get discountDialogContentTextStyle;
+  TextStyle get discountDialogButtonTextStyle;
 }

@@ -6,7 +6,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:rogo/features/wishlists/presentation/bloc/wishlists_live_search_cubit/wishlists_live_search_cubit.dart';
 
 import 'core/configs/constants/app_routes.dart';
 import 'core/configs/routes/app_route_generator.dart';
@@ -18,6 +17,7 @@ import 'core/services/navigation_service.dart';
 import 'core/theme/app_theme.dart';
 import 'core/util/bloc_observer.dart';
 import 'core/util/translate_preferences.dart';
+import 'features/add/presentation/bloc/add_publication_cubit/add_publication_cubit.dart';
 import 'features/authentication/presentation/blocs/authentication_cubit/authentication_cubit.dart';
 import 'features/authentication/presentation/blocs/create_account_cubit/create_account_cubit.dart';
 import 'features/authentication/presentation/blocs/firebase_authentication_bloc/firebase_authentication_bloc.dart';
@@ -31,6 +31,7 @@ import 'features/countries_and_cities/presentation/blocs/countries_and_cities_cu
 import 'features/languages/presentation/blocs/languages_cubit/languages_cubit.dart';
 import 'features/onboarding/presentation/blocs/onboarding_page_cubit/onboarding_page_cubit.dart';
 import 'features/wishlists/presentation/bloc/wishlists_feed_cubit/wishlists_feed_cubit.dart';
+import 'features/wishlists/presentation/bloc/wishlists_live_search_cubit/wishlists_live_search_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -130,6 +131,9 @@ class App extends StatelessWidget {
         BlocProvider<WishlistsLiveSearchCubit>(
           create: (context) => sl(),
         ),
+        BlocProvider<AddPublicationCubit>(
+          create: (context) => sl(),
+        )
       ],
       child: Builder(builder: (context) {
         return BlocProvider(

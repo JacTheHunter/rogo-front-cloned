@@ -7,6 +7,8 @@ abstract class AppColors {
   Color get scaffoldBackgroundColor;
   Color get onboardingIndicatorColor;
   Color get onboardingIndicatorSelectedColor;
+  Color get addPageIndicatorColor;
+  Color get addPageIndicatorSelectedColor;
   Color get checkboxColor;
   Color get appBarBackgroundColor;
   Color get appBarBackArrowColor;

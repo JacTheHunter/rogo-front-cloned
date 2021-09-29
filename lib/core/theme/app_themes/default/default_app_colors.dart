@@ -80,4 +80,10 @@ class DefaultAppColors extends AppColors {
 
   @override
   Color get tabTextColor => AppColorScheme.lilac;
+
+  @override
+  Color get addPageIndicatorColor => AppColorScheme.lilac;
+
+  @override
+  Color get addPageIndicatorSelectedColor => AppColorScheme.hollywoodCerise;
 }

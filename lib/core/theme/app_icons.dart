@@ -15,6 +15,8 @@ abstract class AppIcons {
   Widget get searchFilterIcon;
 
   Widget get favoriteIcon;
+  Widget get closeIcon;
+  Widget get checkIcon;
 
   Widget get browseItemArrowLeftIcon;
   Widget get browseItemEmptyHeartIcon;
