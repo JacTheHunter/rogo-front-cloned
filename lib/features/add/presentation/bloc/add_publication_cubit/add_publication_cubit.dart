@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:rogo/features/categories/domain/entities/category.dart';
 
 part 'add_publication_state.dart';
 
@@ -25,5 +26,19 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
 
   void decrementStep() {
     emit(state.copyWith(currentStep: state.currentStep - 1));
+  }
+
+  void addPhoto(String path) {
+    List<String> stateList = List.from(state.pickedImagesPaths);
+    emit(state.copyWith(pickedImagesPaths: stateList..add(path)));
+  }
+
+  void selectCategory(Category? category) {
+    if (category != null) emit(state.copyWith(selectedCategory: category));
+  }
+
+  void removePhoto(String path) {
+    List<String> stateList = List.from(state.pickedImagesPaths);
+    emit(state.copyWith(pickedImagesPaths: stateList..remove(path)));
   }
 }
