@@ -43,9 +43,17 @@ class LiveSearchNewAdPage2 extends StatelessWidget {
               ),
               AppDropdown<Country>(
                 value: state.selectedCountry,
-                onChanged: context.read<AddPublicationCubit>().selectCountry,
+                onChanged: context.read<AddPublicationCubit>().updateCountry,
                 items: context.read<CountriesAndCitiesCubit>().state.countries,
               ),
+              if (state.country.invalid)
+                Padding(
+                  padding: const EdgeInsets.only(top: 3),
+                  child: AppText(
+                    'validators.thisFieldIsRequired',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                  ),
+                ),
               SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(left: 5),
@@ -59,11 +67,19 @@ class LiveSearchNewAdPage2 extends StatelessWidget {
                 builder: (context, cstate) {
                   return AppDropdown<City>(
                     value: state.selectedCity,
-                    onChanged: context.read<AddPublicationCubit>().selectCity,
-                    items: context.read<CountriesAndCitiesCubit>().state.cities, // TODO: Integrate with new api
+                    onChanged: context.read<AddPublicationCubit>().updateCity,
+                    items: context.read<CountriesAndCitiesCubit>().state.cities,
                   );
                 },
               ),
+              if (state.city.invalid)
+                Padding(
+                  padding: const EdgeInsets.only(top: 3),
+                  child: AppText(
+                    'validators.thisFieldIsRequired',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                  ),
+                ),
               SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(left: 5),
@@ -74,12 +90,20 @@ class LiveSearchNewAdPage2 extends StatelessWidget {
               ),
               AppTextFormField(
                 initialValue: state.zip.value,
-                onChanged: context.read<AddPublicationCubit>().updateZipLive,
+                onChanged: context.read<AddPublicationCubit>().updateZip,
                 keyboardType: TextInputType.number,
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
                 ],
               ),
+              if (state.zip.invalid)
+                Padding(
+                  padding: const EdgeInsets.only(top: 3),
+                  child: AppText(
+                    'validators.thisFieldIsRequired',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                  ),
+                ),
               Spacer(),
               Padding(
                 padding: const EdgeInsets.only(bottom: 40),

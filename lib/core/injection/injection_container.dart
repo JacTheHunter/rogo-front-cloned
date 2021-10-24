@@ -244,8 +244,11 @@ Future<void> init() async {
 
   //! Add Publication feature
   //Blocs
-  sl.registerFactory(
-      () => AddPublicationCubit(countriesAndCitiesCubit: sl(), createLiveSearchPublicationUseCase: sl()));
+  sl.registerFactory(() => AddPublicationCubit(
+        countriesAndCitiesCubit: sl(),
+        createLiveSearchPublicationUseCase: sl(),
+        categoriesCubit: sl(),
+      ));
   //UseCases
   sl.registerLazySingleton(() => CreateLiveSearchPublicationUseCase(repository: sl()));
   //Repository

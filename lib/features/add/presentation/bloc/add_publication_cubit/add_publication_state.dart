@@ -18,6 +18,9 @@ class AddPublicationState extends Equatable {
   final RangeSelectionMode rangeSelectionMode;
   //For api and validation
   final FirstNameFormModel title;
+  final CountryFormModel country;
+  final CityFormModel city;
+  final CategoriesFormModel category;
   final DescriptionFormModel description;
   final ZipFormModel zip;
   final RentalPriceFormModel rentalPrice;
@@ -54,6 +57,9 @@ class AddPublicationState extends Equatable {
     this.cardNumber = const CardNumberFormModel.pure(),
     this.cardCvv = const CardCvvFormModel.pure(),
     this.cardExpireDate = const CardExpirationDateFormModel.pure(),
+    this.country = const CountryFormModel.pure(),
+    this.city = const CityFormModel.pure(),
+    this.category = const CategoriesFormModel.pure(),
     this.status = FormzStatus.pure,
     this.errorMessage = '',
   });
@@ -82,6 +88,9 @@ class AddPublicationState extends Equatable {
     CardNumberFormModel? cardNumber,
     CardCvvFormModel? cardCvv,
     CardExpirationDateFormModel? cardExpireDate,
+    CountryFormModel? country,
+    CityFormModel? city,
+    CategoriesFormModel? category,
     FormzStatus? status,
     String? errorMessage,
   }) {
@@ -109,6 +118,9 @@ class AddPublicationState extends Equatable {
       cardNumber: cardNumber ?? this.cardNumber,
       cardExpireDate: cardExpireDate ?? this.cardExpireDate,
       cardCvv: cardCvv ?? this.cardCvv,
+      country: country ?? this.country,
+      city: city ?? this.city,
+      category: category ?? this.category,
       status: status ?? this.status,
       errorMessage: errorMessage ?? '',
     );
@@ -139,6 +151,9 @@ class AddPublicationState extends Equatable {
         cardNumber,
         cardCvv,
         cardExpireDate,
+        country,
+        city,
+        category,
         status,
         errorMessage,
       ];

@@ -144,6 +144,8 @@
     "invalidPassword": "Password must have at least 6 characters",
     "invalidPasswordConfirm": "Passwords must match",
     "languages": "Select at least one language",
-    "thisFieldIsRequired": "This field is required"
+    "thisFieldIsRequired": "This field is required",
+    "imageIsRequired": "Image is required",
+    "dateIsRequired": "Date is required"
   }
 }

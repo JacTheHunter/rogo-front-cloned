@@ -3,7 +3,11 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
+import 'package:rogo/core/form_models/categories_form_model.dart';
+import 'package:rogo/core/form_models/city_form_model.dart';
+import 'package:rogo/core/form_models/country_form_model.dart';
 import 'package:rogo/features/add/domain/usecases/create_live_search_publication_usecase.dart';
+import 'package:rogo/features/categories/presentation/bloc/categories_cubit/categories_cubit.dart';
 import 'package:rogo/features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -21,11 +25,14 @@ part 'add_publication_state.dart';
 class AddPublicationCubit extends Cubit<AddPublicationState> {
   final CreateLiveSearchPublicationUseCase _createLiveSearchPublicationUseCase;
   final CountriesAndCitiesCubit _countriesAndCitiesCubit;
+  final CategoriesCubit _categoriesCubit;
   AddPublicationCubit({
     required CountriesAndCitiesCubit countriesAndCitiesCubit,
     required CreateLiveSearchPublicationUseCase createLiveSearchPublicationUseCase,
+    required CategoriesCubit categoriesCubit,
   })  : _countriesAndCitiesCubit = countriesAndCitiesCubit,
         _createLiveSearchPublicationUseCase = createLiveSearchPublicationUseCase,
+        _categoriesCubit = categoriesCubit,
         super(AddPublicationState());
 
   void selectPublicationType(int value) {
@@ -40,16 +47,160 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
     emit(state.copyWith(selectedCardId: id));
   }
 
+  bool isValidNewCard() {
+    final cardHName = CardHolderNameFormModel.dirty(state.cardHolderName.value);
+    final cardN = CardNumberFormModel.dirty(state.cardNumber.value);
+    final cardExp = CardExpirationDateFormModel.dirty(state.cardExpireDate.value);
+    final cardC = CardCvvFormModel.dirty(state.cardCvv.value);
+    emit(
+      state.copyWith(
+        status: Formz.validate(
+          [
+            cardHName,
+            cardN,
+            cardExp,
+            cardC,
+          ],
+        ),
+        cardHolderName: cardHName,
+        cardNumber: cardN,
+        cardExpireDate: cardExp,
+        cardCvv: cardC,
+      ),
+    );
+    if (state.status.isValidated) {
+      return true;
+    }
+    return false;
+  }
+
   void incrementStep() {
+    if (state.currentStep == 5) {
+      final rntPrice = RentalPriceFormModel.dirty(state.rentalPrice.value);
+      final pr = PriceFormModel.dirty(state.price.value);
+      final blsPr = BLSpriceFormModel.dirty(state.blsPrice.value);
+      emit(
+        state.copyWith(
+          status: Formz.validate(
+            [
+              rntPrice,
+              pr,
+              blsPr,
+            ],
+          ),
+          rentalPrice: rntPrice,
+          price: pr,
+          blsPrice: blsPr,
+        ),
+      );
+      if (state.status.isValidated) {
+        emit(state.copyWith(currentStep: state.currentStep + 1));
+      }
+      return;
+    }
+
+    if (state.currentStep == 4) {
+      final ctry = CountryFormModel.dirty(state.country.value);
+      final ct = CityFormModel.dirty(state.city.value);
+      final zp = ZipFormModel.dirty(state.zip.value);
+      emit(
+        state.copyWith(
+          status: Formz.validate(
+            [
+              ctry,
+              ct,
+              zp,
+            ],
+          ),
+          country: ctry,
+          city: ct,
+          zip: zp,
+        ),
+      );
+      if (state.status.isValidated) {
+        emit(state.copyWith(currentStep: state.currentStep + 1));
+      }
+      return;
+    }
+
     if (state.currentStep == 3) {
+      final ca = CategoriesFormModel.dirty(state.category.value);
+      final tt = FirstNameFormModel.dirty(state.title.value);
+      final desc = DescriptionFormModel.dirty(state.description.value);
+      emit(
+        state.copyWith(
+          status: Formz.validate(
+            [
+              ca,
+              tt,
+              desc,
+            ],
+          ),
+          category: ca,
+          title: tt,
+          description: desc,
+        ),
+      );
+      if (state.status.isValidated && state.pickedImagesPaths.isNotEmpty) {
+        emit(state.copyWith(currentStep: state.currentStep + 1));
+      }
+      return;
+    }
+
+    if (state.currentStep == 1 && state.isFeed == false) {
+      final tt = FirstNameFormModel.dirty(state.title.value);
+      final desc = DescriptionFormModel.dirty(state.description.value);
+      emit(
+        state.copyWith(
+          status: Formz.validate(
+            [
+              tt,
+              desc,
+            ],
+          ),
+          title: tt,
+          description: desc,
+        ),
+      );
+      if (state.status.isValidated && state.pickedImagesPaths.isNotEmpty) {
+        emit(state.copyWith(currentStep: state.currentStep + 1));
+      }
+      return;
+    }
+
+    if (state.currentStep == 2 && state.isFeed == false) {
+      final ctry = CountryFormModel.dirty(state.country.value);
+      final ct = CityFormModel.dirty(state.city.value);
+      final zp = ZipFormModel.dirty(state.zip.value);
+      emit(
+        state.copyWith(
+          status: Formz.validate(
+            [
+              ctry,
+              ct,
+              zp,
+            ],
+          ),
+          country: ctry,
+          city: ct,
+          zip: zp,
+        ),
+      );
+      if (state.status.isValidated) {
+        emit(state.copyWith(currentStep: state.currentStep + 1));
+      }
+      return;
+    }
+
+    if (state.currentStep == 3 && state.isFeed == false && state.rangeStartDay != null && state.rangeEndDay != null) {
       _createLiveSearchPublicationUseCase(CreateLiveSearchParams(
         title: state.title.value,
         description: state.description.value,
         zip: state.zip.value,
-        startAt: state.rangeStartDay ?? DateTime.now(),
-        endAt: state.rangeEndDay ?? DateTime.now(),
+        startAt: state.rangeStartDay!,
+        endAt: state.rangeEndDay!,
         rentalPriceRange: '${state.defaultRangeValues.start}-${state.defaultRangeValues.end}',
-        deadline: DateTime.now(),
+        deadline: DateTime.now(), //TODO: solve deadline
         city: state.selectedCity?.id ?? 0,
         images: state.pickedImagesPaths,
       ));
@@ -76,18 +227,18 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
     emit(state.copyWith(pickedImagesPaths: stateList..clear()));
   }
 
-  void selectCategory(Category? category) {
-    if (category != null) emit(state.copyWith(selectedCategory: category));
-  }
+  // void selectCategory(Category? category) {
+  //   if (category != null) emit(state.copyWith(selectedCategory: category));
+  // }
 
-  void selectCountry(Country? country) {
-    if (country != null) _countriesAndCitiesCubit.selectCountry(country.id);
-    if (country != null) emit(state.copyWith(selectedCountry: country));
-  }
+  // void selectCountry(Country? country) {
+  //   if (country != null) _countriesAndCitiesCubit.selectCountry(country.id);
+  //   if (country != null) emit(state.copyWith(selectedCountry: country));
+  // }
 
-  void selectCity(City? city) {
-    if (city != null) emit(state.copyWith(selectedCity: city));
-  }
+  // void selectCity(City? city) {
+  //   if (city != null) emit(state.copyWith(selectedCity: city));
+  // }
 
   void updateRangeValues(RangeValues values) {
     emit(state.copyWith(defaultRangeValues: values));
@@ -211,7 +362,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
   }
 
   //!Api and validation
-  void updateTitleFeed(String value) {
+  void updateTitle(String value) {
     final title = FirstNameFormModel.dirty(value);
     emit(
       state.copyWith(
@@ -228,21 +379,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
             state.cardNumber,
             state.cardCvv,
             state.cardExpireDate,
-          ],
-        ),
-      ),
-    );
-  }
-
-  void updateTitleLive(String value) {
-    final title = FirstNameFormModel.dirty(value);
-    emit(
-      state.copyWith(
-        title: title.valid ? title : FirstNameFormModel.pure(value),
-        status: Formz.validate(
-          [
-            title,
-            state.description,
+            state.country,
             state.zip,
           ],
         ),
@@ -250,7 +387,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
     );
   }
 
-  void updateDescriptionFeed(String value) {
+  void updateDescription(String value) {
     final description = DescriptionFormModel.dirty(value);
     emit(
       state.copyWith(
@@ -267,22 +404,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
             state.cardNumber,
             state.cardCvv,
             state.cardExpireDate,
-          ],
-        ),
-      ),
-    );
-  }
-
-  void updateDescriptionLive(String value) {
-    final description = DescriptionFormModel.dirty(value);
-
-    emit(
-      state.copyWith(
-        description: description.valid ? description : DescriptionFormModel.pure(value),
-        status: Formz.validate(
-          [
-            description,
-            state.title,
+            state.country,
             state.zip,
           ],
         ),
@@ -290,7 +412,95 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
     );
   }
 
-  void updateZipFeed(String value) {
+  void updateCountry(Country? country) {
+    if (country != null) {
+      _countriesAndCitiesCubit.selectCountry(country.id);
+      final co = CountryFormModel.dirty(country.id);
+      emit(
+        state.copyWith(
+          country: co.valid ? co : CountryFormModel.pure(country.id),
+          selectedCountry: country,
+          status: Formz.validate(
+            [
+              co,
+              state.city,
+              state.zip,
+              state.title,
+              state.description,
+              state.rentalPrice,
+              state.price,
+              state.blsPrice,
+              state.cardHolderName,
+              state.cardNumber,
+              state.cardCvv,
+              state.cardExpireDate,
+            ],
+          ),
+        ),
+      );
+    }
+  }
+
+  void updateCity(City? city) {
+    if (city != null) {
+      _countriesAndCitiesCubit.selectCity(city.id);
+      final ci = CityFormModel.dirty(city.id);
+      emit(
+        state.copyWith(
+          city: ci.valid ? ci : CityFormModel.pure(city.id),
+          selectedCity: city,
+          status: Formz.validate(
+            [
+              ci,
+              state.country,
+              state.zip,
+              state.title,
+              state.description,
+              state.rentalPrice,
+              state.price,
+              state.blsPrice,
+              state.cardHolderName,
+              state.cardNumber,
+              state.cardCvv,
+              state.cardExpireDate,
+            ],
+          ),
+        ),
+      );
+    }
+  }
+
+  void updateCategory(Category? category) {
+    if (category != null) {
+      _categoriesCubit.selectCategory(category.id);
+      final ca = CategoriesFormModel.dirty(category.id);
+      emit(
+        state.copyWith(
+          category: ca.valid ? ca : CategoriesFormModel.pure(category.id),
+          selectedCategory: category,
+          status: Formz.validate(
+            [
+              ca,
+              state.country,
+              state.city,
+              state.zip,
+              state.title,
+              state.description,
+              state.rentalPrice,
+              state.price,
+              state.blsPrice,
+              state.cardHolderName,
+              state.cardNumber,
+              state.cardCvv,
+              state.cardExpireDate,
+            ],
+          ),
+        ),
+      );
+    }
+  }
+
+  void updateZip(String value) {
     final zip = ZipFormModel.dirty(value);
     emit(
       state.copyWith(
@@ -307,22 +517,8 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
             state.cardNumber,
             state.cardCvv,
             state.cardExpireDate,
-          ],
-        ),
-      ),
-    );
-  }
-
-  void updateZipLive(String value) {
-    final zip = ZipFormModel.dirty(value);
-    emit(
-      state.copyWith(
-        zip: zip.valid ? zip : ZipFormModel.pure(value),
-        status: Formz.validate(
-          [
-            zip,
-            state.title,
-            state.description,
+            state.country,
+            state.zip,
           ],
         ),
       ),
@@ -346,6 +542,8 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
             state.cardNumber,
             state.cardCvv,
             state.cardExpireDate,
+            state.country,
+            state.zip,
           ],
         ),
       ),
@@ -369,6 +567,8 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
             state.cardNumber,
             state.cardCvv,
             state.cardExpireDate,
+            state.country,
+            state.zip,
           ],
         ),
       ),
@@ -392,6 +592,8 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
             state.cardNumber,
             state.cardExpireDate,
             state.cardCvv,
+            state.country,
+            state.zip,
           ],
         ),
       ),
@@ -407,9 +609,17 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         status: Formz.validate(
           [
             cardHolderName,
-            state.cardExpireDate,
-            state.cardCvv,
+            state.price,
+            state.rentalPrice,
+            state.blsPrice,
+            state.title,
+            state.description,
+            state.zip,
             state.cardNumber,
+            state.cardCvv,
+            state.cardExpireDate,
+            state.country,
+            state.zip,
           ],
         ),
       ),
@@ -424,9 +634,17 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         status: Formz.validate(
           [
             cardNumber,
+            state.rentalPrice,
+            state.blsPrice,
+            state.title,
+            state.description,
+            state.zip,
+            state.cardHolderName,
             state.cardCvv,
             state.cardExpireDate,
-            state.cardHolderName,
+            state.price,
+            state.country,
+            state.zip,
           ],
         ),
       ),
@@ -441,9 +659,17 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         status: Formz.validate(
           [
             cardExpireDate,
-            state.cardCvv,
+            state.price,
+            state.rentalPrice,
+            state.blsPrice,
+            state.title,
+            state.description,
+            state.zip,
             state.cardHolderName,
             state.cardNumber,
+            state.cardCvv,
+            state.country,
+            state.zip,
           ],
         ),
       ),
@@ -458,9 +684,17 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         status: Formz.validate(
           [
             cardCvv,
-            state.cardExpireDate,
+            state.price,
+            state.rentalPrice,
+            state.blsPrice,
+            state.title,
+            state.description,
+            state.zip,
             state.cardHolderName,
             state.cardNumber,
+            state.cardExpireDate,
+            state.country,
+            state.zip,
           ],
         ),
       ),

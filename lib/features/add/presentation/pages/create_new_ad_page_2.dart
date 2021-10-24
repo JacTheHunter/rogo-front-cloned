@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_loader.dart';
 
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import '../../../../core/presentation/pages/widgets/app_dropdown.dart';
@@ -38,15 +37,23 @@ class CreateNewAdPage2 extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: AppText(
-                  'add.createNewAdPage2.country',
+                  'add.liveSearchNewAdPage2.country',
                   style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
                 ),
               ),
               AppDropdown<Country>(
                 value: state.selectedCountry,
-                onChanged: context.read<AddPublicationCubit>().selectCountry,
+                onChanged: context.read<AddPublicationCubit>().updateCountry,
                 items: context.read<CountriesAndCitiesCubit>().state.countries,
               ),
+              if (state.country.invalid)
+                Padding(
+                  padding: const EdgeInsets.only(top: 3),
+                  child: AppText(
+                    'validators.thisFieldIsRequired',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                  ),
+                ),
               SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(left: 5),
@@ -55,13 +62,24 @@ class CreateNewAdPage2 extends StatelessWidget {
                   style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
                 ),
               ),
-              context.read<CountriesAndCitiesCubit>().state.isLoading
-                  ? AppLoader()
-                  : AppDropdown<City>(
-                      value: state.selectedCity,
-                      onChanged: context.read<AddPublicationCubit>().selectCity,
-                      items: context.read<CountriesAndCitiesCubit>().state.cities,
-                    ),
+              BlocBuilder<CountriesAndCitiesCubit, CountriesAndCitiesState>(
+                buildWhen: (previous, current) => previous.cities != current.cities,
+                builder: (context, cstate) {
+                  return AppDropdown<City>(
+                    value: state.selectedCity,
+                    onChanged: context.read<AddPublicationCubit>().updateCity,
+                    items: context.read<CountriesAndCitiesCubit>().state.cities,
+                  );
+                },
+              ),
+              if (state.city.invalid)
+                Padding(
+                  padding: const EdgeInsets.only(top: 3),
+                  child: AppText(
+                    'validators.thisFieldIsRequired',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                  ),
+                ),
               SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(left: 5),
@@ -72,23 +90,25 @@ class CreateNewAdPage2 extends StatelessWidget {
               ),
               AppTextFormField(
                 initialValue: state.zip.value,
-                onChanged: context.read<AddPublicationCubit>().updateZipFeed,
+                onChanged: context.read<AddPublicationCubit>().updateZip,
                 keyboardType: TextInputType.number,
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
                 ],
               ),
               if (state.zip.invalid)
-                AppText(
-                  'validators.thisFieldIsRequired',
-                  style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                Padding(
+                  padding: const EdgeInsets.only(top: 3),
+                  child: AppText(
+                    'validators.thisFieldIsRequired',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                  ),
                 ),
               Spacer(),
               Padding(
                 padding: const EdgeInsets.only(bottom: 40),
                 child: SimpleButton(
                   onTap: () {
-                    FocusScope.of(context).unfocus();
                     context.read<AddPublicationCubit>().incrementStep();
                   },
                   text: 'Next Step',

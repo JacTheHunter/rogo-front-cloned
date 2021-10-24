@@ -22,4 +22,8 @@ class CategoriesCubit extends Cubit<CategoriesState> {
       (categories) => emit(state.copyWith(categories: categories)),
     );
   }
+
+  void selectCategory(int categoryId) {
+    emit(state.copyWith(selectedCategory: state.categories.firstWhere((c) => c.id == categoryId)));
+  }
 }

@@ -57,6 +57,14 @@ class CreateNewAdPage3 extends StatelessWidget {
                     FilteringTextInputFormatter.digitsOnly,
                   ],
                 ),
+                if (state.rentalPrice.invalid)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3),
+                    child: AppText(
+                      'validators.thisFieldIsRequired',
+                      style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                    ),
+                  ),
                 SizedBox(height: 16),
                 Row(
                   children: [
@@ -129,6 +137,14 @@ class CreateNewAdPage3 extends StatelessWidget {
                             ],
                             keyboardType: TextInputType.number,
                           ),
+                          if (state.price.invalid)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 3),
+                              child: AppText(
+                                'validators.thisFieldIsRequired',
+                                style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                              ),
+                            ),
                         ],
                       ),
                     ),
@@ -188,13 +204,26 @@ class CreateNewAdPage3 extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 80),
-                  child: AppTextFormField(
-                    prefix: AppText('\$'),
-                    initialValue: state.blsPrice.value,
-                    onChanged: context.read<AddPublicationCubit>().updateBLSprice,
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppTextFormField(
+                        prefix: AppText('\$'),
+                        initialValue: state.blsPrice.value,
+                        onChanged: context.read<AddPublicationCubit>().updateBLSprice,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                      ),
+                      if (state.blsPrice.invalid)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 3),
+                          child: AppText(
+                            'validators.thisFieldIsRequired',
+                            style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                          ),
+                        ),
                     ],
                   ),
                 ),

@@ -12,8 +12,6 @@ import '../../../../core/services/navigation_service.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../bloc/add_publication_cubit/add_publication_cubit.dart';
 
-//TODO: Fix tetxfileds
-//TODO: Fix validation of exp
 class AddNewCardPage extends StatelessWidget {
   const AddNewCardPage({Key? key}) : super(key: key);
 
@@ -64,6 +62,14 @@ class AddNewCardPage extends StatelessWidget {
                     ),
                   ],
                 ),
+                if (state.cardHolderName.invalid)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3),
+                    child: AppText(
+                      'validators.thisFieldIsRequired',
+                      style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                    ),
+                  ),
                 SizedBox(height: 24),
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
@@ -81,9 +87,12 @@ class AddNewCardPage extends StatelessWidget {
                   ],
                 ),
                 if (state.cardNumber.invalid)
-                  AppText(
-                    'Invalid card number',
-                    style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3),
+                    child: AppText(
+                      'validators.thisFieldIsRequired',
+                      style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                    ),
                   ),
                 SizedBox(height: 24),
                 Row(
@@ -110,6 +119,14 @@ class AddNewCardPage extends StatelessWidget {
                             ],
                             keyboardType: TextInputType.number,
                           ),
+                          if (state.cardExpireDate.invalid)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 3),
+                              child: AppText(
+                                'validators.thisFieldIsRequired',
+                                style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                              ),
+                            ),
                         ],
                       ),
                     ),
@@ -134,6 +151,14 @@ class AddNewCardPage extends StatelessWidget {
                             ],
                             keyboardType: TextInputType.number,
                           ),
+                          if (state.cardCvv.invalid)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 3),
+                              child: AppText(
+                                'validators.thisFieldIsRequired',
+                                style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                              ),
+                            ),
                         ],
                       ),
                     ),
@@ -159,9 +184,13 @@ class AddNewCardPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 40),
                   child: SimpleButton(
-                    text: 'Save',
-                    onTap: () => sl<NavigatorService>().pop(),
-                  ),
+                      text: 'Save',
+                      onTap: () {
+                        if (context.read<AddPublicationCubit>().isValidNewCard()) {
+                          sl<NavigatorService>().pop();
+                        }
+                        return;
+                      }),
                 ),
               ],
             ),

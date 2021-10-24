@@ -17,7 +17,6 @@ class CustomRangeSlider extends StatelessWidget {
     return SliderTheme(
       data: SliderThemeData(
         showValueIndicator: ShowValueIndicator.always,
-        //TODO: Fix labels of range slider
         valueIndicatorTextStyle: context.read<AppThemeCubit>().state.textTheme.rangeSliderIndicatorsTextStyle,
         valueIndicatorColor: AppColorScheme.transparent,
         activeTrackColor: AppColorScheme.hollywoodCerise,

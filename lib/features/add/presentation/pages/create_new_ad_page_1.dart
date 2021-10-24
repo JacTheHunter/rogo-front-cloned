@@ -60,6 +60,14 @@ class CreateNewAdPage1 extends StatelessWidget {
                     },
                   ),
                 ),
+                if (state.pickedImagesPaths.isEmpty && state.title.invalid)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3),
+                    child: AppText(
+                      'validators.imageIsRequired',
+                      style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                    ),
+                  ),
                 SizedBox(height: 40),
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
@@ -70,9 +78,17 @@ class CreateNewAdPage1 extends StatelessWidget {
                 ),
                 AppDropdown<Category>(
                   value: state.selectedCategory,
-                  onChanged: context.read<AddPublicationCubit>().selectCategory,
+                  onChanged: context.read<AddPublicationCubit>().updateCategory,
                   items: context.read<CategoriesCubit>().state.categories,
                 ),
+                if (state.category.invalid)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3),
+                    child: AppText(
+                      'validators.thisFieldIsRequired',
+                      style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                    ),
+                  ),
                 SizedBox(height: 16),
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
@@ -83,7 +99,7 @@ class CreateNewAdPage1 extends StatelessWidget {
                 ),
                 AppTextFormField(
                   initialValue: state.title.value,
-                  onChanged: context.read<AddPublicationCubit>().updateTitleFeed,
+                  onChanged: context.read<AddPublicationCubit>().updateTitle,
                   textCapitalization: TextCapitalization.words,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
@@ -92,6 +108,14 @@ class CreateNewAdPage1 extends StatelessWidget {
                     ),
                   ],
                 ),
+                if (state.title.invalid)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3),
+                    child: AppText(
+                      'validators.thisFieldIsRequired',
+                      style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                    ),
+                  ),
                 SizedBox(height: 16),
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
@@ -104,9 +128,17 @@ class CreateNewAdPage1 extends StatelessWidget {
                   minLines: 4,
                   maxLines: 5,
                   initialValue: state.description.value,
-                  onChanged: context.read<AddPublicationCubit>().updateDescriptionFeed,
+                  onChanged: context.read<AddPublicationCubit>().updateDescription,
                   inputFormatters: [],
                 ),
+                if (state.description.invalid)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3),
+                    child: AppText(
+                      'validators.thisFieldIsRequired',
+                      style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                    ),
+                  ),
                 SizedBox(height: 60),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 40),
