@@ -88,4 +88,11 @@ abstract class AppTextTheme {
   TextStyle get discountDialogHeaderTextStyle;
   TextStyle get discountDialogContentTextStyle;
   TextStyle get discountDialogButtonTextStyle;
+  TextStyle get liveSearchAdPage3TextStyle;
+  TextStyle get rangeSliderIndicatorsTextStyle;
+  TextStyle get calendarTitleTextStyle;
+  TextStyle get calendarClearButtonTextStyle;
+  TextStyle get calendarHeaderTextStyle;
+  TextStyle get calendarSelectedDayTextStyle;
+  TextStyle get calendarWeekDaysTextStyle;
 }

@@ -41,7 +41,10 @@ class CreateAccountPage1 extends StatelessWidget {
               onChanged: context.read<CreateAccountCubit>().updateFirstName,
               textCapitalization: TextCapitalization.words,
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]')),
+                FilteringTextInputFormatter.allow(
+                  RegExp('[a-zA-Z]'),
+                  replacementString: context.read<CreateAccountCubit>().state.firstName.value,
+                ),
               ],
             ),
             if (state.firstName.invalid)
@@ -59,7 +62,10 @@ class CreateAccountPage1 extends StatelessWidget {
               onChanged: context.read<CreateAccountCubit>().updateLastName,
               textCapitalization: TextCapitalization.words,
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]')),
+                FilteringTextInputFormatter.allow(
+                  RegExp('[a-zA-Z]'),
+                  replacementString: context.read<CreateAccountCubit>().state.lastName.value,
+                ),
               ],
             ),
             if (state.lastName.invalid)
@@ -177,7 +183,10 @@ class CreateAccountPage1 extends StatelessWidget {
               keyboardType: TextInputType.phone,
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
-                FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                FilteringTextInputFormatter.allow(
+                  RegExp('[0-9]'),
+                  replacementString: context.read<CreateAccountCubit>().state.phoneNumber.value,
+                ),
               ],
             ),
             // Spacer(),

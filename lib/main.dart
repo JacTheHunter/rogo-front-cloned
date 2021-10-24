@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,6 +55,8 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
   await Firebase.initializeApp();
+
+  //await FirebaseAuth.instance.signOut();
 
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: await getApplicationDocumentsDirectory(),
@@ -131,9 +134,6 @@ class App extends StatelessWidget {
         BlocProvider<WishlistsLiveSearchCubit>(
           create: (context) => sl(),
         ),
-        BlocProvider<AddPublicationCubit>(
-          create: (context) => sl(),
-        )
       ],
       child: Builder(builder: (context) {
         return BlocProvider(
@@ -144,11 +144,21 @@ class App extends StatelessWidget {
               registerUserUseCase: sl(),
               verifyPhoneNumberInFirebaseUseCase: sl()),
           child: Builder(builder: (context) {
-            return BlocProvider(
-              create: (context) => PhoneVerificationCubit(
-                updatePhoneNumberInFirebaseUseCase: sl(),
-                createAccountCubit: context.read<CreateAccountCubit>(),
-              ),
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => AddPublicationCubit(
+                    countriesAndCitiesCubit: context.read<CountriesAndCitiesCubit>(),
+                    createLiveSearchPublicationUseCase: sl(),
+                  ),
+                ),
+                BlocProvider(
+                  create: (context) => PhoneVerificationCubit(
+                    updatePhoneNumberInFirebaseUseCase: sl(),
+                    createAccountCubit: context.read<CreateAccountCubit>(),
+                  ),
+                ),
+              ],
               child: BlocBuilder<AppThemeCubit, AppTheme>(
                 builder: (context, state) {
                   return MaterialApp(

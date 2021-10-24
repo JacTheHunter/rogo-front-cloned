@@ -6,16 +6,19 @@ import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../bloc/add_publication_cubit/add_publication_cubit.dart';
 
 class CoverPhotoItem extends StatelessWidget {
   const CoverPhotoItem({
     Key? key,
     required this.querySize,
     required this.path,
+    required this.isFirst,
   }) : super(key: key);
 
   final Size querySize;
   final String path;
+  final bool isFirst;
 
   @override
   Widget build(BuildContext context) {
@@ -34,30 +37,36 @@ class CoverPhotoItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(14),
             ),
           ),
-          // if (index == 0)
-          //   Positioned(
-          //     top: querySize.height * .01,
-          //     left: querySize.width * .02,
-          //     child: Container(
-          //       padding: EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-          //       decoration: BoxDecoration(
-          //         color: AppColorScheme.hollywoodCerise,
-          //         borderRadius: BorderRadius.circular(4),
-          //       ),
-          //       child: AppText(
-          //         'Cover',
-          //         style: context.read<AppThemeCubit>().state.textTheme.photoLabelTextStyle,
-          //       ),
-          //     ),
-          //   ),
+          if (isFirst)
+            Positioned(
+              top: querySize.height * .01,
+              left: querySize.width * .02,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                decoration: BoxDecoration(
+                  color: AppColorScheme.hollywoodCerise,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: AppText(
+                  'Cover',
+                  style: context.read<AppThemeCubit>().state.textTheme.photoLabelTextStyle,
+                ),
+              ),
+            ),
           Positioned(
             top: querySize.height * .01,
             left: querySize.width * .31,
-            child: CircleAvatar(
-              radius: 16,
-              backgroundColor: AppColorScheme.haitiWithOpacity40,
-              child: AppImage.asset(
-                AppImages.vector.trashIcon,
+            child: GestureDetector(
+              onTap: () {
+                print('tapped');
+                context.read<AddPublicationCubit>().removePhoto(path);
+              },
+              child: CircleAvatar(
+                radius: 16,
+                backgroundColor: AppColorScheme.haitiWithOpacity40,
+                child: AppImage.asset(
+                  AppImages.vector.trashIcon,
+                ),
               ),
             ),
           ),

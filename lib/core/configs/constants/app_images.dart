@@ -44,6 +44,7 @@ class Vector {
   String get trashIcon => 'assets/images/vector/trash.svg';
   String get cameraIcon => 'assets/images/vector/camera.svg';
   String get circleQuestionIcon => 'assets/images/vector/circle_question_mark.svg';
+  String get calendarIcon => 'assets/images/vector/calendar.svg';
 }
 
 class Raster {

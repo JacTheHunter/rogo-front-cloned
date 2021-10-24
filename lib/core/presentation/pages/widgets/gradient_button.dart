@@ -12,7 +12,7 @@ class GradientButton extends StatelessWidget {
   final Widget? child;
   final String text;
   final Color? textColor;
-  final Gradient gradient;
+  final Gradient? gradient;
   const GradientButton(
       {Key? key,
       this.onTap,
@@ -20,7 +20,7 @@ class GradientButton extends StatelessWidget {
       this.color = AppColors.hollywoodCerise,
       this.child,
       this.text = '',
-      required this.gradient,
+      this.gradient,
       this.textColor})
       : super(key: key);
 
@@ -34,7 +34,7 @@ class GradientButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(14),
-          gradient: gradient,
+          gradient: gradient ?? context.read<AppThemeCubit>().state.appColors.createAccountHeaderGradient,
         ),
         child: isWide
             ? Center(

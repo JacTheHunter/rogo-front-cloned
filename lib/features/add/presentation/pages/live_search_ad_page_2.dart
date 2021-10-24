@@ -3,9 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_dropdown.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../core/presentation/pages/widgets/app_text_form_field.dart';
 import '../../../../core/presentation/pages/widgets/simple_button.dart';
+import '../../../countries_and_cities/domain/entities/city.dart';
+import '../../../countries_and_cities/domain/entities/country.dart';
+import '../../../countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
 import '../bloc/add_publication_cubit/add_publication_cubit.dart';
 
 class LiveSearchNewAdPage2 extends StatelessWidget {
@@ -30,7 +34,6 @@ class LiveSearchNewAdPage2 extends StatelessWidget {
                 style: context.read<AppThemeCubit>().state.textTheme.addPublicationHeaderTextStyle,
               ),
               SizedBox(height: 16),
-              //TODO: Make dropdown
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: AppText(
@@ -38,9 +41,12 @@ class LiveSearchNewAdPage2 extends StatelessWidget {
                   style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
                 ),
               ),
-              AppTextFormField(),
+              AppDropdown<Country>(
+                value: state.selectedCountry,
+                onChanged: context.read<AddPublicationCubit>().selectCountry,
+                items: context.read<CountriesAndCitiesCubit>().state.countries,
+              ),
               SizedBox(height: 16),
-              //TODO: Make dropdown
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: AppText(
@@ -48,7 +54,16 @@ class LiveSearchNewAdPage2 extends StatelessWidget {
                   style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
                 ),
               ),
-              AppTextFormField(),
+              BlocBuilder<CountriesAndCitiesCubit, CountriesAndCitiesState>(
+                buildWhen: (previous, current) => previous.cities != current.cities,
+                builder: (context, cstate) {
+                  return AppDropdown<City>(
+                    value: state.selectedCity,
+                    onChanged: context.read<AddPublicationCubit>().selectCity,
+                    items: context.read<CountriesAndCitiesCubit>().state.cities, // TODO: Integrate with new api
+                  );
+                },
+              ),
               SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(left: 5),
@@ -58,6 +73,8 @@ class LiveSearchNewAdPage2 extends StatelessWidget {
                 ),
               ),
               AppTextFormField(
+                initialValue: state.zip.value,
+                onChanged: context.read<AddPublicationCubit>().updateZipLive,
                 keyboardType: TextInputType.number,
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,

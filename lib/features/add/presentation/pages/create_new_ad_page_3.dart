@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rogo/core/presentation/pages/widgets/app_dropdown.dart';
 
 import '../../../../core/configs/constants/app_images.dart';
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
@@ -21,140 +22,190 @@ class CreateNewAdPage3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> pickUpAndDrop = [
+      'I am flexible, text me',
+      'I will meat you at your address',
+      'Custom',
+    ];
+
     return BlocBuilder<AddPublicationCubit, AddPublicationState>(
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppText(
-                'Create new ad',
-                style: context.read<AppThemeCubit>().state.textTheme.addPublicationHeaderTextStyle,
-              ),
-              SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.only(left: 5),
-                child: AppText(
-                  'add.createNewAdPage3.rentalPrice',
-                  style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppText(
+                  'Create new ad',
+                  style: context.read<AppThemeCubit>().state.textTheme.addPublicationHeaderTextStyle,
                 ),
-              ),
-              AppTextFormField(
-                keyboardType: TextInputType.number,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                ],
-              ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  AppText(
-                    'Discount',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                    ),
+                SizedBox(height: 16),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: AppText(
+                    'add.createNewAdPage3.rentalPrice',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
                   ),
-                  SizedBox(width: 16.75),
-                  GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return DiscountAlert();
-                        },
-                      );
-                    },
-                    child: AppImage.asset(
-                      AppImages.vector.circleQuestionIcon,
+                ),
+                AppTextFormField(
+                  prefix: AppText('\$'),
+                  initialValue: state.rentalPrice.value,
+                  onChanged: context.read<AddPublicationCubit>().updateRentalPrice,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    AppText(
+                      'Discount',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: AppText(
-                            'add.createNewAdPage3.fromDays',
-                            textAlign: TextAlign.start,
-                            style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                    SizedBox(width: 16.75),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return DiscountAlert();
+                          },
+                        );
+                      },
+                      child: AppImage.asset(
+                        AppImages.vector.circleQuestionIcon,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: AppText(
+                              'add.createNewAdPage3.fromDays',
+                              textAlign: TextAlign.start,
+                              style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                            ),
                           ),
-                        ),
-                        AppTextFormField(
-                          inputFormatters: [],
-                          keyboardType: TextInputType.number,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: 15),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: AppText(
-                            'add.createNewAdPage3.pricePerDay',
-                            textAlign: TextAlign.start,
-                            style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                          AppTextFormField(
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
+                            keyboardType: TextInputType.number,
                           ),
-                        ),
-                        AppTextFormField(
-                          inputFormatters: [],
-                          keyboardType: TextInputType.number,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
+                    SizedBox(width: 15),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: AppText(
+                              'add.createNewAdPage3.pricePerDay',
+                              textAlign: TextAlign.start,
+                              style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                            ),
+                          ),
+                          AppTextFormField(
+                            prefix: AppText('\$'),
+                            initialValue: state.price.value,
+                            onChanged: context.read<AddPublicationCubit>().updatePrice,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
+                            keyboardType: TextInputType.number,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 40),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: AppText(
+                    'add.createNewAdPage3.pickUpAndDrop',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
                   ),
-                ],
-              ),
-              SizedBox(height: 40),
-              Padding(
-                padding: const EdgeInsets.only(left: 5),
-                child: AppText(
-                  'add.createNewAdPage3.pickUpAndDrop',
-                  style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
                 ),
-              ),
-              AppTextFormField(
-                minLines: 3,
-                maxLines: 4,
-                keyboardType: TextInputType.number,
-                inputFormatters: [],
-              ),
-              SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.only(left: 5),
-                child: AppText(
-                  'add.createNewAdPage3.itemUponReturn',
-                  style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                AppDropdown(
+                  value: pickUpAndDrop[0],
+                  onChanged: (val) {},
+                  items: pickUpAndDrop,
                 ),
-              ),
-              AppTextFormField(
-                minLines: 3,
-                maxLines: 4,
-                keyboardType: TextInputType.number,
-                inputFormatters: [],
-              ),
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 40),
-                child: SimpleButton(
+                SizedBox(height: 40),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: AppText(
+                    'add.createNewAdPage3.pickUpAndDrop',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                  ),
+                ),
+                AppDropdown(
+                  value: pickUpAndDrop[0],
+                  onChanged: (val) {},
+                  items: pickUpAndDrop,
+                ),
+                SizedBox(height: 40),
+                Row(
+                  children: [
+                    AppText(
+                      'BLS price',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(width: 16.75),
+                    GestureDetector(
+                      onTap: () {},
+                      child: AppImage.asset(
+                        AppImages.vector.circleQuestionIcon,
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: AppText(
+                    'BLS',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 80),
+                  child: AppTextFormField(
+                    prefix: AppText('\$'),
+                    initialValue: state.blsPrice.value,
+                    onChanged: context.read<AddPublicationCubit>().updateBLSprice,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                  ),
+                ),
+                SimpleButton(
                   onTap: () {
                     context.read<AddPublicationCubit>().incrementStep();
                   },
                   text: 'Save and publish',
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

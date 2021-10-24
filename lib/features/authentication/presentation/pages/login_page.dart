@@ -45,8 +45,9 @@ class LoginPage extends StatelessWidget {
               builder: (context, state) {
                 return SingleChildScrollView(
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height - 70,
+                    // height: MediaQuery.of(context).size.height - 70,
                     child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 10),
@@ -149,9 +150,9 @@ class LoginPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Spacer(
-                          flex: 2,
-                        ),
+                        // Spacer(
+                        //   flex: 2,
+                        // ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -169,7 +170,7 @@ class LoginPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Spacer(),
+                        // Spacer(),
                       ],
                     ),
                   ),

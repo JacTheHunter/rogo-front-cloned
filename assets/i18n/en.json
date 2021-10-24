@@ -121,9 +121,7 @@
       "zip": "Zip"
     },
     "liveSearchNewAdPage3": {
-      "rentalPrice": "Rental price (per day)",
-      "from": "From",
-      "to": "To"
+      "rentalPrice": "Rental price range (per day)"
     }
   },
   "onboarding": {

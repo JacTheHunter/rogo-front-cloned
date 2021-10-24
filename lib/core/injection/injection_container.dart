@@ -1,5 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:rogo/features/add/data/datasources/publications_datasource.dart';
+import 'package:rogo/features/add/data/repositories/publications_repository_impl.dart';
+import 'package:rogo/features/add/domain/repositories/publications_repository.dart';
+import 'package:rogo/features/add/domain/usecases/create_live_search_publication_usecase.dart';
 
 import '../../features/add/presentation/bloc/add_publication_cubit/add_publication_cubit.dart';
 import '../../features/authentication/data/datasources/authentication_datasource.dart';
@@ -240,7 +244,14 @@ Future<void> init() async {
 
   //! Add Publication feature
   //Blocs
-  sl.registerFactory(() => AddPublicationCubit());
+  sl.registerFactory(
+      () => AddPublicationCubit(countriesAndCitiesCubit: sl(), createLiveSearchPublicationUseCase: sl()));
+  //UseCases
+  sl.registerLazySingleton(() => CreateLiveSearchPublicationUseCase(repository: sl()));
+  //Repository
+  sl.registerLazySingleton<PublicationsRepository>(() => PublicationsRepositoryImpl(dataSource: sl()));
+  //Data Source
+  sl.registerLazySingleton<PublicationsDataSource>(() => PublicationsDataSourceImpl(client: sl()));
 
   //!External
   //DIO

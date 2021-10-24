@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:rogo/features/add/presentation/bloc/add_publication_cubit/add_publication_cubit.dart';
 
 import '../../../../core/configs/constants/app_images.dart';
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
 import '../../../../core/presentation/pages/widgets/app_image.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../bloc/add_publication_cubit/add_publication_cubit.dart';
 
 class AddPhotoButton extends StatelessWidget {
   const AddPhotoButton({Key? key, required this.querySize}) : super(key: key);

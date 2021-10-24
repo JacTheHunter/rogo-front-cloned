@@ -37,10 +37,11 @@ class LiveSearchNewAdPage1 extends StatelessWidget {
                 Container(
                   child: GridView.builder(
                     shrinkWrap: true,
-                    itemCount: 2,
+                    itemCount: state.pickedImagesPaths.length + 1,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                    physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return index == 1
+                      return index >= state.pickedImagesPaths.length
                           ? Padding(
                               padding: const EdgeInsets.only(bottom: 16, right: 15),
                               child: AddPhotoButton(querySize: querySize),
@@ -49,7 +50,8 @@ class LiveSearchNewAdPage1 extends StatelessWidget {
                               padding: const EdgeInsets.only(bottom: 16, right: 15),
                               child: CoverPhotoItem(
                                 querySize: querySize,
-                                path: '',
+                                path: state.pickedImagesPaths[index],
+                                isFirst: index == 0 ? true : false,
                               ),
                             );
                     },
@@ -64,8 +66,14 @@ class LiveSearchNewAdPage1 extends StatelessWidget {
                   ),
                 ),
                 AppTextFormField(
+                  initialValue: state.title.value,
+                  onChanged: (val) => context.read<AddPublicationCubit>().updateTitleLive(val),
+                  textCapitalization: TextCapitalization.words,
                   inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]')),
+                    // FilteringTextInputFormatter.allow(
+                    //   RegExp('^[a-zA-Z0-9_ .-]*\$'),
+                    //   replacementString: state.title.value,
+                    // ),
                   ],
                 ),
                 SizedBox(height: 16),
@@ -79,9 +87,9 @@ class LiveSearchNewAdPage1 extends StatelessWidget {
                 AppTextFormField(
                   minLines: 4,
                   maxLines: 5,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]')),
-                  ],
+                  initialValue: state.description.value,
+                  onChanged: context.read<AddPublicationCubit>().updateDescriptionLive,
+                  inputFormatters: [],
                 ),
                 SizedBox(height: 127),
                 Padding(

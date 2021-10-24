@@ -428,4 +428,49 @@ class DefaultAppTextTheme extends AppTextTheme {
         fontWeight: FontWeight.w700,
         fontSize: 28,
       );
+
+  @override
+  TextStyle get liveSearchAdPage3TextStyle => TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      );
+
+  @override
+  TextStyle get calendarTitleTextStyle => TextStyle(
+        fontSize: 17,
+        fontWeight: FontWeight.w600,
+      );
+
+  @override
+  TextStyle get calendarClearButtonTextStyle => TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: AppColorScheme.hollywoodCerise,
+      );
+
+  @override
+  TextStyle get calendarHeaderTextStyle => TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w400,
+      );
+
+  @override
+  TextStyle get calendarSelectedDayTextStyle => TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: AppColorScheme.white,
+      );
+
+  @override
+  TextStyle get calendarWeekDaysTextStyle => TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w500,
+      );
+
+  @override
+  TextStyle get rangeSliderIndicatorsTextStyle => TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        color: AppColorScheme.haiti,
+      );
 }

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rogo/core/presentation/pages/widgets/app_dropdown.dart';
-import 'package:rogo/features/categories/domain/entities/category.dart';
-import 'package:rogo/features/categories/presentation/bloc/categories_cubit/categories_cubit.dart';
-import 'package:rogo/features/countries_and_cities/domain/entities/country.dart';
 
 import '../../../../core/presentation/blocs/app_theme_cubit/app_theme_cubit.dart';
+import '../../../../core/presentation/pages/widgets/app_dropdown.dart';
 import '../../../../core/presentation/pages/widgets/app_text.dart';
 import '../../../../core/presentation/pages/widgets/app_text_form_field.dart';
 import '../../../../core/presentation/pages/widgets/simple_button.dart';
+import '../../../categories/domain/entities/category.dart';
+import '../../../categories/presentation/bloc/categories_cubit/categories_cubit.dart';
 import '../bloc/add_publication_cubit/add_publication_cubit.dart';
 import '../widgets/add_photo_button.dart';
 import '../widgets/cover_photo_item.dart';
@@ -43,6 +42,7 @@ class CreateNewAdPage1 extends StatelessWidget {
                     shrinkWrap: true,
                     itemCount: state.pickedImagesPaths.length + 1,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                    physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return index >= state.pickedImagesPaths.length
                           ? Padding(
@@ -54,14 +54,13 @@ class CreateNewAdPage1 extends StatelessWidget {
                               child: CoverPhotoItem(
                                 querySize: querySize,
                                 path: state.pickedImagesPaths[index],
+                                isFirst: index == 0 ? true : false,
                               ),
                             );
                     },
                   ),
                 ),
-
                 SizedBox(height: 40),
-                //TODO: Make dropdown
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
                   child: AppText(
@@ -69,12 +68,6 @@ class CreateNewAdPage1 extends StatelessWidget {
                     style: context.read<AppThemeCubit>().state.textTheme.inputLabelTextStyle,
                   ),
                 ),
-                AppTextFormField(
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]')),
-                  ],
-                ),
-                SizedBox(height: 16),
                 AppDropdown<Category>(
                   value: state.selectedCategory,
                   onChanged: context.read<AddPublicationCubit>().selectCategory,
@@ -89,8 +82,14 @@ class CreateNewAdPage1 extends StatelessWidget {
                   ),
                 ),
                 AppTextFormField(
+                  initialValue: state.title.value,
+                  onChanged: context.read<AddPublicationCubit>().updateTitleFeed,
+                  textCapitalization: TextCapitalization.words,
                   inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]')),
+                    FilteringTextInputFormatter.allow(
+                      RegExp('^[a-zA-Z0-9_ .-]*\$'),
+                      replacementString: state.title.value,
+                    ),
                   ],
                 ),
                 SizedBox(height: 16),
@@ -104,9 +103,9 @@ class CreateNewAdPage1 extends StatelessWidget {
                 AppTextFormField(
                   minLines: 4,
                   maxLines: 5,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]')),
-                  ],
+                  initialValue: state.description.value,
+                  onChanged: context.read<AddPublicationCubit>().updateDescriptionFeed,
+                  inputFormatters: [],
                 ),
                 SizedBox(height: 60),
                 Padding(

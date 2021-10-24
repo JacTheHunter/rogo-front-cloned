@@ -23,6 +23,7 @@ class SelectPublicationTypePage extends StatelessWidget {
     }
 
     void onSubmit() {
+      context.read<AddPublicationCubit>().clearPhotoList();
       context.read<AddPublicationCubit>().incrementStep();
     }
 

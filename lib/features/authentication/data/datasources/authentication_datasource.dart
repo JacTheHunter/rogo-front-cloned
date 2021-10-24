@@ -32,7 +32,7 @@ class AuthenticationDatasourceImpl implements AuthenticationDatasource {
     final jwt = sl<BoxService>().appSettings.get('jwt');
     try {
       final result = await _client.get(
-        k_API_END_POINT_USER_MY_PROFILE,
+        k_API_END_POINT_SELF,
         options: Options(
           headers: {
             if (jwt != null) 'Authorization': 'jwt ' + jwt,
