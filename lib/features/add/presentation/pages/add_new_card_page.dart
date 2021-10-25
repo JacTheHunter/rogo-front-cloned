@@ -28,7 +28,7 @@ class AddNewCardPage extends StatelessWidget {
             ),
             centerTitle: true,
             title: AppText(
-              'Add New Card',
+              'add.addNewCardPage.addNewCard',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 17,
@@ -175,7 +175,7 @@ class AddNewCardPage extends StatelessWidget {
                       onChanged: (f) {},
                     ),
                     AppText(
-                      'Save my card details',
+                      'add.addNewCardPage.saveMyCardDetails',
                       style: context.read<AppThemeCubit>().state.textTheme.privacyTextStyle,
                     ),
                   ],
@@ -184,13 +184,14 @@ class AddNewCardPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 40),
                   child: SimpleButton(
-                      text: 'Save',
-                      onTap: () {
-                        if (context.read<AddPublicationCubit>().isValidNewCard()) {
-                          sl<NavigatorService>().pop();
-                        }
-                        return;
-                      }),
+                    text: 'add.addNewCardPage.save',
+                    onTap: () {
+                      if (context.read<AddPublicationCubit>().isValidNewCard()) {
+                        sl<NavigatorService>().pop();
+                      }
+                      return;
+                    },
+                  ),
                 ),
               ],
             ),

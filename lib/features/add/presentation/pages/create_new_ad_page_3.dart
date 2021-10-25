@@ -37,7 +37,7 @@ class CreateNewAdPage3 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppText(
-                  'Create new ad',
+                  'add.createNewAdPage3.createNewAd',
                   style: context.read<AppThemeCubit>().state.textTheme.addPublicationHeaderTextStyle,
                 ),
                 SizedBox(height: 16),
@@ -69,7 +69,7 @@ class CreateNewAdPage3 extends StatelessWidget {
                 Row(
                   children: [
                     AppText(
-                      'Discount',
+                      'add.createNewAdPage3.discount',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
@@ -180,7 +180,7 @@ class CreateNewAdPage3 extends StatelessWidget {
                 Row(
                   children: [
                     AppText(
-                      'BLS price',
+                      'add.createNewAdPage3.blsPrice',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
@@ -231,7 +231,7 @@ class CreateNewAdPage3 extends StatelessWidget {
                   onTap: () {
                     context.read<AddPublicationCubit>().incrementStep();
                   },
-                  text: 'Save and publish',
+                  text: 'add.createNewAdPage3.saveAndPublish',
                 ),
               ],
             ),

@@ -92,36 +92,54 @@
       "cardNumber": "Card number",
       "expires": "Expires",
       "cvv": "CVV / CCV",
-      "saveMyCardDetails": "Save my card details"
+      "saveMyCardDetails": "Save my card details",
+      "addNewCard": "Add new card",
+      "save": "Save"
     },
     "createNewAdPage1": {
       "categories": "Categories",
       "title": "Title",
-      "description": "Description"
+      "description": "Description",
+      "createNewAd": "Create new ad",
+      "nextStep": "Next Step"
     },
     "createNewAdPage2": {
+      "nextStep": "Next Step",
+      "createNewAd": "Create new ad",
       "country": "Country",
       "city": "City",
       "zip": "Zip"
     },
     "createNewAdPage3": {
+      "createNewAd": "Create new ad",
       "rentalPrice": "Rental price (per day)",
       "fromDays": "From (n) days",
       "pricePerDay": "Price (per day)",
       "pickUpAndDrop": "Pick up and drop",
-      "itemUponReturn": "Item upon return"
+      "itemUponReturn": "Item upon return",
+      "discount": "Discount",
+      "blsPrice": "BLS price",
+      "saveAndPublish": "Save and publish"
     },
     "liveSearchNewAdPage1": {
       "title": "Title",
-      "description": "Description"
+      "description": "Description",
+      "createNewAd": "Create new ad",
+      "nextStep": "Next Step"
     },
     "liveSearchNewAdPage2": {
       "country": "Country",
       "city": "City",
-      "zip": "Zip"
+      "zip": "Zip",
+      "createNewAd": "Create new ad",
+      "nextStep": "Next Step"
     },
     "liveSearchNewAdPage3": {
-      "rentalPrice": "Rental price range (per day)"
+      "rentalPrice": "Rental price range (per day)",
+      "selectDates": "Select dates",
+      "textSelectDates": "Text select dates",
+      "saveAndPublish": "Save and publish",
+      "createNewAd": "Create new ad"
     }
   },
   "onboarding": {

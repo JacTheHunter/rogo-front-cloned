@@ -24,7 +24,7 @@ class LiveSearchNewAdPage3 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppText(
-                'Create new ad',
+                'add.liveSearchNewAdPage3.createNewAd',
                 style: context.read<AppThemeCubit>().state.textTheme.addPublicationHeaderTextStyle,
               ),
               SizedBox(height: 16),
@@ -38,12 +38,12 @@ class LiveSearchNewAdPage3 extends StatelessWidget {
               SizedBox(height: 40),
               CustomRangeSlider(state: state),
               AppText(
-                'Select dates',
+                'add.liveSearchNewAdPage3.selectDates',
                 style: context.read<AppThemeCubit>().state.textTheme.liveSearchAdPage3TextStyle,
               ),
               SizedBox(height: 4),
               AppText(
-                'Text select dates',
+                'add.liveSearchNewAdPage3.textSelectDates',
                 style: context
                     .read<AppThemeCubit>()
                     .state
@@ -98,22 +98,23 @@ class LiveSearchNewAdPage3 extends StatelessWidget {
                   ),
                 ),
               ),
-              if (state.rangeStartDay == null || state.rangeEndDay == null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 3),
-                  child: AppText(
-                    'validators.dateIsRequired',
-                    style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
-                  ),
-                ),
+              // if (state.rangeStartDay == null || state.rangeEndDay == null)
+              //   Padding(
+              //     padding: const EdgeInsets.only(top: 3),
+              //     child: AppText(
+              //       'validators.dateIsRequired',
+              //       style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+              //     ),
+              //   ),
               Spacer(),
               Padding(
                 padding: const EdgeInsets.only(bottom: 40),
                 child: SimpleButton(
                   onTap: () {
                     context.read<AddPublicationCubit>().incrementStep();
+                    print(state.currentStep);
                   },
-                  text: 'Save and publish',
+                  text: 'add.liveSearchNewAdPage3.saveAndPublish',
                 ),
               ),
             ],

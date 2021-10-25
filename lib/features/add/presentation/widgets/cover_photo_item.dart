@@ -58,7 +58,6 @@ class CoverPhotoItem extends StatelessWidget {
             left: querySize.width * .31,
             child: GestureDetector(
               onTap: () {
-                print('tapped');
                 context.read<AddPublicationCubit>().removePhoto(path);
               },
               child: CircleAvatar(

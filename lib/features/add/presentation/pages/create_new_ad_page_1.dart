@@ -33,7 +33,7 @@ class CreateNewAdPage1 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppText(
-                  'Create new ad',
+                  'add.createNewAdPage1.createNewAd',
                   style: context.read<AppThemeCubit>().state.textTheme.addPublicationHeaderTextStyle,
                 ),
                 SizedBox(height: 16),
@@ -146,7 +146,7 @@ class CreateNewAdPage1 extends StatelessWidget {
                     onTap: () {
                       context.read<AddPublicationCubit>().incrementStep();
                     },
-                    text: 'Next Step',
+                    text: 'add.createNewAdPage1.nextStep',
                   ),
                 ),
               ],

@@ -30,7 +30,7 @@ class LiveSearchNewAdPage2 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppText(
-                'Create new ad',
+                'add.liveSearchNewAdPage2.createNewAd',
                 style: context.read<AppThemeCubit>().state.textTheme.addPublicationHeaderTextStyle,
               ),
               SizedBox(height: 16),
@@ -111,7 +111,7 @@ class LiveSearchNewAdPage2 extends StatelessWidget {
                   onTap: () {
                     context.read<AddPublicationCubit>().incrementStep();
                   },
-                  text: 'Next Step',
+                  text: 'add.liveSearchNewAdPage2.nextStep',
                 ),
               ),
             ],

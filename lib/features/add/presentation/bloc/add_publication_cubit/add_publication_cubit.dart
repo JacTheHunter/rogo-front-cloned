@@ -75,7 +75,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
   }
 
   void incrementStep() {
-    if (state.currentStep == 5) {
+    if (state.currentStep == 5 && state.isFeed == true) {
       final rntPrice = RentalPriceFormModel.dirty(state.rentalPrice.value);
       final pr = PriceFormModel.dirty(state.price.value);
       final blsPr = BLSpriceFormModel.dirty(state.blsPrice.value);
@@ -99,7 +99,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
       return;
     }
 
-    if (state.currentStep == 4) {
+    if (state.currentStep == 4 && state.isFeed == true) {
       final ctry = CountryFormModel.dirty(state.country.value);
       final ct = CityFormModel.dirty(state.city.value);
       final zp = ZipFormModel.dirty(state.zip.value);
@@ -118,30 +118,6 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         ),
       );
       if (state.status.isValidated) {
-        emit(state.copyWith(currentStep: state.currentStep + 1));
-      }
-      return;
-    }
-
-    if (state.currentStep == 3) {
-      final ca = CategoriesFormModel.dirty(state.category.value);
-      final tt = FirstNameFormModel.dirty(state.title.value);
-      final desc = DescriptionFormModel.dirty(state.description.value);
-      emit(
-        state.copyWith(
-          status: Formz.validate(
-            [
-              ca,
-              tt,
-              desc,
-            ],
-          ),
-          category: ca,
-          title: tt,
-          description: desc,
-        ),
-      );
-      if (state.status.isValidated && state.pickedImagesPaths.isNotEmpty) {
         emit(state.copyWith(currentStep: state.currentStep + 1));
       }
       return;
@@ -192,7 +168,31 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
       return;
     }
 
-    if (state.currentStep == 3 && state.isFeed == false && state.rangeStartDay != null && state.rangeEndDay != null) {
+    if (state.currentStep == 3 && state.isFeed == true) {
+      final ca = CategoriesFormModel.dirty(state.category.value);
+      final tt = FirstNameFormModel.dirty(state.title.value);
+      final desc = DescriptionFormModel.dirty(state.description.value);
+      emit(
+        state.copyWith(
+          status: Formz.validate(
+            [
+              ca,
+              tt,
+              desc,
+            ],
+          ),
+          category: ca,
+          title: tt,
+          description: desc,
+        ),
+      );
+      if (state.status.isValidated && state.pickedImagesPaths.isNotEmpty) {
+        emit(state.copyWith(currentStep: state.currentStep + 1));
+      }
+      return;
+    }
+
+    if (state.currentStep == 3 && state.isFeed == false) {
       _createLiveSearchPublicationUseCase(CreateLiveSearchParams(
         title: state.title.value,
         description: state.description.value,
@@ -205,6 +205,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         images: state.pickedImagesPaths,
       ));
     }
+
     emit(state.copyWith(currentStep: state.currentStep + 1));
   }
 
@@ -243,6 +244,8 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
   void updateRangeValues(RangeValues values) {
     emit(state.copyWith(defaultRangeValues: values));
   }
+
+  void publishLiveSearchPublication() {}
 
 //! Calendar
   void onDaySelected(
