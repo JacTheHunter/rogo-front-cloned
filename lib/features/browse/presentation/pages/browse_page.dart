@@ -60,7 +60,7 @@ class BrowsePage extends StatelessWidget {
                 ),
                 // background: AppImage.asset(
                 //   AppImages.raster.sliverOverlay,
-                //   //TODO: FIX COLOR
+                //   //
                 //   color: Color(0xFFFDD3FD),
                 // ),
               ),

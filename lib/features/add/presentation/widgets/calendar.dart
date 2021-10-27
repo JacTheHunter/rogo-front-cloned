@@ -80,6 +80,10 @@ class Calendar extends StatelessWidget {
               onRangeSelected: (start, end, focusedDay) {
                 context.read<AddPublicationCubit>().resetSelectedDay();
                 context.read<AddPublicationCubit>().onRangeSelected(start, end, focusedDay);
+                if (start != null && end != null) {
+                  context.read<AddPublicationCubit>().updateDate(start, end);
+                }
+
                 context.read<AddPublicationCubit>().calendarModeToggle(RangeSelectionMode.toggledOn);
               },
               headerStyle: HeaderStyle(

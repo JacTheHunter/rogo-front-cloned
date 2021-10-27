@@ -30,6 +30,8 @@ class AddPublicationState extends Equatable {
   final CardNumberFormModel cardNumber;
   final CardExpirationDateFormModel cardExpireDate;
   final CardCvvFormModel cardCvv;
+  final DateFormModel rStartDay;
+  final DateFormModel rEndDay;
   final FormzStatus status;
   final String errorMessage;
 
@@ -60,6 +62,8 @@ class AddPublicationState extends Equatable {
     this.country = const CountryFormModel.pure(),
     this.city = const CityFormModel.pure(),
     this.category = const CategoriesFormModel.pure(),
+    this.rStartDay = const DateFormModel.pure(),
+    this.rEndDay = const DateFormModel.pure(),
     this.status = FormzStatus.pure,
     this.errorMessage = '',
   });
@@ -91,6 +95,8 @@ class AddPublicationState extends Equatable {
     CountryFormModel? country,
     CityFormModel? city,
     CategoriesFormModel? category,
+    DateFormModel? rStartDay,
+    DateFormModel? rEndDay,
     FormzStatus? status,
     String? errorMessage,
   }) {
@@ -121,6 +127,8 @@ class AddPublicationState extends Equatable {
       country: country ?? this.country,
       city: city ?? this.city,
       category: category ?? this.category,
+      rStartDay: rStartDay ?? this.rStartDay,
+      rEndDay: rEndDay ?? this.rEndDay,
       status: status ?? this.status,
       errorMessage: errorMessage ?? '',
     );
@@ -154,6 +162,8 @@ class AddPublicationState extends Equatable {
         country,
         city,
         category,
+        rStartDay,
+        rEndDay,
         status,
         errorMessage,
       ];

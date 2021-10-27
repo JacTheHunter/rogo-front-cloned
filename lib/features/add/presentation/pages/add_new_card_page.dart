@@ -20,6 +20,7 @@ class AddNewCardPage extends StatelessWidget {
     return BlocBuilder<AddPublicationCubit, AddPublicationState>(
       builder: (context, state) {
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: context.read<AppThemeCubit>().state.appColors.scaffoldBackgroundColor,
           appBar: AppBar(
             leading: GestureDetector(
@@ -83,7 +84,7 @@ class AddNewCardPage extends StatelessWidget {
                   onChanged: context.read<AddPublicationCubit>().updateCardNumber,
                   keyboardType: TextInputType.number,
                   inputFormatters: [
-                    CreditCardCvcInputFormatter(),
+                    MaskedInputFormatter('#### #### #### ####'),
                   ],
                 ),
                 if (state.cardNumber.invalid)

@@ -1,5 +1,4 @@
 import 'package:formz/formz.dart';
-import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 enum CardHolderNameFormModelValidationError { empty, maximum }
 enum CardNumberFormModelValidationError { empty, invalid }
@@ -28,13 +27,10 @@ class CardNumberFormModel extends FormzInput<String, CardNumberFormModelValidati
 
   @override
   CardNumberFormModelValidationError? validator(String value) {
-    if (value.length == 0) {
-      return CardNumberFormModelValidationError.empty;
-    } else if (isCardValidNumber(value, checkLength: true)) {
+    if (value.length > 0) {
       return null;
-    } else {
-      return CardNumberFormModelValidationError.invalid;
     }
+    return CardNumberFormModelValidationError.invalid;
   }
 }
 

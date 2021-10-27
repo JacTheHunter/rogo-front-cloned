@@ -11,7 +11,6 @@ import '../bloc/wishlists_live_search_cubit/wishlists_live_search_cubit.dart';
 import '../widgets/feed_item.dart';
 import '../widgets/live_search_item.dart';
 
-//TODO: FIX LISTVIEW OVERLAY AT BOTTOM
 class WhishListsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -103,7 +102,7 @@ class WhishListsPage extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 24),
                         child: FeedItem(
                           state: state.wishlistsFeed[index],
-                          //TODO: No pictures on server to display
+
                           image: state.wishlistsFeed[index].image,
                           // image: AppImages.raster.productRandom,
                         ),

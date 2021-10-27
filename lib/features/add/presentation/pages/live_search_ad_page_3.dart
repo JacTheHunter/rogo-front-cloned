@@ -98,14 +98,14 @@ class LiveSearchNewAdPage3 extends StatelessWidget {
                   ),
                 ),
               ),
-              // if (state.rangeStartDay == null || state.rangeEndDay == null)
-              //   Padding(
-              //     padding: const EdgeInsets.only(top: 3),
-              //     child: AppText(
-              //       'validators.dateIsRequired',
-              //       style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
-              //     ),
-              //   ),
+              if (state.rStartDay.invalid && state.rEndDay.invalid)
+                Padding(
+                  padding: const EdgeInsets.only(top: 3),
+                  child: AppText(
+                    'validators.dateIsRequired',
+                    style: context.read<AppThemeCubit>().state.textTheme.inputErrorTextStyle,
+                  ),
+                ),
               Spacer(),
               Padding(
                 padding: const EdgeInsets.only(bottom: 40),

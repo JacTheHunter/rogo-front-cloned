@@ -3,22 +3,23 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
-import 'package:rogo/core/form_models/categories_form_model.dart';
-import 'package:rogo/core/form_models/city_form_model.dart';
-import 'package:rogo/core/form_models/country_form_model.dart';
-import 'package:rogo/features/add/domain/usecases/create_live_search_publication_usecase.dart';
-import 'package:rogo/features/categories/presentation/bloc/categories_cubit/categories_cubit.dart';
-import 'package:rogo/features/countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../../core/form_models/card_credentials_form_models.dart';
+import '../../../../../core/form_models/categories_form_model.dart';
+import '../../../../../core/form_models/city_form_model.dart';
+import '../../../../../core/form_models/country_form_model.dart';
+import '../../../../../core/form_models/date_form_model.dart';
 import '../../../../../core/form_models/description_form_model.dart';
 import '../../../../../core/form_models/first_name_form_model.dart';
 import '../../../../../core/form_models/prices_form_models.dart';
 import '../../../../../core/form_models/zip_form_model.dart';
 import '../../../../categories/domain/entities/category.dart';
+import '../../../../categories/presentation/bloc/categories_cubit/categories_cubit.dart';
 import '../../../../countries_and_cities/domain/entities/city.dart';
 import '../../../../countries_and_cities/domain/entities/country.dart';
+import '../../../../countries_and_cities/presentation/blocs/countries_and_cities_cubit/countries_and_cities_cubit.dart';
+import '../../../domain/usecases/create_live_search_publication_usecase.dart';
 
 part 'add_publication_state.dart';
 
@@ -97,9 +98,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         emit(state.copyWith(currentStep: state.currentStep + 1));
       }
       return;
-    }
-
-    if (state.currentStep == 4 && state.isFeed == true) {
+    } else if (state.currentStep == 4 && state.isFeed == true) {
       final ctry = CountryFormModel.dirty(state.country.value);
       final ct = CityFormModel.dirty(state.city.value);
       final zp = ZipFormModel.dirty(state.zip.value);
@@ -121,9 +120,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         emit(state.copyWith(currentStep: state.currentStep + 1));
       }
       return;
-    }
-
-    if (state.currentStep == 1 && state.isFeed == false) {
+    } else if (state.currentStep == 1 && state.isFeed == false) {
       final tt = FirstNameFormModel.dirty(state.title.value);
       final desc = DescriptionFormModel.dirty(state.description.value);
       emit(
@@ -142,9 +139,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         emit(state.copyWith(currentStep: state.currentStep + 1));
       }
       return;
-    }
-
-    if (state.currentStep == 2 && state.isFeed == false) {
+    } else if (state.currentStep == 2 && state.isFeed == false) {
       final ctry = CountryFormModel.dirty(state.country.value);
       final ct = CityFormModel.dirty(state.city.value);
       final zp = ZipFormModel.dirty(state.zip.value);
@@ -166,9 +161,7 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         emit(state.copyWith(currentStep: state.currentStep + 1));
       }
       return;
-    }
-
-    if (state.currentStep == 3 && state.isFeed == true) {
+    } else if (state.currentStep == 3 && state.isFeed == true) {
       final ca = CategoriesFormModel.dirty(state.category.value);
       final tt = FirstNameFormModel.dirty(state.title.value);
       final desc = DescriptionFormModel.dirty(state.description.value);
@@ -190,20 +183,36 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         emit(state.copyWith(currentStep: state.currentStep + 1));
       }
       return;
-    }
+    } else if (state.currentStep == 3 && state.isFeed == false) {
+      final startDay = DateFormModel.dirty(state.rStartDay.value);
+      final endDay = DateFormModel.dirty(state.rEndDay.value);
 
-    if (state.currentStep == 3 && state.isFeed == false) {
-      _createLiveSearchPublicationUseCase(CreateLiveSearchParams(
-        title: state.title.value,
-        description: state.description.value,
-        zip: state.zip.value,
-        startAt: state.rangeStartDay!,
-        endAt: state.rangeEndDay!,
-        rentalPriceRange: '${state.defaultRangeValues.start}-${state.defaultRangeValues.end}',
-        deadline: DateTime.now(), //TODO: solve deadline
-        city: state.selectedCity?.id ?? 0,
-        images: state.pickedImagesPaths,
-      ));
+      emit(
+        state.copyWith(
+          status: Formz.validate(
+            [
+              startDay,
+              endDay,
+            ],
+          ),
+          rStartDay: startDay,
+          rEndDay: endDay,
+        ),
+      );
+      if (state.status.isValidated) {
+        _createLiveSearchPublicationUseCase(CreateLiveSearchParams(
+          title: state.title.value,
+          description: state.description.value,
+          zip: state.zip.value,
+          startAt: state.rangeStartDay!,
+          endAt: state.rangeEndDay!,
+          rentalPriceRange: '${state.defaultRangeValues.start}-${state.defaultRangeValues.end}',
+          deadline: DateTime.now(), //Not required field, automatically 30 days
+          city: state.selectedCity?.id ?? 0,
+          images: state.pickedImagesPaths,
+        ));
+      }
+      return;
     }
 
     emit(state.copyWith(currentStep: state.currentStep + 1));
@@ -288,7 +297,6 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
       rangeEndDay: state.rangeEndDay,
       focusedDay: state.focusedDay,
       rangeSelectionMode: state.rangeSelectionMode,
-
       title: state.title,
       description: state.description,
       zip: state.zip,
@@ -301,6 +309,11 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
       cardExpireDate: state.cardExpireDate,
       errorMessage: state.errorMessage,
       status: state.status,
+      category: state.category,
+      city: state.city,
+      rEndDay: state.rEndDay,
+      country: state.country,
+      rStartDay: state.rStartDay,
 
       //continue everything except selectedDay, and thats all))
     ));
@@ -319,9 +332,11 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
       focusedDay: state.focusedDay,
       selectedDay: state.selectedDay,
       rangeSelectionMode: state.rangeSelectionMode,
-
-      //WhiteSpace
-
+      category: state.category,
+      city: state.city,
+      country: state.country,
+      rEndDay: state.rEndDay,
+      rStartDay: state.rStartDay,
       title: state.title,
       description: state.description,
       zip: state.zip,
@@ -347,7 +362,9 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
       selectedCountry: state.selectedCountry,
       selectedCity: state.selectedCity,
       defaultRangeValues: state.defaultRangeValues,
-
+      category: state.category,
+      city: state.city,
+      country: state.country,
       title: state.title,
       description: state.description,
       zip: state.zip,
@@ -442,6 +459,35 @@ class AddPublicationCubit extends Cubit<AddPublicationState> {
         ),
       );
     }
+  }
+
+  void updateDate(DateTime rangeStartDay, DateTime rangeEndDay) {
+    final rSDay = DateFormModel.dirty(rangeStartDay.toIso8601String().substring(0, 10) + ' \u2014 ');
+    final rEDay = DateFormModel.dirty(rangeEndDay.toIso8601String().substring(0, 10));
+    emit(
+      state.copyWith(
+        rEndDay: rSDay.valid ? rSDay : DateFormModel.pure(rangeStartDay.toString()),
+        rStartDay: rEDay.valid ? rEDay : DateFormModel.pure(rangeEndDay.toString()),
+        status: Formz.validate(
+          [
+            rSDay,
+            rEDay,
+            state.city,
+            state.country,
+            state.zip,
+            state.title,
+            state.description,
+            state.rentalPrice,
+            state.price,
+            state.blsPrice,
+            state.cardHolderName,
+            state.cardNumber,
+            state.cardCvv,
+            state.cardExpireDate,
+          ],
+        ),
+      ),
+    );
   }
 
   void updateCity(City? city) {
